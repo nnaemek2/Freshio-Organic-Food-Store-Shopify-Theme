@@ -1,0 +1,16 @@
+<!-- productVideo.liquid -->
+{%- if media.media_type == 'video' -%}
+<div class="js-product-video">
+<span class="js-play-button">
+  {%- render 'icon-play' -%}
+  {%- render 'icon-pause' -%}
+</span>
+
+<!-- <video class="js-product-video"  loop {% if settings.video_mute %}muted{% endif %}>
+  <source type="video/mp4" src="{{product.metafields.info.video}}">
+</video> -->
+{{ media | video_tag: controls: false , loop: true, muted: true}}
+</div>
+
+{%- endif -%}
+

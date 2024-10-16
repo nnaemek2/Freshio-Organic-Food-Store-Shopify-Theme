@@ -1,0 +1,65 @@
+{
+  "sections": {
+    "main": {
+      "type": "product-template-2",
+      "blocks": {
+        "cf704111-1de6-4b36-839f-4140af5ad8bd": {
+          "type": "related-product",
+          "settings": {
+            "setwidthcontent": "container",
+            "relate_products_title": "Related Product",
+            "show": 5,
+            "arrows": false,
+            "draggable": true,
+            "dots": true
+          }
+        }
+      },
+      "block_order": [
+        "cf704111-1de6-4b36-839f-4140af5ad8bd"
+      ],
+      "settings": {
+        "enable_hurrify": true,
+        "stock_enable": true,
+        "enable_payment_button": true,
+        "social_sharing_products": true,
+        "next_prev_enable": true,
+        "product_vendor_enable": true,
+        "product_type_enable": true,
+        "variant_sku_enable": true,
+        "variant_available_enable": true,
+        "wailist": true,
+        "product_selector": "radio",
+        "sizeguide_enable": false,
+        "sizeguide_title": "Size guide",
+        "sizeguide_page": "",
+        "fake_view_enable": true,
+        "fake_view_min": 12,
+        "fake_view_max": 30,
+        "fake_view_duration": 3,
+        "fake_view_text_prefix": "Currently there are",
+        "fake_view_text_suffix": "peoples are currently looking at this product",
+        "gtab_des": "Description",
+        "gtab_review_enable": true,
+        "gtab_review": "Review",
+        "positiontab": "right",
+        "enable_tabvertical": false,
+        "stab_title1": "Specific tab 1",
+        "stab_title2": "Specific tab 2",
+        "stab_title3": "Specific tab 3",
+        "stab_title4": "Specific tab 4",
+        "enable": true,
+        "mix_1": "#262626",
+        "mix_2": "#c0c0c0",
+        "text_cl": "#fff",
+        "cart_bg": "#127177",
+        "cart_cl": "#fff",
+        "cart_bg_hover": "#fff",
+        "cart_cl_hover": "#fff"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

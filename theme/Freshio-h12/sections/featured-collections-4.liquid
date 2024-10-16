@@ -1,0 +1,263 @@
+<!-- featured-collections-4.liquid -->
+<style>
+    {%- if section.settings.enable_box -%}
+    @media (min-width: 992px){
+        .collectionlist-wrapper-{{ section.id }}{
+            padding:calc(var(--g-gutter) + 10px);
+            background:{{section.settings.bg_box}};
+        }
+    }
+    {%- endif -%}
+</style>
+<div class="customstyle{{ section.id }} position-relative " data-aos="{{section.settings.animation}}" style="z-index:{{section.settings.zindex}}" >
+    {%- include 'style-section' -%}
+      <div class="{{ section.settings.setwidth }}">
+      <div class="section-block">
+          {%- include 'section-heading' -%}
+          <div class="collectionlist-wrapper collectionlist-wrapper-{{ section.id }}">
+            <div class="collectionlist-slider row" id="collection-list-{{ section.id }}">
+              {%- for block in section.blocks -%}
+              <div class=" collectionlist-item col-6 col-md-4 {{section.settings.width}}" {{ block.shopify_attributes }}>
+                {%- assign featured_collection = collections[block.settings.collection] -%}
+                {%- assign featured_image = block.settings.image -%}
+                  {%- capture current -%}{%- cycle 1, 2, 3, 4, 5, 6 -%}{%- endcapture -%}
+                  {%- assign collectionTitle = featured_collection.title | default: 'Collection title' -%}
+                  <div class="collection-card-4 mb-4 mb-lg-0" {{ block.shopify_attributes }}>
+                    <div class="collection-card__image position-relative ">
+                      <a class="hv-image" href="{{featured_collection.url | default :'#'}}">
+                        {%- if featured_image != blank -%}
+                        <img class="lazyload transition {% if section.settings.rounded %} rounded-circle {% endif %}" src="{%- include 'srcBlank' -%}" data-srcset="{{ featured_image | img_url: '600x'}}">
+                        {%- elsif featured_collection.image != blank -%}
+                        <img class="lazyload transition {% if section.settings.rounded %} rounded-circle {% endif %}" src="{%- include 'srcBlank' -%}" data-srcset="{{ featured_collection.image | img_url: '600x'}}">
+                        {%- else -%}
+                        {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                        {%- endif -%}
+                      </a>
+                      <div class="position-static text-center m-0 px-3 py-4">
+                          <a class=" font-family-2 h5 mb-0  mt-3 font-weight-bold" href="{{featured_collection.url | default :'#'}}">
+                            {{ collectionTitle }}
+                          </a>
+                          {%- if section.settings.enable_items -%}
+                          <p>{{ featured_collection.products_count | default: 0 }} {{ featured_collection.products_count | pluralize: 'product', 'products' }}</p> 
+                          {%- endif -%}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {%- endfor -%}
+            </div>
+          </div>
+          {%- if section.blocks.size == 0 -%}
+          {%- include 'no-blocks' -%}
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+    
+    {% schema %}
+    {
+      "name": "Collection list Style 4",
+      "class": "index-section",
+      "max_blocks": 6,
+      "settings": [
+      {
+        "type": "select",
+        "id": "animation",
+        "options": [
+          { "value": "", "label": "None"},
+          { "value": "fade", "label": "Fade"},
+          { "value": "fade-up", "label": "Fade Up"},
+          { "value": "fade-down", "label": "Fade Down"},
+          { "value": "fade-left", "label": "Fade Left"},
+          { "value": "fade-right", "label": "Fade Right"},
+          { "value": "fade-up-right", "label": "Fade Up Right"},
+          { "value": "fade-up-left", "label": "Fade Up Left"},
+          { "value": "fade-down-right", "label": "Fade Down Right"},
+          { "value": "fade-down-left", "label": "Fade Down Left"},
+          { "value": "flip-up", "label": "Flip Up"},
+          { "value": "flip-down", "label": "Flip Down"},
+          { "value": "flip-left", "label": "Flip Left"},
+          { "value": "flip-right", "label": "Flip Right"},
+          { "value": "slide-up", "label": "Slide Up"},
+          { "value": "slide-down", "label": "Slide Down"},
+          { "value": "slide-left", "label": "Slide Left"},
+          { "value": "slide-right", "label": "Slide Right"},
+          { "value": "zoom-in", "label": "Zoom In"},
+          { "value": "zoom-in-up", "label": "Zoom In Up"},
+          { "value": "zoom-in-down", "label": "Zoom In Down"},
+          { "value": "zoom-in-left", "label": "Zoom In Left"},
+          { "value": "zoom-in-right", "label": "Zoom In Right"},
+          { "value": "zoom-out", "label": "Zoom Out"},
+          { "value": "zoom-out-up", "label": "Zoom Out Up"},
+          { "value": "zoom-out-down", "label": "Zoom Out Down"},
+          { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+          { "value": "zoom-out-right", "label": "Zoom Out Right"}
+        ],
+        "label": "Select Animation"
+    },
+      {
+        "type": "text",
+        "id": "paddingsection",
+        "label": "Padding Section",
+        "default": "0px 0px 0px 0px",
+        "info": "Padding: Top Right Bottom Left"
+      },
+      {
+        "type": "text",
+        "id": "paddingmobile",
+        "label": "Padding Section Mobile",
+        "default": "60px 0px 60px 0px",
+        "info": "Padding: Top Right Bottom Left"
+      },
+      {
+        "type": "text",
+        "id": "marginsection",
+        "label": "Margin Section",
+        "default": "0px 0px 0px 0px",
+        "info": "Margin: Top Right Bottom Left"
+      },
+      {
+        "type": "text",
+        "id": "marginmobile",
+        "label": "Margin Mobile",
+        "default": "0px 0px 0px 0px",
+        "info": "Margin: Top Right Bottom Left"
+      },
+      {
+        "type": "text",
+        "id": "zindex",
+        "label": "Z-Index",
+        "default": "1",
+        "info": "The z-index property specifies the stack order of an element."
+      },
+      {
+        "type": "color",
+        "id": "bgsection",
+          "label": "Background Section",
+          "default": "#fefefe"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_box",
+        "label": "Enable Inner Box",
+        "default": true
+        },
+        {
+            "type": "color",
+            "id": "bg_box",
+            "label": "Background Inner Box",
+            "default": "#ffffff"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_items",
+            "label": "Enable Number Items",
+            "default": true
+            },
+            {
+              "type": "checkbox",
+              "id": "rounded",
+              "label": "Enable Rounded",
+              "default": true
+              },
+      {
+        "type": "select",
+        "id": "setwidth",
+        "label": "Full Width",
+        "default": "container",
+        "options": [
+          {
+            "value": "container",
+            "label": "Box"
+          },
+          {
+            "value": "container-fluid",
+            "label": "Container Fluid"
+          },
+          {
+            "value": "full",
+            "label": "Full"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "title_top",
+        "label": "Sub Title Top",
+        "default": "Sub Title Top 4"
+      },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Collection list 4"
+        },
+        {
+          "type": "textarea",
+          "id": "des",
+          "label": "HTML / Description"
+        },
+        
+        {
+            "type": "select",
+            "id": "width",
+            "label": "Column",
+            "default": "col-lg-3",
+            "options": [
+                {
+                "value": "col-lg-2",
+                "label": "16%"
+              },
+              {
+                "value": "col-lg-3",
+                "label": "25%"
+              },
+              {
+                "value": "col-lg-4",
+                "label": "33%"
+              },
+              {
+                "value": "col-lg-6",
+                "label": "50%"
+              }
+            ]
+          }
+      ],
+      "blocks": [
+        {
+          "type": "collection",
+          "name": "Collection",
+          "settings": [
+            {
+              "id": "collection",
+              "type": "collection",
+              "label": "Collection"
+            },
+            {
+              "id": "image",
+              "type": "image_picker",
+              "label": "Image"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Collection list Style 4",
+          "category": "Collection",
+          "blocks": [
+            {
+              "type": "collection"
+            },
+            {
+              "type": "collection"
+            },
+            {
+              "type": "collection"
+            }
+          ]
+        }
+      ]
+    }
+    {% endschema %}
+    

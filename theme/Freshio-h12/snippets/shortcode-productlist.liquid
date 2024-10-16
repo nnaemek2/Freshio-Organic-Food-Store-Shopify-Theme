@@ -1,0 +1,34 @@
+{% capture handle %}{% include 'shortcode-render' render:'handle' %}{% endcapture %}
+{% capture title %}{% include 'shortcode-render' render:'title' %}{% endcapture %}
+{% capture class %}{% include 'shortcode-render' render:'class' %}{% endcapture %}
+{% capture id %}{% include 'shortcode-render' render:'id' %}{% endcapture %}
+{% capture columnsProduct %}{% include 'shortcode-render' render:'columnsProduct' %}{% endcapture %}
+{% capture limit %}{% include 'shortcode-render' render:'limit' %}{% endcapture %}
+
+  {%- assign columns_product_collections = columnsProduct | plus: 0 -%}
+  {%- assign colItem = 12 | divided_by:columns_product_collections -%}
+  {%- if columns_product_collections == 5 -%}
+  {%- capture grid_width -%} col-lg-3 col-md-3 col-sm-6 col-6{%- endcapture -%}
+  {%- else -%}
+  {%- capture grid_width -%}col-md-{{ colItem }} col-sm-6 col-6{%- endcapture -%}
+  {%- endif -%}
+{% if limit != blank %}
+    {% assign product_per_page = limit %}
+{% else if settings.collection_product_per_page != blank %}
+    {% assign product_per_page = settings.collection_product_per_page %}
+{% else %}
+    {% assign product_per_page = 12 %}
+{% endif %}
+<h4>{{ title }}</h4>
+
+<div class="row">
+  {% for product in collections[handle].products limit:limit %}
+  <div class="{{grid_width}}">
+    {% include 'product-card', product: product %}
+  </div>
+  {% else %}
+  <div class="col-md-12">
+    {% include 'collection-blank' %}
+  </div>
+  {% endfor %}
+</div>

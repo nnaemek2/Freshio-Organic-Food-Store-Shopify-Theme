@@ -1,0 +1,13 @@
+{% paginate collection.products by 1000 %}
+  {% capture product_list %}
+    {% for product in collection.products %}
+       {{product | json}}
+    {% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  {% endcapture %}
+{% endpaginate %}
+
+{
+  "collection_count": {{ collection.products_count }},
+  "product_list": [{{ product_list }}]
+}

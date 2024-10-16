@@ -1,0 +1,282 @@
+<!-- product-list-image.liquid -->
+<style>
+  .pimage-item{
+    border-left: 1px solid #e9e9e9;
+  }
+  .pimage-item .product-card__info{
+    margin-bottom: 0;
+  }
+  .plist-image .slick-list{
+    border-radius: 4px;
+    background-color: white;
+  }
+  .plist-image .plist-bg{
+    background-size: 36% auto;
+    background-repeat: no-repeat;
+    background-position: bottom 0 left -15px;
+    padding: 5px;
+  }
+  .plist-image .slick-prev{
+    left: -22px;
+  }
+  .plist-image .slick-next{
+    right: -22px;
+  }
+</style>
+<div class="customstyle{{ section.id }} plist-image" data-aos="{{section.settings.animation}}">
+  {%- include 'style-section' -%}
+<div class="{{ section.settings.setwidth }}">
+  <div class="section-block section-inner" >
+    <div class=" plist-bg {% if section.settings.image_bg != blank %} lazyload {% endif %} " style="{% if section.settings.image_bg != blank %}background-image:url({%- include 'srcBlank' -%}){% endif %}"
+    data-bg="{{ section.settings.image_bg | img_url:"1920x" }}">
+      <div class="row">
+          <div class="col-lg-4">
+              <div class="plist-left--image h-100 p-4 " style="">
+                  {%- if section.settings.title_top != blank -%}
+                      <div class="subtop mb-2" data-aos="{{section.settings.animation}}" data-aos-duration="500">{{section.settings.title_top}}</div>
+                  {%- endif -%}
+                  {%- if section.settings.title != blank -%}
+                  <h3 class="mb-3" data-aos="{{section.settings.animation}}" data-aos-duration="800">
+                      <span>{{section.settings.title}}</span>
+                  </h3>
+                  {%- endif -%}
+                  {%- if section.settings.des != blank -%}
+                  <div class="font-family-2 mb-5" data-aos="{{section.settings.animation}}" data-aos-duration="1100">{{section.settings.des}}</div>
+                  {%- endif -%}
+              </div>
+          </div>
+          <div class="col-lg-8">
+              <div class="productlist-wrapper dots-negative" data-aos="{{section.settings.animation}}">
+                  <div class="productlist-slider mb-0" id="Productlist-{{ section.id }}"
+                      style="opacity:0"
+                      data-rows="1"
+                      data-slidesToShow="{{section.settings.show}}"
+                      data-arrows="{{ section.settings.arrows }}"
+                      data-dots="{{ section.settings.dots }}" 
+                      data-draggable="{{ section.settings.draggable }}" 
+                      data-infinite="{{ section.settings.infinite }}" 
+                      data-section-id="{{ section.id }}" 
+                      data-section-type="productlist">
+                    {%- assign collection = collections[section.settings.collection]  -%}
+                    {%- assign limit = section.settings.limit -%}
+                    {%- if collection != blank -%}
+                    {%- for product in collection.products limit: limit -%}
+                    <div class="productlist-item pimage-item col">
+                      {%- include 'product-card', product: product -%}
+                    </div>
+                    {%- endfor -%}
+                    {%- else -%}
+                    {%- for i in (1..limit) -%}
+                    <div class="productlist-item col">
+                      {%- include 'product-grid-blank' -%}
+                    </div>
+                    {%- endfor -%}
+                    {%- endif -%}
+                  </div>
+                </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "Product List With Image",
+  "class": "index-section",
+  "settings": [
+  {
+    "type": "select",
+    "id": "animation",
+    "options": [
+      { "value": "", "label": "None"},
+      { "value": "fade", "label": "Fade"},
+      { "value": "fade-up", "label": "Fade Up"},
+      { "value": "fade-down", "label": "Fade Down"},
+      { "value": "fade-left", "label": "Fade Left"},
+      { "value": "fade-right", "label": "Fade Right"},
+      { "value": "fade-up-right", "label": "Fade Up Right"},
+      { "value": "fade-up-left", "label": "Fade Up Left"},
+      { "value": "fade-down-right", "label": "Fade Down Right"},
+      { "value": "fade-down-left", "label": "Fade Down Left"},
+      { "value": "flip-up", "label": "Flip Up"},
+      { "value": "flip-down", "label": "Flip Down"},
+      { "value": "flip-left", "label": "Flip Left"},
+      { "value": "flip-right", "label": "Flip Right"},
+      { "value": "slide-up", "label": "Slide Up"},
+      { "value": "slide-down", "label": "Slide Down"},
+      { "value": "slide-left", "label": "Slide Left"},
+      { "value": "slide-right", "label": "Slide Right"},
+      { "value": "zoom-in", "label": "Zoom In"},
+      { "value": "zoom-in-up", "label": "Zoom In Up"},
+      { "value": "zoom-in-down", "label": "Zoom In Down"},
+      { "value": "zoom-in-left", "label": "Zoom In Left"},
+      { "value": "zoom-in-right", "label": "Zoom In Right"},
+      { "value": "zoom-out", "label": "Zoom Out"},
+      { "value": "zoom-out-up", "label": "Zoom Out Up"},
+      { "value": "zoom-out-down", "label": "Zoom Out Down"},
+      { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+      { "value": "zoom-out-right", "label": "Zoom Out Right"}
+    ],
+    "label": "Select Animation"
+},
+  {
+    "type": "text",
+    "id": "paddingsection",
+    "label": "Padding Section",
+    "default": "0px 0px 0px 0px",
+    "info": "Padding: Top Right Bottom Left"
+  },
+  {
+    "type": "text",
+    "id": "paddingmobile",
+    "label": "Padding Section Mobile",
+    "default": "60px 0px 60px 0px",
+    "info": "Padding: Top Right Bottom Left"
+  },
+  {
+    "type": "text",
+    "id": "marginsection",
+    "label": "Margin Section",
+    "default": "0px 0px 0px 0px",
+    "info": "Margin: Top Right Bottom Left"
+  },
+  {
+    "type": "text",
+    "id": "marginmobile",
+    "label": "Margin Mobile",
+    "default": "0px 0px 0px 0px",
+    "info": "Margin: Top Right Bottom Left"
+  },
+  {
+    "type": "color",
+    "id": "bgsection",
+      "label": "Background Section",
+      "default": "#ffffff"
+  },
+  {
+    "type": "checkbox",
+    "id": "enable_inner",
+    "label": "Enable Padding Inner",
+    "default": true
+  },
+  {
+    "type": "text",
+    "id": "padding_inner",
+    "label": "Padding Inner ",
+    "default": "0px 0px 0px 0px",
+    "info": "Padding: Top Right Bottom Left"
+  },
+  {
+    "type": "text",
+    "id": "padding_inner_mobile",
+    "label": "Padding Inner Mobile",
+    "default": "0px 0px 0px 0px",
+    "info": "Padding: Top Right Bottom Left"
+  },
+  {
+    "type": "color",
+    "id": "bg_inner",
+      "label": "Background Inner",
+      "default": "#ffffff"
+  },
+  {
+    "type": "select",
+    "id": "setwidth",
+    "label": "Full Width",
+    "default": "container",
+    "options": [
+      {
+        "value": "container",
+        "label": "Box"
+      },
+      {
+        "value": "container-fluid",
+        "label": "Container Fluid"
+      },
+      {
+        "value": "full",
+        "label": "Full"
+      }
+    ]
+  },
+  {
+      "type": "text",
+      "id": "title_top",
+      "label": "Sub Title Top",
+      "default": "Sub Title Top"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Product list"
+    },
+    {
+      "type": "textarea",
+      "id": "des",
+      "label": "HTML / Description"
+    },
+    {
+      "label": "Collection",
+      "id": "collection",
+      "type": "collection"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_bg",
+      "label": "Background image",
+      "info":"1000 x 400px .png with transparency recommended (hidden on mobile)"
+    },
+    {
+      "type": "checkbox",
+      "id": "arrows",
+      "label": "Arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "draggable",
+      "label": "Draggable",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "dots",
+      "label": "Dots",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "infinite",
+      "label": "Infinite",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "min": 3,
+      "max": 30,
+      "step": 1,
+      "label": "Limit items",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "show",
+      "min": 3,
+      "max": 6,
+      "step": 1,
+      "label": "Display items",
+      "default": 3
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product List With Image",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,189 @@
+<!-- featured-products-2.liquid -->
+<style>
+    .grid-heading{
+        height: 50%;
+    }
+    .f-product2 .section-title-1{
+        text-align: left !important;
+    }
+    .f-product2 .product-card--style1{
+        background-color: #fff;
+        box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.03);
+    }
+    .f-product2 .product-card--style1 {
+      margin-bottom: 20px;
+    }
+    .f-product2 .product-card--style1 .product-card__image-wr{
+        box-shadow: none;
+        overflow: hidden;
+    }
+    .f-product2 .product-card--style1 .product-card__image img{
+      transform: translateY(-30px);
+    }
+    .f-product2 .product-card--style1 .product-card__info{
+        position: absolute;
+        bottom: -20px;
+        left: 0;
+        width: 100%;
+    }
+    .f-product2 .product-card--style1 .product-card__swatch{
+        display: none;
+    }
+</style>
+<div class="customstyle{{ section.id }} f-product2" data-aos="{{section.settings.animation}}">
+    {%- include 'style-section' -%}
+    <div class="{{ section.settings.setwidth }}">
+      <div class="section-block">
+        {%- assign collection = collections[section.settings.collection] -%}
+        {%- assign rows = section.settings.rows -%}
+        {%- if collection != blank -%}
+        {%- assign product_limit = rows | times: 4 -%}
+        <div class="row js-masonry" data-section-id="{{ section.id }}" data-section-type="masonries" style="opacity:0">
+            <div class="grid-sizer"></div>
+            <div class="grid-item col-lg-3 col-md-6 col-sm-6 col-xs-6 col-6 grid-heading d-flex align-items-center">
+                {%- include 'section-heading' -%}
+            </div>
+          {%- for product in collection.products limit: product_limit -%}
+          <div class="grid-item {% if forloop.index == 2 %} col-lg-6 {% else %} col-lg-3 {% endif %}col-md-6 col-sm-6 col-xs-6 col-6 {% if forloop.index > 4 %}small--hide{% endif %}">
+            {%- include 'product-card', product: product, collection: collection -%}
+          </div>
+          {%- endfor -%}
+        </div>
+        {%- else -%}
+        <div class="row">
+          {%- assign product_limit = rows | times: 4 -%}
+          {%- for i in (1..product_limit) -%}
+          {%- case i -%}
+          {%- when 7 -%}
+          {%- assign index = 1 -%}
+          {%- when 8 -%}
+          {%- assign index = 2 -%}
+          {%- when 9 -%}
+          {%- assign index = 3 -%}
+          {%- else -%}
+          {%- assign index = i -%}
+          {%- endcase -%}
+          <div class="col-md-3 col-sm-6 col-xs-6 {% if forloop.index > 4 %}small--hide{% endif %}">
+            {%- include 'product-grid-blank' -%}
+          </div>
+          {%- endfor -%}
+        </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+  {% schema %}
+  {
+    "name": "Product Grid Style2",
+    "class": "index-section",
+    "settings": [
+    {
+      "type": "select",
+      "id": "animation",
+      "options": [
+        { "value": "", "label": "None"},
+        { "value": "fade", "label": "Fade"},
+        { "value": "fade-up", "label": "Fade Up"},
+        { "value": "fade-down", "label": "Fade Down"},
+        { "value": "fade-left", "label": "Fade Left"},
+        { "value": "fade-right", "label": "Fade Right"},
+        { "value": "fade-up-right", "label": "Fade Up Right"},
+        { "value": "fade-up-left", "label": "Fade Up Left"},
+        { "value": "fade-down-right", "label": "Fade Down Right"},
+        { "value": "fade-down-left", "label": "Fade Down Left"},
+        { "value": "flip-up", "label": "Flip Up"},
+        { "value": "flip-down", "label": "Flip Down"},
+        { "value": "flip-left", "label": "Flip Left"},
+        { "value": "flip-right", "label": "Flip Right"},
+        { "value": "slide-up", "label": "Slide Up"},
+        { "value": "slide-down", "label": "Slide Down"},
+        { "value": "slide-left", "label": "Slide Left"},
+        { "value": "slide-right", "label": "Slide Right"},
+        { "value": "zoom-in", "label": "Zoom In"},
+        { "value": "zoom-in-up", "label": "Zoom In Up"},
+        { "value": "zoom-in-down", "label": "Zoom In Down"},
+        { "value": "zoom-in-left", "label": "Zoom In Left"},
+        { "value": "zoom-in-right", "label": "Zoom In Right"},
+        { "value": "zoom-out", "label": "Zoom Out"},
+        { "value": "zoom-out-up", "label": "Zoom Out Up"},
+        { "value": "zoom-out-down", "label": "Zoom Out Down"},
+        { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+        { "value": "zoom-out-right", "label": "Zoom Out Right"}
+      ],
+      "label": "Select Animation"
+  },
+    {
+      "type": "text",
+      "id": "paddingsection",
+      "label": "Padding Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginsection",
+      "label": "Margin Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "color",
+      "id": "bgsection",
+        "label": "Background Section",
+        "default": "#ffffff"
+    },
+    {
+      "type": "select",
+      "id": "setwidth",
+      "label": "Full Width",
+      "default": "container",
+      "options": [
+        {
+          "value": "container",
+          "label": "Box"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Container Fluid"
+        },
+        {
+          "value": "full",
+          "label": "Full"
+        }
+      ]
+    },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Product list"
+      },
+      {
+        "type": "textarea",
+        "id": "des",
+        "label": "HTML / Description"
+      },
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Collection"
+      },
+      {
+        "type": "range",
+        "id": "rows",
+        "label": "Rows",
+        "min": 1,
+        "max": 3,
+        "step": 1,
+        "default": 2
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product Grid Style2",
+        "category": "Collection"
+      }
+    ]
+  }
+  {% endschema %}
+  

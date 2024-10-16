@@ -1,0 +1,12 @@
+<a href="#" class="product-card">
+  <div class="product-card__image">
+    {%- capture current -%}{%- cycle 1, 2, 3, 4, 5, 6 -%}{%- endcapture -%}
+    {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+  </div>
+  <div class="product-card__info">
+    <div class="product-card__name">{{ 'homepage.onboarding.product_title' | t }}</div>
+    <div class="product-card__price">
+      {%- cycle '$19.99', '$28.37', '$33.22', '$41.56', '$55.21', '$62.98' -%}
+    </div>
+  </div>
+</a>

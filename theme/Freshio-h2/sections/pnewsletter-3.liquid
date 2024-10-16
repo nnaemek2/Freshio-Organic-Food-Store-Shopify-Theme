@@ -1,0 +1,167 @@
+{% if section.settings.pnewletter_enable %}
+<!-- pnewsletter-3.liquid  -->
+<div class="modal fade p-newletter-3" id="jsPopupNewsletter" role="dialog" aria-hidden="true" data-delay="{{section.settings.pnewletter_time_delay}}">
+  <div class="modal-dialog modal-dialog--newsletter modal-dialog-centered" role="document">
+    <div class="modal-content modal-content--newsletter">
+      <div class="modal-header p-0">
+        <button type="button" class="close close-newsletter" data-dismiss="modal">{%- include 'icon-close' -%}</button>
+      </div>
+      <div class="modal-body p-0">
+        <div class="row m-0">
+          <div class="col-12 p-0 bg-newsletter">
+              <div class="bg-newsletter-padding">
+                {%- if section.settings.pnewletter_bgimage != blank -%}
+                <div class="bg-newsletter-con"> 
+                </div>
+                {%- else -%}
+                    <div style="height: 300px;">
+                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                    </div>
+                {%- endif -%}
+                <div class="popup-newsletter--content pt-3 text-center"> 
+                    {% if section.settings.pnewletter_title != blank %}
+                    <h3 class="modal-title popup-newsletter--title mb-2">
+                    {{section.settings.pnewletter_title}}
+                    </h3>
+                    {% endif %}
+                    {% if section.settings.pnewletter_description != blank %}
+                    <div class="popup-newsletter--description pb-5">
+                    {{section.settings.pnewletter_description}}
+                    </div>
+                    {% endif %}
+        
+                    {% form 'customer' %}
+                    {{ form.errors | default_errors }}
+                    {% if form.posted_successfully? %}
+                    <p class="form-success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+                    {% else %}
+                    <input type="hidden" name="contact[tags]" value="newsletter">
+                    <label class="label--hidden">{{ 'general.newsletter_form.newsletter_label' | t }}</label>
+                    <div class="form-group input-basic row m-0">
+                    <input id="popupNewsletter" type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_placeholder' | t }}" name="contact[email]" class="col-lg col-12 mb-3 mb-lg-0 form-control" autocapitalize="off">
+                    <div class="input-group-append pl-lg-3">
+                        <button type="submit" class="btn btn-theme js-btnPopupNewsletter" name="commit">
+                        <span class="d-sm-inline">{{ 'general.newsletter_form.submit' | t }}</span>
+                        </button>
+                    </div>
+                    </div> 
+                    {% endif %}
+                    {% endform %}
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  {%- style -%}
+  .p-newletter-3 .popup-newsletter--content{
+    min-height:auto;
+  } 
+  .bg-newsletter .bg-newsletter-padding{
+    padding:35px;
+  }
+  .popup-newsletter--title{
+    line-height: 1.2;
+  }
+  .bg-newsletter .bg-newsletter-con{
+    {% if section.settings.pnewletter_bgimage != blank %}
+    background-image:url({{section.settings.pnewletter_bgimage | img_url: '1200x'}});
+    {% endif %}
+    background-color:{{section.settings.pnewletter_background}};
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height:300px;
+  }
+  .popup-newsletter--title,.close-newsletter,.close-newsletter:hover{
+      color:{{section.settings.pnewletter_title_cl}}
+  }
+  .popup-newsletter--description{
+      color:{{section.settings.pnewletter_description_cl}}
+  }
+  .popup-newsletter--description ul{
+      padding: 0 20px;
+  }
+  {%- endstyle -%}
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": "Popup newsletter 3",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "pnewletter_enable",
+        "label": "Enable",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "pnewletter_time_delay",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "s",
+        "label": "Delayed popups",
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "pnewletter_time",
+        "min": 10,
+        "max": 900,
+        "step": 10,
+        "unit": "min",
+        "label": "Cookie times to show popup again",
+        "default": 20
+      },
+      {
+        "type": "header",
+        "content": "Background"
+      },
+      {
+        "type": "color",
+        "id": "pnewletter_background",
+        "label": "Color"
+      },
+      {
+        "type": "image_picker",
+        "id": "pnewletter_bgimage",
+        "label": "Image"
+      },
+      {
+        "type": "header",
+        "content": "Title"
+      },
+      {
+        "type": "text",
+        "id": "pnewletter_title",
+        "label": "Text",
+        "default": "Follow us"
+      },
+      {
+        "type": "color",
+        "id": "pnewletter_title_cl",
+        "label": "Color"
+      },
+      {
+        "type": "header",
+        "content": "Description"
+      },
+      {
+        "type": "textarea",
+        "id": "pnewletter_description",
+        "label": "Text \/ HTML codes",
+        "default": "<p>We promise we won't write to you often, only for the fun stuff.<\/p>\n<ul>\n<li>Exclusive offers<\/li>\n<li>Sales<\/li>\n<\/ul>"
+      },
+      {
+        "type": "color",
+        "id": "pnewletter_description_cl",
+        "label": "Color"
+      }
+	]
+  }
+{% endschema %}

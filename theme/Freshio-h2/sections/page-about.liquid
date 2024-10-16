@@ -1,0 +1,167 @@
+<style>
+.page-title{padding:60px 0 30px}.main-content{padding:0}.aboutus-content{line-height:1.8}.aboutus__intro--with-image{background-size:cover;background-attachment:fixed;padding:60px 0;background-position:center;background-repeat:no-repeat;color:#fff}.aboutus-title{font-size:30px;padding:0 25px;margin-bottom:20px;position:relative;letter-spacing:-2px}@media (max-width:991px){.aboutus__counterup .aboutus-title{padding-bottom:20px;padding-top:20px}}.aboutus-title:after{width:10px;height:10px;position:absolute;top:50%;content:"";margin-top:-5px;background-color:var(--g-main);border-radius:10px;left:0}.rtl .aboutus-title:after{right:0;left:auto}.aboutus__intro-meta{margin-bottom:15px}.aboutus__intro--with-image .aboutus__intro-title{color:#fff}.aboutus__intro-des{font-size:calc(var(--g-font-size) + 4px);line-height:1.8;font-weight:300}.aboutus__counterup{padding:60px 0}.counter-wrap{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.counter-icon svg{width:25px;height:25px;color:var(--g-main)}.counter-body{border-left:1px solid #ededed;padding-left:20px;margin-left:20px;min-height:90px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;position:relative;width:100%}.counter-body:after{position:absolute;content:"";top:50%;width:100%;height:1px;left:0;background-color:#ededed}.counter-body .counter{display:block;margin-bottom:8px;font-size:30px;color:#000;font-weight:600;line-height:1}.counter-body h5{font-size:calc(var(--g-font-size) + 2px);line-height:2}.aboutus__chooseus{padding:60px 0;background:#efefef}.chooseus-des{background:#fff;padding:30px 25px;margin-bottom:20px}.chooseus-collapse .title{padding:0 42px 0 20px;display:block;position:relative;color:#666;background:#fff;margin-bottom:4px;line-height:42px;position:relative;font-weight:700;cursor:pointer}.chooseus-collapse .title:after{position:absolute;top:0;right:0;content:"+";display:-webkit-box;display:-ms-flexbox;display:flex;width:42px;height:42px;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background:#000;color:#fff}.chooseus-collapse .title[aria-expanded=true]:after{content:"-"}.chooseus-collapse .des{background:#fff;padding:20px;margin-bottom:4px}@media (max-width:767px){.col-counter{-webkit-box-flex:0;-ms-flex:0 0 100%;flex:0 0 100%;max-width:100%;margin-bottom:10px}}.aboutus__team{paddinG:60px 0}.person__name{font-size:20px;font-weight:700;color:#000;margin:10px 0;line-height:initial}.person__social{display:-webkit-box;display:-ms-flexbox;display:flex;margin:10px 0 30px}.person__social li{-webkit-box-flex:0;-ms-flex:0 0 30px;flex:0 0 30px;width:30px}.person__social .icon,.person__social svg{width:16px;height:16px}.aboutus__action{text-align:center;padding:60px 0}@media (max-width:991px){.aboutus__action{padding-top:0}}.aboutus__action-title{margin-bottom:20px}.aboutus__action-des{margin:0 auto 25px}@media (min-width:992px){.aboutus__action-title{font-size:60px;letter-spacing:-3px}.aboutus__action-des{font-size:calc(var(--g-font-size) + 10px);max-width:650px}}.aboutus__action .btn{padding:15px 30px;}
+</style>
+<!-- page-about.liquid -->
+<div class="container">
+  {%- if page.content != blank -%}
+  <div class="content-block">
+    <div class="rte">
+      {{ page.content }}
+    </div>
+  </div>
+  {%- endif -%}
+</div>
+<div class="aboutus-content">
+  {%- if section.settings.intro_enable -%}
+  <section class="aboutus__intro {% if section.settings.intro_background != blank %}aboutus__intro--with-image{% endif %}" style="background-image:url({{section.settings.intro_background | img_url: '1920x'}})">
+    <div class="container">
+      <div class="row">
+        <div class="aboutus__intro-meta col-12 col-lg-7">
+          {%- if section.settings.intro_title != blank -%}
+          <h3 class="aboutus__intro-title aboutus-title text-center text-sm-left">{{section.settings.intro_title}}</h3>
+          {%- endif -%}
+          {%- if section.settings.intro_des != blank -%}
+          <div class="aboutus__intro-des">
+            {{section.settings.intro_des}}
+          </div>
+          {%- endif -%}
+        </div>
+        <div class="aboutus__intro-image col-12 col-lg-5 text-center">
+          <img class="lazyload" data-src=" {{section.settings.intro_image | img_url:'1200x'}}" alt="{{section.settings.intro_image.alt}}">
+        </div>
+      </div>
+    </div>
+  </section>
+  {%- endif -%}
+  {%- if section.settings.achie_enable -%}
+  <section class="aboutus__counterup">
+    <div class="container">
+      <div class="row">
+        {%- if section.settings.achie_title != blank -%}
+        <div class="align--center col-12 col-lg-3">
+          <h3 class="aboutus-title">{{section.settings.achie_title}}</h3>
+        </div>
+        {%- endif -%}
+        {%- for i in (1..3) -%}
+        {%- assign settingIcon = 'achie_icon_' | append: i -%}
+        {%- assign settingNumber = 'achie_count_' | append: i -%}
+        {%- assign settingAchie = 'achie_' | append: i -%}
+        <div class="col col-counter">
+          <div class="counter-wrap media">
+            <div class="counter-icon">
+              {{section.settings[settingIcon]}}
+            </div>
+            <div class="counter-body">
+              <div class="counter">{{section.settings[settingNumber]}}</div>
+              <h5>{{section.settings[settingAchie]}}</h5>
+            </div>
+          </div>
+        </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+  {%- endif -%}
+  {%- if section.settings.chooseus_enable -%}
+  <section class="aboutus__chooseus">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="aboutus__chooseus-left">
+            {%- if section.settings.chooseus_title1 != blank -%}
+            <h3 class="aboutus-title">{{section.settings.chooseus_title1}}</h3>
+            {%- endif -%}
+            {%- if section.settings.chooseus_des != blank -%}
+            <div class="chooseus-des">
+              {{section.settings.chooseus_des}}
+            </div>
+            {%- endif -%}
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="aboutus__chooseus-right">
+            {%- if section.settings.chooseus_title2 != blank -%}
+            <h3 class="aboutus-title">{{section.settings.chooseus_title2}}</h3>
+            {%- endif -%}
+            {%- for i in (1..4) -%}
+            {%- assign settingTitle = 'chooseus_question' | append: i -%}
+            {%- assign settingDescription = 'chooseus_answer' | append: i -%}
+
+            <div class="chooseus-collapse">
+              <div class="title" data-toggle="collapse" data-target="#chooseus-collapse{{i}}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}">
+                {{section.settings[settingTitle]}}
+              </div>
+              <div class="des collapse {% if forloop.first %}show{% endif %}" id="chooseus-collapse{{i}}">
+                {{section.settings[settingDescription]}}
+              </div>
+            </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {%- endif -%}
+  {%- if section.settings.team_enable -%}
+  <section class="aboutus__team">
+    <div class="container">
+      {%- if section.settings.team_title != blank -%}
+      <h3 class="aboutus-title">{{section.settings.team_title}}</h3>
+      {%- endif -%}
+      <div class="row">
+        {%- for i in (1..4) -%}
+        {%- assign settingAvatar = 'team_avatar_' | append: i -%}
+        {%- assign settingName = 'team_person_' | append: i -%}
+        {%- assign settingInfo = 'team_des_' | append: i -%}
+        {%- assign settingFacebook = 'team_fb_' | append: i -%}
+        {%- assign settingTwitter = 'team_tw_' | append: i -%}
+        {%- assign settingLinkedin = 'team_lk_' | append: i -%}
+        {%- if section.settings[settingName] != blank -%}
+        <div class="col-lg-3 col-12 col-sm-6 col-person">
+          <div class="person__avatar">
+            <img class="lazyload" data-src="{{section.settings[settingAvatar] | img_url:'500x'}}" alt="{{section.settings[settingAvatar].alt}}" />
+          </div>
+          <p class="person__name">
+            {{section.settings[settingName]}}
+          </p>
+          <div class="person__info">
+            {{section.settings[settingInfo]}}
+          </div>
+          <ul class="person__social list-unstyled">
+            {%- if section.settings[settingFacebook] != blank -%}
+            <li><a class="person__social-fb" href="{{section.settings[settingFacebook]}}">{%- include 'icon-facebook' -%}</a></li>
+            {%- endif -%}
+            {%- if section.settings[settingTwitter] != blank -%}
+            <li><a class="person__social-tw" href="{{section.settings[settingTwitter]}}">{%- include 'icon-twitter' -%}</a></li>
+            {%- endif -%}
+            {%- if section.settings[settingLinkedin] != blank -%}
+            <li><a class="person__social-lk" href="{{section.settings[settingLinkedin]}}">{%- include 'icon-linkedin-in' -%}</a></li>
+            {%- endif -%}
+          </ul>
+        </div>
+        {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+  {%- endif -%}
+  {%- if section.settings.action_enable -%}
+  <section class="aboutus__action">
+    <div class="container">
+      {%- if section.settings.action_title != blank -%}
+      <h3 class="aboutus__action-title">{{section.settings.action_title}}</h3>
+      {%- endif -%}
+      {%- if section.settings.action_des != blank -%}
+      <div class="aboutus__action-des">{{section.settings.action_des}}</div>
+      {%- endif -%}
+      {%- if section.settings.action_btn_txt != blank and section.settings.action_btn_lnk != blank -%}
+      <a class="btn btn-theme gradient-theme" href="{{section.settings.action_btn_lnk}}">{{section.settings.action_btn_txt}}</a>
+      {%- endif -%}
+    </div>
+  </section>
+  {%- endif -%}
+</div>
+
+{% schema %}
+ {"name":"About us","settings":[{"type":"header","content":"Intro"},{"type":"checkbox","id":"intro_enable","label":"Enable","default":true},{"type":"text","id":"intro_title","label":"Title","default":"Our story"},{"type":"textarea","id":"intro_des","label":"Description"},{"type":"image_picker","id":"intro_background","label":"Background"},{"type":"image_picker","id":"intro_image","label":"Image"},{"type":"header","content":"Achievements"},{"type":"checkbox","id":"achie_enable","label":"Enable","default":true},{"type":"text","id":"achie_title","label":"Title","default":"Fun fact"},{"type":"textarea","id":"achie_icon_1","label":"SVG Icon 1","info":"💡 [Refer the SVG icon here.](https://ap2020.myshopify.com/pages/html-template/#html-1562573684143)"},{"type":"text","id":"achie_count_1","default":"Happy clients","label":"Number 1"},{"type":"text","id":"achie_1","default":"1549","label":"Achievement 1"},{"type":"textarea","id":"achie_icon_2","label":"SVG Icon 2","info":"💡 [Refer the SVG icon here.](https://ap2020.myshopify.com/pages/html-template/#html-1562573684143)"},{"type":"text","id":"achie_count_2","default":"37","label":"Number 2"},{"type":"text","id":"achie_2","default":"Award winning","label":"Achievement 2"},{"type":"textarea","id":"achie_icon_3","label":"SVG Icon 3","info":"💡 [Refer the SVG icon here.](https://ap2020.myshopify.com/pages/html-template/#html-1562573684143)"},{"type":"text","id":"achie_count_3","default":"7","label":"Number 3"},{"type":"text","id":"achie_3","default":"Team members","label":"Achievement 3"},{"type":"header","content":"Choose Us"},{"type":"checkbox","id":"chooseus_enable","label":"Enable","default":true},{"type":"header","content":"Choose Us - Left"},{"type":"text","id":"chooseus_title1","default":"Our design","label":"Title"},{"type":"textarea","id":"chooseus_des","label":"Description"},{"type":"header","content":"Choose Us - Right"},{"type":"text","id":"chooseus_title2","default":"Why choose us","label":"Title"},{"type":"text","id":"chooseus_question1","default":"Quality is our key business","label":"Collapse title 1"},{"type":"textarea","id":"chooseus_answer1","label":"Collapse description 1"},{"type":"text","id":"chooseus_question2","default":"Full support","label":"Collapse title 2"},{"type":"textarea","id":"chooseus_answer2","label":"Collapse description 2"},{"type":"text","id":"chooseus_question3","default":"Free returns","label":"Collapse title 3"},{"type":"textarea","id":"chooseus_answer3","label":"Collapse description 3"},{"type":"text","id":"chooseus_question4","default":"Product Design","label":"Collapse title 4"},{"type":"textarea","id":"chooseus_answer4","label":"Collapse description 4"},{"type":"header","content":"Teamwork"},{"type":"checkbox","id":"team_enable","default":true,"label":"Enable"},{"type":"text","id":"team_title","default":"Meet our people","label":"Title"},{"type":"header","content":"Teamwork - Person 1"},{"type":"image_picker","id":"team_avatar_1","label":"Avatar"},{"type":"text","id":"team_person_1","label":"Name"},{"type":"textarea","id":"team_des_1","label":"Info"},{"type":"url","id":"team_fb_1","label":"Facebook"},{"type":"url","id":"team_tw_1","label":"Twitter"},{"type":"url","id":"team_lk_1","label":"Linkedin"},{"type":"header","content":"Teamwork - Person 2"},{"type":"image_picker","id":"team_avatar_2","label":"Avatar"},{"type":"text","id":"team_person_2","label":"Name"},{"type":"textarea","id":"team_des_2","label":"Info"},{"type":"url","id":"team_fb_2","label":"Facebook"},{"type":"url","id":"team_tw_2","label":"Twitter"},{"type":"url","id":"team_lk_2","label":"Linkedin"},{"type":"header","content":"Teamwork - Person 3"},{"type":"image_picker","id":"team_avatar_3","label":"Avatar"},{"type":"text","id":"team_person_3","label":"Name"},{"type":"textarea","id":"team_des_3","label":"Info"},{"type":"url","id":"team_fb_3","label":"Facebook"},{"type":"url","id":"team_tw_3","label":"Twitter"},{"type":"url","id":"team_lk_3","label":"Linkedin"},{"type":"header","content":"Teamwork - Person 4"},{"type":"image_picker","id":"team_avatar_4","label":"Avatar"},{"type":"text","id":"team_person_4","label":"Name"},{"type":"textarea","id":"team_des_4","label":"Info"},{"type":"url","id":"team_fb_4","label":"Facebook"},{"type":"url","id":"team_tw_4","label":"Twitter"},{"type":"url","id":"team_lk_4","label":"Linkedin"},{"type":"header","content":"Action"},{"type":"checkbox","id":"action_enable","default":true,"label":"Enable"},{"type":"text","id":"action_title","default":"Feel free, move free","label":"Title"},{"type":"textarea","id":"action_des","default":"Enjoy the feeling of freedom, that’s the feeling we want to capture when we design our products.","label":"Description"},{"type":"text","id":"action_btn_txt","default":"Explore products","label":"Button text"},{"type":"url","id":"action_btn_lnk","label":"Button link"}]}
+{% endschema %}

@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "product-grid": {
+      "type": "collection-template-4",
+      "settings": {
+        "item_width": "grid-item-3",
+        "enable_title": false,
+        "enable_description": true
+      }
+    }
+  },
+  "order": [
+    "product-grid"
+  ]
+}

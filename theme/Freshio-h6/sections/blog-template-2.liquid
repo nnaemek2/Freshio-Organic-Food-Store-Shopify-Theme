@@ -1,0 +1,93 @@
+<!-- blog-template-2.liquid -->
+<style>
+  .js-pagination{width:100%}.sidebar-blog-wrap.is_stuck{padding-top:20px}
+  /* .blog__title-link{
+    text-transform: uppercase;
+  } */
+  {%- if settings.bloggrid  == 'blog-2'%}
+  .main-content{
+    background-color: {{settings.bg_breadcrumb}};
+  }
+  {%- endif -%}
+  {%- if settings.bloggrid  == 'blog-5'%}
+  .blog__item--5 .article__photo-wrapper{
+    height: 500px;
+  }
+  .blog__item--5 .blog__title-link{
+    font-size: 26px;
+    line-height: normal;
+  }
+  .main-content{
+    background-color: {{settings.bg_breadcrumb}};
+  }
+  {%- endif -%}
+</style>
+<div class="container">
+  <!-- <h1 class="title-blog-page">
+    {%- if current_tags -%}
+    {{ current_tags.first }}
+    {%- else -%}
+    {{ blog.title }}
+    {%- endif -%}
+    <a href="{{ shop.url }}{{ blog.url }}.atom" class="blog__rss-link link-accent-color">
+      {%- include 'icon-rss' -%}
+      <span class="icon__fallback-text">RSS</span>
+    </a>
+  </h1> -->
+
+  <div class="row {% if section.settings.sidebar_position == 'left' %}flex-row-reverse{% endif %}">
+    <div class="{% if section.settings.sidebar_enable %}col-md-8 {% if section.settings.sidebar_position == 'left' %} pl-lg-5{% else %} pr-lg-5{% endif %}{% else %}col-12{% endif %}">
+      <div class="row js-pagination-content">
+        {%- paginate blog.articles by 8 -%}
+        {%- for article in blog.articles -%}
+        <div class="col-12 col-md-4 {% if forloop.index == 3 %}col--last{% endif %}">
+          {%- include 'blog-card' -%}
+        </div>
+        {%- endfor -%}
+        <div class="js-pagination">
+          {%- if paginate.next -%}
+          <a href="{{ paginate.next.url }}"></a>
+          {%- endif -%}
+        </div>
+        {%- endpaginate -%}
+      </div>
+    </div>
+    {%- if section.settings.sidebar_enable -%}
+    {%- include 'blogSidebar' -%}
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Blog template 2",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Sidebar"
+      },
+      {
+        "type": "checkbox",
+        "id": "sidebar_enable",
+        "label": "Enable",
+		"default": true
+      },
+      {
+        "type": "select",
+        "id": "sidebar_position",
+        "label": "Position",
+        "default": "right",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      }
+]
+  }
+{% endschema %}

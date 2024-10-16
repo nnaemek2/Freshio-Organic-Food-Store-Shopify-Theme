@@ -1,0 +1,141 @@
+{%- if settings.enable_breadcrumb -%}
+{% unless template == 'index' or template == 'cart' or template == 'list-collections' %}
+<style>
+  .g-breadcrumb{
+    border-radius: 0;
+    flex-direction: column;
+    color:{{settings.color_breadcrumbs}} ;
+    padding:20px 0;
+    margin:0;
+    background:{{settings.bg_breadcrumb}};}
+  .g-breadcrumb a,.g-breadcrumb span{padding:0 3px;font-size:14px;line-height:20px;display:inline-block;}
+  .g-breadcrumb a{
+    color:{{settings.color_breadcrumbs_active}};
+  }
+  .g-breadcrumb .container,.g-breadcrumb .container-fluid{z-index: 2;position: relative;}
+  .g-breadcrumb.breadcrumbs-style_2{
+    padding:80px 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    border-radius: 0;
+  }
+  .template-product  .g-breadcrumb.breadcrumbs-style_2{
+    padding: 22px 0;
+  }
+  @media (max-width:576px) {
+    .g-breadcrumb.breadcrumbs-style_2{
+      padding: 50px 0;
+    }
+    .g-breadcrumb.breadcrumbs-style_2 h3{
+      font-size: 26px;
+    }
+  }
+  .g-breadcrumb.breadcrumbs-style_2::before{
+    background:rgba(0,0,0,{{settings.limit_ranger}});
+    position: absolute;
+    z-index: 1;
+    content:"";
+    left: 0;
+    right: 0;
+    bottom:0;
+    top: 0;
+  }
+  .br-title{
+    color:{{settings.color_breadcrumbs}}
+  }
+  .br-title svg{
+    width: 23px;
+    height: 23px;
+  }
+
+</style>
+{%- assign page_handle = page.handle-%}
+{%- assign listObject = settings.page_breadcrumb | split: ',' -%}
+
+{%- capture checktagsother -%}
+{%- for pagehandle in  listObject -%}
+  {%- if page_handle contains pagehandle -%}
+    {%- assign check_breadcrumb = "hide" | replace: ' ', '-' -%}
+    {{check_breadcrumb}}
+  {%- else -%}
+   {%- assign check_breadcrumb = "true" | replace: ' ', '-' -%}
+   {{check_breadcrumb}}
+  {%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+
+{% assign bgimage = settings.img_breadcrumb %}
+{% if template contains 'collection' and collection.handle %}
+  {%- if collection.image.src != blank -%}
+    {% assign bgimage = collection.image.src %}
+  {%- else -%}
+    {% assign bgimage = settings.img_breadcrumb %}
+  {%- endif -%}
+{% elsif template contains 'product' and collection.handle %}	
+  {%- if collection.image.src != blank -%}
+    {% assign bgimage = collection.image.src %}
+  {%- else -%}
+    {% assign bgimage = settings.img_breadcrumb %}
+  {%- endif -%}
+{% endif %}
+<nav class="{{checktagsother}} breadcrumbs-{{settings.style_breadcrumb}} breadcrumb g-breadcrumb lazyload text-{{settings.align_bread}}" role="navigation" aria-label="breadcrumbs" {% unless settings.style_breadcrumb == "style_1" %}data-bgset="{%- include 'bgset', image: bgimage -%}"  data-sizes="auto"
+data-parent-fit="cover" {% endunless%}>
+  <div class="{{settings.layout_bread}}">
+  {% if settings.show_title_breadcumbs %}
+    {% if template contains 'collection' and collection.handle %}
+    <h3 class="mb-2 h2 br-title">{{ collection.title }}</h3>
+    {% elsif template contains 'page' %}
+    <h3 class="mb-2 h2 br-title">{{ page.title }}</h3>
+    {% elsif template contains 'product' and collection.handle %}	
+      <h3 class="mb-2 h2 br-title">{{ page.title }}</h3>
+    {% elsif template contains 'blog' %}	
+      <h3 class="mb-2 h2 br-title">{{ blog.title }}</h3>
+    {% endif %}
+  {% endif %}
+  </div>
+  <div class="{{settings.layout_bread}}">
+    <a href="/" title="{{ 'general.breadcrumb.home' | t }}">{{ 'general.breadcrumb.home' | t }}</a>
+    {% if template contains 'page' %}
+    <span aria-hidden="true">/</span>
+    <span>{{ page.title }}</span>
+    {% elsif template contains 'product' %}
+    {% if collection.url %}
+    <span aria-hidden="true">/</span>
+    {{ collection.title | link_to: collection.url }}
+    {% endif %}
+    <span aria-hidden="true">/</span>
+    <span>{{ product.title }}</span>
+    {% elsif template contains 'collection' and collection.handle %}
+    <span aria-hidden="true">/</span>
+    {% if current_tags %}
+    {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+    {{ collection.title | link_to: url }}
+    <span aria-hidden="true">/</span>
+    <span>{{ current_tags | join: " + " }}</span>
+    {% else %}
+    <span>{{ collection.title }}</span>
+    {% endif %}
+    {% elsif template == 'blog' %}
+    <span aria-hidden="true">/</span>
+    {% if current_tags %}
+    {{ blog.title | link_to: blog.url }}
+    <span aria-hidden="true">/</span>
+    <span>{{ current_tags | join: " + " }}</span>
+    {% else %}
+    <span>{{ blog.title }}</span>
+    {% endif %}
+    {% elsif template == 'article' %}
+    <span aria-hidden="true">/</span>
+    {{ blog.title | link_to: blog.url }}
+    <span aria-hidden="true">/</span>
+    <span>{{ article.title }}</span>
+    {% else %}
+    <span aria-hidden="true">/</span>
+    <span>{{ page_title }}</span>
+    {% endif %}
+  </div>
+</nav>
+{% endunless %}
+{%- endif -%}

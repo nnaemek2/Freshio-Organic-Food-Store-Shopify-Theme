@@ -1,0 +1,322 @@
+<style>
+  .row-faqs {
+	padding-top: 20px
+}
+
+.layout-1 .faq-question {
+	padding: 20px;
+	background: var(--g-cta-button);
+	margin: 0 0 10px;
+	font-weight: 500;
+	cursor: pointer;
+	color: #fff;
+	position: relative;
+  font-size: 16px;
+}
+
+.layout-1 .faq-question:after {
+	content: "-";
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 40px;
+	height: 100%;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center
+}
+
+.faq-answer {
+	padding: 8px 16px;
+	-webkit-transition: height .35s ease;
+	-o-transition: height .35s ease;
+	transition: height .35s ease
+}
+
+.layout-2 .faq-question {
+	padding: 10px 10px 10px 0;
+	margin:0;
+	font-weight: 600;
+	cursor: pointer;
+	position: relative;
+	line-height: 40px;
+  font-size: 16px;
+  color:var(--g-color-heading);
+}
+
+.layout-2 .faq-question:after {
+	content: "-";
+	width: 30px;
+	height: 30px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	border: 2px solid;
+	border-radius: 50%;
+	float: left;
+	margin-right: 20px;
+  margin-top:5px;
+  background-color: var(--g-color-heading);
+  color:#fff;
+}
+@media (max-width: 767px) {
+  .layout-2 .faq-question:after{
+    position: absolute;
+    top: 2px;
+    left: 0;
+  }
+  .layout-2 .faq-question {
+    padding-left: 40px;
+    line-height: normal;
+  }
+}
+
+.layout-3 .faq-question {
+	padding:20px 20px 20px 0;
+	margin: 0 0 10px;
+	font-weight: 600;
+	cursor: pointer;
+	position: relative;
+	padding-right: 60px;
+	color: #222;
+  font-size: 16px;
+}
+
+.layout-3 .faq-question:after {
+	content: "-";
+	position: absolute;
+	top: 50%;
+	right: 0;
+	width: 30px;
+	height: 30px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	margin-top: -15px;
+	border: 2px solid
+}
+
+.faq-question.collapsed:after {
+	content: "+"
+}
+
+.faqs-form input,
+.faqs-form textarea {
+	width: 100%;
+	margin-bottom: 15px
+}
+
+.faqs-form textarea {
+	height: 150px
+}
+
+.faqs-form.is_stuck {
+	padding-top: 20px
+}</style>
+<!-- page-faqs.liquid -->
+<div class="customstyle{{ section.id }}">
+  {%- include 'style-section' -%}
+  <div class="{{ section.settings.setwidth }}">
+  <div class="section-faqs {{section.settings.layout}}">
+    <div class="row row-faqs">
+      <div class="col pr-5">
+        {% if section.settings.heading != blank %}
+        <h3 class="section-faqs__heading mb-3">
+          {{section.settings.heading}}
+        </h3>
+        {% endif %}
+    
+        {% if section.settings.subheading != blank %}
+        <div class="section-faqs__subheading mb-5">
+          {{section.settings.subheading}}
+        </div>
+        {% endif %}
+        <div class="faqs-content">
+          {% for block in section.blocks %}
+          <div class="faq-question collapsed" data-toggle="collapse" data-target="#faq-{{block.id}}">
+            {{block.settings.title | default: 'Question'}}
+          </div>
+          <p id="faq-{{block.id}}" class="collapse faq-answer">
+            {{block.settings.answer | default: 'Answer'}}
+          </p>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-5 col-lg-4 col-faqs">
+        {% if section.settings.linklist != blank %}
+          <h4 class="mb-3">{{ linklists[section.settings.linklist].title }}</h4>
+            <ul class=" list--no-bullets mb-5 list-group">
+                {%- for link in linklists[section.settings.linklist].links -%}
+                <li class="list-group-item">
+                <a href="{{link.url}}" title="{{link.title}}">
+                    {{link.title | default:"Link"}}
+                </a>
+                </li>
+                {% endfor %}
+            </ul>
+        {%- endif -%}
+        {% form 'contact', class:'faqs-form js-stick-parent' %}
+        {% if section.settings.heading_faqs != blank %}
+        <h4 class="my-3">
+          {{section.settings.heading_faqs}}
+        </h4>
+        {% endif %}
+        <div class="form-group">
+          <input class="form-control" type="text" id="ContactFormName" name="contact[name]" placeholder="{{ 'contact.form.name' | t }}" value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="email" id="ContactFormEmail" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+        </div>
+        <div class="form-group">
+          <textarea class="form-control-area" rows="10" id="ContactFormMessage" name="contact[body]" placeholder="{{ 'contact.form.question' | t }}">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+        </div>
+        <input type="submit" class="btn btn-theme d-inline-block w-auto my-4" value="{{ 'contact.form.send_question' | t }}">
+
+        {% if form.posted_successfully? %}
+        <p class="form-success">
+          {{ 'contact.form.question_success' | t }}
+        </p>
+        {% endif %}
+        {{ form.errors | default_errors }}
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "FAQs",
+  "class": "page-section",
+  "settings": [
+  {
+    "type": "text",
+    "id": "paddingsection",
+    "label": "Padding Section",
+    "default": "0px 0px 0px 0px",
+    "info": "Padding: Top Right Bottom Left"
+  },
+  {
+    "type": "text",
+    "id": "paddingmobile",
+    "label": "Padding Section Mobile",
+    "default": "0px 0px 0px 0px",
+    "info": "Padding: Top Right Bottom Left"
+  },
+  {
+    "type": "text",
+    "id": "marginsection",
+    "label": "Margin Section",
+    "default": "0px 0px 0px 0px",
+    "info": "Margin: Top Right Bottom Left"
+  },
+  {
+    "type": "text",
+    "id": "marginmobile",
+    "label": "Margin Mobile",
+    "default": "0px 0px 0px 0px",
+    "info": "Margin: Top Right Bottom Left"
+  },
+    {
+      "type": "select",
+      "id": "setwidth",
+      "label": "Full Width",
+      "default": "container",
+      "options": [
+        {
+          "value": "container",
+          "label": "Box"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Container Fluid"
+        },
+        {
+          "value": "full",
+          "label": "Full"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Title",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subtitle",
+      "default": "Close contact with customers by frequently asked questions"
+    },
+    {
+      "type": "text",
+      "id": "heading_faqs",
+      "label": "Title FAQs form",
+      "default": "Ask Your Questions"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Style",
+      "default": "layout-1",
+      "options": [
+        {
+          "value": "layout-1",
+          "label": "Style 1"
+        },
+        {
+          "value": "layout-2",
+          "label": "Style 2"
+        },
+        {
+          "value": "layout-3",
+          "label": "Style 3"
+        }
+      ]
+    },
+    {
+      "type": "link_list",
+      "id": "linklist",
+      "label": "Menu Sidebar"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "Faq",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "Question"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

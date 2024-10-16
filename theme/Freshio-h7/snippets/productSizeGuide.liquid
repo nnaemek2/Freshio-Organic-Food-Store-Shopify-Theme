@@ -1,0 +1,28 @@
+{%- if section.settings.sizeguide_enable -%}
+<!-- productSizeGuide.liquid -->
+{%- assign pageSizeGudie = pages[section.settings.sizeguide_page] -%}
+<a href="javascript:void(0)" data-toggle="modal" data-target="#jsSizeGuide" class="open-sizeguide">
+  <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="ruler-vertical" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" class="svg-inline--fa fa-ruler-vertical fa-w-8 fa-3x"><path fill="currentColor" d="M168 416c-4.42 0-8-3.58-8-8v-16c0-4.42 3.58-8 8-8h88v-64h-88c-4.42 0-8-3.58-8-8v-16c0-4.42 3.58-8 8-8h88v-64h-88c-4.42 0-8-3.58-8-8v-16c0-4.42 3.58-8 8-8h88v-64h-88c-4.42 0-8-3.58-8-8v-16c0-4.42 3.58-8 8-8h88V32c0-17.67-14.33-32-32-32H32C14.33 0 0 14.33 0 32v448c0 17.67 14.33 32 32 32h192c17.67 0 32-14.33 32-32v-64h-88z" class=""></path></svg>
+  {{section.settings.sizeguide_title | default: 'Size guide'}}
+</a>
+<div class="modal fade" id="jsSizeGuide" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog--sizeguide modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">{%- include 'icon-close' -%}</button>
+      </div>
+      <div class="modal-body px-4 pb-4 pt-2">
+        <h4 class="text-center hide">{{pageSizeGudie.title}}</h4>
+        <div class="row justify-content-center js-sizeguide-content">
+          <div class="col-12">
+          {{pageSizeGudie.content}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .modal-dialog--sizeguide img{width:100%}.open-sizeguide{color:#222;text-decoration:underline;display: block;text-transform: uppercase;font-size: 12px;font-weight: 600;text-decoration: none;}.open-sizeguide i{margin-right:5px}.js-sizeguide-content td,.js-sizeguide-content th{border:1px solid rgba(0,0,0,.1)}@media (min-width:992px){.open-sizeguide{}}
+</style>
+{%- endif -%}

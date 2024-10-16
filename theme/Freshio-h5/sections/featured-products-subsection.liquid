@@ -1,0 +1,30 @@
+<!-- featured-products-subsection.liquid -->
+{%- assign collection = collections[section.settings.collection] -%}
+{%- if collection != blank -%}
+  {% if collection.products_count != 0 %}
+    <hr>
+    <h3 class="h4">{{ 'layout.sidebar.featured_products' | t }}</h3>
+    <div class="row">
+      {% for product in collection.products limit: 4 %}
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          {% include 'product-card', product: product %}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{%- endif -%}
+
+
+
+{% schema %}
+{
+  "name": "Featured products",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    }
+  ]
+}
+{% endschema %}

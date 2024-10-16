@@ -1,0 +1,342 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "16401889532c23c742": {
+      "type": "advanced-content",
+      "blocks": {
+        "1640188953d6fef0ca-0": {
+          "type": "html",
+          "settings": {
+            "code": "<div class=\"text-center\">  \n<img class=\"lybn-lazyload lazyload\" alt=\"HTML builder image\" data-src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0601\/8636\/2033\/files\/icon1-h8.jpg?v=1649757482\" width=\"240\">\n<\/div>",
+            "width": "100%",
+            "align": "auto"
+          }
+        }
+      },
+      "block_order": [
+        "1640188953d6fef0ca-0"
+      ],
+      "settings": {
+        "animation": "fade-up",
+        "paddingsection": "80px 0px 30px 0px",
+        "paddingmobile": "30px 0px 30px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "marginmobile": "0px 0px 0px 0px",
+        "zindex": "0",
+        "enable_inner": true,
+        "padding_inner": "0px 0px 0px 0px",
+        "padding_inner_mobile": "0px 0px 0px 0px",
+        "bg_inner": "#ffffff",
+        "setwidth": "container",
+        "sectionheading": "heading-0",
+        "dot_heading0": "#bac34e",
+        "title_top": "",
+        "title": "",
+        "des": "",
+        "padding": true,
+        "col_center": false,
+        "bgsection": "#fefefe",
+        "rangebg": 0,
+        "bgbefore": "rgba(0,0,0,0)",
+        "e_size": "auto",
+        "e_repeat": "no-repeat"
+      }
+    },
+    "164975760342842c7e": {
+      "type": "grid-banner-2",
+      "blocks": {
+        "164975760258954748-0": {
+          "type": "banner",
+          "settings": {
+            "paddingblock": "0px 0px 0px 0px",
+            "bg_image": "",
+            "border_banner": "#ffffff",
+            "bg_banner": "#ffffff",
+            "opbg_banner": 0.4,
+            "image": "shopify:\/\/shop_images\/image1-h8.jpg",
+            "width": "4",
+            "description": "<h4 class=\"mb-3\">Who We Are<\/h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>",
+            "button_text": "",
+            "button_link": "",
+            "reverse": "flex-column",
+            "text_align": "center"
+          }
+        },
+        "164975760258954748-1": {
+          "type": "banner",
+          "settings": {
+            "paddingblock": "0px 0px 0px 0px",
+            "bg_image": "",
+            "border_banner": "#ffffff",
+            "bg_banner": "#ffffff",
+            "opbg_banner": 0.4,
+            "image": "shopify:\/\/shop_images\/image2-h8.jpg",
+            "width": "4",
+            "description": "<h4 class=\"mb-3\">Our Products<\/h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>",
+            "button_text": "",
+            "button_link": "",
+            "reverse": "flex-column",
+            "text_align": "center"
+          }
+        },
+        "c3e742e1-0854-4e1c-9adc-76075301a943": {
+          "type": "banner",
+          "settings": {
+            "paddingblock": "0px 0px 0px 0px",
+            "bg_image": "",
+            "border_banner": "#ffffff",
+            "bg_banner": "#ffffff",
+            "opbg_banner": 0.4,
+            "image": "shopify:\/\/shop_images\/image3-h8.jpg",
+            "width": "4",
+            "description": "<h4 class=\"mb-3\">How We Work<\/h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>",
+            "button_text": "",
+            "button_link": "",
+            "reverse": "flex-column",
+            "text_align": "center"
+          }
+        }
+      },
+      "block_order": [
+        "164975760258954748-0",
+        "164975760258954748-1",
+        "c3e742e1-0854-4e1c-9adc-76075301a943"
+      ],
+      "settings": {
+        "animation": "",
+        "paddingsection": "0px 0px 80px 0px",
+        "paddingmobile": "60px 0px 60px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "marginmobile": "0px 0px 0px 0px",
+        "bgsection": "#fefefe",
+        "title_top": "",
+        "title": "",
+        "des": "",
+        "setwidth": "container",
+        "no_gutter": false
+      }
+    },
+    "16497795288a50f2b0": {
+      "type": "image-content-6",
+      "blocks": {
+        "16497795289a3e0076-0": {
+          "type": "list",
+          "settings": {
+            "width": "25%",
+            "align": "center",
+            "f_img1": "shopify:\/\/shop_images\/freshio_h5_icon1.png",
+            "f_title1": "Handmade",
+            "f_des1": "Made with passion by 300+ curators across the country.",
+            "f_img2": "shopify:\/\/shop_images\/freshio_h5_icon2.png",
+            "f_title2": "100% Natural",
+            "f_des2": "Eat local, consume local, closer to nature.",
+            "f_img3": "shopify:\/\/shop_images\/freshio_h5_icon3.png",
+            "f_title3": "Curated Products",
+            "f_des3": "Eat local, consume local, closer to nature."
+          }
+        },
+        "16497795289a3e0076-1": {
+          "type": "image",
+          "settings": {
+            "width": "50%",
+            "align": "center",
+            "image": "shopify:\/\/shop_images\/q1.jpg",
+            "image_link": ""
+          }
+        },
+        "16497795289a3e0076-2": {
+          "type": "list",
+          "settings": {
+            "width": "25%",
+            "align": "center",
+            "f_img1": "shopify:\/\/shop_images\/freshio_h5_icon4.png",
+            "f_title1": "Modern Farm",
+            "f_des1": "Made with passion by 300+ curators across the country.",
+            "f_img2": "shopify:\/\/shop_images\/freshio_h5_icon5.png",
+            "f_title2": "Alway Fresh",
+            "f_des2": "Eat local, consume local, closer to nature.",
+            "f_img3": "shopify:\/\/shop_images\/freshio_h5_icon6.png",
+            "f_title3": "Sustainable",
+            "f_des3": "Chemical free consumption IN and ON your body."
+          }
+        }
+      },
+      "block_order": [
+        "16497795289a3e0076-0",
+        "16497795289a3e0076-1",
+        "16497795289a3e0076-2"
+      ],
+      "settings": {
+        "animation": "",
+        "paddingsection": "0px 0px 100px 0px",
+        "paddingmobile": "60px 0px 60px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "marginmobile": "0px 0px 0px 0px",
+        "sectionheading": "heading-1",
+        "title_top": "Our Products",
+        "title": "Highest Quality",
+        "des": "",
+        "setwidth": "container",
+        "padding": true,
+        "bgsection": "#fefefe",
+        "e_size": "auto",
+        "e_repeat": "no-repeat"
+      }
+    },
+    "1649757910d7f932a1": {
+      "type": "quotes",
+      "blocks": {
+        "1649757910aec34457-0": {
+          "type": "quote",
+          "settings": {
+            "title": "",
+            "avatar": "shopify:\/\/shop_images\/avatar-1.jpg",
+            "author": "Smitha -  Store",
+            "info": "",
+            "rate": 5,
+            "quote": "<div class=\"row justify-content-center\">\n<h5 class=\"col-lg-5\" style=\"line-height:1.8\">“Also Like the fact that I can pick my staples in the brown paper packs and glass containers at the zero waste section, with an idea to reduce plastic and also more convenient.” \n<\/h5>\n<\/div>"
+          }
+        },
+        "1649757910aec34457-1": {
+          "type": "quote",
+          "settings": {
+            "title": "",
+            "avatar": "shopify:\/\/shop_images\/avatar-2.jpg",
+            "author": "John Doe - Designer",
+            "info": "",
+            "rate": 5,
+            "quote": "<div class=\"row justify-content-center\">\n<h5 class=\"col-lg-5\" style=\"line-height:1.8\">“Also Like the fact that I can pick my staples in the brown paper packs and glass containers at the zero waste section, with an idea to reduce plastic and also more convenient.” \n<\/h5>\n<\/div>"
+          }
+        },
+        "1649757910aec34457-2": {
+          "type": "quote",
+          "settings": {
+            "title": "",
+            "avatar": "shopify:\/\/shop_images\/it4.jpg",
+            "author": "Linda - Healthy",
+            "info": "",
+            "rate": 5,
+            "quote": "<div class=\"row justify-content-center\">\n<h5 class=\"col-lg-5\" style=\"line-height:1.8\">“Also Like the fact that I can pick my staples in the brown paper packs and glass containers at the zero waste section, with an idea to reduce plastic and also more convenient.” \n<\/h5>\n<\/div>"
+          }
+        }
+      },
+      "block_order": [
+        "1649757910aec34457-0",
+        "1649757910aec34457-1",
+        "1649757910aec34457-2"
+      ],
+      "settings": {
+        "animation": "",
+        "paddingsection": "100px 0px 100px 0px",
+        "paddingmobile": "60px 0px 60px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "marginmobile": "0px 0px 0px 0px",
+        "bgsection": "#fefefe",
+        "image_bg": "shopify:\/\/shop_images\/bg2-h4.jpg",
+        "enable_inner": false,
+        "padding_inner": "0px 0px 0px 0px",
+        "padding_inner_mobile": "0px 0px 0px 0px",
+        "bg_inner": "#ffffff",
+        "setwidth": "container",
+        "sectionheading": "heading-0",
+        "dot_heading0": "#bac34e",
+        "title_top": "",
+        "title": "",
+        "des": "",
+        "aligntext": "text-center",
+        "show": 1,
+        "arrows": false,
+        "draggable": true,
+        "dots": true,
+        "infinite": true
+      }
+    },
+    "16401724400eb02a59": {
+      "type": "s_team_member",
+      "blocks": {
+        "16401724407f8eae93-0": {
+          "type": "member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/team1.jpg",
+            "name": "Barry Lawson",
+            "position": "WINE CLUB MANAGER",
+            "twitter": "https:\/\/twitter.com\/",
+            "google": "https:\/\/plus.google.com",
+            "facebook": "https:\/\/www.facebook.com\/",
+            "linkedin": "https:\/\/www.linkedin.com\/"
+          }
+        },
+        "16401724407f8eae93-2": {
+          "type": "member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/team2.jpg",
+            "name": "Abdur Rahman",
+            "position": "WINEMAKER",
+            "twitter": "https:\/\/twitter.com\/",
+            "google": "https:\/\/plus.google.com",
+            "facebook": "https:\/\/www.facebook.com\/",
+            "linkedin": "https:\/\/www.linkedin.com\/"
+          }
+        },
+        "16401724407f8eae93-1": {
+          "type": "member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/team3.jpg",
+            "name": "Flora Ortiz",
+            "position": "EVENTS MANAGER",
+            "twitter": "https:\/\/twitter.com\/",
+            "google": "https:\/\/plus.google.com",
+            "facebook": "https:\/\/www.facebook.com\/",
+            "linkedin": "https:\/\/www.linkedin.com\/"
+          }
+        },
+        "ec8a488d-fcf8-45c2-a59a-ddda10ca4274": {
+          "type": "member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/team4.jpg",
+            "name": "John Smith",
+            "position": "CEO",
+            "twitter": "#",
+            "google": "#",
+            "facebook": "#",
+            "linkedin": "#"
+          }
+        }
+      },
+      "block_order": [
+        "16401724407f8eae93-0",
+        "16401724407f8eae93-2",
+        "16401724407f8eae93-1",
+        "ec8a488d-fcf8-45c2-a59a-ddda10ca4274"
+      ],
+      "settings": {
+        "animation": "fade-up",
+        "paddingsection": "80px 0px 80px 0px",
+        "paddingmobile": "30px 0px 30px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "marginmobile": "0px 0px 0px 0px",
+        "sectionheading": "heading-1",
+        "title_top": "Our Team",
+        "title": "We Are The Best Team",
+        "des": "",
+        "setwidth": "container",
+        "items": "3",
+        "layout": "1",
+        "main_color": "#a8b324",
+        "bgsection": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "16401889532c23c742",
+    "164975760342842c7e",
+    "16497795288a50f2b0",
+    "1649757910d7f932a1",
+    "16401724400eb02a59"
+  ]
+}

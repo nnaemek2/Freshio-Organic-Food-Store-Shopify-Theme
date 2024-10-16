@@ -1,0 +1,9 @@
+{%- if template == 'index' -%}
+    {%- case settings.pnewsletter -%}
+    {%- when 'pnewsletter-1' -%} {%- section 'pnewsletter-1' -%}
+    {%- when 'pnewsletter-2' -%} {%- section 'pnewsletter-2' -%}
+    {%- when 'pnewsletter-3' -%} {%- section 'pnewsletter-3' -%}
+    {%- else -%}
+        {%- section 'pnewsletter-1' -%}
+    {%- endcase -%}
+{%- endif -%}

@@ -1,0 +1,30 @@
+<!-- shipping-time.liquid -->
+{%- if product.metafields.info.shipping != blank -%}
+<div class="shipping-wrap p-4 border rounded">
+  <span class="js-shipping-time" data-time="{{product.metafields.info.shipping}}"></span>
+  {%- if settings.shipping_button != blank -%}
+  <span data-toggle="modal" data-target="#jsShipping" class="open-shipping">
+    {{settings.shipping_button}} {%- include 'icon-truck' -%}
+  </span>
+  {%- assign pageShipping = pages[settings.page_shipping] -%}
+  <div class="modal fade" id="jsShipping" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog--shipping modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">{%- include 'icon-close' -%}</button>
+        </div>
+        <div class="modal-body p-4">
+          <h4 class="text-center">{{pageShipping.title}}</h4>
+          <div class="row justify-content-center js-shipping-content">
+            {{pageShipping.content}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {%- endif -%}
+</div>
+<style>
+  .shipping-wrap{line-height: 24px;}.modal-dialog--shipping img{width:100%}@media (min-width: 992px){.modal-dialog--shipping {max-width:900px}}.open-shipping {cursor: pointer;text-decoration: underline;}.shipping-wrap .icon-truck{margin:0 3px;}
+</style>
+{%- endif -%}

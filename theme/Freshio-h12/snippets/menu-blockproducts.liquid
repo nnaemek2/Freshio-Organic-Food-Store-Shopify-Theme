@@ -1,0 +1,23 @@
+{%- assign imagesize = settings.product_menu_imagesize -%}
+{%- assign collection_name = settings[collection_menu] -%}
+{%- assign collection_products = collections[collection_name].products -%}
+{%- assign on_sale = false -%}
+<div class="products_menu">
+  {%- if settings[collection_menu_title] != blank -%}
+  <div class="menu-title">
+    {{ settings[collection_menu_title] }}
+  </div>
+  {%- endif -%}
+  <div class="product-block">
+    <div class="dots-negative" id="mgmenu-collection-{{intMega}}" 
+         data-arrows="true"
+         data-dots="false" 
+         data-draggable="true"
+         data-section-id="mgmenu-collection-{{intMega}}" 
+         data-section-type="slickCarousels">
+      {%- for product in collection_products limit: 5 -%}
+      {%- include 'product-card' -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>

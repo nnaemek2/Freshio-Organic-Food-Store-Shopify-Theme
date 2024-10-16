@@ -1,0 +1,201 @@
+<link rel="preload" href="{{ 'vertical-menu.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{{ 'vertical-menu.css' | asset_url }}"></noscript>
+ 
+
+  <nav id="verticalMenu" class="nav-bar-vertical {% if section.settings.vertical_expand %}active{% endif %}" role="navigation">
+    <div class="js-vertical-title d-flex align-items-center" >
+      <span class="d-flex mr-2">
+      {% include 'icon-hamburger' %}
+     </span>
+      {{settings.vmain_title}}
+    </div>
+    <!--  On Desktop -->
+    <ul class="site-nav-vertical list--no-bullets shadow">
+      {%- for link in linklists[settings.vmain_linklist].links -%}
+      {%- assign hasMega = false -%}
+      {%- assign titleCheckMega = link.title | escape | split: '[' | first | downcase -%}
+      {%- capture apvericon -%}vermenuicon_eimage_{{ forloop.index }}{%- endcapture -%}
+      {%- capture apverfonticon -%}vermenuicon_font_{{ forloop.index }}{%- endcapture -%}
+      {%- for i in (1..5) -%}
+      
+      {%- capture apmegamenu_title -%}vapmenuitem_title_{{ i }}{%- endcapture -%}
+      {%- assign megamenu_title = settings[apmegamenu_title] | escape | strip | downcase  -%}
+      {%- if titleCheckMega == megamenu_title -%}
+      {%- assign hasMega = true -%}
+      {%- assign intMega = i -%}
+      {%- break -%}
+      {%- endif -%}
+      {%- endfor -%}
+      {%- if hasMega -%}
+      {%- assign isFullwidth = true -%}
+      {%- assign settingWidth = 'vapmenuitem_width_' | append: intMega -%}
+      {%- assign widthMega = settings[settingWidth] -%}
+      {%- if widthMega != 0 -%}
+      {%- assign isFullwidth = false -%}
+      {%- endif -%}
+      <li class="site-nav__item vertical-nav__item-mega {% unless isFullwidth %} site-nav__item-mega--custom{% endunless %}" >
+        <a href="{{ link.url }}" class="verical-nav__link dropdown-toggle">
+          {%- if settings.vermenuicon_enable -%}
+            {%- if settings[apvericon] -%}
+              {%- if settings[apvericon] !=blank -%}
+                <div class="m-icon  mr-3  d-inline-flex">
+                  <img class="icon-image" src={{ settings[apvericon] | img_url: '30x'}}/>
+                </div>
+              {%- endif -%}
+            {%- else -%}
+              {%- if settings[apverfonticon] != blank -%}
+                <div class="m-icon mr-3  d-inline-flex">
+                  {{settings[apverfonticon]}}
+                </div>
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+          {%- include 'processMenuTitle' with itemName:link.title -%}
+          {%- include 'processMenuLabel' with itemName:link.title -%}
+        </a>
+        {%- capture apbg -%}vapmenuitem_ebg_{{ intMega }}{%- endcapture -%}
+        <div class="site-nav__dropdown meganav meganav-{{intMega}} shadow" 
+        style="width:{{widthMega}}px;{% if settings[apbg] %}background: url('{{ settings[apbg] | img_url:'1170x' }}') var(--header-menudropbg) right bottom no-repeat;{% endif %} ">
+          {%- include 'vertical-megamenu' -%}
+        </div>
+      </li>
+      {%- elsif link.links != blank -%}
+      <li class="site-nav__item site-nav__item-normal">
+        <a href="{{ link.url }}" class="verical-nav__link dropdown-toggle">
+          {%- if settings.vermenuicon_enable -%}
+            {%- if settings[apvericon] -%}
+              {%- if settings[apvericon] !=blank -%}
+                <div class="m-icon  mr-3  d-inline-flex">
+                  <img class="icon-image" src={{ settings[apvericon] | img_url: '30x'}}/>
+                </div>
+              {%- endif -%}
+            {%- else -%}
+              {%- if settings[apverfonticon] != blank -%}
+                <div class="m-icon mr-3  d-inline-flex">
+                  {{settings[apverfonticon]}}
+                </div>
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+          {%- include 'processMenuTitle' with itemName:link.title -%}
+          {%- include 'processMenuLabel' with itemName:link.title -%}
+        </a>
+        <div class="site-nav__dropdown meganav shadow">
+          <ul class="meganav__nav">
+            {%- include 'site-nav' -%}
+          </ul>
+        </div>
+      </li>
+      {%- else -%}
+      <li class="site-nav__item">
+        <a href="{{ link.url }}" class="verical-nav__link">
+          {%- if settings.vermenuicon_enable -%}
+            {%- if settings[apvericon] -%}
+              {%- if settings[apvericon] !=blank -%}
+                <div class="m-icon  mr-3  d-inline-flex">
+                  <img class="icon-image" src={{ settings[apvericon] | img_url: '30x'}}/>
+                </div>
+              {%- endif -%}
+            {%- else -%}
+              {%- if settings[apverfonticon] != blank -%}
+                <div class="m-icon mr-3  d-inline-flex">
+                  {{settings[apverfonticon]}}
+                </div>
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+          {%- include 'processMenuTitle' with itemName:link.title -%}
+          {%- include 'processMenuLabel' with itemName:link.title -%}
+        </a>
+      </li>
+      {%- endif -%}
+      {%- endfor -%}
+    </ul>
+    
+    <!--  On mobile -->
+    <ul class="site-nav-vertical-mobile list--no-bullets shadow hidden">
+      {%- for link in linklists[settings.vmain_linklist].links -%}
+      {%- capture apvericon -%}vermenuicon_eimage_{{ forloop.index }}{%- endcapture -%}
+      {%- capture apverfonticon -%}vermenuicon_font_{{ forloop.index }}{%- endcapture -%}
+      {%- if link.links != blank -%}
+      <li>
+        <div class="mbnav-has-dropdown">
+          <input type="checkbox" name="item" />
+          <a class="mbnav-title verical-nav__link" href="{{ link.url }}">
+            {%- if settings.vermenuicon_enable -%}
+              {%- if settings[apvericon] -%}
+                {%- if settings[apvericon] !=blank -%}
+                  <div class="m-icon  mr-3  d-inline-flex">
+                    <img class="icon-image" src={{ settings[apvericon] | img_url: '30x'}}/>
+                  </div>
+                {%- endif -%}
+              {%- else -%}
+                {%- if settings[apverfonticon] != blank -%}
+                  <div class="m-icon mr-3  d-inline-flex">
+                    {{settings[apverfonticon]}}
+                  </div>
+                {%- endif -%}
+              {%- endif -%}
+            {%- endif -%}
+            {%- include 'processMenuTitle' with itemName:link.title -%}
+            {%- include 'processMenuLabel' with itemName:link.title -%}
+          </a>
+          <ul class="mbnav-dropdown list--no-bullets">
+            {%- for childlink in link.links -%}
+            <li>
+              <div class="mbnav-has-dropdown">
+                {%- assign childlink_url = childlink.url -%}
+                {%- if childlink.links != blank -%}
+                <input type="checkbox" name="item" />
+                <a class="mbnav-title" href="{{ childlink_url }}">
+                  {%- include 'processMenuTitle' with itemName:childlink.title -%}
+                  {%- include 'processMenuLabel' with itemName:childlink.title -%}
+                </a>
+                <ul class="mbnav-dropdown list--no-bullets">
+                  {%- for grandchildlink in childlink.links -%}
+                  <li>
+                    <a href="{{ grandchildlink.url }}">
+                      {%- include 'processMenuTitle' with itemName:grandchildlink.title -%}
+                      {%- include 'processMenuLabel' with itemName:grandchildlink.title -%}
+                    </a>
+                  </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+              {%- else -%}
+              <a href="{{ childlink_url }}">
+                {%- include 'processMenuTitle' with itemName:childlink.title -%}
+                {%- include 'processMenuLabel' with itemName:childlink.title -%}
+              </a>
+              {%- endif -%}
+            </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      </li>
+      {%- else -%}
+      <li>
+        <a class="verical-nav__link" href="{{ link.url }}">
+          {%- if settings.vermenuicon_enable -%}
+            {%- if settings[apvericon] -%}
+              {%- if settings[apvericon] !=blank -%}
+                <div class="m-icon  mr-3  d-inline-flex">
+                  <img class="icon-image" src={{ settings[apvericon] | img_url: '30x'}}/>
+                </div>
+              {%- endif -%}
+            {%- else -%}
+              {%- if settings[apverfonticon] != blank -%}
+                <div class="m-icon mr-3  d-inline-flex">
+                  {{settings[apverfonticon]}}
+                </div>
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+          {%- include 'processMenuTitle' with itemName:link.title -%}
+          {%- include 'processMenuLabel' with itemName:link.title -%}
+        </a>
+      </li>
+      {%- endif -%}
+      {% endfor %}
+    </ul>
+  </nav>

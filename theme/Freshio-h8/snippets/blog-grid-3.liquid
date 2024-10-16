@@ -1,0 +1,35 @@
+<!-- blog-grid-3.liquid -->
+<div class="blog__item blog__item--3 {% if template contains 'index' %}mb-0{% else %} mb-5{% endif %}">
+  {%- if article.image -%}
+  <div class="content-block__image">
+    <a href="{{ article.url }}">
+      <noscript>
+        {{ article | img_url: '1024x1024' | img_tag: article.title | escape }}
+      </noscript>
+      <div class="article__photo-container">
+        <div class="article__photo-wrapper" style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;">
+          {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+          <img class="lazyload"
+               src="{%- include 'srcBlank' -%}"
+               data-src="{{ img_url }}"
+               data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+               data-aspectratio="{{ article.image.aspect_ratio }}"
+               data-sizes="auto"
+               alt="{{ article.title | escape }}">
+        </div>
+      </div>
+    </a>
+  </div>
+  {%- endif -%}
+  <div class="content-block__meta transition d-flex flex-column justify-content-end align-items-start">
+    <span class="blog__date text-uppercase">
+      {{ article.published_at | time_tag : '%B %d, %Y'  }}
+    </span>
+    {% if template contains 'index' %}
+    <h3 class="blog__title-link text-white mt-2" ><a href="{{ article.url }}">{{ article.title | truncatewords: 10}}  </a></h3>
+    {% else %}
+    <h3 class="blog__title-link text-white mt-2"><a href="{{ article.url }}">{{ article.title | truncatewords: 20}} </a></h3>
+    {% endif %}
+  </div>
+</div>
+<div class="{% if template contains 'index' %}py-0{% else %} {{ article.title }} py-3{% endif %}"></div>

@@ -1,0 +1,7 @@
+{%- if settings.enable_wishlsit -%}
+<a href="{{pages[settings.page_wishlist].url}}" class="site-header__link site-header__wishlist js-wishlist-link" title="{{ 'products.product.wishlist_text' | t }}">
+  {%- include 'icon-heart' -%}
+  <!-- <span class="wishlist-text">{{ 'products.product.wishlist_text' | t }}</span> -->
+  <span class="js-wishlist-count"></span>
+</a>
+{%- endif -%}

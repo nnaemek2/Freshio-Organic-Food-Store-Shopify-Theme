@@ -1,0 +1,215 @@
+<div class="row no-gutters">
+  <div class="col-12">
+    <h4 id="html-snippet" class="html-title pt-4"># Snippets</h4>
+  </div>
+  <div class="col-12 col-md-7">
+    <div class="input-group mt-4 mb-4">
+      <div class="input-group-prepend">
+        <label class="font-weight-bold input-group-text">Select snippet</label>
+      </div>
+      <select class="custom-select js-html-select box-shadow-none" data-id="Snippet">
+        <optgroup class="text-primary" label="Easy">
+          <option selected value="blockquote-1">Quote 1</option>
+          <option value="blockquote-2">Quote 2</option>
+          <option value="service-1">Service 1</option>
+          <option value="service-2">Service 2</option>
+          <option value="service-3">Service 3</option>
+          <option value="js-video">HTML5 Video</option>
+        </optgroup>
+        <optgroup class="text-success" label="Medium">
+          <option value="card-member-1">Staff member 1</option>
+          <option value="card-member-2">Staff member 2</option>
+        </optgroup>
+        <optgroup class="text-danger" label="Hard">
+          <option value="accordion-1">Accordion</option>
+        </optgroup>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="row no-gutters">
+  <div class="col-md-7 col-left">
+    <textarea id="htmlCode-Snippet" class="html-code">
+      <blockquote class="blockquote blockquote-1 bg-white p-5 shadow rounded">
+        <div class="blockquote-custom-icon bg-info shadow-sm"></div>
+        <p class="mb-0 mt-2 font-italic">
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut. <a href="#" class="text-info">@consequat</a>"
+        </p>
+        <footer class="blockquote-footer pt-3 mt-3 border-top">
+          Someone famous in
+          <cite title="Source Title">Source Title</cite>
+        </footer>
+      </blockquote>
+    </textarea>
+  </div>
+  <div class="col-md-2 col-mid">
+    <button class="btn btn-outline-secondary btn-html-view" data-id="Snippet">Preview{%- include 'icon-arrow-right' -%}</button>
+    <button class="btn btn-secondary btn-html-copy" data-id="Snippet">Copy {%- include 'icon-copy' -%}</button>
+  </div>
+  <div class="col-md-3 col-right">
+    <div id="htmlView-Snippet" class="html-view shadow html-view--widow">
+      <blockquote class="blockquote blockquote-1 bg-white p-5 shadow rounded">
+        <div class="blockquote-custom-icon bg-info shadow-sm"></div>
+        <p class="mb-0 mt-2 font-italic">
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut. <a href="#" class="text-info">@consequat</a>"
+        </p>
+        <footer class="blockquote-footer pt-3 mt-3 border-top">
+          Someone famous in
+          <cite title="Source Title">Source Title</cite>
+        </footer>
+      </blockquote>
+    </div>
+  </div>
+  <div id="htmlContent-Snippet" class="js-html-content hide" data-id="Snippet">
+
+    <blockquote class="blockquote blockquote-1 bg-white p-5 shadow rounded">
+      <div class="blockquote-custom-icon bg-info shadow-sm"></div>
+      <p class="mb-0 mt-2 font-italic">
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut. <a href="#" class="text-info">@consequat</a>"
+      </p>
+      <footer class="blockquote-footer pt-3 mt-3 border-top">
+        Someone famous in
+        <cite title="Source Title">Source Title</cite>
+      </footer>
+    </blockquote>
+    
+    <div class="quote-wrap text-center blockquote-2">
+      <h4>Design Quality</h4>
+      <div class="font-weight-light py-2 px-4">
+        Rich and beautifully designed. There are countless features allowing for a great deal of flexibility in website creation. Logical and precise it's well thought out and works seamlessly as it should. The customer support is great too; timely, direct. I recommend.
+      </div>
+      <ul class="rating">
+        <li class="rated">
+        <li class="rated">
+        <li class="rated">
+        <li>
+        <li>
+      </ul>
+      <div class="author-avatar">
+        <img class="lazyload" data-src="//cdn.shopify.com/s/files/1/0092/7563/7839/files/ava_2_300x.png?v=1562226050">
+      </div>
+      <h6>Sky Walker</h6>
+      <p>CEO</p>
+    </div>
+
+
+    <div class="media service-1 text-left">
+      <span class="align-self-center mr-3 iconx4">
+        [[ Icon ]]
+      </span>
+      <div class="media-body">
+        <h5 class="mt-0 mb-2">Service heading</h5>
+        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+      </div>
+    </div>
+    
+    <div class="media service-2 text-center">
+      <div class="media-body">
+        <div class="mb-2 iconx4">
+          [[ Icon ]]
+        </div>
+        <h5 class="mt-0 mb-2">Service heading</h5>
+        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+      </div>
+    </div>
+    
+    <div class="media service-3 text-center">
+      <div class="media-body">
+        <h5 class="mt-0 mb-2 text-theme">
+          <span class="mr-1 iconx4">
+            [[ Icon ]]
+          </span>
+          Service heading
+        </h5>
+        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+      </div>
+    </div>
+
+
+
+    <div class="js-video" style="height:200px">
+      <video loop="" onmouseover="this.play()" onmouseout="this.pause()">
+        <source type="video/mp4" src="https://cdn.shopify.com/s/files/1/0092/7563/7839/files/Videomenu.mp4?39752">
+      </video>
+    </div>
+
+    <div class="card card-member-1">
+      <div class="hv-image-brightness-n mb-3">
+        <img class="transition lazyload" data-src="//cdn.shopify.com/s/files/1/0266/5745/6207/files/4.jpg?v=1567760858">
+        <h4 class="pt-4 pb-2 m-0 font-family-2 px-3">Ajay Core</h4>
+        <p class="px-3">CTO</p>
+      </div>
+    </div>
+    <div class="card card-member-2">
+      <div class="card">
+        <div class="card-body text-center">
+          <p><img class="img-fluid rounded-circle" src="https://cdn.shopify.com/s/files/1/0092/7563/7839/files/2020.png?63177" alt="card image"></p>
+          <h4 class="card-title">Sunlimetech</h4>
+          <p class="card-text">This is basic card with image on top, title, description and button.</p>
+          <a href="#" class="btn btn-primary btn-sm">[[Icon]]</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion accordion-1" id="accordion-{{uniqueID}}">
+      <div class="card">
+        <div class="card-header p-2">
+          <h5 class="mb-0">
+            <button class="btn btn--full" data-toggle="collapse" data-target="#collapseOne-{{uniqueID}}" aria-expanded="true">
+              ACCORDION TITLE 1
+            </button>
+          </h5>
+        </div>
+        <div id="collapseOne-{{uniqueID}}" class="collapse show" data-parent="#accordion-{{uniqueID}}">
+          <div class="card-body">
+            [[ CONTENT TEXT 1 ]]
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header p-2">
+          <h5 class="mb-0">
+            <button class="btn btn--full collapsed" data-toggle="collapse" data-target="#collapseTwo-{{uniqueID}}" aria-expanded="false">
+              ACCORDION TITLE 2
+            </button>
+          </h5>
+        </div>
+        <div id="collapseTwo-{{uniqueID}}" class="collapse" data-parent="#accordion-{{uniqueID}}">
+          <div class="card-body">
+            [[ CONTENT TEXT 2 ]]
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header p-2">
+          <h5 class="mb-0">
+            <button class="btn btn--full collapsed" data-toggle="collapse" data-target="#collapseThree-{{uniqueID}}" aria-expanded="false">
+              ACCORDION TITLE 3
+            </button>
+          </h5>
+        </div>
+        <div id="collapseThree-{{uniqueID}}" class="collapse" data-parent="#accordion-{{uniqueID}}">
+          <div class="card-body">
+            [[ CONTENT TEXT 3 ]]
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header p-2">
+          <h5 class="mb-0">
+            <button class="btn btn--full collapsed" data-toggle="collapse" data-target="#collapseFour-{{uniqueID}}" aria-expanded="false">
+              ACCORDION TITLE 4
+            </button>
+          </h5>
+        </div>
+        <div id="collapseFour-{{uniqueID}}" class="collapse" data-parent="#accordion-{{uniqueID}}">
+          <div class="card-body">
+            [[ CONTENT TEXT 4 ]]
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<hr />

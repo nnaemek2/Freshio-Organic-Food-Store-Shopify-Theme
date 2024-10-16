@@ -1,0 +1,43 @@
+<!-- cross-sell.liquid -->
+<div class="modal fade" id="jsCrosssell" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog--crosssell modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">{%- include 'icon-close' -%}</button>
+      </div>
+      <div class="modal-body">
+        <div class="row row-crosssell">
+          <div class="col-lg-4 col-md-6">
+            <div class="js-cross-added"></div>
+            {%- include 'free-shipping' -%}
+          </div>
+          <div class="col-lg-4 cross-cart-items">
+            <div class="js-mini-cart-content"></div>
+          </div>
+          <div class="col-lg-4 col-md-6 cross-cart-wrap">
+            <h4>{{'cart.general.title' | t}}</h4>
+            <div>{{'cart.general.item' | t}} <b class="js-cart-count"></b></div>
+            <div class="mini-cart-total">
+              {{'cart.label.total' | t }}: <span class="js-cart-total">{{cart.total_price | money}}</span>
+            </div>
+            <div class="mini-cart-btns mt-4">
+              <a class="btn btn-theme js-cart-btn-cart px-4" href="/cart">{{'cart.general.view' | t }}</a>
+              <a class="btn btn-theme gradient-theme js-cart-btn-checkout px-4 {% if cart.item_count == 0 %} disabled{% endif %}" href="/checkout">{{'cart.general.checkout' | t }}</a>
+            </div>
+            {%- if settings.safe_checkout_pcart != blank -%}
+            <div class="mini-cart-safe-checkout">
+              <img class="lazyload" data-src="{{ settings.safe_checkout_pcart | img_url: '500x' }}"/>
+            </div>
+            {%- endif -%}
+          </div>
+        </div>
+        <div class="block-cross-sell hide">
+          {%- if product.metafields.info.crosssell != blank and settings.crosssell_title != blank -%}
+          <h4>{{settings.crosssell_title}}</h4>
+          {%- endif -%}
+          <div class="js-crosssell row justify-content-center" data-handles="{{product.metafields.info.crosssell}}"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

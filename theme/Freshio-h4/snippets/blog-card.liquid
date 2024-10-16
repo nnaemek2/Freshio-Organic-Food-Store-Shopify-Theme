@@ -1,0 +1,13 @@
+{%- case settings.bloggrid -%}
+  {%- when 'blog-1' -%} {%- include 'blog-grid-1' -%}
+  {%- when 'blog-2' -%} {%- include 'blog-grid-2' -%}
+  {%- when 'blog-3' -%} {%- include 'blog-grid-3' -%}
+  {%- when 'blog-4' -%} {%- include 'blog-grid-4' -%}
+  {%- when 'blog-5' -%} {%- include 'blog-grid-5' -%}
+  {%- when 'blog-6' -%} {%- include 'blog-grid-6' -%}
+  {%- when 'blog-7' -%} {%- include 'blog-grid-7' -%}
+  {%- when 'blog-8' -%} {%- include 'blog-grid-8' -%}
+  {%- when 'blog-9' -%} {%- include 'blog-grid-9' -%}
+{%- else -%}
+  {%- include 'blog-grid-blank' -%}
+{%- endcase -%}

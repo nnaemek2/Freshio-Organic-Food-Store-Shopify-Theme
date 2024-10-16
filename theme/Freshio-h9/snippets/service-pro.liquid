@@ -1,0 +1,31 @@
+<div class="pro__ser py-4 {{block.settings.style_service}}">
+      <div class="{{block.settings.setwidthcontent}}">
+        <ul class="list-inline row text-center">
+        {%- if block.settings.ser_1 != blank -%}
+            <li class="col-6 col-lg mb-3 mb-lg-0 ">
+            <div class="pro__ser--box">{%- if block.settings.icon_1 != blank -%}<img src="{{ block.settings.icon_1 | img_url: 'master' }}"  alt="{{ block.settings.ser_1 | strip_html }}">{% endif %} <div>{{block.settings.ser_1}}</div></div>
+            </li>
+        {%- endif -%}
+        {%- if block.settings.ser_2 != blank -%}
+            <li class="col-6 col-lg mb-3 mb-lg-0 ">
+            <div class="pro__ser--box">{%- if block.settings.icon_2 != blank -%}<img src="{{ block.settings.icon_2 | img_url: 'master' }}"  alt="{{ block.settings.ser_2 | strip_html }}"> {% endif %}<div>{{block.settings.ser_2}}</div></div>
+            </li>
+        {%- endif -%}
+        {%- if block.settings.ser_3 != blank -%}
+            <li class="col-6 col-lg mb-3 mb-lg-0 ">
+            <div class="pro__ser--box">{%- if block.settings.icon_3 != blank -%}<img src="{{ block.settings.icon_3 | img_url: 'master' }}"  alt="{{ block.settings.ser_3 | strip_html }}"> {% endif %}<div>{{block.settings.ser_3}}</div></div>
+            </li>
+        {%- endif -%}
+        {%- if block.settings.ser_4 != blank -%}
+            <li class="col-6 col-lg mb-3 mb-lg-0 ">
+            <div class="pro__ser--box">{%- if block.settings.icon_4 != blank -%}<img src="{{ block.settings.icon_4 | img_url: 'master' }}"  alt="{{ block.settings.ser_4 | strip_html }}">{% endif %} <div>{{block.settings.ser_4}}</div></div>
+            </li>
+        {%- endif -%}
+        {%- if block.settings.ser_5 != blank -%}
+            <li class="col-6 col-lg mb-3 mb-lg-0 ">
+            <div class="pro__ser--box">{%- if block.settings.icon_5 != blank -%}<img src="{{ block.settings.icon_5 | img_url: 'master' }}"  alt="{{ block.settings.ser_5 | strip_html}}">{% endif %} <div>{{block.settings.ser_5}}</div></div>
+            </li>
+        {%- endif -%}
+        </ul>
+    </div>
+  </div>

@@ -1,0 +1,785 @@
+<!-- footer-3.liquid -->
+<style>
+  :root {
+    --footer-bg:{{section.settings.background}};
+    --footer-bg-bot:{{section.settings.background_bot}};
+    --footer-text:{{section.settings.text}};
+    --footer-title:{{section.settings.title}};
+    --footer-text-hover:{{section.settings.text_hover}};
+    --footer-top-border:{{section.settings.ft_border}};
+    --footer-padding: {{section.settings.padding_footer}};
+    --footer-top-color-m:{{section.settings.ft_color_main}};
+    --footer-top-color-s:{{section.settings.ft_color_s}};
+    --footer-top-border-cl:{{section.settings.ft_border_top}};
+  }
+</style>
+<style>
+
+  .site-footer{background-color:var(--footer-bg);color:var(--footer-text);border-top: 1px solid{{section.settings.border_headfooter}};line-height:1.8}.site-footer a{color:var(--footer-text)}.site-footer a:focus,.site-footer a:hover{color:var(--footer-text-hover)}.flex-footer{display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;-ms-flex-align:start;-webkit-align-items:flex-start;-moz-align-items:flex-start;-ms-align-items:flex-start;-o-align-items:flex-start;align-items:flex-start;-webkit-flex-wrap:wrap;-moz-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;margin:0 -10px}.flex-footer .flex__item{-webkit-flex:1 1 100%;-moz-flex:1 1 100%;-ms-flex:1 1 100%;flex:1 1 100%;padding:0 10px}@media only screen and (min-width:750px){.flex-footer .flex__item{-webkit-flex:1 1 20%;-moz-flex:1 1 20%;-ms-flex:1 1 20%;flex:1 1 20%}}.site-footer__copyright{padding:30px 0;background-color:var(--footer-bg-bot);display:flex;align-items:center;}.site-footer__section-title{color:var(--footer-title);}.site-footer__list{list-style:none}.site-footer__list-item{margin-bottom:10px}.site-footer__newsletter-label{display:block}.site-footer__newsletter-label a{color:#ad2c34}.site-footer__newsletter-label a:hover{color:#842228}.site-footer .social-icons .icon{fill:currentColor}.site-footer .social-icons .icon{margin-right:10px}.site-footer .social-icons a{display:block;margin-bottom:10px}.site-footer .payment-icons{padding:5px 0}.site-footer .payment-icons li{padding:5px 0}
+  .site-footer__copyright{
+    border-top: 1px solid {{section.settings.border-copryright}};
+    color:{{section.settings.text_copy}};
+  }
+  .site-footer .site-footer__section-title{
+    text-transform: {%- if section.settings.type_text_title -%} uppercase {%- else -%} capitalize {%- endif -%};
+    font-size:12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom:32px;
+  }
+  .site-footer__copyright a{
+    color:{{section.settings.text_copy}} !important;
+  }
+  .site-footer__copyright .social-icons .list-inline-item:not(:last-child){
+    margin-right: 1.5rem;
+  }
+  .site-footer{
+   
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .site-footer > .footer-inner{
+    padding-bottom:calc( var(--footer-padding) - 10px) ;
+    padding-top:  var(--footer-padding);
+  }
+  .site-footer .top-footer{
+    border-bottom:1px solid var(--footer-top-border);
+    color:var(--footer-top-color-s);
+  }
+  .site-footer .top-footer .text-primary2{
+    color:var(--footer-top-color-m) !important;
+  }
+  .site-footer .top-footer .text-footer{
+    color:var(--footer-top-color-s);
+  }
+  .site-footer .topfooter-social .social-icons a{
+    color:var(--footer-top-color-m);
+  }
+  .site-footer .topfooter-social .social-icons .list-inline-item:not(:last-child){
+    margin-right: 1rem;
+  }
+  .site-footer__section .img-logo{
+    margin-bottom: 48px;
+    width: 200px;
+  }
+  #footer-payment-methods li svg{ 
+    height: auto;
+    width: 48px; 
+  }
+  .section-footer-email .social-icons li span{display: none;}
+  .section-footer-email .social-icons li i{color:var(--footer-title)}
+  .section-footer-email .social-icons li:not(:last-child){margin-right: 1.5rem;}
+  .footer-email .form-control{
+    color:var(--footer-text);
+  }
+
+  .footer-email .form-control::placeholder { 
+    color:var(--footer-text);
+    opacity: 1;
+  }
+  .footer-email .form-control:-ms-input-placeholder {
+    color:var(--footer-text);
+  }
+  .footer-email .form-control::-ms-input-placeholder {
+    color:var(--footer-text);
+  }
+  .col-last .site-footer__section{
+    margin-bottom: 0 !important;
+  }
+  .topfooter-email .footer-email .btn-theme{
+    background-color: transparent;
+    border:1px solid  var(--g-input-border);
+    height: 48px;
+    color:var(--footer-top-color-s);
+    display: flex;
+    align-items: center;
+    border-left: none;
+  }
+  .topfooter-email .footer-email .form-control{
+    border-right: none;
+  }
+  .topfooter-email .footer-email .form-control:focus{
+    border-color: var(--g-input-border);
+  }
+  .topfooter-email .footer-email .btn-theme i{
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+  }
+  .top-footer .border,.top-footer .border-left{
+    border-color:  var(--footer-top-border-cl) !important;
+  }
+  .top-footer{
+    padding-top: 60px;
+  }
+</style>
+
+<footer class="site-footer {% if section.settings.image_bg != blank %} lazyload {% endif %}" role="contentinfo" 
+style="{% if section.settings.image_bg != blank %}background-image:url({%- include 'srcBlank' -%}){% endif %}"    data-bg="{{ section.settings.image_bg | img_url:"1920x" }}">
+  {%- if section.settings.enable_footertop -%}
+  <div class="top-footer">
+    <div class="{{ section.settings.setwidth }}">
+      <div class="row align-items-center">
+        {%- if section.settings.block_phone -%}
+        <div class="topfooter-number col-lg-6 col-12 mb-4 mb-lg-0">
+          <div class="media rounded border p-lg-5 p-3 align-items-center">
+              <i class="freshio-icon-headphones-alt mr-lg-5 mr-4 h1 mt-1 text-primary2 mb-1"></i>
+              <div class="media-body border-left pl-lg-4 pl-3">
+                  {%- if section.settings.phone_txt_sub != blank -%}
+                  <p class="mb-0">{{section.settings.phone_txt_sub}}</p>
+                  {%- endif -%}
+                  <span class="small font-weight-bold">{{section.settings.phone_txt}}</span>
+                  <a class="mt-1 text-primary2 h3 d-block" href="tel:{{section.settings.phone_number}}">{{section.settings.phone_number}}</a>
+                  <a class="mt-2 link-line text-footer d-inline-block" href="mailto:{{section.settings.email}}">{{section.settings.email}}</a>
+              </div>
+          </div>
+        </div>
+        {%- endif -%}
+        {%- if section.settings.block_email -%}
+        <div class="topfooter-email col-lg col-12 mb-4 mb-lg-0">
+          <div class="media rounded border p-lg-5 p-3 align-items-center">
+              <i class="freshio-icon- freshio-icon-envelope-open-text mr-lg-5 mr-4 h1 mt-1 text-primary2 mb-1"></i>
+              <div class="media-body border-left pl-3 pl-lg-4">
+                  {%- if section.settings.email_txt_subtop != blank -%}
+                  <p>{{section.settings.email_txt_subtop}}</p>
+                  {%- endif -%}
+                  <span class="small font-weight-bold d-block">{{section.settings.email_txt}}</span>
+                  {%- if section.settings.email_txt_sub != blank -%}
+                  <p class="mb-2">{{section.settings.email_txt_sub}}</p>
+                  {%- endif -%}
+                  <div class="form-vertical footer-email">
+                    {%- form 'customer' -%}
+                    {{ form.errors | default_errors }}
+                    {%- if form.posted_successfully? -%}
+                    <p class="form-success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+                    {%- else -%}
+                    <input type="hidden" name="contact[tags]" value="newsletter">
+                    {%- if block.settings.subheading != blank -%}
+                    <label for="NewsletterEmail-{{ block.id }}" class="site-footer__newsletter-label mb-3">
+                      {{ block.settings.subheading }}
+                    </label>
+                    {%- endif -%}
+                    <div class="form-group input-group mb-0">
+                      <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" 
+                      placeholder="{{ 'general.newsletter_form.newsletter_placeholder' | t }}" 
+                      name="contact[email]" 
+                      id="NewsletterEmail-{{ block.id }}" 
+                      class="form-control" autocorrect="off" autocapitalize="off"
+                      
+                      >
+                      <div class="input-group-append">
+                        <button type="submit" class="btn btn-theme px-4" name="commit">
+                          <span class="d-block"><i class="icon-arrow-thin-right"></i></span>
+                        </button>
+                      </div>
+                    </div>
+                    {%- endif -%}
+                    {%- endform -%}
+                  </div>
+              </div>
+          </div>
+        </div>
+        {%- endif -%}
+        
+        
+      </div>
+    </div>
+  </div>
+  {%- endif -%}
+  <div class="{{ section.settings.setwidth }} footer-inner">
+    <div class="row">
+      {%- for block in section.blocks -%}
+      {%- case block.settings.width -%}
+      {%- when '16%' -%}
+      {%- assign block_width = 'col-lg-2 col-md-4' -%}
+      {%- when '25%' -%}
+      {%- assign block_width = 'col-lg-3 col-md-6' -%}
+      {%- when '33%' -%}
+      {%- assign block_width = 'col-lg-4 col-md-6' -%}
+      {%- when '50%' -%}
+      {%- assign block_width = 'col-lg-6' -%}
+      {%- when '66%' -%}
+      {%- assign block_width = 'col-lg-8 col-md-12' -%}
+      {%- when '75%' -%}
+      {%- assign block_width = 'col-lg-9 col-md-12' -%}
+      {%- when '100%' -%}
+      {%- assign block_width = 'col-12' -%}
+      {%- endcase -%}
+      {% assign lastblock =  forloop.last %}
+      <div class="{{block_width}} {% if lastblock == true %} col-last {% endif %} {{ block.size}}" {{ block.shopify_attributes }}>
+        {%- case block.type -%}
+        {%- when 'social' -%}
+        <div class="site-footer__section mb-lg-0 mb-4">
+          {%- if block.settings.title != blank -%}
+          <h4 class="h5 site-footer__section-title text-{{ block.settings.align }}">{{ block.settings.title | escape }}</h4>
+          {%- endif -%}
+          <ul class="list-inline social-icons text-{{ block.settings.align }}">
+            {%- include 'footer-socical' -%}
+          </ul>
+        </div>
+
+        {%- when 'menu' -%}
+        {%- if linklists[block.settings.link_list].links.size > 0 -%}
+        <div class="site-footer__section mb-lg-0 mb-5">
+          {%- if linklists[block.settings.link_list].title != blank -%}
+          <h4 class="h5 site-footer__section-title">{{ linklists[block.settings.link_list].title }}</h4>
+          {%- endif -%}
+          <ul class="site-footer__list">
+            {%- for link in linklists[block.settings.link_list].links -%}
+            <li class="site-footer__list-item"><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {%- endfor -%}
+          </ul>
+        </div>
+        {%- endif -%}
+
+        {%- when 'text' -%}
+        <div class="site-footer__section mb-lg-0 mb-5">
+          {%- if block.settings.title != blank -%}
+          <h4 class="h5 site-footer__section-title">{{ block.settings.title | escape }}</h4>
+          {%- endif -%}
+          {%- if block.settings.logofooter != blank -%}
+          {%- assign logo = block.settings.logofooter -%}
+          <div class="image-content__image-container logofooter" style="width: {{block.settings.widthlogofooter}}px;">
+            <a class="image-content__image-wrapper" href="/" style="padding-top:{{ 1 | divided_by: logo.aspect_ratio | times: 100}}%;" >
+              {%- assign img_url = logo | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+              <img 
+              class="lazyload transition img-logo" 
+              data-srcset="{{ img_url }}"
+              data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+              data-aspectratio="{{ logo.aspect_ratio }}"
+              data-sizes="auto"
+              src="{%- include 'srcBlank' -%}"  />
+            </a>
+            
+          </div>
+          {%- endif -%}
+          <div class="rte-setting">{{ block.settings.text }}</div>
+        </div>
+
+        {%- when 'newsletter' -%}
+        <div class="site-footer__section section-footer-email mb-lg-0 mb-5">
+          {%- if block.settings.title != blank -%}
+          <h4 class="h5 site-footer__section-title">
+            {{ block.settings.title | escape }}
+          </h4>
+          {%- endif -%}
+          <div class="form-vertical footer-email">
+            {%- form 'customer' -%}
+            {{ form.errors | default_errors }}
+            {%- if form.posted_successfully? -%}
+            <p class="form-success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+            {%- else -%}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            {%- if block.settings.subheading != blank -%}
+            <label for="NewsletterEmail-{{ block.id }}" class="site-footer__newsletter-label mb-3">
+              {{ block.settings.subheading }}
+            </label>
+            {%- endif -%}
+            <div class="input-group">
+              <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" 
+              placeholder="{{ 'general.newsletter_form.newsletter_placeholder' | t }}" 
+              name="contact[email]" 
+              id="NewsletterEmail-{{ block.id }}" 
+              class="form-control" autocorrect="off" autocapitalize="off"
+              style="background-color:{{block.settings.bg_new}};border-color:{{block.settings.border_new}}"
+              >
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-theme px-3" name="commit">
+                 {{ 'general.newsletter_form.submit' | t }}
+                </button>
+              </div>
+            </div>
+            {%- endif -%}
+            {%- endform -%}
+          </div>
+          {% if block.settings.enablesocial %}
+            {%- render 'footer-social'-%}
+          {% endif %}
+        </div>
+        {%- endcase -%}
+      </div>
+      {%- endfor -%}
+    </div>
+  </div>
+  <div class="site-footer__copyright" >
+    <div class="{{ section.settings.setwidth }}">
+      <div class="row">
+        <div class="col-12 text-center">
+          {%- if section.settings.copyright -%}
+          <span>&copy; {{ 'now' | date: "%Y" }}, <b class="text-capitalize">{{ shop.name | link_to: '/' }}</b>. {{ powered_by_link }}</span>
+          {%- else -%}
+            <div>{{section.settings.customcopyright}}</div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+{% schema %}
+{
+  "name": "Footer 3",
+  "settings": [
+  {
+    "type": "select",
+    "id": "setwidth",
+    "label": "Full Width",
+    "default": "container",
+    "options": [
+      {
+        "value": "container",
+        "label": "Box"
+      },
+      {
+        "value": "container-fluid",
+        "label": "Container Fluid"
+      },
+      {
+        "value": "full",
+        "label": "Full"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "id": "padding_footer",
+    "label": "Padding Footer",
+    "default":"60px"
+  },
+  {
+    "type": "image_picker",
+    "id": "image_bg",
+    "label": "Background image"
+  },
+  
+  {
+    "type": "checkbox",
+    "id": "enable_footertop",
+    "label": "Enable Top Footer",
+    "default": true
+  },
+  {
+    "type": "checkbox",
+    "id": "block_phone",
+    "label": "Enable Block Phone",
+    "default": true
+  },
+  {
+    "type": "text",
+    "id": "phone_txt_sub",
+    "label": "Phone Sub Title",
+    "default":"Phone Support"
+  }, 
+  {
+    "type": "text",
+    "id": "phone_txt",
+    "label": "Phone Title",
+    "default":"CALL US 24/7"
+  }, 
+  {
+    "type": "text",
+    "id": "phone_number",
+    "label": "Phone Number",
+    "default":"(1800)-88-66-991"
+  }, 
+  {
+    "type": "text",
+    "id": "email",
+    "label": "Email",
+    "default":"contact@example.com"
+  }, 
+  {
+    "type": "checkbox",
+    "id": "block_email",
+    "label": "Enable Block Email",
+    "default": true
+  },
+  {
+    "type": "text",
+    "id": "email_txt_subtop",
+    "label": "Sub Top",
+    "default":"Daily Updates"
+  }, 
+  {
+    "type": "text",
+    "id": "email_txt",
+    "label": "Email Title",
+    "default":"EMAIL US"
+  }, 
+  {
+    "type": "text",
+    "id": "email_txt_sub",
+    "label": "Sub Title",
+    "default":"Sign up and get a voucher of worth $250.00"
+  },
+  {
+    "type": "header",
+    "content": "---- General Footer"
+  },
+  {
+    "type": "color",
+    "id": "text",
+    "label": "Text",
+    "default": "#fff"
+  },
+  {
+    "type": "color",
+    "id": "text_hover",
+    "label": "Text Hover",
+    "default": "#fff"
+  },
+  {
+    "type": "color",
+    "id": "title",
+    "label": "Title",
+    "default": "#000"
+  },
+  {
+    "type": "color",
+    "id": "background",
+    "label": "Background",
+    "default": "#282828"
+  },
+  {
+    "type": "header",
+    "content": "---- Top Footer"
+  },
+  {
+    "type": "color",
+    "id": "border_headfooter",
+    "label": "Top Footer Border Color",
+    "default": "#f8f8f8"
+  },
+  {
+    "type": "color",
+    "id": "ft_border",
+    "label": "Mid Footer Border Color",
+    "default": "#e9e9e9"
+  },
+  {
+    "type": "color",
+    "id": "ft_color_main",
+    "label": "Top Footer Color Main",
+    "default": "#bac34e"
+  },
+  {
+    "type": "color",
+    "id": "ft_color_s",
+    "label": "Top Footer Color Second",
+    "default": "#000000"
+  },
+  
+  {
+    "type": "color",
+    "id": "ft_border_top",
+    "label": "Border Color Block",
+    "default": "#e9e9e9"
+  },
+    {
+      "type": "header",
+      "content": "---- Bottom Footer"
+    },
+    {
+      "type": "color",
+      "id": "background_bot",
+      "label": "Bottom Footer Background",
+      "default": "#f8f8f8"
+    },
+    {
+      "type": "color",
+      "id": "border-copryright",
+      "label": "Bottom Footer Border ",
+      "default": "#f8f8f8"
+    },
+    {
+      "type": "color",
+      "id": "text_copy",
+      "label": "Bottom Footer Text",
+      "default": "#fff"
+    },
+   
+    {
+      "type": "checkbox",
+      "id": "type_text_title",
+      "label": "Uppercase Title",
+      "default": true
+    },
+    
+    {
+      "type": "checkbox",
+      "id": "copyright",
+      "label": "Enable Copyright Default",
+      "default": true,
+      "info": "If disable you would use Custom Copyright"
+    },
+    {
+      "type": "textarea",
+      "id": "customcopyright",
+      "label": "Custom Copyright",
+      "default": "© 2021, Your Store. Powered by Shopify"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "social",
+      "name": "Social accounts",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Follow us"
+        },
+        {
+          "type": "radio",
+          "id": "align",
+          "label": "Icon alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Container width",
+          "default": "25%",
+          "options": [
+            {
+              "value": "16%",
+              "label": "16%"
+            },
+            {
+              "value": "25%",
+              "label": "25%"
+            },
+            {
+              "value": "33%",
+              "label": "33%"
+            },
+            {
+              "value": "50%",
+              "label": "50%"
+            },
+            {
+              "value": "66%",
+              "label": "66%"
+            },
+            {
+              "value": "75%",
+              "label": "75%"
+            },
+            {
+              "value": "100%",
+              "label": "100%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "menu",
+      "name": "Menu",
+      "settings": [
+        {
+          "id": "link_list",
+          "type": "link_list",
+          "label": "Menu",
+          "default": "footer",
+          "info": "This menu won't show dropdown items"
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Container width",
+          "default": "25%",
+          "options": [
+            {
+              "value": "16%",
+              "label": "16%"
+            },
+            {
+              "value": "25%",
+              "label": "25%"
+            },
+            {
+              "value": "33%",
+              "label": "33%"
+            },
+            {
+              "value": "50%",
+              "label": "50%"
+            },
+            {
+              "value": "66%",
+              "label": "66%"
+            },
+            {
+              "value": "75%",
+              "label": "75%"
+            },
+            {
+              "value": "100%",
+              "label": "100%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logofooter",
+          "label": "Image"
+        },
+        {
+          "type": "range",
+          "id": "widthlogofooter",
+          "min": 0,
+          "max": 400,
+          "step": 10,
+          "unit": "px",
+          "label": "Width Image",
+          "default": 130
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Text column"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Share store details, promotions, or brand content with your customers</p>"
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Container width",
+          "default": "25%",
+          "options": [
+            {
+              "value": "16%",
+              "label": "16%"
+            },
+            {
+              "value": "25%",
+              "label": "25%"
+            },
+            {
+              "value": "33%",
+              "label": "33%"
+            },
+            {
+              "value": "50%",
+              "label": "50%"
+            },
+            {
+              "value": "66%",
+              "label": "66%"
+            },
+            {
+              "value": "75%",
+              "label": "75%"
+            },
+            {
+              "value": "100%",
+              "label": "100%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "color",
+          "id": "bg_new",
+          "label": "Bg Input",
+          "default": "#f7f7f7"
+        },
+        {
+          "type": "color",
+          "id": "border_new",
+          "label": "Border Input",
+          "default": "#f7f7f7"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Be in the know"
+        },
+        {
+          "type": "richtext",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "<p>Promotions, new products and sales. Directly to your inbox.</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "enablesocial",
+          "label": "Enable Social",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Container width",
+          "default": "25%",
+          "options": [
+            {
+              "value": "16%",
+              "label": "16%"
+            },
+            {
+              "value": "25%",
+              "label": "25%"
+            },
+            {
+              "value": "33%",
+              "label": "33%"
+            },
+            {
+              "value": "50%",
+              "label": "50%"
+            },
+            {
+              "value": "66%",
+              "label": "66%"
+            },
+            {
+              "value": "75%",
+              "label": "75%"
+            },
+            {
+              "value": "100%",
+              "label": "100%"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

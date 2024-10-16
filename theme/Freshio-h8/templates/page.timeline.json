@@ -1,0 +1,207 @@
+{
+  "sections": {
+    "main": {
+      "type": "s_timeline",
+      "blocks": {
+        "74b3f346-71f1-472a-b894-b17335b45c01": {
+          "type": "time",
+          "settings": {
+            "bg": "#008060",
+            "title": "Start developing",
+            "description": "Wishlist function smart and fast, with just one click",
+            "time": "Mar 22",
+            "link": "shopify:\/\/collections\/all"
+          }
+        },
+        "7cb670e8-8bca-4896-9ddd-e747b7f3f687": {
+          "type": "time",
+          "settings": {
+            "bg": "#ff7143",
+            "title": "Wishlist function",
+            "description": "Wishlist function smart and fast, with just one click",
+            "time": "Mar 26",
+            "link": "shopify:\/\/collections\/all"
+          }
+        },
+        "7c9a25e4-9f03-4a54-87cb-5f8105fd62bb": {
+          "type": "time",
+          "settings": {
+            "bg": "#343a40",
+            "title": "Compare function",
+            "description": "function smart and fast",
+            "time": "Jan 04",
+            "link": ""
+          }
+        },
+        "021c68c6-d44b-47dc-828f-89f268f7aa66": {
+          "type": "time",
+          "settings": {
+            "bg": "#006eff",
+            "title": "Shortcode",
+            "description": "Easily add content with the shortcodes built-in snippets in our theme",
+            "time": "Mar 28",
+            "link": "shopify:\/\/collections\/all"
+          }
+        },
+        "4af9bc30-17e3-4d54-95f1-56805a519c61": {
+          "type": "time",
+          "settings": {
+            "bg": "#008060",
+            "title": "Boostraps 4.0",
+            "description": "Bootstrap 4 is the newest version of Bootstrap, which is the most popular HTML, CSS, and JavaScript framework for developing responsive, mobile-first websites",
+            "time": "Jan 04",
+            "link": ""
+          }
+        },
+        "0f566124-9070-4a10-a109-f177fd5842d9": {
+          "type": "time",
+          "settings": {
+            "bg": "#75ce66",
+            "title": "Deploy in Github",
+            "description": "GitHub is an American company that provides hosting for software development version control using Git",
+            "time": "Jan 04",
+            "link": ""
+          }
+        },
+        "b5f4cb2f-08e2-4616-860a-e68dcd8687bd": {
+          "type": "time",
+          "settings": {
+            "bg": "#75ce66",
+            "title": "Newsletter, Countdown added",
+            "description": "Newsletter, Countdown added",
+            "time": "Jan 04",
+            "link": ""
+          }
+        },
+        "f027c23c-5a52-4a22-b96a-3bbbe7c09c73": {
+          "type": "time",
+          "settings": {
+            "bg": "#75ce66",
+            "title": "Product Related featured",
+            "description": "",
+            "time": "Jan 04",
+            "link": ""
+          }
+        },
+        "2ba6a1da-cc0c-4364-87ac-1ee8783c96bc": {
+          "type": "time",
+          "settings": {
+            "bg": "#75ce66",
+            "title": "Megamenu featured",
+            "description": "Megamenu with 4 blocks are built-in, with high customization ability",
+            "time": "Jan 04",
+            "link": ""
+          }
+        },
+        "ecffa4a4-fa03-422b-a41f-a524558c022b": {
+          "type": "time",
+          "settings": {
+            "bg": "#75ce66",
+            "title": "Filter function",
+            "description": "Powerful and fast Ajax Filter works with product cards, combined with the Price Range, helps customers easily select the desired products",
+            "time": "Jan 04",
+            "link": "shopify:\/\/collections\/all"
+          }
+        },
+        "29beda2d-4970-46ed-906f-5f948da69d89": {
+          "type": "time",
+          "settings": {
+            "bg": "#75ce66",
+            "title": "Cross-sell featured",
+            "description": "Show more suggestions when customers add products to the cart",
+            "time": "Jan 04",
+            "link": "shopify:\/\/collections\/all"
+          }
+        },
+        "6f715306-2136-48a9-844f-32f0c973bf06": {
+          "type": "time",
+          "settings": {
+            "bg": "#75ce66",
+            "title": "Swatch variant images",
+            "description": "Display product images corresponding to each product variant",
+            "time": "Jan 04",
+            "link": "shopify:\/\/collections\/all"
+          }
+        },
+        "117193d0-d976-4cb5-b704-f3d867fe679f": {
+          "type": "time",
+          "settings": {
+            "bg": "#75ce66",
+            "title": "Ajax Mini Cart",
+            "description": "Designed with a minimalist, user-friendly and the mobile first standard, full display of important information in the customer orders",
+            "time": "Jan 04",
+            "link": ""
+          }
+        },
+        "2aa3b8e6-0106-474f-847d-12699fbcd9c8": {
+          "type": "time",
+          "settings": {
+            "bg": "#75ce66",
+            "title": "Suggest product, display viewers",
+            "description": "Functions to create crowd effects, help your customers trust more when shopping",
+            "time": "Jan 04",
+            "link": ""
+          }
+        },
+        "96b21f4d-812a-4c88-beeb-d8e7880feab4": {
+          "type": "time",
+          "settings": {
+            "bg": "#75ce66",
+            "title": "BIG UPDATE: Restructuring files and folders",
+            "description": "",
+            "time": "Jan 04",
+            "link": ""
+          }
+        },
+        "c3521117-d315-49a8-b815-458b3d90dfeb": {
+          "type": "time",
+          "settings": {
+            "bg": "#75ce66",
+            "title": "To be continued...",
+            "description": "",
+            "time": "Jan 04",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "74b3f346-71f1-472a-b894-b17335b45c01",
+        "7cb670e8-8bca-4896-9ddd-e747b7f3f687",
+        "7c9a25e4-9f03-4a54-87cb-5f8105fd62bb",
+        "021c68c6-d44b-47dc-828f-89f268f7aa66",
+        "4af9bc30-17e3-4d54-95f1-56805a519c61",
+        "0f566124-9070-4a10-a109-f177fd5842d9",
+        "b5f4cb2f-08e2-4616-860a-e68dcd8687bd",
+        "f027c23c-5a52-4a22-b96a-3bbbe7c09c73",
+        "2ba6a1da-cc0c-4364-87ac-1ee8783c96bc",
+        "ecffa4a4-fa03-422b-a41f-a524558c022b",
+        "29beda2d-4970-46ed-906f-5f948da69d89",
+        "6f715306-2136-48a9-844f-32f0c973bf06",
+        "117193d0-d976-4cb5-b704-f3d867fe679f",
+        "2aa3b8e6-0106-474f-847d-12699fbcd9c8",
+        "96b21f4d-812a-4c88-beeb-d8e7880feab4",
+        "c3521117-d315-49a8-b815-458b3d90dfeb"
+      ],
+      "settings": {
+        "border": "#d7e4ed",
+        "caption-bg": "#ffffff",
+        "des_color": "#999999",
+        "button-text": "Read more",
+        "bg_color": "#fcf4eb",
+        "bg_attachment": false,
+        "max_width": 1390,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 10,
+        "padding_bottom": 10,
+        "title": "",
+        "title_cl": "#3d4246",
+        "subtitle": "",
+        "subtitle_cl": "#3d4246"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,69 @@
+<style>
+  .qv-content{text-align:left}.rtl .qv-content{text-align:right}#jsQuickview .option-selection{margin-bottom:10px}#jsQuickview select.option{width: calc(100% - 120px);}#jsQuickview span.option{min-width:120px;display:inline-block;text-transform:capitalize}#jsQuickview .slick-dots{bottom:20px}#jsQuickview .slick-dots li button:before{font-size:35px;color:#000;transition:all ease .3s}#jsQuickview .qv-product-price{display:inline-block;margin:0}#jsQuickview .qv-product-price .money{color:{{settings.color_primary}}}#jsQuickview .qv-add-button{display: inline-block; float: left; margin-left: 20px; width: calc(100% - 120px);}#jsQuickview .qv-product-description{max-height:180px;overflow:hidden;position:relative;}#jsQuickview .qv-product-description:after{position:absolute;content:"";width:100%;left:0;bottom:0;background:#fff}.rtl #jsQuickview .qv-product-description:after{right:0;left:auto}.qv-add-to-cart .quantity{height:40px;display:inline-block;width:100px;float:left}.qv-add-to-cart .quantity span{display:none}.qv-quantity{height:50px;width:100%;text-align:center;font-weight:bold;border-radius: var(--g-input-radius);}.qv-product-options{margin-bottom:20px;}
+  #qv-product-images .slick-prev{left: 20px;}#qv-product-images .slick-next{right: 20px;}
+  #qv-product-images .slick-prev,#qv-product-images .slick-next{opacity: 0;transition: all 0.3s ease;}
+  #qv-product-images:hover .slick-next{opacity: 1;}
+  #qv-product-images:hover .slick-prev{opacity: 1;}
+  @media (min-width:992px){
+  #qv-product-images{margin:0;min-height: 660px;opacity: 0;transition: opacity 0.1s ease-in;}
+  #qv-product-images .slick-slide img {height: 660px;object-fit: contain;}
+}
+
+</style>
+<!-- quickview.liquid -->
+<div class="modal fade bd-example-modal-lg" id="jsQuickview" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header p-0">
+        <button type="button" class="close" data-dismiss="modal">{%- include 'icon-close' -%}</button>
+      </div>
+      <div class="modal-body p-4">
+        <div class="row m-0">
+          <div id="loading_qv"></div>
+          <div class="col-lg-7 p-0">
+            <div id="qv-product-images" class="qv-product-images"></div>
+          </div>
+          <div class="qv-content col-lg-5 d-flex flex-column align-items-center align-self-center">
+            <div class="holder h-100 py-4 pl-md-4 pr-md-1">
+              <h3 class="qv-product-title py-3"></h3>
+              <h5 class="qv-product-price font-family-2"></h5>
+              <s class="qv-product-compare-price ml-2"></s>
+              {%-if settings.qv_des -%}
+              <div class="qv-product-description my-3"></div>
+              {%- endif -%}
+              <h4 class="qv-product-type hide"></h4>
+              <div class="qv-add-to-cart clearfix pt-3 pb-4">
+                <div class="qv-product-options pb-2"></div>
+                <div class="d-flex">
+                  <div class="quantity">
+                    <span>{{'products.product.quantity' | t }}</span>
+                    <input type="number" class="qv-quantity" value="1" min="1">
+                  </div>
+                  <button type="submit" class="btn btn-theme gradient-theme qv-add-button">{{'general.quickview.addtocart' | t }}</button>
+                </div>
+              </div>
+              {%- include 'free-shipping' -%}
+              <div class="pt-4">
+                {%-if settings.qv_sku -%}
+                <div class="pt-1 text-uppercase qv-sku"><small class="text-body d-inline-block" style="min-width: 80px;">{{'general.quickview.sku' | t }}: </small><small class="qv-view-sku text-uppercase"></small></div>
+                {%- endif -%}
+                {%-if settings.qv_type -%}
+                <div class="pt-1 text-uppercase"><small class="text-body d-inline-block" style="min-width: 80px;">{{'general.quickview.type' | t }}: </small><small class="qv-view-type text-uppercase"></small></div>
+                {%- endif -%}
+                {%-if settings.qv_vendor -%}
+                <div class="pt-1 text-uppercase"><small class="text-body d-inline-block" style="min-width: 80px;">{{'general.quickview.vendor' | t }}: </small><small class="qv-view-vendor text-uppercase"></small></div>
+                {%- endif -%} 
+              </div>
+            
+              <div class="pt-4">
+                <a class="qv-view-product small" href="">
+                  {{'general.quickview.view_full' | t }}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+{%- if settings.show_multiple_currencies -%}
+<div class="block_currencies">
+  <div data-toggle="dropdown" class="dropdown-toggle" title="Currencies">
+    <span class="pre-currencies"><img src="{%- include 'processCurrencyImage' with shop.currency -%}" alt="{{shop.currency}}">{{shop.currency}}</span>
+  </div>
+  <ul id="currencies" class="list-unstyled dropdown-menu shadow">
+    <li>
+      <a data-currency="{{shop.currency}}" class="selected" href="javascript:void(0)" rel="nofollow">
+        <img src="{%- include 'processCurrencyImage' with shop.currency -%}" alt="{{shop.currency}}">
+        {{shop.currency}}
+      </a>
+    </li>
+    {%- assign currencies = settings.list_currencies | split:"," -%}
+    {%- assign count = currencies.size | minus: 1 -%}
+    {%- for i in (0..count) -%}
+    {%- assign currency = currencies[i] -%}
+    <li>
+      <a data-currency="{{currency}}" href="javascript:void(0)" rel="nofollow">
+        <img src="{%- include 'processCurrencyImage' with currency -%}" alt="{{currency}}" />
+        {{currency}}
+      </a>
+    </li>
+    {%- endfor -%}
+  </ul>
+</div>
+{%- endif -%}

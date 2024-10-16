@@ -1,0 +1,12 @@
+{%- case settings.collectiongrid -%}
+  {%- when 'collection-1' -%} {%- include 'collection-grid-item' -%}
+  {%- when 'collection-2' -%} {%- include 'collection-grid-item-2' -%}
+  {%- when 'collection-3' -%} {%- include 'collection-grid-item-3' -%}
+  {%- when 'collection-4' -%} {%- include 'collection-grid-item-4' -%}
+  {%- when 'collection-5' -%} {%- include 'collection-grid-item-5' -%}
+  {%- when 'collection-6' -%} {%- include 'collection-grid-item-6' -%}
+  {%- when 'collection-7' -%} {%- include 'collection-grid-item-7' -%}
+  {%- when 'collection-8' -%} {%- include 'collection-grid-item-8' -%}
+{%- else -%}
+  Missing snippet
+{%- endcase -%}

@@ -1,0 +1,98 @@
+<!-- product-grid-6.liquid -->
+<div class="product-card js-product-card product-card--style1 product-card--style6" data-price="{{ product.price }}">
+    <div class="product-card__image-wr overflow-hidden">
+      {%- assign image = product.featured_image -%}
+      <a class="product-card__image js image-content__image-wrapper {{settings.size_image_grid}}" href="{{ product.url | within: collection }}" style="max-width: 680px;padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100}}%;" data-image-id="{{ image.id }}">
+        {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        <img class="lazyload transition first-image"
+             data-src="{{ img_url }}"
+             src="{%- include 'srcBlank' -%}"
+             data-sizes="auto"
+             alt="{{ image.alt | escape }}">
+             {% include 'second-image'%}
+      </a>
+  
+      <div class="product-card__overlay d-flex justify-content-center flex-row">
+        {%- if settings.enable_wishlsit -%}
+      <span data-tooltipalltimes="true" class="btn btn-theme gradient-theme-vertical product-card__overlay-btn js-btn-wishlist" title="{{ 'products.product.wishlist_text' | t }}" data-handle="{{product.handle}}">
+        {%- include 'icon-heart' -%}
+      </span>
+      {%- endif -%}
+      
+      {%- if settings.qv_box -%}
+      <span  class="btn btn-theme gradient-theme-vertical product-card__overlay-btn js-btn-quickview" title="{{ 'products.product.quickview_text' | t }}" data-toggle="modal" data-target="#jsQuickview" data-handle="{{product.handle}}" data-pavailable="{% if product.available %}true{% else %}false{% endif %}">
+        {%- include 'icon-quickview' -%}
+        <span>{{ 'products.product.quickview_text' | t }}</span>
+        {% if product.metafields.info.shortdesc != blank %}
+          <span class=" txt-short hide" >
+            {{product.metafields.info.shortdesc | strip_html | truncatewords: 12 }}
+          </span>
+        {%- endif -%}
+      </span>
+      {%- endif -%}
+      {%- if settings.enable_compare -%}
+      <span  class="btn btn-theme gradient-theme-vertical product-card__overlay-btn js-btn-compare" title="{{ 'products.product.compare_text' | t }}" data-handle="{{product.handle}}">
+        {%- include 'icon-exchange' -%}
+        {%- include 'icon-close' -%}
+        <span>{{ 'products.product.compare_text' | t }}</span>
+      </span>
+      {%- endif -%}
+     
+      </div>
+      
+      
+  
+      {%- if settings.enable_countdown_card -%}{%- include 'product-countdown' -%}{%- endif -%}
+  
+      {%- if settings.enablevideo -%}
+      {% for media in product.media %}
+        {% render 'productVideo', media: media %}
+      {% endfor %}
+    {%- endif -%}
+  
+    {% include 'product-label' %}
+    </div>
+    <div class="product-card__info">
+      <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+      {%- if settings.enable_type -%}
+      <div class="small mb-2" style="opacity: 0.8;">{{ product.type }}</div>
+      {%- endif -%}
+      <a href="{{ product.url | within: collection }}" title="{{product.title}}" class="product-card__name {% if settings.t_product %} text-uppercase {% endif %}">{{ product.title }}</a>
+  
+      {%- if product.available -%}
+      <div class="product-card__price font-family-1">
+        {%- if product.compare_at_price > product.price -%}
+        {%- if product.price_varies -%}
+        {%- assign sale_price = product.price | money -%}
+        {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+        {%- else -%}
+        <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+        {{ product.price | money }}
+        <s class="product-card__regular-price">{{ product.compare_at_price | money }}</s>
+        <span class="visually-hidden">{{ 'products.product.sale_price' | t }}</span>
+        
+        {%- endif -%}
+        {%- else -%}
+        {%- if product.price_varies -%}
+        {%- assign price = product.price | money -%}
+        {{ 'products.product.from_text_html' | t: price: price }}
+        {%- else -%}
+        <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+        {{ product.price | money }}
+        {%- endif -%}
+  
+        {%- endif -%}
+      </div>
+      {%- else -%}
+      <div class="product-card__availability">
+        {{ 'products.product.sold_out' | t }}
+      </div>
+      {%- endif -%}
+      {%- include 'swatch-grid-1' -%}
+      <span  class="js-grid-cart text-uppercase d-inline-flex align-items-center justify-content-center {% unless product.available %} hide {% endunless %}" title="{{ 'products.product.add_to_cart' | t }}" data-id="{{product.selected_or_first_available_variant.id}}">
+        <div class="product-card__loading spinner-{{settings.loading}}" role="status"></div>
+        <span>{{ 'products.product.add_to_cart' | t }}</span>
+        <svg class="ml-1" height="1792" viewBox="0 0 1792 1792" width="1792" xmlns="http://www.w3.org/2000/svg"><path d="M979 960q0 13-10 23l-466 466q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l393-393-393-393q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l466 466q10 10 10 23zm384 0q0 13-10 23l-466 466q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l393-393-393-393q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l466 466q10 10 10 23z"/></svg>
+      </span>
+    </div>
+  </div>

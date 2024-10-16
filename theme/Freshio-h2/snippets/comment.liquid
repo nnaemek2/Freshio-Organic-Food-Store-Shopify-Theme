@@ -1,0 +1,13 @@
+<!-- /snippets/comment.liquid -->
+<div class="media">
+  <div class="comment__user mr-4 rounded-circle justify-content-center align-items-center d-flex text-body"><i class="icon-user"></i></div>
+  <div class="media-body">
+    <p>
+      <strong>{{ comment.author }}</strong> - 
+      <small>{{ comment.created_at | time_tag: format: 'month_day_year' }}</small>
+    </p>
+    <div class="comment__content rte">
+      {{ comment.content }}
+    </div>
+  </div>
+</div>

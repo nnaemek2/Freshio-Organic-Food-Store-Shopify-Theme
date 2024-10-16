@@ -1,0 +1,70 @@
+{%- capture iconWishlist -%}{%- include 'icon-heart' -%}{%- endcapture -%}
+{%- capture iconWishlistAdded -%}{%- include 'icon-heart-solid' -%}{%- endcapture -%}
+{%- capture iconCompare -%}{%- include 'icon-exchange' -%}{%- endcapture -%}
+{%- capture iconRemove -%}{%- include 'icon-close' -%}{%- endcapture -%}
+{%- capture iconCart -%}{%- include 'icon-cart' -%}{%- endcapture -%}
+<script>
+  // Global variable use in theme.js
+  window.theme = window.theme || {};
+  theme.moneyFormat = {{ shop.money_format | json }};
+  theme.rtl = {{ settings.enable_rtl }};
+  theme.timePopupNewsletter = {{ settings.pnewletter_time }};
+  theme.enableCurrencies = {{settings.show_multiple_currencies}};
+  theme.loadingClass = 'spinner-{{settings.loading}}';
+    theme.strings = {
+    stockAvailable: {{ 'products.product.stock_available' | t: count: '1' | json }},
+    freeShipping: {{ settings.free_shipping_text | json}},
+    addToCart: {{ 'products.product.add_to_cart' | t | json }},
+    addToCartSuccess: {{ 'products.product.product_added_to_cart_html' | t | json }},
+    soldOut: {{ 'products.product.sold_out' | t | json }},
+    unavailable: {{ 'products.product.unavailable' | t | json }},
+    noStockAvailable: {{ 'products.product.stock_unavailable' | t | json }},
+    willNotShipUntil: {{ 'products.product.will_not_ship_until' | t: date: '[date]' | json }},
+    willBeInStockAfter: {{ 'products.product.will_be_in_stock_after' | t: date: '[date]' | json }},
+    totalCartDiscount: {{ 'cart.general.savings_html' | t: price: '[savings]' | json }},
+    addressError: {{ 'sections.map.address_error' | t | json }},
+    addressNoResults: {{ 'sections.map.address_no_results' | t | json }},
+    addressQueryLimit: {{ 'sections.map.address_query_limit_html' | t | json }},
+    authError: {{ 'sections.map.auth_error_html' | t | json }},
+    slideNumber: {{ 'homepage.hero.slide_number' | t: slide_number: '[slide_number]' | json }},
+    ajaxSearchViewAll: {{ 'general.search.view_all' | t | json }},
+    ajaxSearchNoResult: {{ 'general.search.no_result' | t | json }},
+    wishlistNoResult: {{ 'products.product.wishlist_no_result' | t | json }},
+    wishlistIcon: {{ iconWishlist | json }},
+    wishlistIconAdded: {{ iconWishlistAdded | json }},
+    wishlistText: {{ 'products.product.add_to_wishlist' | t | json }},
+    wishlistTextAdded: {{ 'products.product.view_wishlist' | t | json  }},
+    wishlistRemove: {{ iconRemove | json }},
+    compareNoResult: {{ 'products.product.compare_no_result' | t | json }},
+    compareIcon: {{ iconCompare | json }},
+    compareText: {{ 'products.product.compare_text' | t | json }},
+    compareRemove: {{ iconRemove | json }},
+    compareNotifyAdded: {{ 'products.product.compare_notice_added' | t | json }},
+    compareNotifyRemoved: {{ 'products.product.compare_notice_removed' | t | json }},
+    compareNotifyMaximum: {{ 'products.product.compare_notice_maximum' | t | json }},
+    countdownEndText: {{ 'products.product.countdown_end_time' | t | json }},
+    none: {{ 'general.accessibility.none' | t | json }},
+    available: {{ 'products.product.available' | t | json }},
+    unavailable: {{ 'products.product.unavailable' | t | json }},
+    cartQuantity: {{ 'cart.label.quantity' | t | json }},
+    cartEmpty: {{ 'cart.general.empty' | t | json }},
+    cartEmptyButton: {{ 'cart.general.empty_button' | t | json }},
+    cartMore: {{ 'cart.general.and_more' | t | json }},
+    cartView: {{ 'cart.general.view' | t | json }},
+    cartIcon: {{ iconCart | json }},
+    couponTitle: {{ settings.coupon_title | json }},
+    couponAlert: {{ settings.coupon_copied | json }},
+    cartCollection:{{ routes.all_products_collection_url | json  }}
+  };
+</script>
+<script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script>
+{%- if template.directory == 'customers' -%}
+<script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+{%- endif -%}
+<script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'api.jquery.js' | shopify_asset_url }}" defer="defer"></script>
+{%- if template != 'index' -%}
+<script src="{{ 'jquery-ui.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'jquery.ui.touch-punch.min.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+<script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>

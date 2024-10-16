@@ -1,0 +1,96 @@
+{%- if settings.e_swatch -%}
+{%- assign formId = section.id | append:'-' | append:product.id -%}
+<div class="js-customform pt-2" data-id="{{formId}}">
+  {%- assign current_variant = product.selected_or_first_available_variant -%}
+  {%- capture "form_class" %}customform-{{ formId }} js-form--notice{%- endcapture -%}
+  {%- form 'product', product, class:form_class -%}
+  {%- unless product.has_only_default_variant -%}
+  {%- for option in product.options_with_values -%}
+  <div class="selector-wrapper js product-form__item">
+    <label {% if option.name == 'default' %}class="label--hidden" {% endif %}>{{ option.name }}</label>
+    {%- assign isColor = false -%}
+    {%- assign optionName = option.name | handleize -%}
+    {%- if optionName contains 'colo' -%}
+    {%- assign isColor = true -%}
+    {%- endif -%}
+    <fieldset class="single-option-radio"
+              name="{{ option.name | handleize }}"
+              id="ProductSelect-option-{{formId}}-{{ forloop.index0 }}">
+      {%- assign option_index = forloop.index -%}
+      {%- for value in option.values -%}
+        {%- for variant in product.variants  %}
+              {%- assign vOption = 'option' | append: option_index -%}
+            {%- if value ==  variant[vOption] -%}
+            {%- assign currenVariant = variant -%}
+            {%- break -%}
+            {%- endif -%}
+        {%- endfor -%}
+      {% comment %}{%- assign currenVariant = product.variants[forloop.index0] -%} {% endcomment %}
+      {%- assign hasImage = false -%}
+      {%- if isColor and currenVariant.image -%}
+      {%- assign hasImage = true -%}
+      {%- endif -%}
+      <input type="radio"
+             {% if option.selected_value == value %} checked="checked"{% endif %}
+             value="{{ value | escape }}"
+             data-index="option{{ option_index }}"
+             name="{{ option.name | handleize }}"
+             class="single-option-selector-{{ formId }} single-option-selector__radio"
+             id="ProductSelect-option-{{formId}}-{{ option.name | handleize }}-{{ value | escape }}">
+      <label {% if hasImage %}data-tooltip="true" title="{{ value | escape }}" style="background-image:url({{currenVariant.image.src | img_url:'100x'}})"{% endif %}
+             for="ProductSelect-option-{{formId}}-{{ option.name | handleize }}-{{ value | escape }}">
+        {%- unless hasImage %}{{ value | escape }}{%- endunless -%}
+      </label>
+      {%- endfor -%}
+    </fieldset>
+  </div>
+  {%- endfor -%}
+  {%- endunless -%}
+  <select name="id" id="ProductSelect-{{ formId }}" class="no-js">
+    {%- for variant in product.variants -%}
+    <option {% if variant == current_variant %} selected="selected" {% endif %} value="{{ variant.id }}" {% unless variant.available %}disabled="disabled"{% endunless %}>
+      {{ variant.title }}
+    </option>
+    {%- endfor -%}
+  </select>
+  <input type="number" name="quantity" value="1" min="1" class="no-js">
+
+
+  <div class="product-form__item product-form__item--submit ">
+    <button class="mr-auto js-customform-addtocart-{{ formId }} border-radius-0 g-btn btn btn-underline gradient-theme {% unless product.available %} btn--sold-out{% endunless %}" type="submit" name="add" {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+      <span>
+        {%- unless product.available -%}{{ 'products.product.sold_out' | t }}{%- else -%}{{ 'products.product.add_to_cart' | t }}{%- endunless -%}
+      </span>
+    </button>
+    <div class="product-card__overlay-2 d-flex justify-content-end-lg flex-row align-items-center">
+      {%- if settings.qv_box -%}
+      <span data-tooltip="true" data-placement="top" class="btn gradient-theme-vertical product-card__overlay-btn js-btn-quickview" title="{{ 'products.product.quickview_text' | t }}" data-toggle="modal" data-target="#jsQuickview" data-handle="{{product.handle}}" data-pavailable="{% if product.available %}true{% else %}false{% endif %}">
+        {%- include 'icon-quickview' -%}
+        <span>{{ 'products.product.quickview_text' | t }}</span>
+        {% if product.metafields.info.shortdesc != blank %}
+          <span class=" txt-short hide" >
+            {{product.metafields.info.shortdesc | strip_html | truncatewords: 12 }}
+          </span>
+        {%- endif -%}
+      </span>
+      {%- endif -%}
+      {%- if settings.enable_compare -%}
+      <span data-tooltip="true" data-placement="top" class="btn gradient-theme-vertical product-card__overlay-btn js-btn-compare" title="{{ 'products.product.compare_text' | t }}" data-handle="{{product.handle}}">
+        {%- include 'icon-exchange' -%}
+        {%- include 'icon-close' -%}
+        <span>{{ 'products.product.compare_text' | t }}</span>
+      </span>
+      {%- endif -%}
+      {%- if settings.enable_wishlsit -%}
+      <span data-toggle="tooltip" data-placement="top" data-tooltipalltimes="true" class="btn gradient-theme-vertical product-card__overlay-btn js-btn-wishlist" title="{{ 'products.product.wishlist_text' | t }}" data-handle="{{product.handle}}">
+        {%- include 'icon-heart' -%}
+      </span>
+      {%- endif -%}
+    </div>
+  </div>
+  {%- endform -%}
+  <script type="application/json" class="customJson-{{ formId }}">
+    		{{ product | json }}
+  </script>
+</div>
+{%- endif -%}

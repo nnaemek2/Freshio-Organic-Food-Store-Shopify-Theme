@@ -1,0 +1,8 @@
+{%- if section.settings.fake_view_enable -%}
+<!-- fake-viewer.liquid -->
+<div class="fake-view py-4">
+  <span> {{section.settings.fake_view_text_prefix}}</span>
+  <span class="js-fake-view bg-theme gradient-theme-vertical p-1 px-2 text-white d-inline-block" data-min="{{section.settings.fake_view_min}}" data-max="{{section.settings.fake_view_max}}" data-duration="{{section.settings.fake_view_duration | times:1000}}"></span>
+  <span> {{section.settings.fake_view_text_suffix}}</span>
+</div>
+{%- endif -%}

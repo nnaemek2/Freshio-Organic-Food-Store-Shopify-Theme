@@ -1,0 +1,143 @@
+<!-- blog-template-3.liquid -->
+<style>
+{%- if settings.bloggrid  == 'blog-2'%}
+.main-content{
+  background-color: {{settings.bg_breadcrumb}};
+}
+{%- endif -%}
+  .sidebar-blog-wrap.is_stuck {
+	padding-top: 20px
+}
+
+.grid-item-3 {
+	width: 33.33333333333%
+}
+
+.grid-item-4 {
+	width: 25%
+}
+
+.grid-item-5 {
+	width: 20%
+}
+
+@media (max-width:1199px) {
+	.grid-item {
+		width: 33.33333333333%
+	}
+}
+
+@media (max-width:991px) {
+	.grid-item {
+		width: 50%
+	}
+}
+
+@media (max-width:767px) {
+	.grid-item {
+		width: 100%
+	}
+}
+
+.js-filter-isotope {
+	display: inline-block;
+	padding: 5px 10px;
+	margin: 5px;
+	background-color: #e8e8e8;
+	border-radius: 3px;
+	cursor: pointer
+}
+
+#js-loading {
+	display: block
+}
+
+.grid-item {
+	padding: 0 10px
+}.js-filter-isotope.active {background-color: {{settings.color_primary}};color: #fff;font-weight: 700;}
+</style>
+<div class="container enable-isotope">
+  <div class="row {% if section.settings.sidebar_position == 'left' %}flex-row-reverse{% endif %}">
+    <div class="{% if section.settings.sidebar_enable %}col-md-8 col-lg-9{% else %}col-12{% endif %}">
+      <div class="blog-tags">
+        <ul class=" list-unstyled pb-5 pt-3 d-flex-lg justify-content-center d-flex">
+          <li class="js-filter-isotope" data-filter="*">{{ 'collections.general.view_all' | t }}</li>
+          {% for tag in blog.tags %}
+          <li class="js-filter-isotope" data-filter="{{tag | camelcase }}">{{ tag | capitalize }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="js-grid">
+        {%- paginate blog.articles by 24 -%}
+        {%- for article in blog.articles -%}
+        <div class="{{section.settings.item_width}} grid-item {% for tag in article.tags %}{{ tag | camelcase }} {% endfor %}">
+          {%- include 'blog-card' -%}
+        </div>
+        {%- endfor -%}
+      </div>
+      {%- if paginate.pages > 1 -%}
+      <div class="pagination">
+        {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
+      </div>
+      {%- endif -%}
+      {%- endpaginate -%}
+    </div>
+    {%- if section.settings.sidebar_enable -%}
+    {%- include 'blogSidebar' -%}
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Blog template 3",
+    "settings": [
+      {
+        "type": "select",
+        "id": "item_width",
+        "label": "Items width",
+        "default": "grid-item-3",
+        "options": [
+          {
+            "value": "grid-item-3",
+            "label": "33.3333%"
+          },
+          {
+            "value": "grid-item-4",
+            "label": "25%"
+          },
+          {
+            "value": "grid-item-5",
+            "label": "20%"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Sidebar"
+      },
+      {
+        "type": "checkbox",
+        "id": "sidebar_enable",
+        "label": "Enable",
+		"default": true
+      },
+      {
+        "type": "select",
+        "id": "sidebar_position",
+        "label": "Position",
+        "default": "right",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      }
+]
+  }
+{% endschema %}

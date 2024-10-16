@@ -1,0 +1,27 @@
+
+<div class="categories_block {% if section.settings.enable_image_cate %} has-bg {% endif %}">
+  {%- if settings.categories_block_title != blank -%}
+  <h6 class="mt-5 mb-4 font-weight-bold text-uppercase">
+    {{ settings.categories_block_title }}
+  </h6>
+  {%- endif -%}
+  <div class="block_content mb-4">
+    <ul  class="list-unstyled show ul_list_categories">
+      {%- if settings.categories_block_items == blank -%}
+        {%- for category in collections limit:settings.categories_block_number -%}
+        <li class="lazyload"  {% if section.settings.enable_image_cate %} data-bgset="{%- include 'bgset', image: category.image.src -%}"  data-sizes="auto"
+        data-parent-fit="cover" {% endif %}>
+            <a href="{{ category.url }}" title="{{ category.title }}" class="justify-content-between d-flex align-items-center" >
+            {{ category.title }}
+            {%- if settings.categories_block_productcount -%}
+                {%- if category.all_products_count > 0 -%}
+                <span class="apolloQty badge badge-light">{{ category.all_products_count }}</span>
+                {%- endif -%}
+            {%- endif -%}
+            </a>
+        </li>
+        {%- endfor -%}
+      {%- endif-%}
+    </ul>
+  </div>
+</div>

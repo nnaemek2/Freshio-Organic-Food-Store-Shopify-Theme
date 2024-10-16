@@ -1,0 +1,771 @@
+<style>
+
+    .slideshow-wrapper {
+      position: relative;
+    }
+    
+    .slideshow {
+      position: unset;
+      overflow: hidden;
+      margin-bottom: 0;
+      height: 100vh;
+      -webkit-transition: height .6s cubic-bezier(.44,.13,.48,.87);
+      -o-transition: height .6s cubic-bezier(.44,.13,.48,.87);
+      transition: height .6s cubic-bezier(.44,.13,.48,.87);
+    }
+    
+    @media only screen and (min-width:750px) {
+      .slideshow {
+        position: relative;
+      }
+    }
+    
+    .slideshow .slick-list,.slideshow .slick-track,.slideshow .slideshow__slide {
+      height: 100%;
+    }
+    
+    .slideshow .slick-dots {
+      bottom: 30px;
+      z-index: 1;
+    }
+    @media only screen and (max-width:749px) {
+      .slideshow .slick-dots {
+        bottom: 10px;
+      }
+    }
+    
+    .slideshow--small {
+      height: 175px;
+    }
+    
+    @media only screen and (min-width:750px) {
+      .slideshow--small {
+        height: 50vh;
+      }
+    }
+    
+    .slideshow--medium {
+      height: 270px;
+    }
+    
+    @media only screen and (min-width:750px) {
+      .slideshow--medium {
+        height:70vh;
+      }
+    }
+    
+    .slideshow--large {
+      height: 375px;
+    }
+    
+    @media only screen and (min-width:750px) {
+      .slideshow--large {
+        height: 80vh;
+      }
+    }
+    
+    .slideshow__slide {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .slideshow__link {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+    
+    .slideshow__link:active,.slideshow__link:focus {
+      opacity: 1;
+    }
+    
+    @media only screen and (min-width:750px) {
+      .slideshow__overlay::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: {{section.settings.bg_overlay}};
+        opacity: .4;
+        z-index: 2;
+      }
+      .gradient_overlay:before{
+        background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+        opacity: 1;
+      }
+    }
+    
+    .slideshow__image {
+      -webkit-transition: opacity .8s cubic-bezier(.44,.13,.48,.87);
+      -o-transition: opacity .8s cubic-bezier(.44,.13,.48,.87);
+      transition: opacity .8s cubic-bezier(.44,.13,.48,.87);
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      height: 100%;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      background-color: transparent;
+      z-index: 1;
+    }
+    
+    .no-js .slideshow__image,.slick-initialized .slideshow__image {
+      opacity: 1;
+    }
+    
+    .slideshow__text-wrap {
+      height: 100%;
+      position: relative;
+    }
+    
+    .slideshow__link .slideshow__text-wrap {
+      cursor: inherit;
+    }
+    
+    .slideshow__text-wrap--mobile {
+      display: none;
+    }
+    
+    @media only screen and (min-width:750px) {
+      .slideshow__text-content {
+        -webkit-transition: .6s cubic-bezier(.44,.13,.48,.87);
+        -o-transition: .6s cubic-bezier(.44,.13,.48,.87);
+        transition: .6s cubic-bezier(.44,.13,.48,.87);
+        -webkit-transition-delay: .3s;
+        -o-transition-delay: .3s;
+        transition-delay: .3s;
+      }
+    }
+    
+    .slideshow__text-wrap--desktop .slideshow__text-content {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      opacity: 1;
+      z-index: 2;
+      padding: 0 50px;
+       -ms-transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+    .slideshow__text-wrap--desktop .slideshow__text-content li,.slideshow__text-wrap--desktop .slideshow__text-content .slideshow__btn-wrapper{
+      overflow: hidden;
+    }
+    .slideshow__text-wrap--desktop .slideshow__text-content li .slideshow__toptitle,.slideshow__text-wrap--desktop .slideshow__text-content li .slideshow__title,.slideshow__text-wrap--desktop .slideshow__text-content li .slideshow__subtitle
+    ,.slideshow__text-wrap--desktop .slideshow__text-content .slideshow__btn{
+      transform: translateY(100%);
+    }
+    
+        @media only screen and (min-width:750px) {
+          .slideshow__text-content.slideshow__text-content--vertical-top {
+            top: 120px;
+          }
+        
+          .slideshow__text-content.slideshow__text-content--vertical-bottom {
+            top: auto;
+            bottom: 40px;
+          }
+        }
+        
+    .no-js .slideshow__text-content,.slick-initialized .slick-active .slideshow__text-content {}
+    .no-js .slideshow__text-content,.slick-initialized .slick-active .slideshow__text-content li .slideshow__toptitle,.slick-initialized .slick-active .slideshow__text-content li .slideshow__title,
+    .slick-initialized .slick-active .slideshow__text-content li .slideshow__subtitle,.slick-initialized .slick-active .slideshow__text-content .slideshow__btn{
+      transform: translateY(0);
+      transition: transform 0.7s cubic-bezier(.29,.63,.44,1);
+      transition-delay: .1s;
+    }
+    .slick-initialized .slick-active .slideshow__text-content li .slideshow__title{
+      transition-delay: .3s;
+    }
+    .slick-initialized .slick-active .slideshow__text-content li .slideshow__subtitle{
+      transition-delay: .4s;
+    }
+    .slick-initialized .slick-active .slideshow__text-content .slideshow__btn{
+      transition-delay: .5s;
+    }
+    .no-js .slideshow__text-content.slideshow__text-content--vertical-center,.slick-initialized .slick-active .slideshow__text-content.slideshow__text-content--vertical-center {
+      /* -ms-transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%); */
+    }
+    
+    .slideshow__text-content::after {
+      content: '';
+      content: '';
+      display: block;
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      margin-left: -20px;
+      margin-top: -20px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      border-top-color: transparent;
+      -webkit-animation: spin .65s infinite linear;
+      animation: spin .65s infinite linear;
+      opacity: 1;
+      -webkit-transition: all 1s cubic-bezier(.29,.63,.44,1);
+      -o-transition: all 1s cubic-bezier(.29,.63,.44,1);
+      transition: all 1s cubic-bezier(.29,.63,.44,1);
+      bottom: -55px;
+      left: 50%;
+    }
+    
+    @media only screen and (max-width:749px) {
+      .slideshow__text-content::after {
+        content: none;
+      }
+    }
+    
+    .no-js .slideshow__text-content::after,.slick-initialized .slideshow__text-content::after {
+      opacity: 0;
+      visibility: hidden;
+      content: none;
+    }
+    
+    @media (min-width:750px) {
+      .slideshow__text-content--mobile {
+        display: none!important;
+      }
+    }
+    
+    .slideshow__text-content--mobile .container{
+      padding: 30px;
+    }
+    
+    .slideshow__arrows--mobile~.slideshow__text-content--mobile {
+      padding-top: 1.7rem;
+    }
+    
+    @media only screen and (min-width:750px) {
+      .slideshow__arrows--mobile~.slideshow__text-content--mobile {
+        padding-top: 0;
+      }
+    }
+    
+    @media only screen and (min-width:750px) {
+      .slideshow__text-content--mobile {
+        padding-top: 0;
+      }
+    
+      .slideshow__text-content--mobile::after { 
+        display: none;
+      }
+    }
+    
+    
+    @media (min-width:992px) {
+      .slideshow__title {
+        font-size: 70px;
+      }
+      .mega-subtitle{
+        line-height: 1.6;
+      }
+    }
+    @media (min-width:1600px) {
+      .slideshow__title {
+        font-weight: var(--g-slide-font-weight);
+        font-size: var(--g-slide-font-size);
+        line-height: var(--g-slide-font-lineheight);
+        letter-spacing:var(--g-slide-font-spacing);
+      }
+    }
+    
+    @media only screen and (max-width:749px) {
+      .slideshow__subtitle,.slideshow__title,.slideshow__toptitle {
+        display: none;
+      }
+    }
+    
+    .slideshow__title--mobile {
+      margin-bottom: 0;
+      font-size: calc(var(--g-font-size) + 30px);
+      font-weight: 400;
+    }
+    
+    .slideshow__title--mobile~.slideshow__subtitle--mobile {
+      margin-top: 7px;
+      font-size: var(--g-font-size);
+    }
+    
+    .slideshow__subtitle--mobile,.slideshow__title--mobile {
+      display: none;
+      color: #3d4246;
+    }
+    
+    @media only screen and (max-width:749px) {
+      .slideshow__subtitle--mobile,.slideshow__title--mobile,.slideshow__toptitle--mobile {
+        display: block;
+      }
+    }
+    
+    .slideshow__btn-wrapper {
+      border: none;
+      background-color: transparent;
+    }
+    
+    @media only screen and (min-width:750px) {
+      .slideshow__btn-wrapper--push {
+        margin-top: 50px;
+      }
+    }
+    
+    @media only screen and (max-width:749px) {
+      .slideshow__btn {
+        display: none;
+      }
+    }
+    
+    .slideshow__btn--mobile {
+      display: none;
+      margin: 1.3rem auto 0;
+    }
+    
+    @media only screen and (max-width:749px) {
+      .slideshow__btn--mobile {
+        display: inline-block;
+      }
+    }
+    
+    .slideshow .slick-prev {
+      left: 25px;
+    }
+    
+    .slideshow .slick-next {
+      right: 25px;
+    }
+    
+    .slideshow .slick-arrow {
+      width: 50px;
+      height: 50px;
+      border-radius: 100%;
+      color: #fff;
+    }
+    
+    .slideshow .slick-arrow:before {
+      color: {{section.settings.color_arrow}};
+    }
+    .slideshow .slick-dots li button{
+      border-color:{{section.settings.color_dot_nav}};
+    }
+    .slideshow .slick-dots li::hover button{
+      background:{{section.settings.color_dot_active}};
+      border-color:{{section.settings.color_dot_active}};
+    }
+    .slideshow .slick-dots li.slick-active button{
+      border-color:{{section.settings.color_dot_active}};
+      background:{{section.settings.color_dot_active}};
+    }
+    
+    @media (max-width:991px) {
+      .slideshow .slick-arrow {
+        display: none!important;
+      }
+    }
+    
+    </style>
+    <!-- slideshow-1.liquid -->
+    {%- if section.settings.slideshow_height == 'adapt' -%}
+    {%- assign first_block = section.blocks[0] -%}
+    {%- if first_block.settings.image.aspect_ratio == blank -%}
+    {%- assign min_aspect_ratio = 2.0 -%}
+    {%- else -%}
+    {%- assign min_aspect_ratio = first_block.settings.image.aspect_ratio -%}
+    {%- endif -%}
+    {%- assign wrapper_height = 100 | divided_by: min_aspect_ratio -%}
+    {%- endif -%}
+    <div data-section-id="{{ section.id }}" data-section-type="slideshow-section">
+      {%- if section.blocks.size > 0 -%}
+      <div id="SlideshowWrapper-{{ section.id }}" class="slideshow-wrapper" role="region" aria-label="slideshow" aria-describedby="slideshow-info" tabindex="-1">
+        <div class="slideshow slideshow--{{ section.settings.slideshow_height }} {% if display_controls %} slideshow--display-controls{% endif %}"
+             id="Slideshow-{{ section.id }}"
+             data-autorotate="{{ section.settings.autorotate }}"
+             data-speed="{{ section.settings.autorotate_speed | times: 1000 }}"
+             data-adapt-height="{%- if section.settings.slideshow_height == 'adapt' -%}true{%- else -%}false{%- endif -%}"
+             data-slide-nav-a11y="{{ 'sections.slideshow.load_slide' | t: slide_number: '[slide_number]' }}"
+             {%- if section.settings.slideshow_height == 'adapt' -%}data-min-aspect-ratio="{{ min_aspect_ratio }}"
+             style="height: {{ wrapper_height }}vw"{%- endif -%}>
+    
+          {%- for block in section.blocks -%}
+          {%- assign text_alignments = block.settings.text_alignment | split: ' ' -%}
+          {%- assign text_horizontal_alignment = text_alignments.first -%}
+          {%- assign text_vertical_alignment = text_alignments.last | strip -%}
+          
+          <div class="slideshow__slide slideshow__slide--{{ block.id }}" {{ block.shopify_attributes }} style="background-color: {{block.settings.bgwrap}};">
+            {%- if block.settings.image == blank -%}
+            <div class="slideshow__image js">
+              <div class="placeholder-background">
+                {%- capture current -%}{%- cycle 1, 2 -%}{%- endcapture -%}
+                {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+              {%- if section.settings.show_overlay -%}<div class="slideshow__overlay {% if section.settings.gradient_overlay %} gradient_overlay {% endif %}"></div>{%- endif -%}
+            </div>
+            {%- else -%}
+            <div class="slideshow__image box ratio-container lazyload js{%- unless forloop.first -%} lazypreload{%- endunless -%}"
+                 data-bgset="{%- include 'bgset', image: block.settings.image -%}"
+                 data-sizes="auto"
+                 data-parent-fit="contain"
+                 style="background-position: {{ block.settings.alignment }};">
+              {%- if section.settings.show_overlay -%}<div class="slideshow__overlay {% if section.settings.gradient_overlay %} gradient_overlay {% endif %}"></div>{%- endif -%}
+            </div>
+            {%- endif -%}
+    
+            <div class="slideshow__text-wrap slideshow__text-wrap--desktop">
+              <div class="slideshow__text-content slideshow__text-content--vertical-{{ text_vertical_alignment }} ">
+                <div class="container-fluid" data-aos="fade" data-aos-anchor-placement="top-bottom"  data-aos-once="true">
+                  {%- unless block.settings.slide_title == blank and block.settings.subheading == blank -%}
+                  <div class="d-flex align-item-center text-left justify-content-between">
+                  <ul class="list-unstyled"  >
+                    {%- unless block.settings.slide_toptitle == blank -%}
+                    <li class="mb-2">
+                      <p class="slideshow__toptitle subtop" style="color:{{block.settings.slide_toptitle_color}}">
+                        {{ block.settings.slide_toptitle }}
+                      </p>
+                    </li>
+                    {%- endunless -%}
+                    {%- unless block.settings.slide_title == blank -%}
+                    <li>
+                      <h2 class="h1 mega-title slideshow__title font-family-1" style="color:{{block.settings.slide_title_color}}">
+                        {{ block.settings.slide_title }}
+                      </h2>
+                    </li>
+                    {%- endunless -%}
+                    {%- unless block.settings.subheading == blank -%}
+                    <li class="mt-lg-4 mb-lg-5">
+                      <span class="mega-subtitle slideshow__subtitle  d-lg-block fz-2" style="color:{{block.settings.subheading_color}}">
+                        {{ block.settings.subheading }}
+                      </span>
+                    </li>
+                    {%- endunless -%}
+                  </ul>
+                  {%- endunless -%}
+    
+                  {%- assign show_link_button = false -%}
+                  {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
+                  {%- assign show_link_button = true -%}
+                  {%- endif -%}
+                  {%- if show_link_button -%}
+                  <style>
+                    .slideshow__btn{{block.id}}{
+                      background-color:{{block.settings.bg_button}};
+                      color:{{block.settings.color_button}};
+                    }
+                    .slideshow__btn{{block.id}}:before{
+                      background-color:{{block.settings.bg_button_hover}};
+                    }
+                    .slideshow__btn{{block.id}}:hover{
+                      color:{{block.settings.color_button_hover}};
+                    }
+                    .slideshow__btn{{block.id}}:hover:before{
+                      background-color:{{block.settings.bg_button_hover}};
+                    }
+                  </style>
+                  <div class="slideshow__btn-wrapper d-flex align-items-center" >
+                    <a href="{{ block.settings.button_link }}" class="btn gradient-theme slideshow__btn slideshow__btn{{block.id}} {%if block.settings.stylebtn %} btn-theme {% else %}  btn-underline {% endif %}">
+                      <span>{{ block.settings.button_label | escape }}</span>
+                    </a>
+                  </div>
+                  {%- endif -%}
+                 </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {%- endfor -%}
+        </div>
+      </div>
+      <div class="slideshow__text-wrap slideshow__text-wrap--mobile bg-white" >
+        {%- for block in section.blocks -%}
+        {%- assign show_text = false -%}
+        {%- unless block.settings.slide_title == blank and block.settings.subheading == blank -%}
+        {%- assign show_text = true -%}
+        {%- endunless -%}
+        {%- assign show_link_button = false -%}
+        {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
+        {%- assign show_link_button = true -%}
+        {%- endif -%}
+        {%- if show_text or show_link_button -%}
+        <div class="slideshow__text-content slideshow__text-content--mobile slideshow__text-content--mobile-{{ forloop.index0 }}" {% unless forloop.first %}style="display:none"{% endunless %} >
+          <div class="container" style="background-color: {{block.settings.bgwrap}};">
+            {%- unless block.settings.slide_toptitle == blank -%}
+            <p class="slideshow__toptitle mb-2 slideshow__toptitle--mobile subtop" style="color:{{block.settings.slide_toptitle_color}}">
+              {{ block.settings.slide_toptitle }}
+            </p>
+            {%- endunless -%}
+            {%- unless block.settings.slide_title == blank -%}
+            <h2 class="h1 mega-title slideshow__title slideshow__title--mobile font-family-2 mb-4"  style="color:{{block.settings.slide_title_color}}">
+              {{ block.settings.slide_title }}
+            </h2>
+            {%- endunless -%}
+            {%- unless block.settings.subheading == blank -%}
+            <span class="mega-subtitle slideshow__subtitle slideshow__subtitle--mobile mb-3" style="color:{{block.settings.subheading_color}}">
+              {{ block.settings.subheading }} 
+            </span>
+            {%- endunless -%}
+    
+            {%- if show_link_button -%}
+            <style>
+              .slideshow__btn{{block.id}}{
+                background-color:{{block.settings.bg_button}};
+                color:{{block.settings.color_button}};
+              }
+              .slideshow__btn{{block.id}}:before{
+                background-color:{{block.settings.bg_button_hover}};
+              }
+              .slideshow__btn{{block.id}}:hover{
+                color:{{block.settings.color_button_hover}};
+              }
+              .slideshow__btn{{block.id}}:hover:before{
+                background-color:{{block.settings.bg_button_hover}};
+              }
+            </style>
+            <a href="{{ block.settings.button_link }}" class="btn btn-theme gradient-theme slideshow__btn slideshow__btn--mobile slideshow__btn{{block.id}}">
+              <span>{{ block.settings.button_label | escape }}</span>
+            </a> 
+            {%- endif -%}
+          </div>
+        </div>
+        {%- endif -%}
+        {%- endfor -%}
+      </div>
+      {%- endif -%}
+      {%- if section.blocks.size == 0 -%}
+      <div class="placeholder-noblocks">
+        {{ 'homepage.onboarding.no_content' | t }}
+      </div>
+      {%- endif -%}
+    </div>
+    {% schema %}
+    {
+      "name": "Slideshow 5",
+      "class": "index-section index-section--slideshow slideshow5",
+      "max_blocks": 8,
+      "settings": [
+        {
+          "type": "select",
+          "id": "slideshow_height",
+          "label": "Slide height",
+          "default": "adapt",
+          "info": "Learn more about [slideshow guidelines](https://help.shopify.com/en/manual/using-themes/themes-by-shopify/debut#slideshow-sections-specific)",
+          "options": [
+            {
+              "label": "Adapt to first image",
+              "value": "adapt"
+            },
+            {
+              "label": "Small",
+              "value": "small"
+            },
+            {
+              "label": "Medium",
+              "value": "medium"
+            },
+            {
+              "label": "Large",
+              "value": "large"
+            }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "id": "show_overlay",
+          "label": "Show overlay",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "gradient_overlay",
+          "label": "Gradient overlay",
+          "default": true
+        },
+        {
+          "type": "color",
+          "id": "bg_overlay",
+          "label": "Background Overlay",
+          "default": "#000"
+        },
+        {
+          "type": "checkbox",
+          "id": "autorotate",
+          "label": "Auto-rotate slides",
+          "default": false
+        },
+        {
+          "type": "range",
+          "id": "autorotate_speed",
+          "label": "Change slides every",
+          "max": 9,
+          "min": 3,
+          "step": 2,
+          "unit": " s",
+          "default": 5
+        },
+        {
+          "type": "color",
+          "id": "color_arrow",
+          "label": "Color Arrow",
+          "default": "#000"
+        },
+        {
+          "type": "color",
+          "id": "color_dot_nav",
+          "label": "Color Dot",
+          "default": "#000"
+        },
+        {
+          "type": "color",
+          "id": "color_dot_active",
+          "label": "Color Dot Active",
+          "default": "#C99A5C"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "image",
+          "name": "Image slide",
+          "settings": [
+            {
+              "type": "image_picker",
+              "id": "image",
+              "label": "Image"
+            },
+            {
+              "type": "select",
+              "id": "alignment",
+              "label": "Image position",
+              "default": "center center",
+              "options": [
+                {
+                  "label": "Top left",
+                  "value": "left top"
+                },
+                {
+                  "label": "Top center",
+                  "value": "center top"
+                },
+                {
+                  "label": "Top right",
+                  "value": "right top"
+                },
+                {
+                  "label": "Middle left",
+                  "value": "left center"
+                },
+                {
+                  "label": "Middle center",
+                  "value": "center center"
+                },
+                {
+                  "label": "Middle right",
+                  "value": "right center"
+                },
+                {
+                  "label": "Bottom left",
+                  "value": "left bottom"
+                },
+                {
+                  "label": "Bottom center",
+                  "value": "center bottom"
+                },
+                {
+                  "label": "Bottom right",
+                  "value": "right bottom"
+                }
+              ]
+            },
+            
+            {
+              "type": "color",
+              "id": "bgwrap",
+              "label": "Background Slide",
+              "default": "#F8EDE7"
+            },
+            {
+              "type": "text",
+              "id": "slide_toptitle",
+              "label": "Top Title",
+              "default": "Design by Shopifytemplate"
+            },
+            {
+              "type": "color",
+              "id": "slide_toptitle_color",
+              "label": "Top title color",
+              "default": "#999"
+            },
+            {
+              "type": "text",
+              "id": "slide_title",
+              "label": "Heading",
+              "default": "Image slide"
+            },
+            {
+              "type": "color",
+              "id": "slide_title_color",
+              "label": "Heading color",
+              "default": "#fff"
+            },
+            {
+              "type": "textarea",
+              "id": "subheading",
+              "label": "Subheading",
+              "default": "Tell your brand's story through images"
+            },
+            {
+              "type": "color",
+              "id": "subheading_color",
+              "label": "Subheading color",
+              "default": "#fff"
+            },
+            {
+              "type": "text",
+              "id": "button_label",
+              "label": "Button label"
+            },
+            {
+              "type": "url",
+              "id": "button_link",
+              "label": "Button link"
+            },
+            {
+              "type": "checkbox",
+              "id": "stylebtn",
+              "label": "Button Normal",
+              "default":true
+            },
+            {
+              "type": "color",
+              "id": "bg_button",
+              "label": "Background Button",
+              "default": "#000"
+            },
+            {
+              "type": "color",
+              "id": "color_button",
+              "label": "Color Button",
+              "default": "#fff"
+            },
+            {
+              "type": "color",
+              "id": "bg_button_hover",
+              "label": "Background Button Hover",
+              "default": "#b6813c"
+            },
+            {
+              "type": "color",
+              "id": "color_button_hover",
+              "label": "Color Button Hover",
+              "default": "#fff"
+            }
+          ]
+        }
+      ]
+    }
+    {% endschema %}

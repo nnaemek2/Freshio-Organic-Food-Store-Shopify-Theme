@@ -1,0 +1,7550 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Freshio",
+    "theme_author": "Shopifytemplate",
+    "theme_version": "2.0",
+    "theme_documentation_url": "http:\/\/apollotheme.com\/",
+    "theme_support_url": "https:\/\/apollotheme.com\/contact\/"
+  },
+  {
+    "name": "Select layout 🕹️",
+    "settings": [
+      {
+        "type": "select",
+        "id": "header",
+        "label": "Header",
+        "default": "header-7",
+        "options": [
+          {
+            "value": "header-1",
+            "label": "Header 1"
+          },
+          {
+            "value": "header-2",
+            "label": "Header 2"
+          },
+          {
+            "value": "header-3",
+            "label": "Header 3"
+          },
+          {
+            "value": "header-4",
+            "label": "Header 4"
+          },
+          {
+            "value": "header-5",
+            "label": "Header 5"
+          },
+          {
+            "value": "header-6",
+            "label": "Header 6"
+          },
+          {
+            "value": "header-7",
+            "label": "Header 7"
+          },
+          {
+            "value": "header-8",
+            "label": "Header 8"
+          },
+          {
+            "value": "header-9",
+            "label": "Header 9"
+          },
+          {
+            "value": "header-10",
+            "label": "Header 10"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "slideshow",
+        "label": "Slideshow",
+        "default": "slideshow-1",
+        "options": [
+          {
+            "value": "slideshow-1",
+            "label": "Slideshow 1"
+          },
+          {
+            "value": "slideshow-2",
+            "label": "Slideshow 2"
+          },
+          {
+            "value": "slideshow-3",
+            "label": "Slideshow 3"
+          },
+          {
+            "value": "slideshow-5",
+            "label": "Slideshow 4"
+          },
+          {
+            "value": "slideshow-4",
+            "label": "Slideshow Hidden"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "footer",
+        "label": "Footer",
+        "default": "footer-1",
+        "options": [
+          {
+            "value": "footer-1",
+            "label": "Footer 1"
+          },
+          {
+            "value": "footer-2",
+            "label": "Footer 2"
+          },
+          {
+            "value": "footer-3",
+            "label": "Footer 3"
+          },
+          {
+            "value": "footer-4",
+            "label": "Footer 4"
+          },
+          {
+            "value": "footer-5",
+            "label": "Footer 5"
+          },
+          {
+            "value": "footer-6",
+            "label": "Footer 6"
+          },
+          {
+            "value": "footer-7",
+            "label": "Footer 7"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "pnewsletter",
+        "label": "Popup Newsletter",
+        "default": "pnewsletter-1",
+        "options": [
+          {
+            "value": "pnewsletter-1",
+            "label": "Style 1"
+          },
+          {
+            "value": "pnewsletter-2",
+            "label": "Style 2"
+          },
+          {
+            "value": "pnewsletter-3",
+            "label": "Style 3"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Items"
+      },
+      {
+        "type": "select",
+        "id": "productgrid",
+        "label": "Product grid",
+        "default": "product-1",
+        "options": [
+          {
+            "value": "product-1",
+            "label": "Layout 1"
+          },
+          {
+            "value": "product-2",
+            "label": "Layout 2"
+          },
+          {
+            "value": "product-3",
+            "label": "Layout 3"
+          },
+          {
+            "value": "product-4",
+            "label": "Layout 4"
+          },
+          {
+            "value": "product-5",
+            "label": "Layout 5"
+          },
+          {
+            "value": "product-6",
+            "label": "Layout 6"
+          },
+          {
+            "value": "product-7",
+            "label": "Layout 7"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "sectionheading",
+        "label": "Section heading",
+        "default": "heading-1",
+        "options": [
+          {
+            "value": "heading-0",
+            "label": "Default"
+          },
+          {
+            "value": "heading-1",
+            "label": "Layout 1"
+          },
+          {
+            "value": "heading-2",
+            "label": "Layout 2"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "collectiongrid",
+        "label": "Collection grid",
+        "default": "collection-1",
+        "options": [
+          {
+            "value": "collection-1",
+            "label": "Layout 1"
+          },
+          {
+            "value": "collection-2",
+            "label": "Layout 2"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "bloggrid",
+        "label": "Blog post",
+        "default": "blog-1",
+        "options": [
+          {
+            "value": "blog-1",
+            "label": "Layout 1"
+          },
+          {
+            "value": "blog-2",
+            "label": "Layout 2"
+          },
+          {
+            "value": "blog-3",
+            "label": "Layout 3"
+          },
+          {
+            "value": "blog-4",
+            "label": "Layout 4"
+          },
+          {
+            "value": "blog-5",
+            "label": "Layout 5"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Other"
+      },
+      {
+        "type": "select",
+        "id": "loading",
+        "label": "Loading effect",
+        "default": "grow",
+        "options": [
+          {
+            "value": "border",
+            "label": "Border"
+          },
+          {
+            "value": "grow",
+            "label": "Grow"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "loading_color",
+        "label": "Loading color",
+        "default": "#6c757d"
+      }
+    ]
+  },
+  {
+    "name": "General settings",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Bootstrap Grid"
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 [Refer to container width and gutter width in Bootstrap's grid.](https:\/\/getbootstrap.com\/docs\/4.0\/layout\/grid\/#grid-options)"
+      },
+      {
+        "type": "range",
+        "id": "container",
+        "min": 1200,
+        "max": 1920,
+        "step": 10,
+        "unit": "px",
+        "label": "Container width",
+        "default": 1200
+      },
+      {
+        "type": "range",
+        "id": "gutter",
+        "min": 10,
+        "max": 40,
+        "step": 2,
+        "unit": "px",
+        "label": "Gutter width",
+        "default": 30
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_layoutbox",
+        "label": "Enable LayoutBoxed",
+        "default": false
+      },
+      {
+        "type": "image_picker",
+        "id": "bg_body",
+        "label": "Background Image Body"
+      },
+      {
+        "type": "header",
+        "content": "Logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image Dark"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_white",
+        "label": "Logo image White"
+      },
+      {
+        "type": "range",
+        "id": "logo_max_width",
+        "min": 100,
+        "max": 600,
+        "step": 5,
+        "unit": "px",
+        "label": "Custom logo width",
+        "default": 450
+      },
+      {
+        "type": "header",
+        "content": "Favicon"
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Image",
+        "info": "Will be scaled down to 32 x 32px"
+      },
+      {
+        "type": "header",
+        "content": "Safe checkout image"
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 [Find safe checkout image?](http:\/\/bit.ly\/2ZLhS4V)"
+      },
+      {
+        "type": "image_picker",
+        "id": "safe_checkout_pcart",
+        "label": "Image in popup cart"
+      },
+      {
+        "type": "image_picker",
+        "id": "safe_checkout_detail",
+        "label": "Image in product page"
+      },
+      {
+        "type": "image_picker",
+        "id": "safe_checkout_cart",
+        "label": "Image in cart page"
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Theme color"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary color",
+        "default": "#ad2c34"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Secondary color",
+        "default": "#348a5c"
+      },
+      {
+        "type": "color",
+        "id": "color_cta",
+        "label": "CTA Button color",
+        "default": "#348a5c"
+      },
+      {
+        "type": "header",
+        "content": "Page"
+      },
+      {
+        "type": "color",
+        "id": "color_body_bg",
+        "label": "Page background",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "color_content_bg",
+        "label": "Content background",
+        "default": "#fff"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_bodybg",
+        "label": "Only homepage",
+        "info": " Color Page background & Content background only Homepage",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "color_body_headings",
+        "label": "Heading text",
+        "default": "#1a1a1a"
+      },
+      {
+        "type": "color",
+        "id": "color_sub",
+        "label": "Sub Top text",
+        "default": "#030303"
+      },
+      {
+        "type": "color",
+        "id": "color_body_text",
+        "label": "Body text",
+        "default": "#666"
+      },
+      {
+        "type": "color",
+        "id": "color_button_bg",
+        "label": "Buttons, links, and promotion bar",
+        "default": "#006eff"
+      },
+      {
+        "type": "color",
+        "id": "color_button_text",
+        "label": "Button text",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "color_black",
+        "label": "Black Text",
+        "default": "#000000"
+      },
+      {
+        "type": "header",
+        "content": "Alert & message"
+      },
+      {
+        "type": "color",
+        "id": "alert_text",
+        "label": "Text",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "alert_bg",
+        "label": "Background",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "alert_bd",
+        "label": "Border",
+        "default": "#000"
+      },
+      {
+        "type": "header",
+        "content": "Color Shipping bar"
+      },
+      {
+        "type": "color",
+        "id": "shipping_bar",
+        "label": "Background Shipping Bar",
+        "default": "#343a40"
+      },
+      {
+        "type": "color",
+        "id": "shipping_color",
+        "label": "Color Shipping Bar",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "shipping_active",
+        "label": "Background Shipping Bar Active",
+        "default": "#407c5d"
+      },
+      {
+        "type": "header",
+        "content": "Gradient color"
+      },
+      {
+        "type": "checkbox",
+        "id": "gradient_enable",
+        "label": "Enable",
+        "default": true
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 Gradient color from left to right (or bottom to top)"
+      },
+      {
+        "type": "color",
+        "id": "gradient_start",
+        "label": "Start",
+        "default": "#FF5F6D"
+      },
+      {
+        "type": "color",
+        "id": "gradient_end",
+        "label": "End",
+        "default": "#FFC371"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Custom Font Assets"
+      },
+      {
+        "type": "checkbox",
+        "id": "font_family_custom",
+        "label": " Custom Font ",
+        "info": " Font Heading"
+      },
+      {
+        "type": "checkbox",
+        "id": "font_family_custom_body",
+        "label": " Enable Font 2 body",
+        "default": true,
+        "info": "If disable Font 2 body, Font body is Custom Font Main "
+      },
+      {
+        "type": "header",
+        "content": "Font main"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_family",
+        "label": "Shopify font",
+        "default": "karla_n4"
+      },
+      {
+        "type": "text",
+        "id": "font_family_google",
+        "label": "Google font",
+        "info": "💡 [Find more Google fonts](https:\/\/fonts.google.com)",
+        "default": "Staatliches"
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 Set blank to use Shopify font"
+      },
+      {
+        "type": "header",
+        "content": "Font 2"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_family2",
+        "label": "Shopify font",
+        "default": "unica_one_n4"
+      },
+      {
+        "type": "text",
+        "id": "font_family2_google",
+        "label": "Google font",
+        "info": "💡 [Find more Google fonts](https:\/\/fonts.google.com)",
+        "default": "Staatliches"
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 Set blank to use Shopify font"
+      },
+      {
+        "type": "header",
+        "content": "Font 3"
+      },
+      {
+        "type": "checkbox",
+        "id": "font_family_custom3",
+        "label": " Custom Font 3 ",
+        "info": "If disable this font, You can use font google or dont shopify",
+        "default": true
+      },
+      {
+        "type": "font_picker",
+        "id": "font_family3",
+        "label": "Shopify font",
+        "default": "karla_n4"
+      },
+      {
+        "type": "text",
+        "id": "font_family3_google",
+        "label": "Google font",
+        "info": "💡 [Find more Google fonts](https:\/\/fonts.google.com)",
+        "default": "Staatliches"
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 Set blank to use Shopify font"
+      },
+      {
+        "type": "header",
+        "content": "------------- Title slideshow "
+      },
+      {
+        "type": "range",
+        "id": "slide_font_size",
+        "label": "Title slideshow  Font Size",
+        "max": 100,
+        "min": 12,
+        "step": 1,
+        "unit": " px",
+        "default": 90
+      },
+      {
+        "type": "select",
+        "id": "slide_font_weight",
+        "label": "Title slideshow  Font Weight",
+        "default": "400",
+        "options": [
+          {
+            "value": "300",
+            "label": "Light"
+          },
+          {
+            "value": "400",
+            "label": "Normal"
+          },
+          {
+            "value": "500",
+            "label": "Medium"
+          },
+          {
+            "value": "600",
+            "label": "Semi"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "slide_font_lineheight",
+        "label": "Title slideshow  Line Height",
+        "default": "1.2"
+      },
+      {
+        "type": "text",
+        "id": "slide_font_spacing",
+        "label": "Title slideshow  Spacing",
+        "default": "0"
+      },
+      {
+        "type": "header",
+        "content": "------------- H1"
+      },
+      {
+        "type": "range",
+        "id": "h1_font_size",
+        "label": "H1 Font Size",
+        "max": 90,
+        "min": 12,
+        "step": 1,
+        "unit": " px",
+        "default": 68
+      },
+      {
+        "type": "select",
+        "id": "h1_font_weight",
+        "label": "H1 Font Weight",
+        "default": "300",
+        "options": [
+          {
+            "value": "300",
+            "label": "Light"
+          },
+          {
+            "value": "400",
+            "label": "Normal"
+          },
+          {
+            "value": "500",
+            "label": "Medium"
+          },
+          {
+            "value": "600",
+            "label": "Semi"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "h1_font_lineheight",
+        "label": "H1 Line Height",
+        "default": "1.2"
+      },
+      {
+        "type": "text",
+        "id": "h1_font_spacing",
+        "label": "H1 Spacing",
+        "default": "0"
+      },
+      {
+        "type": "header",
+        "content": "------------- H2"
+      },
+      {
+        "type": "range",
+        "id": "h2_font_size",
+        "label": "H2 Font Size",
+        "max": 90,
+        "min": 12,
+        "step": 1,
+        "unit": " px",
+        "default": 60
+      },
+      {
+        "type": "select",
+        "id": "h2_font_weight",
+        "label": "H2 Font Weight",
+        "default": "300",
+        "options": [
+          {
+            "value": "300",
+            "label": "Light"
+          },
+          {
+            "value": "400",
+            "label": "Normal"
+          },
+          {
+            "value": "500",
+            "label": "Medium"
+          },
+          {
+            "value": "600",
+            "label": "Semi"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "h2_font_lineheight",
+        "label": "H2 Line Height",
+        "default": "1.2"
+      },
+      {
+        "type": "text",
+        "id": "h2_font_spacing",
+        "label": "H2 Spacing",
+        "default": "0"
+      },
+      {
+        "type": "header",
+        "content": "------------- H3"
+      },
+      {
+        "type": "range",
+        "id": "h3_font_size",
+        "label": "H3 Font Size",
+        "max": 90,
+        "min": 12,
+        "step": 1,
+        "unit": " px",
+        "default": 36
+      },
+      {
+        "type": "select",
+        "id": "h3_font_weight",
+        "label": "H3 Font Weight",
+        "default": "300",
+        "options": [
+          {
+            "value": "300",
+            "label": "Light"
+          },
+          {
+            "value": "400",
+            "label": "Normal"
+          },
+          {
+            "value": "500",
+            "label": "Medium"
+          },
+          {
+            "value": "600",
+            "label": "Semi"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "h3_font_lineheight",
+        "label": "H3 Line Height",
+        "default": "1.2"
+      },
+      {
+        "type": "text",
+        "id": "h3_font_spacing",
+        "label": "H3 Spacing",
+        "default": "0"
+      },
+      {
+        "type": "header",
+        "content": "------------- H4"
+      },
+      {
+        "type": "range",
+        "id": "h4_font_size",
+        "label": "H4 Font Size",
+        "max": 90,
+        "min": 12,
+        "step": 1,
+        "unit": " px",
+        "default": 18
+      },
+      {
+        "type": "select",
+        "id": "h4_font_weight",
+        "label": "H4 Font Weight",
+        "default": "400",
+        "options": [
+          {
+            "value": "300",
+            "label": "Light"
+          },
+          {
+            "value": "400",
+            "label": "Normal"
+          },
+          {
+            "value": "500",
+            "label": "Medium"
+          },
+          {
+            "value": "600",
+            "label": "Semi"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "h4_font_lineheight",
+        "label": "H4 Line Height",
+        "default": "1.2"
+      },
+      {
+        "type": "text",
+        "id": "h4_font_spacing",
+        "label": "H4 Spacing",
+        "default": "0"
+      },
+      {
+        "type": "header",
+        "content": "------------- H5"
+      },
+      {
+        "type": "range",
+        "id": "h5_font_size",
+        "label": "H5 Font Size",
+        "max": 90,
+        "min": 12,
+        "step": 1,
+        "unit": " px",
+        "default": 16
+      },
+      {
+        "type": "select",
+        "id": "h5_font_weight",
+        "label": "H5 Font Weight",
+        "default": "500",
+        "options": [
+          {
+            "value": "300",
+            "label": "Light"
+          },
+          {
+            "value": "400",
+            "label": "Normal"
+          },
+          {
+            "value": "500",
+            "label": "Medium"
+          },
+          {
+            "value": "600",
+            "label": "Semi"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "h5_font_lineheight",
+        "label": "H5 Line Height",
+        "default": "1.2"
+      },
+      {
+        "type": "text",
+        "id": "h5_font_spacing",
+        "label": "H5 Spacing",
+        "default": "0"
+      },
+      {
+        "type": "header",
+        "content": "------------- H6"
+      },
+      {
+        "type": "range",
+        "id": "h6_font_size",
+        "label": "H6 Font Size",
+        "max": 90,
+        "min": 12,
+        "step": 1,
+        "unit": " px",
+        "default": 14
+      },
+      {
+        "type": "select",
+        "id": "h6_font_weight",
+        "label": "H6 Font Weight",
+        "default": "600",
+        "options": [
+          {
+            "value": "300",
+            "label": "Light"
+          },
+          {
+            "value": "400",
+            "label": "Normal"
+          },
+          {
+            "value": "500",
+            "label": "Medium"
+          },
+          {
+            "value": "600",
+            "label": "Semi"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "h6_font_lineheight",
+        "label": "H6 Line Height",
+        "default": "1.2"
+      },
+      {
+        "type": "text",
+        "id": "h6_font_spacing",
+        "label": "H6 Spacing",
+        "default": "0"
+      },
+      {
+        "type": "header",
+        "content": "Font Body"
+      },
+      {
+        "type": "select",
+        "id": "font_weight_body",
+        "label": "Font Weight Body",
+        "default": "400",
+        "options": [
+          {
+            "value": "300",
+            "label": "Light"
+          },
+          {
+            "value": "400",
+            "label": "Normal"
+          },
+          {
+            "value": "500",
+            "label": "Medium"
+          },
+          {
+            "value": "600",
+            "label": "Semi"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "base_size",
+        "label": "Size",
+        "max": 20,
+        "min": 12,
+        "step": 1,
+        "unit": " px",
+        "default": 14
+      },
+      {
+        "type": "text",
+        "id": "body_font_lineheight",
+        "label": "Body Line Height",
+        "default": "1.6"
+      },
+      {
+        "type": "header",
+        "content": "Font Title Product"
+      },
+      {
+        "type": "select",
+        "id": "font_weight_product",
+        "label": "Font Weight Product",
+        "default": "400",
+        "options": [
+          {
+            "value": "300",
+            "label": "Light"
+          },
+          {
+            "value": "400",
+            "label": "Normal"
+          },
+          {
+            "value": "500",
+            "label": "Medium"
+          },
+          {
+            "value": "600",
+            "label": "Semi"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "font_size_product",
+        "label": "Font Size Product",
+        "max": 20,
+        "min": 12,
+        "step": 1,
+        "unit": " px",
+        "default": 20
+      },
+      {
+        "type": "range",
+        "id": "letter_spacing_product",
+        "label": "Letter Spacing Product",
+        "max": 1,
+        "min": 0,
+        "step": 0.1,
+        "unit": " em",
+        "default": 0
+      },
+      {
+        "type": "text",
+        "id": "font_lineheight_product",
+        "label": "Line Height Product",
+        "default": "1.6"
+      },
+      {
+        "type": "header",
+        "content": "Font SubTop"
+      },
+      {
+        "type": "select",
+        "id": "cap_sub",
+        "label": "Text Transform Subtop",
+        "default": "uppercase",
+        "options": [
+          {
+            "value": "uppercase",
+            "label": "Uppercase"
+          },
+          {
+            "value": "capitalize",
+            "label": "Capitalize"
+          },
+          {
+            "value": "inherit",
+            "label": "Inherit"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "font_family_sub",
+        "label": "Font Family SubTop",
+        "default": "--g-font-2",
+        "options": [
+          {
+            "value": "--g-font-1",
+            "label": "Heading"
+          },
+          {
+            "value": "--g-font-2",
+            "label": "Body"
+          },
+          {
+            "value": "--g-font-3",
+            "label": "Font 3"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "font_weight_sub",
+        "label": "Font Weight Subtop",
+        "default": "600",
+        "options": [
+          {
+            "value": "300",
+            "label": "Light"
+          },
+          {
+            "value": "400",
+            "label": "Normal"
+          },
+          {
+            "value": "500",
+            "label": "Medium"
+          },
+          {
+            "value": "600",
+            "label": "Semi"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "base_size_sup",
+        "label": "Size",
+        "max": 24,
+        "min": 10,
+        "step": 1,
+        "unit": " px",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "letter_spacing_sub",
+        "label": "Letter Spacing",
+        "max": 1,
+        "min": 0,
+        "step": 0.1,
+        "unit": " em",
+        "default": 0.3
+      }
+    ]
+  },
+  {
+    "name": "Vertical menu",
+    "settings": [
+      {
+        "type": "text",
+        "id": "vmain_title",
+        "label": "Title",
+        "default": "Shop by Department"
+      },
+      {
+        "type": "link_list",
+        "id": "vmain_linklist",
+        "label": "Menu",
+        "default": "main-menu"
+      },
+      {
+        "type": "header",
+        "content": "Menu labels"
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 [In menu item titles](\/admin\/menus), use square brackets to create labels."
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 Example: Home[new], Blog[hot], Shop[sale]"
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 You can change color in Navigation -> Menu labels"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 1"
+      },
+      {
+        "type": "text",
+        "id": "vapmenuitem_title_1",
+        "label": "Appears under the menu named:",
+        "info": "Enter menu item's name"
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_width_1",
+        "min": 0,
+        "max": 1920,
+        "step": 20,
+        "label": "Megamenu width",
+        "default": 0,
+        "unit": "px",
+        "info": "Set the value to 0 for fullwidth megamenu"
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_oblocklinks_1",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block link's ordinal number",
+        "default": 1
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_ovideo_1",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block video's ordinal number",
+        "default": 2
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_oproduct_1",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block product's ordinal number",
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_ohtml_1",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block HTML's ordinal number",
+        "default": 4
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 1 - Links"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_eblocklinks_1",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "vapmenuitem_columns_blocklinks_1",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "vapmenuitem_columns_1",
+        "label": "Sublink width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 1 - Video"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_evideo_1",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "vapmenuitem_columns_blockvideo_1",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "textarea",
+        "id": "vapmenuitem_cvideo_1",
+        "label": "Video Link",
+        "default": "https:\/\/cdn.shopify.com\/s\/files\/1\/0092\/7563\/7839\/files\/Videomenu.mp4?39752",
+        "info": "[Upload *.mp4 video here (<20mb)](\/admin\/settings\/files)"
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_video_height_1",
+        "min": 200,
+        "max": 800,
+        "step": 10,
+        "unit": "px",
+        "label": "Video height",
+        "default": 300
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_video_loop_1",
+        "label": "Loop video"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_video_mute_1",
+        "label": "Muted"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 1 - Products"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_eproduct_1",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "vapmenuitem_columns_blockproducts_1",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "vapmenuitem_tproduct_1",
+        "label": "Title"
+      },
+      {
+        "type": "collection",
+        "id": "vapmenuitem_cproduct_1",
+        "label": "Collection"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 1 - Html"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_ehtml_1",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "vapmenuitem_columns_blockhtml_1",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "vapmenuitem_thtml_1",
+        "label": "Title"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_eihtml_1",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "vapmenuitem_ihtml_1",
+        "label": "Image"
+      },
+      {
+        "type": "textarea",
+        "id": "vapmenuitem_chtml_1",
+        "label": "Description"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 1 - Background"
+      },
+      {
+        "type": "image_picker",
+        "id": "vapmenuitem_ebg_1",
+        "label": "Background"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 2"
+      },
+      {
+        "type": "text",
+        "id": "vapmenuitem_title_2",
+        "label": "Appears under the menu named:",
+        "info": "Enter menu item's name"
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_width_2",
+        "min": 0,
+        "max": 1920,
+        "step": 20,
+        "label": "Megamenu width",
+        "default": 0,
+        "unit": "px",
+        "info": "Set the value to 0 for fullwidth megamenu"
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_oblocklinks_2",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block link's ordinal number",
+        "default": 1
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_ovideo_2",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block video's ordinal number",
+        "default": 2
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_oproduct_2",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block product's ordinal number",
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_ohtml_2",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block HTML's ordinal number",
+        "default": 4
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 2 - Links"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_eblocklinks_2",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "vapmenuitem_columns_blocklinks_2",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "vapmenuitem_columns_2",
+        "label": "Sublink width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 2 - Video"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_evideo_2",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "vapmenuitem_columns_blockvideo_2",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "textarea",
+        "id": "vapmenuitem_cvideo_2",
+        "label": "Video Link",
+        "default": "https:\/\/cdn.shopify.com\/s\/files\/1\/0092\/7563\/7839\/files\/Videomenu.mp4?39752",
+        "info": "[Upload *.mp4 video here (<20mb)](\/admin\/settings\/files)"
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_video_height_2",
+        "min": 200,
+        "max": 800,
+        "step": 10,
+        "unit": "px",
+        "label": "Video height",
+        "default": 300
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_video_loop_2",
+        "label": "Loop video"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_video_mute_2",
+        "label": "Muted"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 2 - Products"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_eproduct_2",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "vapmenuitem_columns_blockproducts_2",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "vapmenuitem_tproduct_2",
+        "label": "Title"
+      },
+      {
+        "type": "collection",
+        "id": "vapmenuitem_cproduct_2",
+        "label": "Collection"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 2 - Html"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_ehtml_2",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "vapmenuitem_columns_blockhtml_2",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "vapmenuitem_thtml_2",
+        "label": "Title"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_eihtml_2",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "vapmenuitem_ihtml_2",
+        "label": "Image"
+      },
+      {
+        "type": "textarea",
+        "id": "vapmenuitem_chtml_2",
+        "label": "Description"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 2 - Background"
+      },
+      {
+        "type": "image_picker",
+        "id": "vapmenuitem_ebg_2",
+        "label": "Background"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 3"
+      },
+      {
+        "type": "text",
+        "id": "vapmenuitem_title_3",
+        "label": "Appears under the menu named:",
+        "info": "Enter menu item's name"
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_width_3",
+        "min": 0,
+        "max": 1920,
+        "step": 20,
+        "label": "Megamenu width",
+        "default": 0,
+        "unit": "px",
+        "info": "Set the value to 0 for fullwidth megamenu"
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_oblocklinks_3",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block link's ordinal number",
+        "default": 1
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_ovideo_3",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block video's ordinal number",
+        "default": 2
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_oproduct_3",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block product's ordinal number",
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_ohtml_3",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block HTML's ordinal number",
+        "default": 4
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 3 - Links"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_eblocklinks_3",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "vapmenuitem_columns_blocklinks_3",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "vapmenuitem_columns_3",
+        "label": "Sublink width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 3 - Video"
+      },
+      {
+        "type": "checkbox",
+        "id": "vvapmenuitem_evideo_3",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "vvapmenuitem_columns_blockvideo_3",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "textarea",
+        "id": "vapmenuitem_cvideo_3",
+        "label": "Video Link",
+        "default": "https:\/\/cdn.shopify.com\/s\/files\/1\/0092\/7563\/7839\/files\/Videomenu.mp4?39752",
+        "info": "[Upload *.mp4 video here (<20mb)](\/admin\/settings\/files)"
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_video_height_3",
+        "min": 200,
+        "max": 800,
+        "step": 10,
+        "unit": "px",
+        "label": "Video height",
+        "default": 300
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_video_loop_3",
+        "label": "Loop video"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_video_mute_3",
+        "label": "Muted"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 3 - Products"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_eproduct_3",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "vapmenuitem_columns_blockproducts_3",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "vapmenuitem_tproduct_3",
+        "label": "Title"
+      },
+      {
+        "type": "collection",
+        "id": "vapmenuitem_cproduct_3",
+        "label": "Collection"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 3 - Html"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_ehtml_3",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "vapmenuitem_columns_blockhtml_3",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "vapmenuitem_thtml_3",
+        "label": "Title"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_eihtml_3",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "vapmenuitem_ihtml_3",
+        "label": "Image"
+      },
+      {
+        "type": "textarea",
+        "id": "vapmenuitem_chtml_3",
+        "label": "Description"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 3 - Background"
+      },
+      {
+        "type": "image_picker",
+        "id": "vapmenuitem_ebg_3",
+        "label": "Background"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 4"
+      },
+      {
+        "type": "text",
+        "id": "vapmenuitem_title_4",
+        "label": "Appears under the menu named:",
+        "info": "Enter menu item's name"
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_width_4",
+        "min": 0,
+        "max": 1920,
+        "step": 20,
+        "label": "Megamenu width",
+        "default": 0,
+        "unit": "px",
+        "info": "Set the value to 0 for fullwidth megamenu"
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_oblocklinks_4",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block link's ordinal number",
+        "default": 1
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_ovideo_4",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block video's ordinal number",
+        "default": 2
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_oproduct_4",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block product's ordinal number",
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_ohtml_4",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block HTML's ordinal number",
+        "default": 4
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 4 - Links"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_eblocklinks_4",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "vapmenuitem_columns_blocklinks_4",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "vapmenuitem_columns_4",
+        "label": "Sublink width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 4 - Video"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_evideo_4",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "vapmenuitem_columns_blockvideo_4",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "textarea",
+        "id": "vapmenuitem_cvideo_4",
+        "label": "Video Link",
+        "default": "https:\/\/cdn.shopify.com\/s\/files\/1\/0092\/7563\/7839\/files\/Videomenu.mp4?39752",
+        "info": "[Upload *.mp4 video here (<20mb)](\/admin\/settings\/files)"
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_video_height_4",
+        "min": 200,
+        "max": 800,
+        "step": 10,
+        "unit": "px",
+        "label": "Video height",
+        "default": 300
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_video_loop_4",
+        "label": "Loop video"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_video_mute_4",
+        "label": "Muted"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 4 - Products"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_eproduct_4",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "vapmenuitem_columns_blockproducts_4",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "vapmenuitem_tproduct_4",
+        "label": "Title"
+      },
+      {
+        "type": "collection",
+        "id": "vapmenuitem_cproduct_4",
+        "label": "Collection"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 4 - Html"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_ehtml_4",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "vapmenuitem_columns_blockhtml_4",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "vapmenuitem_thtml_4",
+        "label": "Title"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_eihtml_4",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "vapmenuitem_ihtml_4",
+        "label": "Image"
+      },
+      {
+        "type": "textarea",
+        "id": "vapmenuitem_chtml_4",
+        "label": "Description"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 4 - Background"
+      },
+      {
+        "type": "image_picker",
+        "id": "vapmenuitem_ebg_4",
+        "label": "Background"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 5"
+      },
+      {
+        "type": "text",
+        "id": "vapmenuitem_title_5",
+        "label": "Appears under the menu named:",
+        "info": "Enter menu item's name"
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_width_5",
+        "min": 0,
+        "max": 1920,
+        "step": 20,
+        "label": "Megamenu width",
+        "default": 0,
+        "unit": "px",
+        "info": "Set the value to 0 for fullwidth megamenu"
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_oblocklinks_5",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block link's ordinal number",
+        "default": 1
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_ovideo_5",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block video's ordinal number",
+        "default": 2
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_oproduct_5",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block product's ordinal number",
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_ohtml_5",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block HTML's ordinal number",
+        "default": 4
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 5 - Links"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_eblocklinks_5",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "vapmenuitem_columns_blocklinks_5",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "vapmenuitem_columns_5",
+        "label": "Sublink width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 5 - Video"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_evideo_5",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "vapmenuitem_columns_blockvideo_5",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "textarea",
+        "id": "vapmenuitem_cvideo_5",
+        "label": "Video Link",
+        "default": "https:\/\/cdn.shopify.com\/s\/files\/1\/0092\/7563\/7839\/files\/Videomenu.mp4?39752",
+        "info": "[Upload *.mp4 video here (<20mb)](\/admin\/settings\/files)"
+      },
+      {
+        "type": "range",
+        "id": "vapmenuitem_video_height_5",
+        "min": 200,
+        "max": 800,
+        "step": 10,
+        "unit": "px",
+        "label": "Video height",
+        "default": 300
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_video_loop_5",
+        "label": "Loop video"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_video_mute_5",
+        "label": "Muted"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 5 - Products"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_eproduct_5",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "vapmenuitem_columns_blockproducts_5",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "vapmenuitem_tproduct_5",
+        "label": "Title"
+      },
+      {
+        "type": "collection",
+        "id": "vapmenuitem_cproduct_5",
+        "label": "Collection"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 5 - Html"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_ehtml_5",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "vapmenuitem_columns_blockhtml_5",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "vapmenuitem_thtml_5",
+        "label": "Title"
+      },
+      {
+        "type": "checkbox",
+        "id": "vapmenuitem_eihtml_5",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "vapmenuitem_ihtml_5",
+        "label": "Image"
+      },
+      {
+        "type": "textarea",
+        "id": "vapmenuitem_chtml_5",
+        "label": "Description"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 5 - Background"
+      },
+      {
+        "type": "image_picker",
+        "id": "vapmenuitem_ebg_5",
+        "label": "Background"
+      }
+    ]
+  },
+  {
+    "name": "Icon Vertical Menu",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Icon Menu Item"
+      },
+      {
+        "type": "checkbox",
+        "id": "vermenuicon_enable",
+        "label": "Icon Menu Enable"
+      },
+      {
+        "type": "color",
+        "id": "vermenuicon_color",
+        "label": "Icon Menu Color",
+        "default": "#aaaaaa"
+      },
+      {
+        "type": "text",
+        "id": "vermenuicon_font_1",
+        "label": "Icon Awesome Menu 1",
+        "info": "Use Font Awesome Icon. Input name icon. Ex:\"truck\""
+      },
+      {
+        "type": "paragraph",
+        "content": "[Font Awesome](http:\/\/fortawesome.github.io\/Font-Awesome\/icons\/)"
+      },
+      {
+        "type": "checkbox",
+        "id": "vermenuicon_eimage_1",
+        "label": "Icon Image Menu 1"
+      },
+      {
+        "type": "image",
+        "id": "vertical_icon_1.png"
+      },
+      {
+        "type": "paragraph",
+        "content": "Import image icon if you don't use Font Awesome"
+      },
+      {
+        "type": "text",
+        "id": "vermenuicon_font_2",
+        "label": "Icon Awesome Menu 2",
+        "info": "Use Font Awesome Icon. Input name icon. Ex:\"truck\""
+      },
+      {
+        "type": "paragraph",
+        "content": "[Font Awesome](http:\/\/fortawesome.github.io\/Font-Awesome\/icons\/)"
+      },
+      {
+        "type": "checkbox",
+        "id": "vermenuicon_eimage_2",
+        "label": "Icon Image Menu 2"
+      },
+      {
+        "type": "image",
+        "id": "vertical_icon_2.png"
+      },
+      {
+        "type": "paragraph",
+        "content": "Import image icon if you don't use Font Awesome"
+      },
+      {
+        "type": "text",
+        "id": "vermenuicon_font_3",
+        "label": "Icon Awesome Menu 3",
+        "info": "Use Font Awesome Icon. Input name icon. Ex:\"truck\""
+      },
+      {
+        "type": "paragraph",
+        "content": "[Font Awesome](http:\/\/fortawesome.github.io\/Font-Awesome\/icons\/)"
+      },
+      {
+        "type": "checkbox",
+        "id": "vermenuicon_eimage_3",
+        "label": "Icon Image Menu 3"
+      },
+      {
+        "type": "image",
+        "id": "vertical_icon_3.png"
+      },
+      {
+        "type": "paragraph",
+        "content": "Import image icon if you don't use Font Awesome"
+      },
+      {
+        "type": "text",
+        "id": "vermenuicon_font_4",
+        "label": "Icon Awesome Menu 4",
+        "info": "Use Font Awesome Icon. Input name icon. Ex:\"truck\""
+      },
+      {
+        "type": "paragraph",
+        "content": "[Font Awesome](http:\/\/fortawesome.github.io\/Font-Awesome\/icons\/)"
+      },
+      {
+        "type": "checkbox",
+        "id": "vermenuicon_eimage_4",
+        "label": "Icon Image Menu 4"
+      },
+      {
+        "type": "image",
+        "id": "vertical_icon_4.png"
+      },
+      {
+        "type": "paragraph",
+        "content": "Import image icon if you don't use Font Awesome"
+      },
+      {
+        "type": "text",
+        "id": "vermenuicon_font_5",
+        "label": "Icon Awesome Menu 5",
+        "info": "Use Font Awesome Icon. Input name icon. Ex:\"truck\""
+      },
+      {
+        "type": "paragraph",
+        "content": "[Font Awesome](http:\/\/fortawesome.github.io\/Font-Awesome\/icons\/)"
+      },
+      {
+        "type": "checkbox",
+        "id": "vermenuicon_eimage_5",
+        "label": "Icon Image Menu 5"
+      },
+      {
+        "type": "image",
+        "id": "vertical_icon_5.png"
+      },
+      {
+        "type": "paragraph",
+        "content": "Import image icon if you don't use Font Awesome"
+      },
+      {
+        "type": "text",
+        "id": "vermenuicon_font_6",
+        "label": "Icon Awesome Menu 6",
+        "info": "Use Font Awesome Icon. Input name icon. Ex:\"truck\""
+      },
+      {
+        "type": "paragraph",
+        "content": "[Font Awesome](http:\/\/fortawesome.github.io\/Font-Awesome\/icons\/)"
+      },
+      {
+        "type": "checkbox",
+        "id": "vermenuicon_eimage_6",
+        "label": "Icon Image Menu 6"
+      },
+      {
+        "type": "image",
+        "id": "vertical_icon_6.png"
+      },
+      {
+        "type": "paragraph",
+        "content": "Import image icon if you don't use Font Awesome"
+      },
+      {
+        "type": "text",
+        "id": "vermenuicon_font_7",
+        "label": "Icon Awesome Menu 7",
+        "info": "Use Font Awesome Icon. Input name icon. Ex:\"truck\""
+      },
+      {
+        "type": "paragraph",
+        "content": "[Font Awesome](http:\/\/fortawesome.github.io\/Font-Awesome\/icons\/)"
+      },
+      {
+        "type": "checkbox",
+        "id": "vermenuicon_eimage_7",
+        "label": "Icon Image Menu 7"
+      },
+      {
+        "type": "image",
+        "id": "vertical_icon_7.png"
+      },
+      {
+        "type": "paragraph",
+        "content": "Import image icon if you don't use Font Awesome"
+      },
+      {
+        "type": "text",
+        "id": "vermenuicon_font_8",
+        "label": "Icon Awesome Menu 8",
+        "info": "Use Font Awesome Icon. Input name icon. Ex:\"truck\""
+      },
+      {
+        "type": "paragraph",
+        "content": "[Font Awesome](http:\/\/fortawesome.github.io\/Font-Awesome\/icons\/)"
+      },
+      {
+        "type": "checkbox",
+        "id": "vermenuicon_eimage_8",
+        "label": "Icon Image Menu 8"
+      },
+      {
+        "type": "image",
+        "id": "vertical_icon_8.png"
+      },
+      {
+        "type": "paragraph",
+        "content": "Import image icon if you don't use Font Awesome"
+      },
+      {
+        "type": "text",
+        "id": "vermenuicon_font_9",
+        "label": "Icon Awesome Menu 9",
+        "info": "Use Font Awesome Icon. Input name icon. Ex:\"truck\""
+      },
+      {
+        "type": "paragraph",
+        "content": "[Font Awesome](http:\/\/fortawesome.github.io\/Font-Awesome\/icons\/)"
+      },
+      {
+        "type": "checkbox",
+        "id": "vermenuicon_eimage_9",
+        "label": "Icon Image Menu 9"
+      },
+      {
+        "type": "image",
+        "id": "vertical_icon_9.png"
+      },
+      {
+        "type": "paragraph",
+        "content": "Import image icon if you don't use Font Awesome"
+      },
+      {
+        "type": "text",
+        "id": "vermenuicon_font_10",
+        "label": "Icon Awesome Menu 10",
+        "info": "Use Font Awesome Icon. Input name icon. Ex:\"truck\""
+      },
+      {
+        "type": "paragraph",
+        "content": "[Font Awesome](http:\/\/fortawesome.github.io\/Font-Awesome\/icons\/)"
+      },
+      {
+        "type": "checkbox",
+        "id": "vermenuicon_eimage_10",
+        "label": "Icon Image Menu 10"
+      },
+      {
+        "type": "image",
+        "id": "vertical_icon_10.png"
+      },
+      {
+        "type": "paragraph",
+        "content": "Import image icon if you don't use Font Awesome"
+      },
+      {
+        "type": "text",
+        "id": "vermenuicon_font_11",
+        "label": "Icon Awesome Menu 11",
+        "info": "Use Font Awesome Icon. Input name icon. Ex:\"truck\""
+      },
+      {
+        "type": "paragraph",
+        "content": "[Font Awesome](http:\/\/fortawesome.github.io\/Font-Awesome\/icons\/)"
+      },
+      {
+        "type": "checkbox",
+        "id": "vermenuicon_eimage_11",
+        "label": "Icon Image Menu 11"
+      },
+      {
+        "type": "image",
+        "id": "vertical_icon_11.png"
+      },
+      {
+        "type": "paragraph",
+        "content": "Import image icon if you don't use Font Awesome"
+      },
+      {
+        "type": "text",
+        "id": "vermenuicon_font_12",
+        "label": "Icon Awesome Menu 12",
+        "info": "Use Font Awesome Icon. Input name icon. Ex:\"truck\""
+      },
+      {
+        "type": "paragraph",
+        "content": "[Font Awesome](http:\/\/fortawesome.github.io\/Font-Awesome\/icons\/)"
+      },
+      {
+        "type": "checkbox",
+        "id": "vermenuicon_eimage_12",
+        "label": "Icon Image Menu 12"
+      },
+      {
+        "type": "image",
+        "id": "vertical_icon_12.png"
+      },
+      {
+        "type": "paragraph",
+        "content": "Import image icon if you don't use Font Awesome"
+      }
+    ]
+  },
+  {
+    "name": "Navigation",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "main_linklist",
+        "label": "Menu",
+        "default": "main-menu"
+      },
+      {
+        "type": "select",
+        "id": "font_family_menu",
+        "label": "Font Family",
+        "default": "--g-font-1",
+        "options": [
+          {
+            "value": "--g-font-1",
+            "label": "Heading"
+          },
+          {
+            "value": "--g-font-2",
+            "label": "Body"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "font_sizemenu",
+        "label": "Font Size Menu",
+        "default": "16px"
+      },
+      {
+        "type": "select",
+        "id": "font_weight",
+        "label": "Font Weight Menu",
+        "default": "400",
+        "options": [
+          {
+            "value": "300",
+            "label": "Light"
+          },
+          {
+            "value": "400",
+            "label": "Normal"
+          },
+          {
+            "value": "500",
+            "label": "Medium"
+          },
+          {
+            "value": "600",
+            "label": "Semi"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "menu_spacing",
+        "label": "Menu Letter Spacing",
+        "max": 1,
+        "min": 0,
+        "step": 0.1,
+        "unit": " em",
+        "default": 0
+      },
+      {
+        "type": "select",
+        "id": "type_menu",
+        "label": "Type Text",
+        "default": "uppercase",
+        "options": [
+          {
+            "value": "uppercase",
+            "label": "Uppercase"
+          },
+          {
+            "value": "lowercase",
+            "label": "Lowercase"
+          },
+          {
+            "value": "capitalize",
+            "label": "Capitalize"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "font_family_topbar",
+        "label": "Font Family Topbar",
+        "default": "--g-font-1",
+        "options": [
+          {
+            "value": "--g-font-1",
+            "label": "Heading"
+          },
+          {
+            "value": "--g-font-2",
+            "label": "Body"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Menu labels"
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 [In menu item titles](\/admin\/menus), use square brackets to create labels."
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 Example: Home[new], Blog[hot], Shop[sale]"
+      },
+      {
+        "type": "color",
+        "id": "menu_label_text",
+        "label": "Text color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "menu_label_new",
+        "label": "New labels",
+        "default": "#01bad4"
+      },
+      {
+        "type": "color",
+        "id": "menu_label_hot",
+        "label": "Hot labels",
+        "default": "#d24418"
+      },
+      {
+        "type": "color",
+        "id": "menu_label_sale",
+        "label": "Sale labels",
+        "default": "#ffa800"
+      },
+      {
+        "type": "color",
+        "id": "menu_label_other",
+        "label": "Other labels",
+        "default": "#848484"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 1"
+      },
+      {
+        "type": "text",
+        "id": "apmenuitem_title_1",
+        "label": "Appears under the menu named:",
+        "info": "Enter menu item's name"
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_width_1",
+        "min": 0,
+        "max": 1920,
+        "step": 20,
+        "label": "Megamenu width",
+        "default": 0,
+        "unit": "px",
+        "info": "Set the value to 0 for fullwidth megamenu"
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_oblocklinks_1",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block link's ordinal number",
+        "default": 1
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_ovideo_1",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block video's ordinal number",
+        "default": 2
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_oproduct_1",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block product's ordinal number",
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_ohtml_1",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block HTML's ordinal number",
+        "default": 4
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 1 - Links"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_eblocklinks_1",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "apmenuitem_columns_blocklinks_1",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "apmenuitem_columns_1",
+        "label": "Sublink width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 1 - Video"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_evideo_1",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "apmenuitem_columns_blockvideo_1",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "textarea",
+        "id": "apmenuitem_cvideo_1",
+        "label": "Video Link",
+        "default": "https:\/\/cdn.shopify.com\/s\/files\/1\/0092\/7563\/7839\/files\/Videomenu.mp4?39752",
+        "info": "[Upload *.mp4 video here (<20mb)](\/admin\/settings\/files)"
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_video_height_1",
+        "min": 200,
+        "max": 800,
+        "step": 10,
+        "unit": "px",
+        "label": "Video height",
+        "default": 300
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_video_loop_1",
+        "label": "Loop video"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_video_mute_1",
+        "label": "Muted"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 1 - Products"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_eproduct_1",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "apmenuitem_columns_blockproducts_1",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "apmenuitem_tproduct_1",
+        "label": "Title"
+      },
+      {
+        "type": "collection",
+        "id": "apmenuitem_cproduct_1",
+        "label": "Collection"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 1 - Html"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_ehtml_1",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "apmenuitem_columns_blockhtml_1",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "apmenuitem_thtml_1",
+        "label": "Title"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_eihtml_1",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "apmenuitem_ihtml_1",
+        "label": "Image"
+      },
+      {
+        "type": "textarea",
+        "id": "apmenuitem_chtml_1",
+        "label": "Description",
+        "info": "[💡 Build HTML](https:\/\/ap2020.myshopify.com\/pages\/html-builder)"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 2"
+      },
+      {
+        "type": "text",
+        "id": "apmenuitem_title_2",
+        "label": "Appears under the menu named:",
+        "info": "Enter menu item's name"
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_width_2",
+        "min": 0,
+        "max": 1920,
+        "step": 20,
+        "label": "Megamenu width",
+        "default": 0,
+        "unit": "px",
+        "info": "Set the value to 0 for fullwidth megamenu"
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_oblocklinks_2",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block link's ordinal number",
+        "default": 1
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_ovideo_2",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block video's ordinal number",
+        "default": 2
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_oproduct_2",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block product's ordinal number",
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_ohtml_2",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block HTML's ordinal number",
+        "default": 4
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 2 - Links"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_eblocklinks_2",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "apmenuitem_columns_blocklinks_2",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "apmenuitem_columns_2",
+        "label": "Sublink width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 2 - Video"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_evideo_2",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "apmenuitem_columns_blockvideo_2",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "textarea",
+        "id": "apmenuitem_cvideo_2",
+        "label": "Video Link",
+        "default": "https:\/\/cdn.shopify.com\/s\/files\/1\/0092\/7563\/7839\/files\/Videomenu.mp4?39752",
+        "info": "[Upload *.mp4 video here (<20mb)](\/admin\/settings\/files)"
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_video_height_2",
+        "min": 200,
+        "max": 800,
+        "step": 10,
+        "unit": "px",
+        "label": "Video height",
+        "default": 300
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_video_loop_2",
+        "label": "Loop video"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_video_mute_2",
+        "label": "Muted"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 2 - Products"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_eproduct_2",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "apmenuitem_columns_blockproducts_2",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "apmenuitem_tproduct_2",
+        "label": "Title"
+      },
+      {
+        "type": "collection",
+        "id": "apmenuitem_cproduct_2",
+        "label": "Collection"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 2 - Html"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_ehtml_2",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "apmenuitem_columns_blockhtml_2",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "apmenuitem_thtml_2",
+        "label": "Title"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_eihtml_2",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "apmenuitem_ihtml_2",
+        "label": "Image"
+      },
+      {
+        "type": "textarea",
+        "id": "apmenuitem_chtml_2",
+        "label": "Description",
+        "info": "[💡 Build HTML](https:\/\/ap2020.myshopify.com\/pages\/html-builder)"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 3"
+      },
+      {
+        "type": "text",
+        "id": "apmenuitem_title_3",
+        "label": "Appears under the menu named:",
+        "info": "Enter menu item's name"
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_width_3",
+        "min": 0,
+        "max": 1920,
+        "step": 20,
+        "label": "Megamenu width",
+        "default": 0,
+        "unit": "px",
+        "info": "Set the value to 0 for fullwidth megamenu"
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_oblocklinks_3",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block link's ordinal number",
+        "default": 1
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_ovideo_3",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block video's ordinal number",
+        "default": 2
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_oproduct_3",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block product's ordinal number",
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_ohtml_3",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block HTML's ordinal number",
+        "default": 4
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 3 - Links"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_eblocklinks_3",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "apmenuitem_columns_blocklinks_3",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "apmenuitem_columns_3",
+        "label": "Sublink width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 3 - Video"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_evideo_3",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "apmenuitem_columns_blockvideo_3",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "textarea",
+        "id": "apmenuitem_cvideo_3",
+        "label": "Video Link",
+        "default": "https:\/\/cdn.shopify.com\/s\/files\/1\/0092\/7563\/7839\/files\/Videomenu.mp4?39752",
+        "info": "[Upload *.mp4 video here (<20mb)](\/admin\/settings\/files)"
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_video_height_3",
+        "min": 200,
+        "max": 800,
+        "step": 10,
+        "unit": "px",
+        "label": "Video height",
+        "default": 300
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_video_loop_3",
+        "label": "Loop video"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_video_mute_3",
+        "label": "Muted"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 3 - Products"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_eproduct_3",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "apmenuitem_columns_blockproducts_3",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "apmenuitem_tproduct_3",
+        "label": "Title"
+      },
+      {
+        "type": "collection",
+        "id": "apmenuitem_cproduct_3",
+        "label": "Collection"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 3 - Html"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_ehtml_3",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "apmenuitem_columns_blockhtml_3",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "apmenuitem_thtml_3",
+        "label": "Title"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_eihtml_3",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "apmenuitem_ihtml_3",
+        "label": "Image"
+      },
+      {
+        "type": "textarea",
+        "id": "apmenuitem_chtml_3",
+        "label": "Description",
+        "info": "[💡 Build HTML](https:\/\/ap2020.myshopify.com\/pages\/html-builder)"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 4"
+      },
+      {
+        "type": "text",
+        "id": "apmenuitem_title_4",
+        "label": "Appears under the menu named:",
+        "info": "Enter menu item's name"
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_width_4",
+        "min": 0,
+        "max": 1920,
+        "step": 20,
+        "label": "Megamenu width",
+        "default": 0,
+        "unit": "px",
+        "info": "Set the value to 0 for fullwidth megamenu"
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_oblocklinks_4",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block link's ordinal number",
+        "default": 1
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_ovideo_4",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block video's ordinal number",
+        "default": 2
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_oproduct_4",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block product's ordinal number",
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_ohtml_4",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block HTML's ordinal number",
+        "default": 4
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 4 - Links"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_eblocklinks_4",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "apmenuitem_columns_blocklinks_4",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "apmenuitem_columns_4",
+        "label": "Sublink width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 4 - Video"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_evideo_4",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "apmenuitem_columns_blockvideo_4",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "textarea",
+        "id": "apmenuitem_cvideo_4",
+        "label": "Video Link",
+        "default": "https:\/\/cdn.shopify.com\/s\/files\/1\/0092\/7563\/7839\/files\/Videomenu.mp4?39752",
+        "info": "[Upload *.mp4 video here (<20mb)](\/admin\/settings\/files)"
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_video_height_4",
+        "min": 200,
+        "max": 800,
+        "step": 10,
+        "unit": "px",
+        "label": "Video height",
+        "default": 300
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_video_loop_4",
+        "label": "Loop video"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_video_mute_4",
+        "label": "Muted"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 4 - Products"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_eproduct_4",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "apmenuitem_columns_blockproducts_4",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "apmenuitem_tproduct_4",
+        "label": "Title"
+      },
+      {
+        "type": "collection",
+        "id": "apmenuitem_cproduct_4",
+        "label": "Collection"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 4 - Html"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_ehtml_4",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "apmenuitem_columns_blockhtml_4",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "apmenuitem_thtml_4",
+        "label": "Title"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_eihtml_4",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "apmenuitem_ihtml_4",
+        "label": "Image"
+      },
+      {
+        "type": "textarea",
+        "id": "apmenuitem_chtml_4",
+        "label": "Description",
+        "info": "[💡 Build HTML](https:\/\/ap2020.myshopify.com\/pages\/html-builder)"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 5"
+      },
+      {
+        "type": "text",
+        "id": "apmenuitem_title_5",
+        "label": "Appears under the menu named:",
+        "info": "Enter menu item's name"
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_width_5",
+        "min": 0,
+        "max": 1920,
+        "step": 20,
+        "label": "Megamenu width",
+        "default": 0,
+        "unit": "px",
+        "info": "Set the value to 0 for fullwidth megamenu"
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_oblocklinks_5",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block link's ordinal number",
+        "default": 1
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_ovideo_5",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block video's ordinal number",
+        "default": 2
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_oproduct_5",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block product's ordinal number",
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_ohtml_5",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Block HTML's ordinal number",
+        "default": 4
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 5 - Links"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_eblocklinks_5",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "apmenuitem_columns_blocklinks_5",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "apmenuitem_columns_5",
+        "label": "Sublink width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 5 - Video"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_evideo_5",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "apmenuitem_columns_blockvideo_5",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "textarea",
+        "id": "apmenuitem_cvideo_5",
+        "label": "Video Link",
+        "default": "https:\/\/cdn.shopify.com\/s\/files\/1\/0092\/7563\/7839\/files\/Videomenu.mp4?39752",
+        "info": "[Upload *.mp4 video here (<20mb)](\/admin\/settings\/files)"
+      },
+      {
+        "type": "range",
+        "id": "apmenuitem_video_height_5",
+        "min": 200,
+        "max": 800,
+        "step": 10,
+        "unit": "px",
+        "label": "Video height",
+        "default": 300
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_video_loop_5",
+        "label": "Loop video"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_video_mute_5",
+        "label": "Muted"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 5 - Products"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_eproduct_5",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "apmenuitem_columns_blockproducts_5",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "apmenuitem_tproduct_5",
+        "label": "Title"
+      },
+      {
+        "type": "collection",
+        "id": "apmenuitem_cproduct_5",
+        "label": "Collection"
+      },
+      {
+        "type": "header",
+        "content": "MEGAMENU 5 - Html"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_ehtml_5",
+        "label": "Enable"
+      },
+      {
+        "type": "select",
+        "id": "apmenuitem_columns_blockhtml_5",
+        "label": "Width",
+        "options": [
+          {
+            "value": "1",
+            "label": "1\/12 (8.33%)"
+          },
+          {
+            "value": "2",
+            "label": "2\/12 (16.67%)"
+          },
+          {
+            "value": "3",
+            "label": "3\/12 (25.00%)"
+          },
+          {
+            "value": "4",
+            "label": "4\/12 (33.33%)"
+          },
+          {
+            "value": "5",
+            "label": "5\/12 (41.67%)"
+          },
+          {
+            "value": "6",
+            "label": "6\/12 (50.00%)"
+          },
+          {
+            "value": "7",
+            "label": "7\/12 (58.33%)"
+          },
+          {
+            "value": "8",
+            "label": "8\/12 (66.67%)"
+          },
+          {
+            "value": "9",
+            "label": "9\/12 (75.00%)"
+          },
+          {
+            "value": "10",
+            "label": "10\/12 (83.33%)"
+          },
+          {
+            "value": "11",
+            "label": "11\/12 (91.67%)"
+          },
+          {
+            "value": "12",
+            "label": "12\/12 (100.00%)"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "apmenuitem_thtml_5",
+        "label": "Title"
+      },
+      {
+        "type": "checkbox",
+        "id": "apmenuitem_eihtml_5",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "apmenuitem_ihtml_5",
+        "label": "Image"
+      },
+      {
+        "type": "textarea",
+        "id": "apmenuitem_chtml_5",
+        "label": "Description",
+        "info": "[💡 Build HTML](https:\/\/ap2020.myshopify.com\/pages\/html-builder)"
+      }
+    ]
+  },
+  {
+    "name": "Breadcrumb",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Breadcrumb"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_breadcrumb",
+        "label": "Enable Breadcrumbs",
+        "default": true
+      },
+      {
+        "type": "textarea",
+        "id": "page_breadcrumb",
+        "label": "Disable breadcrumb customize page",
+        "info": "Separate by a comma (Example: \"about-us,contact\")"
+      },
+      {
+        "type": "header",
+        "content": "--* Breadcrumbs *--"
+      },
+      {
+        "type": "color",
+        "id": "color_breadcrumbs",
+        "label": "Color Breadcrumbs",
+        "default": "#666666"
+      },
+      {
+        "type": "color",
+        "id": "color_breadcrumbs_active",
+        "label": "Color Breadcrumbs Active",
+        "default": "#222222"
+      },
+      {
+        "type": "color",
+        "id": "bg_breadcrumb",
+        "label": "Background Breadcrumbs",
+        "default": "#f4efe9"
+      },
+      {
+        "type": "range",
+        "id": "limit_ranger",
+        "min": 0,
+        "max": 0.9,
+        "step": 0.1,
+        "label": "Opacity Color",
+        "default": 0
+      },
+      {
+        "type": "checkbox",
+        "id": "show_title_breadcumbs",
+        "label": "Show Big Title"
+      },
+      {
+        "type": "select",
+        "id": "align_bread",
+        "label": "Alignment Title Breadcrumbs ",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "left"
+      },
+      {
+        "type": "select",
+        "id": "style_breadcrumb",
+        "label": "Style Breadcrumbs",
+        "options": [
+          {
+            "value": "style_1",
+            "label": "Default"
+          },
+          {
+            "value": "style_2",
+            "label": "Style Background"
+          }
+        ],
+        "default": "style_1"
+      },
+      {
+        "type": "select",
+        "id": "layout_bread",
+        "label": "Layout Breadcrumbs",
+        "options": [
+          {
+            "value": "container",
+            "label": "Container"
+          },
+          {
+            "value": "container-fluid",
+            "label": "Container Fluid"
+          }
+        ],
+        "default": "container"
+      },
+      {
+        "type": "image_picker",
+        "id": "img_breadcrumb",
+        "label": "Background Breadcrumbs"
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Social sharing image"
+      },
+      {
+        "type": "image_picker",
+        "id": "share_image",
+        "label": "Image",
+        "info": "Shown when sharing a link on social media. [Learn more](https:\/\/help.shopify.com\/manual\/using-themes\/troubleshooting\/showing-social-media-thumbnail-images\/) about image thumbnails."
+      },
+      {
+        "type": "header",
+        "content": "Accounts"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook",
+        "info": "https:\/\/www.facebook.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "Twitter",
+        "info": "https:\/\/twitter.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest_link",
+        "label": "Pinterest",
+        "info": "https:\/\/www.pinterest.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram",
+        "info": "https:\/\/instagram.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_tumblr_link",
+        "label": "Tumblr",
+        "info": "http:\/\/shopify.tumblr.com"
+      },
+      {
+        "type": "text",
+        "id": "social_snapchat_link",
+        "label": "Snapchat",
+        "info": "https:\/\/www.snapchat.com\/add\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_link",
+        "label": "YouTube",
+        "info": "https:\/\/www.youtube.com\/user\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_vimeo_link",
+        "label": "Vimeo",
+        "info": "https:\/\/vimeo.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok_link",
+        "label": "Tiktok",
+        "info": "https:\/\/tiktok.com\/shopify"
+      },
+      {
+        "type": "header",
+        "content": "Sharing"
+      },
+      {
+        "type": "checkbox",
+        "id": "share_facebook",
+        "label": "Share on Facebook",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_twitter",
+        "label": "Tweet on Twitter",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_pinterest",
+        "label": "Pin on Pinterest",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Sidebar",
+    "settings": [
+      {
+        "type": "header",
+        "content": "List of collections"
+      },
+      {
+        "type": "checkbox",
+        "id": "categories_block_enable",
+        "label": "Enable"
+      },
+      {
+        "type": "checkbox",
+        "id": "categories_block_productcount",
+        "label": "Show quantity"
+      },
+      {
+        "type": "checkbox",
+        "id": "categories_block_collapse",
+        "label": "Expand collapse"
+      },
+      {
+        "type": "text",
+        "id": "categories_block_title",
+        "label": "Title",
+        "default": "Collections"
+      },
+      {
+        "type": "text",
+        "id": "categories_block_number",
+        "label": "Number displayed",
+        "default": "10",
+        "info": "The number of collections displayed"
+      },
+      {
+        "type": "textarea",
+        "id": "categories_block_items",
+        "label": "Show selected collections",
+        "info": "Use \",\" to separate collection items. For ex: Category, Collections"
+      },
+      {
+        "type": "header",
+        "content": "List of vendors"
+      },
+      {
+        "type": "checkbox",
+        "id": "shop_by_vendor_enable",
+        "label": "Enable"
+      },
+      {
+        "type": "checkbox",
+        "id": "shop_by_vendor_collapse",
+        "label": "Expand collapse"
+      },
+      {
+        "type": "text",
+        "id": "shop_by_vendor_title",
+        "label": "Title",
+        "default": "Vendors"
+      },
+      {
+        "type": "text",
+        "id": "shop_by_vendor_number",
+        "label": "Number displayed",
+        "default": "10",
+        "info": "The number of vendors displayed"
+      },
+      {
+        "type": "textarea",
+        "id": "shop_by_vendor_custom_list",
+        "label": "Show selected vendors",
+        "info": "Use \",\" to separate vendor items. For ex: Vendor 1, Vendor 2"
+      },
+      {
+        "type": "header",
+        "content": "List of types"
+      },
+      {
+        "type": "checkbox",
+        "id": "shop_by_type_enable",
+        "label": "Enable"
+      },
+      {
+        "type": "checkbox",
+        "id": "shop_by_type_collapse",
+        "label": "Expand collapse"
+      },
+      {
+        "type": "text",
+        "id": "shop_by_type_title",
+        "label": "Title",
+        "default": "Types"
+      },
+      {
+        "type": "text",
+        "id": "shop_by_type_number",
+        "label": "Number displayed",
+        "default": "10",
+        "info": "The number of types displayed"
+      },
+      {
+        "type": "textarea",
+        "id": "shop_by_type_custom_list",
+        "label": "Show selected types",
+        "info": "Use \",\" to separate type items. For ex: Type 1, Type 2"
+      }
+    ]
+  },
+  {
+    "name": "Sidebar blog pages",
+    "settings": [
+      {
+        "type": "header",
+        "content": "HTML"
+      },
+      {
+        "type": "text",
+        "id": "sidebar_html_title_top",
+        "default": "Something here",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "sidebar_html_top",
+        "label": "HTML code",
+        "info": "[💡 Build HTML](https:\/\/ap2020.myshopify.com\/pages\/html-builder)"
+      },
+      {
+        "type": "header",
+        "content": "Tags"
+      },
+      {
+        "type": "checkbox",
+        "id": "sidebar_tag",
+        "default": true,
+        "label": "Show tags"
+      },
+      {
+        "type": "header",
+        "content": "Recent Post"
+      },
+      {
+        "type": "checkbox",
+        "id": "sidebar_post",
+        "default": true,
+        "label": "Enable"
+      },
+      {
+        "type": "text",
+        "id": "sidebar_post_title",
+        "default": "Recent Post",
+        "label": "Title"
+      },
+      {
+        "type": "range",
+        "id": "sidebar_post_limit",
+        "min": 2,
+        "max": 6,
+        "step": 1,
+        "label": "Limit",
+        "default": 5
+      },
+      {
+        "type": "header",
+        "content": "HTML"
+      },
+      {
+        "type": "text",
+        "id": "sidebar_html_title",
+        "default": "Something here",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "sidebar_html",
+        "label": "HTML code",
+        "info": "[💡 Build HTML](https:\/\/ap2020.myshopify.com\/pages\/html-builder)"
+      }
+    ]
+  },
+  {
+    "name": "Collection filter",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Price range"
+      },
+      {
+        "type": "checkbox",
+        "id": "price_range_enable",
+        "label": "Enable"
+      },
+      {
+        "type": "text",
+        "id": "price_range_title",
+        "label": "Title",
+        "default": "Price range"
+      },
+      {
+        "type": "header",
+        "content": "Filter"
+      },
+      {
+        "type": "checkbox",
+        "id": "shop_by_catalog_enable",
+        "label": "Enable"
+      },
+      {
+        "type": "checkbox",
+        "id": "filter_eachcollection",
+        "label": "Enable Filter Each Collection",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "shop_by_catalog_title",
+        "label": "Title",
+        "default": "Filter"
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 [Filter works with product tags. You need to add tags here](\/admin\/bulk?resource_name=Product&order=title+asc&edit=tags&show=&ids=&metafield_titles=&metafield_options=)"
+      },
+      {
+        "type": "header",
+        "content": "Filter 1"
+      },
+      {
+        "type": "text",
+        "id": "filter_title_1",
+        "label": "Title",
+        "default": "Size"
+      },
+      {
+        "type": "textarea",
+        "id": "filter_list_1",
+        "label": "Value list (lowercase)",
+        "default": "tiny,small,medium,large,big",
+        "info": "Separate by a comma (Example: \"tiny,small,medium,large,big\")"
+      },
+      {
+        "type": "header",
+        "content": "Filter 2"
+      },
+      {
+        "type": "text",
+        "id": "filter_title_2",
+        "label": "Title",
+        "default": "Material"
+      },
+      {
+        "type": "textarea",
+        "id": "filter_list_2",
+        "label": "Value list (lowercase)",
+        "default": "gold,silver,wood,iron,pvc,polyester,linen,organic cotton",
+        "info": "Separate by a comma (Example: \"gold,silver,wood,iron,pvc,polyester,linen,organic cotton\")"
+      },
+      {
+        "type": "header",
+        "content": "Filter 3"
+      },
+      {
+        "type": "text",
+        "id": "filter_title_3",
+        "label": "Title",
+        "default": "Other"
+      },
+      {
+        "type": "textarea",
+        "id": "filter_list_3",
+        "label": "Value list (lowercase)",
+        "default": "gift,new,sale,hot,deal",
+        "info": "Separate by a comma (Example: \"gift,new,sale,hot,deal\")"
+      },
+      {
+        "type": "header",
+        "content": "Color filter"
+      },
+      {
+        "type": "checkbox",
+        "id": "shop_by_color_enable",
+        "label": "Enable"
+      },
+      {
+        "type": "text",
+        "id": "shop_by_color_title",
+        "label": "Title",
+        "default": "Color"
+      },
+      {
+        "type": "text",
+        "id": "shop_by_color_text_1",
+        "label": "Color 1"
+      },
+      {
+        "type": "image",
+        "id": "color-1.png",
+        "label": "Image 1"
+      },
+      {
+        "type": "text",
+        "id": "shop_by_color_text_2",
+        "label": "Color 2"
+      },
+      {
+        "type": "image",
+        "id": "color-2.png",
+        "label": "Image 2"
+      },
+      {
+        "type": "text",
+        "id": "shop_by_color_text_3",
+        "label": "Color 3"
+      },
+      {
+        "type": "image",
+        "id": "color-3.png",
+        "label": "Image 3"
+      },
+      {
+        "type": "text",
+        "id": "shop_by_color_text_4",
+        "label": "Color 4"
+      },
+      {
+        "type": "image",
+        "id": "color-4.png",
+        "label": "Image 4"
+      },
+      {
+        "type": "text",
+        "id": "shop_by_color_text_5",
+        "label": "Color 5"
+      },
+      {
+        "type": "image",
+        "id": "color-5.png",
+        "label": "Image 5"
+      },
+      {
+        "type": "text",
+        "id": "shop_by_color_text_6",
+        "label": "Color 6"
+      },
+      {
+        "type": "image",
+        "id": "color-6.png",
+        "label": "Image 6"
+      },
+      {
+        "type": "text",
+        "id": "shop_by_color_text_7",
+        "label": "Color 7"
+      },
+      {
+        "type": "image",
+        "id": "color-7.png",
+        "label": "Image 7"
+      },
+      {
+        "type": "text",
+        "id": "shop_by_color_text_8",
+        "label": "Color 8"
+      },
+      {
+        "type": "image",
+        "id": "color-8.png",
+        "label": "Image 8"
+      },
+      {
+        "type": "text",
+        "id": "shop_by_color_text_9",
+        "label": "Color 9"
+      },
+      {
+        "type": "image",
+        "id": "color-9.png",
+        "label": "Image 9"
+      },
+      {
+        "type": "text",
+        "id": "shop_by_color_text_10",
+        "label": "Color 10"
+      },
+      {
+        "type": "image",
+        "id": "color-10.png",
+        "label": "Image 10"
+      },
+      {
+        "type": "text",
+        "id": "shop_by_color_text_11",
+        "label": "Color 11"
+      },
+      {
+        "type": "image",
+        "id": "color-11.png",
+        "label": "Image 11"
+      },
+      {
+        "type": "text",
+        "id": "shop_by_color_text_12",
+        "label": "Color 12"
+      },
+      {
+        "type": "image",
+        "id": "color-12.png",
+        "label": "Image 12"
+      },
+      {
+        "type": "text",
+        "id": "shop_by_color_text_13",
+        "label": "Color 13"
+      },
+      {
+        "type": "image",
+        "id": "color-13.png",
+        "label": "Image 13"
+      },
+      {
+        "type": "text",
+        "id": "shop_by_color_text_14",
+        "label": "Color 14"
+      },
+      {
+        "type": "image",
+        "id": "color-14.png",
+        "label": "Image 14"
+      },
+      {
+        "type": "text",
+        "id": "shop_by_color_text_15",
+        "label": "Color 15"
+      },
+      {
+        "type": "image",
+        "id": "color-15.png",
+        "label": "Image 15"
+      },
+      {
+        "type": "text",
+        "id": "shop_by_color_text_16",
+        "label": "Color 16"
+      },
+      {
+        "type": "image",
+        "id": "color-16.png",
+        "label": "Image 16"
+      },
+      {
+        "type": "text",
+        "id": "shop_by_color_text_17",
+        "label": "Color 17"
+      },
+      {
+        "type": "image",
+        "id": "color-17.png",
+        "label": "Image 17"
+      },
+      {
+        "type": "text",
+        "id": "shop_by_color_text_18",
+        "label": "Color 18"
+      },
+      {
+        "type": "image",
+        "id": "color-18.png",
+        "label": "Image 18"
+      },
+      {
+        "type": "text",
+        "id": "shop_by_color_text_19",
+        "label": "Color 19"
+      },
+      {
+        "type": "image",
+        "id": "color-19.png",
+        "label": "Image 19"
+      },
+      {
+        "type": "text",
+        "id": "shop_by_color_text_20",
+        "label": "Color 20"
+      },
+      {
+        "type": "image",
+        "id": "color-20.png",
+        "label": "Image 20"
+      }
+    ]
+  },
+  {
+    "name": "Collection metafields",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Coupon popup"
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 Work with [discount code](\/admin\/discounts)."
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 Set blank to make hidden. You can use HTML in promotion text."
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 [Enter coupon code here.](\/admin\/bulk?resource_name=Collection&edit=metafields.info.coupon_code%3Astring%2Cmetafields.info.promotion%3Astring%2Cmetafields.info.coupon_image%3Astring)"
+      },
+      {
+        "type": "range",
+        "id": "coupon_time",
+        "min": 1,
+        "max": 10,
+        "step": 0.1,
+        "unit": "s",
+        "label": "Delay time before show popup:",
+        "default": 3
+      }
+    ]
+  },
+  {
+    "name": "Product metafields 🔥",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "sw_color_product",
+        "label": "Enable Swatch Color",
+        "info": "You can upload image color in Settings \/ File -> example: red.png -> red is name variant product",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "🔀 Cross-sell"
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 Work with product handle, separate values by a comma."
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 Example: \"product-handle-1,product-handle-2,product-handle-3,product-handle-4\""
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 Set blank to make hidden."
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 [Enter product handle here (Crossell column).](\/admin\/bulk?resource_name=Product&edit=metafields.info.crosssell%3Astring%2Chandle)"
+      },
+      {
+        "type": "text",
+        "id": "crosssell_title",
+        "default": "Cross-selling",
+        "info": "This title shows with the products are setup",
+        "label": "Title"
+      },
+      {
+        "type": "header",
+        "content": "⬆️ Upsell"
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 Work with product handle and [automatic discount code](\/admin\/discounts\/automatic). Discount codes will automatically apply when your customer checkout"
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 [Enter product handle and promotion text here.](\/admin\/bulk?resource_name=Product&edit=metafields.info.upsell%3Astring%2Cmetafields.info.promotion%3Astring%2Chandle)"
+      },
+      {
+        "type": "paragraph",
+        "content": "⚠️ Enter only ONE product handle (Upsell column)"
+      },
+      {
+        "type": "image",
+        "id": "upsell_image.png",
+        "label": "Logo offer",
+        "info": "80x80 pixels recommended",
+        "max-width": 200,
+        "max-height": 200
+      },
+      {
+        "type": "text",
+        "id": "upsell_accept",
+        "default": "Yes, let me select variants",
+        "label": "Button accept"
+      },
+      {
+        "type": "text",
+        "id": "upsell_decline",
+        "default": "No, thanks",
+        "label": "Button decline"
+      },
+      {
+        "type": "range",
+        "id": "upsell_time",
+        "min": 1,
+        "max": 10,
+        "step": 0.1,
+        "unit": "s",
+        "label": "Delay time before show popup",
+        "default": 3
+      },
+      {
+        "type": "header",
+        "content": "📹 Product video"
+      },
+      {
+        "type": "checkbox",
+        "id": "enablevideo",
+        "label": "Enable Video Item",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "video_mute",
+        "label": "Disable sound",
+        "default": true
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 [You can upload video here.](\/admin\/settings\/files) (*.mp4 file)"
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 [Enter video link here for each product.](\/admin\/bulk?resource_name=Product&edit=metafields.info.video)"
+      },
+      {
+        "type": "header",
+        "content": "🔗 Affiliate product"
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 [Enter affiliate link here.](\/admin\/bulk?resource_name=Product&edit=metafields.info.affiliate_link,metafields.info.affiliate_button)"
+      },
+      {
+        "type": "header",
+        "content": "🚚 Free shipping"
+      },
+      {
+        "type": "checkbox",
+        "id": "free_shipping_enable",
+        "label": "Enable",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "free_shipping_value",
+        "min": 0,
+        "max": 1000,
+        "step": 10,
+        "label": "Minimum order value to be free shipping",
+        "default": 100
+      },
+      {
+        "type": "text",
+        "id": "free_first",
+        "default": "Spend",
+        "label": "First Text Price"
+      },
+      {
+        "type": "text",
+        "id": "free_end",
+        "default": "for <b>FREE SHIPPING<\/b>",
+        "label": "End Text Price"
+      },
+      {
+        "type": "text",
+        "id": "free_shipping_text",
+        "default": "Your order is free delivery !",
+        "label": "Text"
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 [Setup your store shipping here](\/admin\/settings\/shipping)"
+      },
+      {
+        "type": "header",
+        "content": "🚚 Shipping time"
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 [Enter shipping time for each product here (days).](\/admin\/bulk?resource_name=Product&edit=metafields.info.shipping)"
+      },
+      {
+        "type": "text",
+        "id": "shipping_button",
+        "default": "Delivery information",
+        "label": "Shipping button"
+      },
+      {
+        "type": "page",
+        "id": "page_shipping",
+        "label": "Shipping page"
+      },
+      {
+        "type": "header",
+        "content": "⌛ Deal - countdown"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_countdown_page",
+        "label": "Show in product page."
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_countdown_card",
+        "label": "Show in product grid item."
+      },
+      {
+        "type": "paragraph",
+        "content": "⏱ [Enter the end times here.](\/admin\/bulk?resource_name=Product&edit=metafields.info.countdown)"
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 Example: 2025-12-30T00:00:00"
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 Set blank to make hidden."
+      }
+    ]
+  },
+  {
+    "name": "Compare & Wishlist",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Compare"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_compare",
+        "label": "Enable"
+      },
+      {
+        "type": "header",
+        "content": "Wishlist"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_wishlsit",
+        "label": "Enable"
+      },
+      {
+        "type": "page",
+        "id": "page_wishlist",
+        "label": "Wishlist page",
+        "info": "[Create new page](\/admin\/pages\/new) and select template suffix is page.wishlist"
+      }
+    ]
+  },
+  {
+    "name": "Product labels 🏷️",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "txtuppercase",
+        "default": false,
+        "label": "Enable Text Uppercase"
+      },
+      {
+        "type": "select",
+        "id": "style_label",
+        "label": "Style Label",
+        "default": "rectangular_label",
+        "options": [
+          {
+            "value": "rectangular_label",
+            "label": "Rectangular"
+          },
+          {
+            "value": "square_label",
+            "label": "Square"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Position Label"
+      },
+      {
+        "type": "range",
+        "id": "top_label",
+        "min": 0,
+        "max": 24,
+        "step": 1,
+        "label": "Top Label",
+        "unit": " px",
+        "default": 10
+      },
+      {
+        "type": "range",
+        "id": "left_label",
+        "min": 0,
+        "max": 24,
+        "step": 1,
+        "label": "Left Label",
+        "unit": " px",
+        "default": 10
+      },
+      {
+        "type": "range",
+        "id": "radius_label",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "label": "Border Radius Label",
+        "unit": " px",
+        "default": 25
+      },
+      {
+        "type": "header",
+        "content": "🏷️ New label"
+      },
+      {
+        "type": "checkbox",
+        "id": "new_label_enable",
+        "default": true,
+        "label": "Enable"
+      },
+      {
+        "type": "text",
+        "id": "new_label_text",
+        "default": "New",
+        "label": "Text"
+      },
+      {
+        "type": "color",
+        "id": "new_label_bg",
+        "default": "#34bf49",
+        "label": "Background"
+      },
+      {
+        "type": "color",
+        "id": "new_label_cl",
+        "default": "#ffffff",
+        "label": "Text"
+      },
+      {
+        "type": "range",
+        "id": "new_label_day",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "label": "Number of days for which the product is considered 'new'",
+        "default": 30
+      },
+      {
+        "type": "header",
+        "content": "🏷️ Sale label"
+      },
+      {
+        "type": "checkbox",
+        "id": "sale_label_enable",
+        "default": true,
+        "label": "Enable"
+      },
+      {
+        "type": "text",
+        "id": "sale_label_text",
+        "default": "On Sale",
+        "label": "Text"
+      },
+      {
+        "type": "select",
+        "id": "tagsale",
+        "label": "Tag Sale Product",
+        "default": "percent",
+        "options": [
+          {
+            "value": "percent",
+            "label": "%"
+          },
+          {
+            "value": "txt",
+            "label": "Text"
+          },
+          {
+            "value": "txtandnumber",
+            "label": "Number and Text"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "sale_label_bg",
+        "default": "#eb7025",
+        "label": "Background"
+      },
+      {
+        "type": "color",
+        "id": "sale_label_cl",
+        "default": "#ffffff",
+        "label": "Text"
+      },
+      {
+        "type": "header",
+        "content": "🏷️ Custom label"
+      },
+      {
+        "type": "checkbox",
+        "id": "best_seller",
+        "default": true,
+        "label": "Enable"
+      },
+      {
+        "type": "text",
+        "id": "best_seller_text",
+        "default": "Best Seller",
+        "label": "Text"
+      },
+      {
+        "type": "color",
+        "id": "best_seller_bg",
+        "default": "#eb7025",
+        "label": "Background"
+      },
+      {
+        "type": "color",
+        "id": "best_seller_cl",
+        "default": "#ffffff",
+        "label": "Text"
+      }
+    ]
+  },
+  {
+    "name": "Product Item",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_type",
+        "label": "Enable Type Product",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "t_product",
+        "label": "Title Uppercase",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "second_image",
+        "label": "Enable Second Image",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "e_swatch",
+        "label": "Enable Swatch",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "swatch_color",
+        "label": "Enable Swatch Color",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "size_image_grid",
+        "label": "Size Image Product Grid",
+        "default": "auto",
+        "options": [
+          {
+            "value": "auto",
+            "label": "Natural"
+          },
+          {
+            "value": "square",
+            "label": "Square (1:1)"
+          },
+          {
+            "value": "landscape",
+            "label": "Landscape (4:3)"
+          },
+          {
+            "value": "portrait",
+            "label": "Portrait (2:3)"
+          },
+          {
+            "value": "wide",
+            "label": "Wide (16:9)"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "cover_contain",
+        "label": "Object Image",
+        "default": "contain",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "contain",
+            "label": "Contain"
+          },
+          {
+            "value": "cover",
+            "label": "Cover"
+          },
+          {
+            "value": "fill",
+            "label": "Fill"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Quick View 👁️",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "qv_box",
+        "label": "Enable QuickView",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "qv_des",
+        "label": "Enable Description",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "qv_sku",
+        "label": "Enable SKU",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "qv_type",
+        "label": "Enable Type",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "qv_vendor",
+        "label": "Enable Vendor",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Button & Input",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Font Button"
+      },
+      {
+        "type": "select",
+        "id": "text_transform_btn",
+        "label": "Text Transform",
+        "default": "uppercase",
+        "options": [
+          {
+            "value": "uppercase",
+            "label": "Uppercase"
+          },
+          {
+            "value": "capitalize",
+            "label": "Capitalize"
+          },
+          {
+            "value": "inherit",
+            "label": "Inherit"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "font_family_button",
+        "label": "Font Family",
+        "default": "--g-font-2",
+        "options": [
+          {
+            "value": "--g-font-1",
+            "label": "Heading"
+          },
+          {
+            "value": "--g-font-2",
+            "label": "Body"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "font_weight_button",
+        "label": "Font Weight",
+        "default": "600",
+        "options": [
+          {
+            "value": "300",
+            "label": "Light"
+          },
+          {
+            "value": "400",
+            "label": "Normal"
+          },
+          {
+            "value": "500",
+            "label": "Medium"
+          },
+          {
+            "value": "600",
+            "label": "Semi"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "base_size_button",
+        "label": "Size Button",
+        "max": 20,
+        "min": 10,
+        "step": 1,
+        "unit": " px",
+        "default": 14
+      },
+      {
+        "type": "range",
+        "id": "letter_spacing_button",
+        "label": "Letter Spacing Button",
+        "max": 1,
+        "min": 0,
+        "step": 0.1,
+        "unit": " em",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "border_radius_btn",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "unit": " px",
+        "label": "Border Radius Button",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_vertical_btn",
+        "min": 0,
+        "max": 32,
+        "step": 1,
+        "unit": " px",
+        "label": "Padding Vertical",
+        "default": 11
+      },
+      {
+        "type": "range",
+        "id": "padding_hoz_btn",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "unit": " px",
+        "label": "Padding Horizontal",
+        "default": 30
+      },
+      {
+        "type": "header",
+        "content": "Button Second (Bottom Line)"
+      },
+      {
+        "type": "range",
+        "id": "height_border_btn",
+        "min": 0,
+        "max": 5,
+        "step": 1,
+        "label": "Height Border Bottom",
+        "default": 2
+      },
+      {
+        "type": "header",
+        "content": "--- Input"
+      },
+      {
+        "type": "color",
+        "id": "input_bg",
+        "label": "Background Input "
+      },
+      {
+        "type": "color",
+        "id": "input_border",
+        "label": "Border Input",
+        "default": "#dee2e6"
+      },
+      {
+        "type": "range",
+        "id": "input_height",
+        "min": 32,
+        "max": 60,
+        "step": 1,
+        "unit": " px",
+        "label": "Height Input",
+        "default": 48
+      },
+      {
+        "type": "range",
+        "id": "input_round",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "unit": " px",
+        "label": "Radius Input",
+        "default": 30
+      }
+    ]
+  },
+  {
+    "name": "Cookie policy",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "cookie_enable",
+        "default": true,
+        "label": "Enable"
+      },
+      {
+        "type": "textarea",
+        "id": "cookie_message",
+        "default": "This website uses cookies to ensure you get the best experience on our website.",
+        "label": "Message"
+      },
+      {
+        "type": "url",
+        "id": "cookie_url",
+        "label": "Privacy Policy URL"
+      },
+      {
+        "type": "text",
+        "id": "cookie_url_text",
+        "default": "Learn More",
+        "label": "Info link text"
+      },
+      {
+        "type": "text",
+        "id": "cookie_ok",
+        "default": "Got it!",
+        "label": "Accept button text"
+      }
+    ]
+  },
+  {
+    "name": "Multi Currencies",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_multiple_currencies",
+        "label": "Multi Currencies"
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 Although you will be able to display prices on your store front in different currencies, Shopify will still process orders in your shop's currency."
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 For this functionality to work in your shop, you are required to edit your money formats as per [these instructions](https:\/\/help.shopify.com\/en\/manual\/using-themes\/change-the-layout\/help-script-find-money-formats)."
+      },
+      {
+        "type": "paragraph",
+        "content": "💡 Use the ISO 4217 3-letter currency code. Click [here](http:\/\/www.xe.com\/iso4217.php) for a complete list of currency codes. Example: USD."
+      },
+      {
+        "type": "header",
+        "content": "List currencies"
+      },
+      {
+        "type": "textarea",
+        "id": "list_currencies",
+        "label": "Currency codes",
+        "default": "EUR,AUD,GBP,JPY,CAD",
+        "info": "[See the full list of currency codes](http:\/\/www.xe.com\/iso4217.php)"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "cartdraw",
+        "label": "Cart Drawer",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "404 Page",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Settings"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_404",
+        "label": "404 image"
+      },
+      {
+        "type": "color",
+        "id": "found_text_color",
+        "label": "Text color",
+        "default": "#ff847b"
+      },
+      {
+        "type": "text",
+        "id": "found_html",
+        "label": "Title 404",
+        "default": "404 Error"
+      },
+      {
+        "type": "textarea",
+        "id": "sub_404",
+        "label": "Description",
+        "default": "Oops, This Page Could Not Be Found!",
+        "info": "[💡 Build HTML](https:\/\/ap2020.myshopify.com\/pages\/html-builder)"
+      },
+      {
+        "type": "text",
+        "id": "found_btnleft_text",
+        "label": "Button Text"
+      },
+      {
+        "type": "url",
+        "id": "found_btnleft_link",
+        "label": "Button Link"
+      }
+    ]
+  },
+  {
+    "name": "Password Page",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image_password",
+        "label": "Background Image"
+      },
+      {
+        "type": "color",
+        "id": "bg_password",
+        "label": "Background Password Page",
+        "default": "#282828"
+      },
+      {
+        "type": "color",
+        "id": "bg_popup",
+        "label": "Background Popup",
+        "default": "#282828"
+      }
+    ]
+  }
+]

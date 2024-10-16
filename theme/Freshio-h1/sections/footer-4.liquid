@@ -1,0 +1,361 @@
+<style>
+  :root{--g-footer-mid-bg:{{section.settings.footermidbg}};--g-footer-mid-text:{{section.settings.footermidtext}};--g-footer-mid-link:{{section.settings.footermidlink}};--g-border-top:{{section.settings.bordertop}};--g-border-bot:{{section.settings.borderbot}}}
+</style>
+<style>
+  {%- if section.settings.cssfooter != blank -%}
+      {{section.settings.cssfooter}}
+    {%- endif -%}
+    .footer-container{
+    border-top:1px solid var(--g-border-top);
+  }
+  .footer-mid {
+    border-top-color:var(--g-border-bot) !important ;
+	background: var(--g-footer-mid-bg);
+	color: var(--g-footer-mid-text)
+}
+
+.footer-mid a {
+	color: var(--g-footer-mid-link)
+}
+
+.footer-mid a:hover {
+	opacity: .85
+}
+
+.footer-bot {
+	background: var(--g-footer-mid-bg);
+	padding-top: 40px;
+	padding-bottom: 65px
+}
+
+.footer-mid__contact-form input {
+	width: 100%;
+	margin-bottom: 10px;
+	font-size: 14px;
+	background: var(--g-footer-mid-text);
+	border: 1px solid #ccc
+}
+
+.footer-mid__contact-form textarea {
+	width: 100%;
+	height: 86px;
+	font-size: 14px;
+	background: var(--g-footer-mid-text);
+	border: 1px solid #ccc
+}
+
+.footer-mid__contact-form .form-success {
+	margin-top: 10px
+}
+
+.footer-mid__contact-form .btn {
+	padding: 15px 0;
+	margin-top: 5px;
+	width: 100%;
+	text-transform: uppercase;
+	font-size: 12px
+}
+
+.footer-container {
+	margin: 0 auto
+}
+
+.rtl .footer-container {
+	text-align: right
+}
+
+.footer-mid__title {
+	font-size: 30px;
+	text-transform: none;
+	margin-bottom: 35px;
+	margin-top: 0;
+	border-bottom: 1px solid rgba(255, 255, 255, .2);
+	padding: 35px 0;
+	position: relative
+}
+
+.rtl .footer-mid__title {
+	padding-left: 0;
+	padding-right: 20px
+}
+
+.footer-mid__des {
+	font-size: 18px;
+	line-height: 1.8
+}
+
+.footer-mid__info li {
+	padding: 5px 0;
+	border-bottom: 1px solid rgba(255, 255, 255, .2);
+	line-height: 33px
+}
+
+.footer-mid__info li:last-child {
+	border: none
+}
+
+.footer-mid__info .icon {
+	width: 15px;
+	margin-right: 10px
+}
+
+.rtl .footer-mid__info .icon {
+	margin-left: 10px;
+	margin-right: 0
+}
+
+.footer-mid__social li {
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 50%;
+	margin: 8px
+}
+
+.footer-mid__contact-form .btn .icon {
+	margin: 0 4px
+}
+
+.footer-mid__linklist li+li {
+	position: relative
+}
+
+.footer-mid__linklist li+li:before {
+	content: "";
+	position: absolute;
+	width: 1px;
+	height: 50%;
+	top: 25%;
+	left: 0;
+  background:var(--g-footer-mid-text);
+  opacity: 0.1;
+}
+
+.footer__newsletter {
+	max-width: 780px
+}</style>
+
+<!-- footer-4.liquid -->
+<div class="footer-container">
+  
+  <section class="footer-top py-5 my-5 text-center px-3">
+    {%- if section.settings.newsletter -%}
+    <div class="footer__newsletter mx-auto">
+      {%- if section.settings.newsletter_title != blank -%}
+      <h2 class="mb-2">
+        {{ section.settings.newsletter_title }}
+      </h2>
+      {%- endif -%}
+      {%- if section.settings.newsletter_subheading != blank -%}
+      <p>{{ section.settings.newsletter_subheading }}</p>
+      {%- endif -%}
+      <div class="form-vertical pt-4">
+        {%- form 'customer' -%}
+        {{ form.errors | default_errors }}
+        {%- if form.posted_successfully? -%}
+        <p class="form-success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+        {%- else -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <div class="input-group form-group">
+          <input class="form-control py-4" type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_placeholder' | t }}" name="contact[email]" id="NewsletterEmail-{{ block.id }}" autocorrect="off" autocapitalize="off">
+          <div class="input-group-append pl-3">
+            <button type="submit" class="btn btn-theme gradient-theme" name="commit">
+              {{ 'general.newsletter_form.submit' | t }}
+            </button>
+          </div>
+        </div>
+        {%- endif -%}
+        {%- endform -%}
+      </div>
+    </div>
+    {%- endif -%}
+    {%- if section.settings.social_enable -%}
+  <div class="footer-mid__social pt-2 ">
+    <ul class="list--inline social-icons d-inline-block px-2 position-relative ">
+      {%- if settings.social_facebook_link != blank -%}
+      <li>
+        <a href="{{ settings.social_facebook_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}" style="color:#3b5999">
+          {%- include 'icon-facebook' -%}</a>
+      </li>
+      {%- endif -%}
+      {%- if settings.social_twitter_link != blank -%}
+      <li>
+        <a href="{{ settings.social_twitter_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}" style="color:#55acee">
+          {%- include 'icon-twitter' -%}</a>
+      </li>
+      {%- endif -%}
+      {%- if settings.social_pinterest_link != blank -%}
+      <li>
+        <a href="{{ settings.social_pinterest_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}" style="color:#bd081c">
+          {%- include 'icon-pinterest' -%}</a>
+      </li>
+      {%- endif -%}
+      {%- if settings.social_tumblr_link != blank -%}
+      <li>
+        <a href="{{ settings.social_tumblr_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tumblr' }}" style="color:#34465d">
+          {%- include 'icon-tumblr' -%}</a>
+      </li>
+      {%- endif -%}
+      {%- if settings.social_snapchat_link != blank -%}
+      <li>
+        <a href="{{ settings.social_snapchat_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Snapchat' }}" style="color:#FFFC00">
+          {%- include 'icon-snapchat' -%}
+        </a>
+      </li>
+      {%- endif -%}
+      {%- if settings.social_youtube_link != blank -%}
+      <li>
+        <a href="{{ settings.social_youtube_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}" style="color:#cd201f">
+          {%- include 'icon-youtube' -%}
+          </a>
+      </li>
+      {%- endif -%}
+      {%- if settings.social_instagram_link != blank -%}
+      <li>
+        <a href="{{ settings.social_instagram_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}" style="color:#e4405f">
+          {%- include 'icon-instagram' -%}</a>
+      </li>
+      {%- endif -%}
+      {%- if settings.social_vimeo_link != blank -%}
+      <li>
+        <a href="{{ settings.social_vimeo_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Vimeo' }}" style="color:#1ab7ea">
+          {%- include 'icon-vimeo' -%}
+        </a>
+      </li>
+      {%- endif -%}
+    </ul>
+  </div>
+  {%- endif -%}
+  </section>
+  
+  
+ 
+
+  <section class="footer-mid pt-3 pb-4  pt-lg-5 pb-lg-5 border-top">
+    <div class="container-fluid">
+      <div class="row align-items-lg-center">
+        <div class="col-lg-4 col-md-12 text-center text-lg-left">
+          {%- if section.settings.logo != blank -%}
+          <img class="lazyload mb-4 mb-lg-0" data-src="{{section.settings.logo | img_url: '200x'}}" width="{{section.settings.logo_max_width}}px" />
+          {%- endif -%}
+          
+        </div>
+        <div class="col-lg-4 col-md-12 text-center">
+          <div class="footer__powered">
+            {%- if section.settings.copyright -%}
+              <p>&copy; {{ 'now' | date: "%Y" }}, <b class="text-capitalize">{{ shop.name | link_to: '/' }}</b>. {{ powered_by_link }}</p>
+            {%- else -%}
+              <div>{{section.settings.customcopyright}}</div>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% schema %}
+{
+  "name": "Footer 4",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "cssfooter",
+      "label": "Custom css Footer"
+    },
+      {
+        "type": "header",
+        "content": "Newsletter"
+      },
+      {
+        "type": "checkbox",
+        "id": "newsletter",
+        "label": "Enable",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "newsletter_title",
+        "label": "Heading",
+        "default": "Be in the know"
+      },
+      {
+        "type": "textarea",
+        "id": "newsletter_subheading",
+        "label": "Subheading",
+        "default": "Promotions, new products and sales. Directly to your inbox."
+      },
+      {
+        "type": "header",
+        "content": "Mid footer"
+      },
+      {
+        "type": "color",
+        "id": "bordertop",
+        "label": "Border Top",
+        "default": "#e9e9e9"
+      },
+      {
+        "type": "color",
+        "id": "borderbot",
+        "label": "Border bot",
+        "default": "#e9e9e9"
+      },
+      {
+        "type": "color",
+        "id": "footermidbg",
+        "label": "Background",
+        "default": "#1e1e1e"
+      },
+      {
+        "type": "color",
+        "id": "footermidtext",
+        "label": "Text color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "footermidlink",
+        "label": "Link color",
+        "default": "#999"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      },
+      {
+        "type": "range",
+        "id": "logo_max_width",
+        "min": 50,
+        "max": 300,
+        "step": 5,
+        "unit": "px",
+        "label": "Custom logo width",
+        "default": 150
+      },
+      {
+        "type": "checkbox",
+        "id": "social_enable",
+        "label": "Enable social",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Copyright"
+      },
+      {
+        "type": "checkbox",
+        "id": "copyright",
+        "label": "Enable Copyright Default",
+        "default": true,
+        "info": "If disable you would use Custom Copyright"
+      },
+      {
+        "type": "textarea",
+        "id": "customcopyright",
+        "label": "Custom Copyright",
+        "default": "© 2021, Your Store. Powered by Shopify"
+      }
+  ]
+}
+{% endschema %}

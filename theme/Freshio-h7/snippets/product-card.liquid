@@ -1,0 +1,12 @@
+{%- case settings.productgrid -%}
+  {%- when 'product-1' -%} {%- include 'product-grid-1' -%}
+  {%- when 'product-2' -%} {%- include 'product-grid-2' -%}
+  {%- when 'product-3' -%} {%- include 'product-grid-3' -%}
+  {%- when 'product-4' -%} {%- include 'product-grid-4' -%}
+  {%- when 'product-5' -%} {%- include 'product-grid-5' -%}
+  {%- when 'product-6' -%} {%- include 'product-grid-6' -%}
+  {%- when 'product-7' -%} {%- include 'product-grid-7' -%}
+  {%- when 'product-8' -%} {%- include 'product-grid-8' -%}
+{%- else -%}
+  {%- include 'product-grid-1' -%}
+{%- endcase -%}

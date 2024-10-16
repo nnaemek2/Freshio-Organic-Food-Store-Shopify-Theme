@@ -1,0 +1,53 @@
+{% capture carousel %}{% include 'shortcode-render' render:'action' %}{% endcapture %}
+{% capture active %}{% include 'shortcode-render' render:'active' %}{% endcapture %}
+{% capture class %}{% include 'shortcode-render' render:'class' %}{% endcapture %}
+{% capture total %}{% include 'shortcode-render' render:'total' %}{% endcapture %}
+{% capture interval %}{% include 'shortcode-render' render:'interval' %}{% endcapture %}
+
+{% assign total = total | plus: 0 %}
+{% case carousel %}
+    {% when 'new slider' %}
+    {% capture carouselId %}carouselId-{{ 'now' | date: "%N" }}{% endcapture %}
+<div class="products_block--carousel">
+	<div id="{{ carouselId }}" class="carousel slide {{ class }}" data-ride="carousel">
+    {% when 'end slider' %}
+    	{% capture lastTime %}{{ carouselId}}{% endcapture %}
+    	{% capture carouselId %}{{ carouselId }}{% endcapture %}
+	</div>
+</div>
+	{% when 'new list slide' %}
+		<div class="carousel-inner" role="listbox">
+	{% when 'end list slide' %}
+		</div>
+	{% when 'display control' %}
+		{% capture lastTime %}{{ carouselId }}{% endcapture %}
+		<a class="carousel-control left" href="#{{ lastTime }}" role="button" data-slide="prev" style="position: absolute; top: 50%; left: 10px; z-index: 1;">
+          {% include 'icon-arrow-left' %}
+		</a>
+		<a class="carousel-control right" href="#{{ lastTime }}" role="button" data-slide="next" style="position: absolute; top: 50%; right: 10px; z-index: 1;">
+          {% include 'icon-arrow-right' %}	
+		</a>
+	{% when 'display indicators' %}
+		{% if total > 0 %}
+			{% assign active = active | plus: 0 %}
+
+			{% if active == '' %}
+				{% assign active = 0 %}
+			{% endif %}
+			{% capture lastTime %}{{ carouselId }}{% endcapture %}
+			<ol class="carousel-indicators">
+				{% for i in (0..total) %}
+					{% if i < total %}
+					<li data-target="#{{ lastTime }}" data-slide-to="{{i}}" class="{% if i == active %}active{% endif %}"></li>
+					{% endif %}
+				{% endfor %}
+			</ol>
+		{% endif %}
+	{% when 'end control' %}
+
+    {% when 'new slide' %}
+    	<div class="carousel-item {% if active != ''%}active{% endif %}">
+    {% when 'end slide' %}
+    	</div>
+    {% else %}
+{% endcase %}

@@ -1,0 +1,11 @@
+{%- if settings.free_shipping_enable -%}
+<!-- free-shipping.liquid -->
+<div class="progress js-free-shipping" data-value="{{settings.free_shipping_value | times: 100 }}" data-start="{{settings.free_first}}" data-end="{{settings.free_end}}">
+  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+  <span class="free-shipping-content">
+    {%- include 'icon-package' -%}
+    <span class="js-free-shipping-text">
+    </span>
+  </span>
+</div>
+{%- endif -%}

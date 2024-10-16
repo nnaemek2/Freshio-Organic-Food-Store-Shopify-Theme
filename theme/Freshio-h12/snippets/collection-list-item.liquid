@@ -1,0 +1,23 @@
+
+<div class="col-12  mb-5">
+  <div class="row collection collection-1">
+    <div class="col-lg-3 col-12">
+      {% if featured_collection.image %}
+      {% assign collection_image = featured_collection | img_url: '1200x' %}
+      {% else %}
+      {% assign collection_image = featured_collection.products.first | img_url: '500x' %}
+      {% endif %}
+      <a href="{{ featured_collection.url }}" class="collection-card" style="background-image: url({{ collection_image }});">
+        <div class="collection-card__meta">
+          <p class="h1 collection-card__title">{{ featured_collection.title }}</p>
+          <p class="collection-card__subtext">{{ 'collections.general.view_all' | t }}</p>
+        </div>
+      </a>
+    </div>
+    {% for product in featured_collection.products limit: 3 %}
+    <div class="col-lg-3 col-12 {% if forloop.index == 3 %} d-none d-lg-block{% endif %}">
+      {% include 'product-card', product: product %}
+    </div>
+    {% endfor %}
+  </div>
+</div>

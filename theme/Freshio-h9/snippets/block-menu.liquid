@@ -1,0 +1,53 @@
+<nav class="nav-bar d-none d-lg-block" role="navigation">
+  <ul class="site-nav">
+    {%- for link in linklists[settings.main_linklist].links -%}
+    {%- assign hasMega = false -%}
+    {%- assign titleCheckMega = link.title | escape | split: '[' | first | downcase -%}
+    {%- for i in (1..5) -%}
+    {%- capture apmegamenu_title -%}apmenuitem_title_{{ i }}{%- endcapture -%}
+    {%- assign megamenu_title = settings[apmegamenu_title] | strip | downcase -%}
+    {%- if titleCheckMega == megamenu_title -%}
+    {%- assign hasMega = true -%}
+    {%- assign intMega = i -%}
+    {%- break -%}
+    {%- endif -%}
+    {%- endfor -%}
+    {%- if hasMega -%}
+    {%- assign isFullwidth = true -%}
+    {%- assign settingWidth = 'apmenuitem_width_' | append: intMega -%}
+    {%- assign widthMega = settings[settingWidth] -%}
+    {%- if widthMega != 0 -%}
+    {%- assign isFullwidth = false -%}
+    {%- endif -%}
+    <li class="site-nav__item site-nav__item-mega {% unless isFullwidth %} site-nav__item-mega--custom{% endunless %} {% if link.active %} site-nav--active{% endif %}" data-width="{{widthMega}}">
+      <a href="{{ link.url }}" class="site-nav__link dropdown-toggle" {% if link.active %} aria-current="page"{% endif %}>
+        <span class="site-nav__title">{%- include 'processMenuTitle' with itemName:link.title -%}</span>
+        {%- include 'processMenuLabel' with itemName:link.title -%}
+      </a>
+      <div class="site-nav__dropdown meganav meganav-{{intMega}} " >
+        {%- include 'megamenu' -%}
+      </div>
+    </li>
+    {%- elsif link.links != blank -%}
+    <li class="site-nav__item site-nav__item-normal {% if link.active %} site-nav--active{% endif %}">
+      <a href="{{ link.url }}" class="site-nav__link dropdown-toggle" {% if link.active %} aria-current="page"{% endif %}>
+        <span class="site-nav__title">{%- include 'processMenuTitle' with itemName:link.title -%}</span>
+        {%- include 'processMenuLabel' with itemName:link.title -%}
+      </a>
+      <div class="site-nav__dropdown meganav">
+        <ul class="meganav__nav">
+          {%- include 'site-nav' -%}
+        </ul>
+      </div>
+    </li>
+    {%- else -%}
+    <li class="site-nav__item{% if link.active %} site-nav--active{% endif %}">
+      <a href="{{ link.url }}" class="site-nav__link"{% if link.active %} aria-current="page"{% endif %}>
+        <span class="site-nav__title">{%- include 'processMenuTitle' with itemName:link.title -%}</span>
+        {%- include 'processMenuLabel' with itemName:link.title -%}
+      </a>
+    </li>
+    {%- endif -%}
+    {%- endfor -%}
+  </ul>
+</nav>

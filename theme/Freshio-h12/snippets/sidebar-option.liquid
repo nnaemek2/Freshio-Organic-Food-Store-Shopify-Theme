@@ -1,0 +1,87 @@
+<div class="humberger-right d-lg-flex align-items-center d-none" >
+    <a href="#" id="sidebarCollapse" onclick="myFunction(this)" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle humberger align-items-center d-inline-flex disabled-anchor">
+        <span class="">
+            <span class="bar1"></span>
+            <span class="bar2"></span>
+            <span class="bar3"></span>
+        </span>
+    </a>
+    <div class="humbergerbar" id="sidebar">
+        <a id="dismiss" href="#" class="text-secondary small">
+            {% include 'icon-close' %}
+        </a>
+        <div class="row pb-5 align-items-center justify-content-between">
+            <div class="col-6">
+                {%- include 'site-logo' -%}
+            </div>
+            <div class="col-6 text-right">
+                {%- if section.settings.sidebar_heart -%}
+                    {%- include 'block-wishlist' -%}
+                {%- endif -%}
+                {%- if section.settings.sidebar_compare -%}
+                    {%- include 'block-compare' -%}
+                {%- endif -%}
+            </div>
+        </div>
+        {%- if section.settings.timeopen != blank -%}
+        <div class="time-open font-family-2">
+            {{section.settings.timeopen}}
+        </div>
+        {%- endif -%}
+        {%- if section.settings.istahead != blank -%}
+        <h5 class="mt-5 mb-4 font-weight-bold">{{section.settings.istahead}}</h5>
+        {%- endif -%}
+        {%- if section.settings.enable_insta -%}
+        <div class="instagram row mb-5 dots-negative {% if section.settings.radius %} instagram-radius{% endif %}" id="Instagram-{{ section.id }}"
+            data-style="carousel"
+            data-accesstoken="{{section.settings.accesstoken}}"
+            data-limit="{{ section.settings.limit }}" 
+            data-slidesToShow="{{section.settings.show}}"
+            data-arrows="{{ section.settings.arrows }}"
+            data-dots="{{ section.settings.dots }}" 
+            data-draggable="{{ section.settings.draggable }}" 
+            data-infinite="{{ section.settings.infinite }}" 
+            data-rows="{{ section.settings.rows }}" 
+            data-section-id="{{ section.id }}" 
+            data-section-type="instagrams">
+        </div>
+        {%- endif -%}
+        {%- if linklists[section.settings.link_list_head].title != blank -%}
+        <ul class="site-head__list list-group list-group-flush mb-5">
+            {%- for link in linklists[section.settings.link_list_head].links -%}
+            <li class="site-head__list__list-item list-group-item"><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {%- endfor -%}
+        </ul>
+        {%- endif -%}
+        {% if section.settings.email_sidebar %}
+            <div class="mb-4">
+                {% if section.settings.email_sidebar_title != blank %}
+                <h5 class="mb-4 font-weight-bold ">
+                {{section.settings.email_sidebar_title | escape}}
+                </h5>
+                {% endif %}
+                {% form 'customer' %}
+                    {{ form.errors | default_errors }}
+                    {% if form.posted_successfully? %}
+                    <p class="form-success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+                    {% else %}
+                    <input type="hidden" name="contact[tags]" value="newsletter">
+                    <label class="label--hidden">{{ 'general.newsletter_form.newsletter_label' | t }}</label>
+                    <div class="input-group form-group">
+                    <input id="popupNewsletter" type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_placeholder' | t }}" name="contact[email]" class="form-control pr-3 mr-3" autocapitalize="off">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-theme js-btnPopupNewsletter px-4" name="commit">
+                            <i class="icon-send"></i>
+                        </button>
+                    </div>
+                    </div> 
+                    {% endif %}
+                {% endform %}
+            </div>
+        {% endif %}
+        {% if section.settings.socialshare %}
+            {% include 'block-social' %}
+        {% endif %}
+    </div>
+    <div class="overlaysidebar"></div>
+</div>

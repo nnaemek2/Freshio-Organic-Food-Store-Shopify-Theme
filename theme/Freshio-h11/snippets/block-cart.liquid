@@ -1,0 +1,36 @@
+<span class="d-flex align-items-center site-header__link site-header__cart js-mini-cart {% if settings.cartdraw %} cardraw{% endif %}" data-cartmini="{{settings.cartdraw }}">
+  <span class="js-toggle-cart" title="{{'cart.general.title' | t}}">
+    {%- include 'icon-cart' -%}
+    <span class="icon__fallback-text">{{ 'layout.cart.title' | t }}</span>
+    <span class="js-cart-count site-header__cart-indicator">{{cart.item_count}}</span>
+  </span>
+  {%- if section.settings.cart_text -%}
+  <span class="js-cart-total ml-2 d-none d-md-block">{{cart.total_price | money}}</span>
+  {%- endif -%}
+  <div class="mini-cart-content shadow text-center">
+    <div class="js-mini-cart-content"></div>
+    <div class="js-cart-bottom ">
+      <div class="mini-cart-total font-family-1">
+        {{'cart.label.total' | t }}: <span class="js-cart-total">{{cart.total_price | money}}</span>
+      </div>
+      {%- include 'free-shipping' -%}
+      <div class="mini-cart-taxes">
+        {{'cart.general.taxes_and_shipping_at_checkout' | t}}
+      </div>
+      <div class="mini-cart-btns mt-4">
+        <a class="btn gradient-theme js-cart-btn-checkout btn-theme w-100 {% if cart.item_count == 0 %} disabled{% endif %}" href="/checkout">{{'cart.general.checkout' | t }}</a>
+        <a class="btn btn-link btn-sm js-cart-btn-cart" href="{{ routes.cart_url }}">{{'cart.general.update' | t }}</a>
+      </div>
+
+      {%- if settings.safe_checkout_pcart != blank -%}
+      <div class="mini-cart-safe-checkout">
+        <img class="lazyload" data-src="{{ settings.safe_checkout_pcart | img_url: '500x' }}"/>
+      </div>
+      {%- endif -%}
+    </div>
+  </div>
+  {%- if settings.cartdraw -%} 
+    <div class="overlaycart">
+    </div>
+  {%- endif -%}
+</span>

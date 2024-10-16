@@ -1,0 +1,346 @@
+<!-- collection-template-5.liquid -->
+<style>
+  .section-header__title--image {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	min-height: 200px;
+	color: #fff;
+	margin-bottom: 20px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center
+}
+
+.section-header__subtext {
+	margin: 10px auto 20px;
+  max-width: 1170px;
+  line-height: 1.7;
+}
+
+.collection-sidebar .active-filter a,
+.collection-sidebar a:hover {
+	color: var(--g-main)
+}
+
+#ul_catalog_color li {
+	display: inline-block;
+	padding: 2px;
+	border: 2px solid rgba(0, 0, 0, .1);
+	margin-bottom: 10px;
+  margin-right: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  
+}
+#ul_catalog_color li img{
+    border-radius: 50%;
+  }
+#ul_catalog_color li a{
+  display:block;
+}
+
+#ul_catalog_color li.active-filter {
+	border-color: var(--g-main-2)
+}
+.catalog_filter_ul li {
+  padding: 8px 0;
+  text-transform: capitalize;
+  position:relative;
+}
+.catalog_other .catalog_filter_ul  li i{
+  position: absolute;
+  top: 11px;
+  z-index: 1;
+}
+.catalog_other .catalog_filter_ul li a{
+  padding-left: 26px;
+  position: relative;
+  z-index: 10;
+}
+
+.advanced-filter .icon {
+	cursor: pointer;
+  width: 18px;
+}
+
+.active-filter i {
+  color:var(--g-main-2); 
+	fill: var(--g-main-2);
+}
+
+.category-heading {
+	margin-top: 15px;
+	margin-bottom: 30px
+}
+
+
+.collection-nomatch-text {
+	text-align: center
+}
+
+.category-heading .col-left {
+	display: flex;
+	align-items: center
+}
+
+@media (max-width:991px) {
+	.category-heading .col-mid {
+		display: none
+	}
+}
+
+.section-header {
+	margin-top: 0px;
+}
+
+
+.js-sidebar {
+  transition: all ease .3s;
+  background: #fff;
+  overflow-y: scroll;
+  padding: 20px 10px;
+  bottom: 0;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  height: 100%;
+  width: 0;
+  opacity: 0;
+  -webkit-transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  transform: translateX(-100%) 
+}
+
+
+.js-sidebar.active {
+	background: #fff;
+	overflow-y: scroll;
+	padding: 20px 25px;
+	bottom: 0;
+	position: fixed;
+	z-index: 999;
+	left: 0;
+	height: 100%;
+	width: 300px;
+	opacity: 1;
+	-webkit-transform: translateX(0);
+	-ms-transform: translateX(0);
+	transform: translateX(0);
+	max-width: initial
+}
+
+.js-toggle-filter {
+	cursor: pointer
+}
+
+.js-toggle-filter.active>span {
+	font-size: 0;
+	background: rgba(0, 0, 0, .6);
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 998;
+	cursor: pointer
+}
+
+@media (min-width:992px) {
+	.js-col:nth-child(3n+1),
+	.js-col:nth-child(3n+3) {
+		-webkit-box-flex: 0;
+		-ms-flex: 0 0 25%;
+		flex: 0 0 25%;
+		max-width: 25%
+	}
+	.js-col:nth-child(3n+2) {
+		-webkit-box-flex: 0;
+		-ms-flex: 0 0 50%;
+		flex: 0 0 50%;
+		max-width: 50%;
+		margin-top: 50px;
+		margin-bottom: 20px
+	}
+}</style>
+
+{%- assign productPerpage = section.settings.collection_perpage -%}
+{%- assign productPerrow = section.settings.collection_perrow -%}
+
+{%- if productPerrow == '2' -%}
+	{%- assign gridProduct = 'js-col col-sm-6 col-6' -%}
+{%- elsif productPerrow == '3' -%}
+	{%- assign gridProduct = 'js-col col-sm-6 col-6 col-lg-4' -%}
+{%- elsif productPerrow == '4' -%}
+	{%- assign gridProduct = 'js-col col-sm-6 col-6 col-lg-3' -%}
+{%- elsif productPerrow == '5' -%}
+	{%- assign gridProduct = 'js-col col-sm-6 col-6 col-lg-2-4' -%}
+{%- elsif productPerrow == '6' -%}
+	{%- assign gridProduct = 'js-col col-sm-6 col-6 col-lg-2' -%}
+{%- endif -%}
+
+
+{%- paginate collection.products by productPerpage -%}
+<div class="{{section.settings.collection_width}}">
+  <div class="row">
+    {%- if section.settings.enable_sidebar -%}
+      <div class="{{section.settings.sidebar_col}} col-12 js-sidebar">
+        <div class="sidebar collection-sidebar">
+          {%- include 'sidebar' -%}
+        </div>
+      </div>
+    {%- endif -%}
+    <div class="col">
+      <header class="section-header text-center ">
+          {%- if section.settings.enable_title -%}
+          <h1 class="section-header__title js-collection-title h3 mt-3">
+            {{ collection.title }}
+          </h1>
+          {%- endif -%}
+        {%- if section.settings.enable_description and collection.description != blank -%}
+          <div class="section-header__subtext mt-4">
+          {{ collection.description }}
+        </div>
+        {%- endif -%}
+      </header>
+      <div class="category-heading">
+        <div class="row">
+          <div class="col col-3 col-left">
+            {%- if section.settings.enable_sidebar -%}
+            <span class="js-toggle-filter d-flex align-items-center justify-content-center">
+              <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="sliders-v" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="mr-2"><path fill="currentColor" d="M272 352h-24V16c0-8.8-7.2-16-16-16h-16c-8.8 0-16 7.2-16 16v336h-24c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h24v80c0 8.8 7.2 16 16 16h16c8.8 0 16-7.2 16-16v-80h24c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zM112 96H88V16c0-8.8-7.2-16-16-16H56c-8.8 0-16 7.2-16 16v80H16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h24v336c0 8.8 7.2 16 16 16h16c8.8 0 16-7.2 16-16V160h24c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm320 128h-24V16c0-8.8-7.2-16-16-16h-16c-8.8 0-16 7.2-16 16v208h-24c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h24v208c0 8.8 7.2 16 16 16h16c8.8 0 16-7.2 16-16V288h24c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16z" class=""></path></svg>
+              <span>{{'collections.general.filter' | t}}</span>
+            </span>
+            {%- endif -%}
+          </div>
+          <div class="col-sm-6 col-mid text-center">
+              <div class="d-none align-items-center h-100 justify-content-center">
+            <span class="js-btn-view btn-view-2 {% if productPerrow == '2' %}active{% endif %}" data-col="2"></span>
+            <span class="js-btn-view btn-view-3 {% if productPerrow == '3' %}active{% endif %}" data-col="3"></span>
+            <span class="js-btn-view btn-view-4 {% if productPerrow == '4' %}active{% endif %}" data-col="4"></span>
+	    </div>
+          </div>
+          <div class="col col-right">
+            {%- include 'collection-sortby' -%}
+          </div>
+        </div>
+      </div>
+      <div id="js-product-ajax"><!-- ONLY HAVE LIST OF PRODUCTS AND PAGINATION TO LOAD AJAX -->
+        <div class="row align-items-lg-center">
+          {%- for product in collection.products -%}
+          <div class="{{gridProduct}}">
+            {%- include 'product-card', product: product -%}
+          </div>
+          {%- else -%}
+          {%- include 'collection-blank' -%}
+          {%- endfor -%}
+        </div>
+        {%- if paginate.pages > 1 -%}
+        <div class="pagination js-pagination">
+          {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
+        </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+  {%- include 'coupon_code' -%}
+</div>
+{%- endpaginate -%}
+
+{% schema %}
+  {
+    "name": "Collection Special",
+    "settings": [
+      {
+        "type": "select",
+        "id": "collection_width",
+        "label": "Set Width Collection",
+        "default": "container",
+        "options": [
+          {
+            "value": "container",
+            "label": "Container"
+          },
+          {
+            "value": "container-fluid",
+            "label": "Container Fluid"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "collection_perpage",
+        "min": 12,
+        "max": 50,
+        "step": 1,
+        "label": "Number displayed",
+        "default": 45
+      },
+      {
+        "type": "select",
+        "id": "collection_perrow",
+        "label": "Products per row",
+		"default": "3",
+        "options": [
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_sidebar",
+		    "default": true,
+        "label": "Show Filter Sidebar"
+      },
+      {
+        "type": "select",
+        "id": "sidebar_col",
+        "label": "Sidebar width",
+		"default": "col-md-3",
+        "options": [
+          {
+            "value": "col-md-2-4",
+            "label": "20%"
+          },
+          {
+            "value": "col-md-3",
+            "label": "25%"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Collection meta"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_title",
+		"default": true,
+        "label": "Show Title"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_description",
+		"default": true,
+        "label": "Show description"
+      }
+]
+  }
+{% endschema %}

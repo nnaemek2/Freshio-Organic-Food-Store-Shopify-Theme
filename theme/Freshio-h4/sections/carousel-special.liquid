@@ -1,0 +1,229 @@
+<!-- carousel-special.liquid -->
+<style>
+.customstyle{{ section.id }}::before{
+  content: "";
+  position: absolute;
+  background-color:{{section.settings.bgsecond}};
+  bottom: 0;
+  height: 200px;
+  width: 100%;
+  z-index: 0;
+}
+@media only screen and (max-width: 989px){
+  .customstyle{{ section.id }}::before{
+    display: none;
+  }
+}
+</style>
+<div class="customstyle{{ section.id }} position-relative">
+    {%- include 'style-section' -%}
+  <div class="full">
+    <div class="section-block">
+      <div class="row">
+        <div class="col-12 col-md-7 offset-md-5">
+          {%- if section.settings.title != blank -%}
+            <h3 class="text-uppercase carousel-title" data-aos="{{section.settings.animation}}" data-aos-duration="300">{{section.settings.title}}</h3>
+          {%- endif -%}
+        </div>
+      </div>
+      {%- if section.blocks.size > 0 -%}
+      <div class="carousel-wrapper dots-negative container" > 
+        <div class="carousel-slider row mb-0" id="Carousel-{{ section.id }}" 
+             data-rows="{{section.settings.rows}}"
+             data-slidesToShow="1"
+             data-slidestoscroll="1"
+             data-arrows="{{ section.settings.arrows }}"
+             data-dots="{{ section.settings.dots }}" 
+             data-draggable="{{ section.settings.draggable }}" 
+             data-infinite="false" 
+             data-section-id="{{ section.id }}" 
+             data-section-type="slickCarousels">
+          {%- for block in section.blocks -%}
+          <div class="carousel__slide-wrapper carousel__slide-wrapper--{{ block.id }}" {{ block.shopify_attributes }}>
+            <div class="carousel__slide">
+              <div class="carousel-wrap position-relative">
+                <div class="row">
+                  <div class="col-12 col-md-8">
+                    {%- if block.settings.image != blank -%}
+                    <div class="pl-md-5 position-relative ">
+                      {%- if block.settings.title_small != blank -%}
+                        <div data-aos="fade" data-aos-duration="100"> <div class="subtop sub-title" >{{block.settings.title_small}}</div></div>
+                      {%- endif -%}
+                      <div class="position-relative " data-aos="{{section.settings.animation}}" data-aos-duration="700">
+                        <div class="image-content__image-wrapper" style="padding-top:{{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100}}%;">
+                          {% assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                          <a href="#">
+                            <img class="image-content__image lazyload"
+                                src="{{ block.settings.image | img_url: '300x300' }}"
+                                data-src="{{ img_url }}"
+                                data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                                data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                                data-sizes="auto"
+                                alt="{{ block.settings.image.alt | escape }}">
+                          </a>
+                        </div>
+                        
+                      </div>
+                    </div>
+                    {%- else -%}
+                        <div class="image-content__image">
+                          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                      </div>
+                    {%- endif -%}
+                  </div>
+                </div>
+                  <div class="carousel-wrap--content" data-aos="{{section.settings.animation}}" data-aos-duration="1000">
+                      {{block.settings.quote}}
+                  </div>
+              </div>
+            </div>
+          </div>
+          {%- endfor -%}
+        </div>
+      </div>
+      {%- endif -%}
+  
+      {%- if section.blocks.size == 0 -%}
+      {%- include 'no-blocks' -%}
+      {%- endif -%}
+    </div>
+  </div>
+  </div>
+  
+  {% schema %}
+  {
+    "name": "Carousel Special",
+    "class": "index-section",
+    "max_blocks": 10,
+    "settings": [
+    {
+      "type": "select",
+      "id": "animation",
+      "options": [
+        { "value": "", "label": "None"},
+        { "value": "fade", "label": "Fade"},
+        { "value": "fade-up", "label": "Fade Up"},
+        { "value": "fade-down", "label": "Fade Down"},
+        { "value": "fade-left", "label": "Fade Left"},
+        { "value": "fade-right", "label": "Fade Right"},
+        { "value": "fade-up-right", "label": "Fade Up Right"},
+        { "value": "fade-up-left", "label": "Fade Up Left"},
+        { "value": "fade-down-right", "label": "Fade Down Right"},
+        { "value": "fade-down-left", "label": "Fade Down Left"},
+        { "value": "flip-up", "label": "Flip Up"},
+        { "value": "flip-down", "label": "Flip Down"},
+        { "value": "flip-left", "label": "Flip Left"},
+        { "value": "flip-right", "label": "Flip Right"},
+        { "value": "slide-up", "label": "Slide Up"},
+        { "value": "slide-down", "label": "Slide Down"},
+        { "value": "slide-left", "label": "Slide Left"},
+        { "value": "slide-right", "label": "Slide Right"},
+        { "value": "zoom-in", "label": "Zoom In"},
+        { "value": "zoom-in-up", "label": "Zoom In Up"},
+        { "value": "zoom-in-down", "label": "Zoom In Down"},
+        { "value": "zoom-in-left", "label": "Zoom In Left"},
+        { "value": "zoom-in-right", "label": "Zoom In Right"},
+        { "value": "zoom-out", "label": "Zoom Out"},
+        { "value": "zoom-out-up", "label": "Zoom Out Up"},
+        { "value": "zoom-out-down", "label": "Zoom Out Down"},
+        { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+        { "value": "zoom-out-right", "label": "Zoom Out Right"}
+      ],
+      "label": "Select Animation"
+  },
+    {
+      "type": "text",
+      "id": "paddingsection",
+      "label": "Padding Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginsection",
+      "label": "Margin Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "color",
+      "id": "bgsection",
+        "label": "Background Section",
+        "default": "#fefefe"
+    },
+    {
+      "type": "color",
+      "id": "bgsecond",
+        "label": "Background Second",
+        "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "New Arrivals"
+    },
+      {
+        "type": "checkbox",
+        "id": "arrows",
+        "label": "Arrows",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "draggable",
+        "label": "Draggable",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "dots",
+        "label": "Dots",
+        "default": true
+      }
+    ],
+    "blocks": [
+      {
+        "type": "Text",
+        "name": "Text",
+        "settings": [
+         {
+            "type": "text",
+            "id": "title_small",
+            "label": "Title Small",
+            "default": "Comment"
+          },
+          {
+            "type": "textarea",
+            "id": "quote",
+            "label": "Text"
+           },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+          
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Carousel Special",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "Text"
+          },
+          {
+            "type": "Text"
+          },
+          {
+            "type": "Text"
+          }
+        ]
+      }
+    ]
+  }
+  {% endschema %}
+  

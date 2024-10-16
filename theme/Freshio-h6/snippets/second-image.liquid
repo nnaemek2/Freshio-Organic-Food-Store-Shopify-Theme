@@ -1,0 +1,11 @@
+{%- if settings.second_image -%}
+{% if product.images.size > 1 %} 
+{%- assign image = product.images[1] -%}
+{%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+<img class="lazyload transition second-image" 
+    data-src="{{ img_url }}"
+    src="{%- include 'srcBlank' -%}"
+    data-sizes="auto"
+    alt="{{ image.alt | escape }}"  />
+    {%- endif -%}
+{%- endif -%}

@@ -1,0 +1,47 @@
+<!-- blog-grid-1.liquid -->
+<div class="blog__item blog__item--1">
+  {%- if article.image -%}
+  <div class="content-block__image mb-3">
+    <a href="{{ article.url }}">
+      <noscript>
+        {{ article | img_url: '1024x1024' | img_tag: article.title | escape }}
+      </noscript>
+      <div class="article__photo-container">
+        <div class="article__photo-wrapper " style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;">
+          {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+          <img class="lazyload rounded"
+               src="{%- include 'srcBlank' -%}"
+               data-src="{{ img_url }}"
+               data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+               data-aspectratio="{{ article.image.aspect_ratio }}"
+               data-sizes="auto"
+               alt="{{ article.title | escape }}">
+        </div>
+      </div>
+    </a>
+  </div>
+  {%- endif -%}
+  <div class="blog__content">
+  <p class="blog__meta mb-2 font-family-2">
+    {% comment %}{%- if article.tags.size > 0 -%}
+    {%- for tag in article.tags -%}
+    <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="link-body-color">{{ tag }}</a>{% if forloop.last %} - {% else %}, {% endif %}
+    {%- endfor -%}
+    {%- endif -%}{% endcomment %}
+    {{ article.published_at | time_tag: format: 'month_day_year' }}
+  </p>
+  <h4 class="blog__title-link {% if template contains 'index' %} mb-2 {% else %} mb-3 {% endif %}"><a href="{{ article.url }}">{{ article.title }}</a></h4>
+  <div class="rte rte--indented-images {% if template contains 'index' %} mb-4 {% else %} mb-5 {% endif %}">
+    {%- if article.excerpt.size > 0 -%}
+    {{ article.excerpt }}
+    {%- else -%}
+      {%- if template contains 'index' -%}
+      <p>{{ article.content | strip_html | truncatewords: 15 }}</p>
+      {%- else -%}
+      <p>{{ article.content | strip_html | truncatewords: 20 }}</p>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+  <a class="btn btn-underline gradient-theme {%- if template contains 'index' -%} mb-0{%- else -%}mb-5{%- endif -%}" href="{{ article.url }}">{{ 'blogs.article.read_more' | t }}</a>  
+</div>
+</div>

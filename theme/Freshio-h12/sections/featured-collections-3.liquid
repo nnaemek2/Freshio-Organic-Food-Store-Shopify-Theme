@@ -1,0 +1,225 @@
+<!-- featured-collections-3.liquid -->
+<div class="customstyle{{ section.id }}  {% if section.settings.stylecollection == 'light' %} collections2 {% endif %}" data-aos="{{section.settings.animation}}" >
+    {%- include 'style-section' -%}
+      <div class="{{ section.settings.setwidth }}">
+      <div class="section-block">
+          {%- include 'section-heading' -%}
+          <div class="collectionlist-wrapper">
+            <div class="collectionlist-slider row" id="collection-list-{{ section.id }}">
+              {%- for block in section.blocks -%}
+              <div class=" collectionlist-item col-12 {{section.settings.width}}" {{ block.shopify_attributes }}>
+                {%- assign featured_collection = collections[block.settings.collection] -%}
+                {%- assign featured_image = block.settings.image -%}
+                {% if section.settings.stylecollection == 'dark' %}
+                <div class="row">
+                    {%- include 'collection-grid-item-2' -%}
+                </div>
+                {% else %}
+                <div class="row">
+                  {%- capture current -%}{%- cycle 1, 2, 3, 4, 5, 6 -%}{%- endcapture -%}
+                  {%- assign collectionTitle = featured_collection.title | default: 'Collection title' -%}
+                  <div class="{% if template != 'index' %} col-lg-6 {% endif %}col-12 collection-card-3 mb-4" {{ block.shopify_attributes }}>
+                    <div class="collection-card__image overflow-hidden position-relative">
+                      <a class="hv-image" href="{{featured_collection.url | default :'#'}}">
+                        {%- if featured_image != blank -%}
+                        <img class="lazyload transition" src="{%- include 'srcBlank' -%}" data-srcset="{{ featured_image | img_url: '900x'}}">
+                        {%- elsif featured_collection.image != blank -%}
+                        <img class="lazyload transition" src="{%- include 'srcBlank' -%}" data-srcset="{{ featured_collection.image | img_url: '900x'}}">
+                        {%- else -%}
+                        {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                        {%- endif -%}
+                      </a>
+                      <div class="position-absolute collection-card__meta w-100 d-flex flex-column h-100 justify-content-center p-4">
+                          <a class=" font-family-2 h6 mb-0 text-body mt-3" href="{{featured_collection.url | default :'#'}}">
+                            {{ collectionTitle }}
+                          </a>
+                          <p>{{ featured_collection.products_count | default: 0 }} {{ featured_collection.products_count | pluralize: 'product', 'products' }}</p> 
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+            </div>
+              {%- endfor -%}
+            </div>
+          </div>
+          {%- if section.blocks.size == 0 -%}
+          {%- include 'no-blocks' -%}
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+    
+    {% schema %}
+    {
+      "name": "Collection list Style 3",
+      "class": "index-section",
+      "max_blocks": 6,
+      "settings": [
+      {
+        "type": "select",
+        "id": "animation",
+        "options": [
+          { "value": "", "label": "None"},
+          { "value": "fade", "label": "Fade"},
+          { "value": "fade-up", "label": "Fade Up"},
+          { "value": "fade-down", "label": "Fade Down"},
+          { "value": "fade-left", "label": "Fade Left"},
+          { "value": "fade-right", "label": "Fade Right"},
+          { "value": "fade-up-right", "label": "Fade Up Right"},
+          { "value": "fade-up-left", "label": "Fade Up Left"},
+          { "value": "fade-down-right", "label": "Fade Down Right"},
+          { "value": "fade-down-left", "label": "Fade Down Left"},
+          { "value": "flip-up", "label": "Flip Up"},
+          { "value": "flip-down", "label": "Flip Down"},
+          { "value": "flip-left", "label": "Flip Left"},
+          { "value": "flip-right", "label": "Flip Right"},
+          { "value": "slide-up", "label": "Slide Up"},
+          { "value": "slide-down", "label": "Slide Down"},
+          { "value": "slide-left", "label": "Slide Left"},
+          { "value": "slide-right", "label": "Slide Right"},
+          { "value": "zoom-in", "label": "Zoom In"},
+          { "value": "zoom-in-up", "label": "Zoom In Up"},
+          { "value": "zoom-in-down", "label": "Zoom In Down"},
+          { "value": "zoom-in-left", "label": "Zoom In Left"},
+          { "value": "zoom-in-right", "label": "Zoom In Right"},
+          { "value": "zoom-out", "label": "Zoom Out"},
+          { "value": "zoom-out-up", "label": "Zoom Out Up"},
+          { "value": "zoom-out-down", "label": "Zoom Out Down"},
+          { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+          { "value": "zoom-out-right", "label": "Zoom Out Right"}
+        ],
+        "label": "Select Animation"
+    },
+      {
+        "type": "text",
+        "id": "paddingsection",
+        "label": "Padding Section",
+        "default": "0px 0px 0px 0px",
+        "info": "Padding: Top Right Bottom Left"
+      },
+      {
+        "type": "text",
+        "id": "marginsection",
+        "label": "Margin Section",
+        "default": "0px 0px 0px 0px",
+        "info": "Margin: Top Right Bottom Left"
+      },
+      {
+        "type": "color",
+        "id": "bgsection",
+          "label": "Background Section",
+          "default": "#fefefe"
+      },
+      {
+        "type": "select",
+        "id": "setwidth",
+        "label": "Full Width",
+        "default": "container",
+        "options": [
+          {
+            "value": "container",
+            "label": "Box"
+          },
+          {
+            "value": "container-fluid",
+            "label": "Container Fluid"
+          },
+          {
+            "value": "full",
+            "label": "Full"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "stylecollection",
+        "label": "Style Collection",
+        "default": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "Light"
+          },
+          {
+            "value": "dark",
+            "label": "Dark"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "title_top",
+        "label": "Sub Title Top",
+        "default": "Sub Title Top"
+      },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Collection list"
+        },
+        {
+          "type": "textarea",
+          "id": "des",
+          "label": "HTML / Description"
+        },
+        {
+            "type": "select",
+            "id": "width",
+            "label": "Column",
+            "default": "col-lg-3",
+            "options": [
+              {
+                "value": "col-lg-4",
+                "label": "25%"
+              },
+              {
+                "value": "col-lg-3",
+                "label": "33%"
+              },
+              {
+                "value": "col-lg-6",
+                "label": "50%"
+              }
+            ]
+          }
+      ],
+      "blocks": [
+        {
+          "type": "collection",
+          "name": "Collection",
+          "settings": [
+            {
+              "id": "collection",
+              "type": "collection",
+              "label": "Collection"
+            },
+            {
+              "id": "image",
+              "type": "image_picker",
+              "label": "Image"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Collection list Style 3",
+          "category": "Collection",
+          "blocks": [
+            {
+              "type": "collection"
+            },
+            {
+              "type": "collection"
+            },
+            {
+              "type": "collection"
+            }
+          ]
+        }
+      ]
+    }
+    {% endschema %}
+    

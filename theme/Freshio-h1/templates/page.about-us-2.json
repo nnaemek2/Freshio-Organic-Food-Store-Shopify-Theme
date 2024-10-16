@@ -1,0 +1,433 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "16401922802a017e2e": {
+      "type": "advanced-content",
+      "blocks": {
+        "95c28552-2597-4d20-bc3d-b34b28afaa99": {
+          "type": "image",
+          "settings": {
+            "width": "25%",
+            "align": "auto",
+            "image": "shopify:\/\/shop_images\/ourstory_03.png",
+            "image_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "95c28552-2597-4d20-bc3d-b34b28afaa99"
+      ],
+      "settings": {
+        "animation": "fade-up",
+        "paddingsection": "120px 0px 40px 0px",
+        "paddingmobile": "60px 0px 60px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "marginmobile": "0px 0px 0px 0px",
+        "zindex": "0",
+        "setwidth": "container",
+        "title_top": "",
+        "title": "",
+        "des": "",
+        "padding": true,
+        "col_center": true,
+        "bgsection": "#fefefe",
+        "rangebg": 0,
+        "bgbefore": "rgba(0,0,0,0)",
+        "e_size": "auto",
+        "e_repeat": "no-repeat"
+      }
+    },
+    "16401917158cf2d87f": {
+      "type": "advanced-content",
+      "blocks": {
+        "f43bf903-a4ef-4509-ab7f-39244f730c3e": {
+          "type": "image",
+          "settings": {
+            "width": "100%",
+            "align": "auto",
+            "image": "shopify:\/\/shop_images\/l1.jpg",
+            "image_link": ""
+          }
+        },
+        "e329a91d-3e91-4c84-aba0-281a4f227243": {
+          "type": "html",
+          "settings": {
+            "code": "<h3 class=\"text-center my-5\">\nIntroduce your company with a broad vision statement. The viewer should come away with a strong sense of what your company stands for, and what it is trying to achieve.\n<\/h3>",
+            "width": "66%",
+            "align": "auto"
+          }
+        }
+      },
+      "block_order": [
+        "f43bf903-a4ef-4509-ab7f-39244f730c3e",
+        "e329a91d-3e91-4c84-aba0-281a4f227243"
+      ],
+      "settings": {
+        "animation": "fade-up",
+        "paddingsection": "0px 0px 0px 0px",
+        "paddingmobile": "60px 0px 60px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "marginmobile": "0px 0px 0px 0px",
+        "zindex": "0",
+        "setwidth": "container",
+        "title_top": "Passionate",
+        "title": "Empowering Businesses<br>Large and Small.",
+        "des": "",
+        "padding": true,
+        "col_center": true,
+        "bgsection": "#fefefe",
+        "rangebg": 0,
+        "bgbefore": "rgba(0,0,0,0)",
+        "e_size": "auto",
+        "e_repeat": "no-repeat"
+      }
+    },
+    "164019264247f7fa60": {
+      "type": "advanced-content",
+      "blocks": {
+        "1640192642e6f5e383-0": {
+          "type": "html",
+          "settings": {
+            "code": "<div class=\"text-center\">\n<h2 class=\"text-theme\">2011<\/h2>\n<p>A modest number to start off<br> the metrics section.<\/p>\n<\/div>",
+            "width": "33%",
+            "align": "auto"
+          }
+        },
+        "d8dcf88f-b3d5-478f-8382-d00f82d9f785": {
+          "type": "html",
+          "settings": {
+            "code": "<div class=\"text-center\">\n<h2 class=\"text-theme\">20k<\/h2>\n<p>That’s a massive increase over <br>previous performance.<\/p>\n<\/div>",
+            "width": "33%",
+            "align": "auto"
+          }
+        },
+        "7b99e58d-cefe-4038-9de0-c4cf38d9f7b1": {
+          "type": "html",
+          "settings": {
+            "code": "<div class=\"text-center\">\n<h2 class=\"text-theme\">$100M<\/h2>\n<p>This is a larger number than the <br>other two numbers.<\/p>\n<\/div>",
+            "width": "33%",
+            "align": "auto"
+          }
+        }
+      },
+      "block_order": [
+        "1640192642e6f5e383-0",
+        "d8dcf88f-b3d5-478f-8382-d00f82d9f785",
+        "7b99e58d-cefe-4038-9de0-c4cf38d9f7b1"
+      ],
+      "settings": {
+        "animation": "fade-up",
+        "paddingsection": "60px 0px 120px 0px",
+        "paddingmobile": "60px 0px 60px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "marginmobile": "0px 0px 0px 0px",
+        "zindex": "0",
+        "setwidth": "container",
+        "title_top": "",
+        "title": "",
+        "des": "",
+        "padding": true,
+        "col_center": false,
+        "bgsection": "#fefefe",
+        "rangebg": 0,
+        "bgbefore": "rgba(0,0,0,0)",
+        "e_size": "auto",
+        "e_repeat": "no-repeat"
+      }
+    },
+    "16401930874092dd8f": {
+      "type": "advanced-content",
+      "blocks": {
+        "164019308781fb4c92-0": {
+          "type": "html",
+          "settings": {
+            "code": "<div>\n<span class=\"subtop\">OUR VALUES<\/span>\n<h3 class=\"mt-4\">At our core, we are a customer service company, and we believe that putting our customers first is what makes us successful.<\/h3>\n<h3 class=\"mt-4\">\nWe focus on delivering the best possible experience to every customer, and we know that transparency is the key to building long-lasting relationships with you.\n<\/h3>\n<\/div>",
+            "width": "66%",
+            "align": "auto"
+          }
+        }
+      },
+      "block_order": [
+        "164019308781fb4c92-0"
+      ],
+      "settings": {
+        "animation": "fade-up",
+        "paddingsection": "120px 0px 120px 0px",
+        "paddingmobile": "60px 0px 60px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "marginmobile": "0px 0px 0px 0px",
+        "zindex": "0",
+        "setwidth": "container",
+        "title_top": "",
+        "title": "",
+        "des": "",
+        "padding": true,
+        "col_center": true,
+        "bgsection": "#f3e4f3",
+        "rangebg": 0,
+        "bgbefore": "rgba(0,0,0,0)",
+        "e_size": "auto",
+        "e_repeat": "no-repeat"
+      }
+    },
+    "1640193768119372bb": {
+      "type": "advanced-content",
+      "blocks": {
+        "164019376868a7ca5d-0": {
+          "type": "html",
+          "settings": {
+            "code": "<h3>We're leading development for modern teams.<\/h3>",
+            "width": "33%",
+            "align": "auto"
+          }
+        },
+        "09697fe7-f3ea-4ea3-8c9d-fc93dec82f7a": {
+          "type": "html",
+          "settings": {
+            "code": "<div class=\"px-lg-5\">\n<h1 class=\"mb-4\">44%<\/h1>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum libero.<\/p>\n<\/div>",
+            "width": "33%",
+            "align": "auto"
+          }
+        },
+        "09fc32e1-9bbc-44f0-8916-6eafa40892d2": {
+          "type": "image",
+          "settings": {
+            "width": "33%",
+            "align": "auto",
+            "image": "shopify:\/\/shop_images\/m12.jpg",
+            "image_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "164019376868a7ca5d-0",
+        "09697fe7-f3ea-4ea3-8c9d-fc93dec82f7a",
+        "09fc32e1-9bbc-44f0-8916-6eafa40892d2"
+      ],
+      "settings": {
+        "animation": "fade-up",
+        "paddingsection": "120px 0px 30px 0px",
+        "paddingmobile": "60px 0px 60px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "marginmobile": "0px 0px 0px 0px",
+        "zindex": "0",
+        "setwidth": "container",
+        "title_top": "OUR SUCCESS",
+        "title": "Driven by global talent.",
+        "des": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum<br> tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum.",
+        "padding": true,
+        "col_center": false,
+        "bgsection": "#fefefe",
+        "rangebg": 0,
+        "bgbefore": "rgba(0,0,0,0)",
+        "e_size": "auto",
+        "e_repeat": "no-repeat"
+      }
+    },
+    "1640193971985229b9": {
+      "type": "advanced-content",
+      "blocks": {
+        "16401939719014de03-0": {
+          "type": "html",
+          "settings": {
+            "code": "",
+            "width": "33%",
+            "align": "auto"
+          }
+        },
+        "a3f53bb3-c496-4e5b-86c6-648bf85148ff": {
+          "type": "image",
+          "settings": {
+            "width": "33%",
+            "align": "auto",
+            "image": "shopify:\/\/shop_images\/m13.jpg",
+            "image_link": ""
+          }
+        },
+        "4e5e89a3-8475-4e53-b2c3-6639e39406f8": {
+          "type": "html",
+          "settings": {
+            "code": "<div class=\"px-lg-5\">\n<h1 class=\"mb-4\">2.2M<\/h1>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum libero.<\/p>\n<\/div>",
+            "width": "33%",
+            "align": "auto"
+          }
+        }
+      },
+      "block_order": [
+        "16401939719014de03-0",
+        "a3f53bb3-c496-4e5b-86c6-648bf85148ff",
+        "4e5e89a3-8475-4e53-b2c3-6639e39406f8"
+      ],
+      "settings": {
+        "animation": "fade-up",
+        "paddingsection": "0px 0px 0px 0px",
+        "paddingmobile": "0px 0px 0px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "marginmobile": "0px 0px 0px 0px",
+        "zindex": "0",
+        "setwidth": "container",
+        "title_top": "",
+        "title": "",
+        "des": "",
+        "padding": true,
+        "col_center": false,
+        "bgsection": "#fefefe",
+        "rangebg": 0,
+        "bgbefore": "rgba(0,0,0,0)",
+        "e_size": "auto",
+        "e_repeat": "no-repeat"
+      }
+    },
+    "16401946038d3179cf": {
+      "type": "advanced-content",
+      "blocks": {
+        "b126ea88-1ce1-4cc2-ba30-9fd13a8c23bd": {
+          "type": "image",
+          "settings": {
+            "width": "33%",
+            "align": "auto",
+            "image": "shopify:\/\/shop_images\/avt-1.jpg",
+            "image_link": ""
+          }
+        },
+        "1640194603f33108fb-0": {
+          "type": "html",
+          "settings": {
+            "code": "<div class=\"pl-lg-5 ml-lg-5\">\n<h3 class=\"mb-3\">Over 40% traffic improvements<\/h3>\n<p>We are humans helping other humans succeed, and we believe that transparency is the key to forging lasting relationships.<\/p>\n<h5 class=\"mt-4\">\nRikke Thomsen\n<\/h5>\nCEO & CTO\n<\/div>",
+            "width": "66%",
+            "align": "center"
+          }
+        }
+      },
+      "block_order": [
+        "b126ea88-1ce1-4cc2-ba30-9fd13a8c23bd",
+        "1640194603f33108fb-0"
+      ],
+      "settings": {
+        "animation": "fade-up",
+        "paddingsection": "120px 0px 120px 0px",
+        "paddingmobile": "60px 0px 60px 0px",
+        "marginsection": "120px 0px 0px 0px",
+        "marginmobile": "0px 0px 0px 0px",
+        "zindex": "0",
+        "setwidth": "container",
+        "title_top": "",
+        "title": "",
+        "des": "",
+        "padding": true,
+        "col_center": false,
+        "bgsection": "#fefefe",
+        "rangebg": 0,
+        "bgbefore": "rgba(0,0,0,0)",
+        "image_bg": "shopify:\/\/shop_images\/paper.jpg",
+        "e_size": "auto",
+        "e_repeat": "no-repeat"
+      }
+    },
+    "1640194879aa08c1d1": {
+      "type": "advanced-content",
+      "blocks": {
+        "16401948795068e847-0": {
+          "type": "html",
+          "settings": {
+            "code": "<div class=\"pr-lg-5\">\n<span class=\"subtop\">COMMENCER<\/span>\n<h3 class=\"mt-3 mb-5\">Il n'a jamais été aussi facile de gérer ses finances<\/h3>\n<div class=\"row\">\n<div class=\"col-lg-6 mb-4\">\n<h1>98%<\/h1>\n<p>Satisfaction des clients<\/p>\n<\/div>\n<div class=\"col-lg-6 mb-4\">\n<h1>205M+<\/h1>\n<p>Utilisateurs actifs mensuels<\/p>\n<\/div>\n<div class=\"col-lg-6\">\n<h1>100K+<\/h1>\n<p>Nouveaux utilisateurs par semaine<\/p>\n<\/div>\n<div class=\"col-lg-6\">\n<h1>55%<\/h1>\n<p>Croissance d'une année sur l'autre<\/p>\n<\/div>\n<\/div>\n<\/div>",
+            "width": "50%",
+            "align": "auto"
+          }
+        },
+        "e5315759-7249-4f52-94d3-9e1a963b0e7e": {
+          "type": "image",
+          "settings": {
+            "width": "50%",
+            "align": "auto",
+            "image": "shopify:\/\/shop_images\/image14.jpg",
+            "image_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "16401948795068e847-0",
+        "e5315759-7249-4f52-94d3-9e1a963b0e7e"
+      ],
+      "settings": {
+        "animation": "fade-up",
+        "paddingsection": "120px 0px 0px 0px",
+        "paddingmobile": "60px 0px 60px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "marginmobile": "0px 0px 0px 0px",
+        "zindex": "0",
+        "setwidth": "container",
+        "title_top": "",
+        "title": "",
+        "des": "",
+        "padding": true,
+        "col_center": false,
+        "bgsection": "#fefefe",
+        "rangebg": 0,
+        "bgbefore": "rgba(0,0,0,0)",
+        "e_size": "auto",
+        "e_repeat": "no-repeat"
+      }
+    },
+    "1640195763809414ef": {
+      "type": "advanced-content",
+      "blocks": {
+        "164019576295e31fce-0": {
+          "type": "html",
+          "settings": {
+            "code": "<h3 class=\"text-white\">Drop us a message and see how we can help you!<\/h3>",
+            "width": "50%",
+            "align": "auto"
+          }
+        },
+        "7b55f542-6c52-41e3-aa8e-85afbf51eab2": {
+          "type": "html",
+          "settings": {
+            "code": "<div class=\"text-right\">\n<a href=\"#\" class=\"btn-theme\"> Contact me<\/a>\n<div><\/div>\n<\/div>",
+            "width": "50%",
+            "align": "center"
+          }
+        }
+      },
+      "block_order": [
+        "164019576295e31fce-0",
+        "7b55f542-6c52-41e3-aa8e-85afbf51eab2"
+      ],
+      "settings": {
+        "animation": "fade-up",
+        "paddingsection": "60px 0px 60px 0px",
+        "paddingmobile": "60px 0px 60px 0px",
+        "marginsection": "120px 0px 0px 0px",
+        "marginmobile": "0px 0px 0px 0px",
+        "zindex": "0",
+        "setwidth": "container",
+        "title_top": "",
+        "title": "",
+        "des": "",
+        "padding": true,
+        "col_center": false,
+        "bgsection": "#92a06b",
+        "rangebg": 0,
+        "bgbefore": "rgba(0,0,0,0)",
+        "e_size": "auto",
+        "e_repeat": "no-repeat"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "16401922802a017e2e",
+    "16401917158cf2d87f",
+    "164019264247f7fa60",
+    "16401930874092dd8f",
+    "1640193768119372bb",
+    "1640193971985229b9",
+    "16401946038d3179cf",
+    "1640194879aa08c1d1",
+    "1640195763809414ef"
+  ]
+}

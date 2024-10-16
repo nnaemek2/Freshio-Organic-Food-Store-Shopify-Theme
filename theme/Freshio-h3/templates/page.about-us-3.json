@@ -1,0 +1,299 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "16402476915bccc6a7": {
+      "type": "backgroundvideo",
+      "settings": {
+        "animation": "fade-up",
+        "paddingsection": "0px 0px 0px 0px",
+        "marginsection": "-80px 0px 0px 0px",
+        "bgsection": "#ffffff",
+        "setwidth": "full",
+        "align": "center",
+        "padding_desktop": 180,
+        "padding_mobile": 80,
+        "bg_box": "#ffffff",
+        "opacity_bgbox": 0,
+        "bg_overlay": "#000000",
+        "opacity_bg_overlay": 0.1,
+        "title": "",
+        "title_color": "#ffffff",
+        "subtext": "<span class=\"subtop text-white\">Sparkling Wines<\/span>\n<h2 class=\"mt-2 mb-5 text-white\">Welcome to Passo Bosco<\/h2>\n<img class=\"lybn-lazyload lazyload anim-rotate\" alt=\"HTML builder image\" data-src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0599\/1491\/1918\/files\/image16.png?v=1640248617\" width=\"120\">",
+        "subtitle_color": "#ffffff",
+        "button": "",
+        "link": "",
+        "link_video": "https:\/\/cdn.shopify.com\/s\/files\/1\/0599\/1491\/1918\/files\/ID_5106779.mp4?v=1640187225"
+      }
+    },
+    "1640249035c0b10739": {
+      "type": "advanced-content",
+      "blocks": {
+        "164024903586eb0f34-0": {
+          "type": "html",
+          "settings": {
+            "code": "<h4 class=\"font-family-2 text-center px-lg-5\">As a modern sexual wellness company built on quality, simplicity and inclusivity, we’re on a mission to make intimacy better—for all people.<\/h4>",
+            "width": "100%",
+            "align": "auto"
+          }
+        },
+        "489740f3-0312-47a0-82d3-7f961d35729e": {
+          "type": "html",
+          "settings": {
+            "code": "<div class=\"text-center mt-4\">\n<img class=\"lybn-lazyload lazyload\" alt=\"HTML builder image\" data-src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0599\/1491\/1918\/files\/grape.svg?v=1636710094\" width=\"50\">\n<\/div>",
+            "width": "100%",
+            "align": "auto"
+          }
+        }
+      },
+      "block_order": [
+        "164024903586eb0f34-0",
+        "489740f3-0312-47a0-82d3-7f961d35729e"
+      ],
+      "settings": {
+        "animation": "fade-up",
+        "paddingsection": "80px 0px 80px 0px",
+        "paddingmobile": "60px 0px 60px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "marginmobile": "0px 0px 0px 0px",
+        "zindex": "0",
+        "setwidth": "container",
+        "title_top": "",
+        "title": "",
+        "des": "",
+        "padding": true,
+        "col_center": false,
+        "bgsection": "#faf5eb",
+        "rangebg": 0,
+        "bgbefore": "rgba(0,0,0,0)"
+      }
+    },
+    "1640249067965cb02d": {
+      "type": "advanced-content",
+      "blocks": {
+        "0da5935f-bcb4-4f38-96d4-78e0ec3b4a0c": {
+          "type": "image",
+          "settings": {
+            "width": "50%",
+            "align": "auto",
+            "image": "shopify:\/\/shop_images\/image17.jpg",
+            "image_link": ""
+          }
+        },
+        "1640249067277694fd-0": {
+          "type": "html",
+          "settings": {
+            "code": "<div class=\"pl-lg-5\">\n<span class=\"subtop\">Our story<\/span>\n<h2 class=\"my-3\">Vineyards That Tell A Story<\/h2>\n<p class=\"mb-5\">\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Habitasse venenatis purus faucibus enim rhoncus suspendisse. Netus et elementum lacus, sem sapien faucibus.\n<\/p>\n<a class=\"btn btn-theme\" href=\"#\"> Read more<\/a>\n<\/div>",
+            "width": "50%",
+            "align": "center"
+          }
+        }
+      },
+      "block_order": [
+        "0da5935f-bcb4-4f38-96d4-78e0ec3b4a0c",
+        "1640249067277694fd-0"
+      ],
+      "settings": {
+        "animation": "fade-up",
+        "paddingsection": "120px 0px 120px 0px",
+        "paddingmobile": "60px 0px 60px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "marginmobile": "0px 0px 0px 0px",
+        "zindex": "0",
+        "setwidth": "container",
+        "title_top": "",
+        "title": "",
+        "des": "",
+        "padding": true,
+        "col_center": false,
+        "bgsection": "#ffffff",
+        "rangebg": 0,
+        "bgbefore": "rgba(0,0,0,0)"
+      }
+    },
+    "1640249822349f58c7": {
+      "type": "advanced-content",
+      "blocks": {
+        "16402498223f426db3-0": {
+          "type": "html",
+          "settings": {
+            "code": "<div class=\"text-center mt-5  px-lg-5\" style=\"border-right: 1px solid rgba(255,255,255,0.2)\">\n<h3 class=\"text-white mb-4\">Premium Quality<\/h3>\n<p class=\"text-white\">This text can be used to share information about your brand with customers.<\/p>\n<div><\/div>\n<\/div>",
+            "width": "33%",
+            "align": "auto"
+          }
+        },
+        "cc60faa4-f700-454c-b170-ae2148b201a2": {
+          "type": "html",
+          "settings": {
+            "code": "<div class=\"text-center mt-5  px-lg-5\" style=\"border-right: 1px solid rgba(255,255,255,0.2)\">\n<h3 class=\"text-white mb-4\">Unparalleled Prices<\/h3>\n<p class=\"text-white\">This text can be used to share information about your brand with customers.<\/p>\n<div><\/div>\n<\/div>",
+            "width": "33%",
+            "align": "auto"
+          }
+        },
+        "7da3a34c-3ce6-4e1e-998b-755fa0b63af8": {
+          "type": "html",
+          "settings": {
+            "code": "<div class=\"text-center mt-5  px-lg-5\">\n<h3 class=\"text-white mb-4\">From the Source<\/h3>\n<p class=\"text-white\">Shopping on Italic means supporting a network of independent manufacturers<\/p>\n<div><\/div>\n<\/div>",
+            "width": "33%",
+            "align": "auto"
+          }
+        },
+        "a554d5b0-2bec-4123-adf5-5bdbd0b24f0e": {
+          "type": "html",
+          "settings": {
+            "code": "<div class=\"text-center mt-5\">\n<a class=\"btn btn-theme\" href=\"#\"> Read more<\/a>\n<\/div>",
+            "width": "100%",
+            "align": "auto"
+          }
+        }
+      },
+      "block_order": [
+        "16402498223f426db3-0",
+        "cc60faa4-f700-454c-b170-ae2148b201a2",
+        "7da3a34c-3ce6-4e1e-998b-755fa0b63af8",
+        "a554d5b0-2bec-4123-adf5-5bdbd0b24f0e"
+      ],
+      "settings": {
+        "animation": "fade-up",
+        "paddingsection": "120px 0px 120px 0px",
+        "paddingmobile": "60px 0px 60px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "marginmobile": "0px 0px 0px 0px",
+        "zindex": "0",
+        "setwidth": "container",
+        "title_top": "Our Commitments",
+        "title": "",
+        "des": "",
+        "padding": true,
+        "col_center": false,
+        "bgsection": "#183038",
+        "rangebg": 0,
+        "bgbefore": "rgba(0,0,0,0)"
+      }
+    },
+    "164025010979f1d019": {
+      "type": "advanced-content",
+      "blocks": {
+        "16402501092f772dfb-0": {
+          "type": "html",
+          "settings": {
+            "code": "<div class=\"text-center px-lg-5\">\n<span class=\"subtop\">Best Seller<\/span>\n<h2 class=\"my-3\">No 01 on Passion<\/h2>\n<img class=\"lybn-lazyload lazyload\" alt=\"HTML builder image\" data-src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0599\/1491\/1918\/files\/image19.jpg?v=1640252652\" width=\"230\">\n<div class=\"text-center mt-5\">\n<a class=\"btn btn-theme\" href=\"#\"> Read more<\/a>\n<\/div>\n<\/div>",
+            "width": "50%",
+            "align": "center"
+          }
+        },
+        "30824ace-310b-4305-9e21-01a7cba35578": {
+          "type": "image",
+          "settings": {
+            "width": "50%",
+            "align": "auto",
+            "image": "shopify:\/\/shop_images\/image18.jpg",
+            "image_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "16402501092f772dfb-0",
+        "30824ace-310b-4305-9e21-01a7cba35578"
+      ],
+      "settings": {
+        "animation": "fade-up",
+        "paddingsection": "0px 0px 0px 0px",
+        "paddingmobile": "60px 0px 60px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "marginmobile": "0px 0px 0px 0px",
+        "zindex": "0",
+        "setwidth": "full",
+        "title_top": "",
+        "title": "",
+        "des": "",
+        "padding": true,
+        "col_center": false,
+        "bgsection": "#faf5eb",
+        "rangebg": 0,
+        "bgbefore": "rgba(0,0,0,0)"
+      }
+    },
+    "1640254931d79b340f": {
+      "type": "advanced-content",
+      "blocks": {
+        "1640254931c3be0c32-0": {
+          "type": "html",
+          "settings": {
+            "code": "<div class=\"text-center px-lg-4\">\n<img class=\"lybn-lazyload lazyload\" alt=\"HTML builder image\" data-src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0599\/1491\/1918\/files\/Neural.svg?v=1640255252\">\n<\/div>",
+            "width": "20%",
+            "align": "center"
+          }
+        },
+        "d908118c-93bc-46eb-bd3a-25df3fc201db": {
+          "type": "html",
+          "settings": {
+            "code": "<div class=\"text-center px-lg-4\">\n<img class=\"lybn-lazyload lazyload\" alt=\"HTML builder image\" data-src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0599\/1491\/1918\/files\/Flo.svg?v=1640255252\">\n<\/div>",
+            "width": "20%",
+            "align": "center"
+          }
+        },
+        "12febc0a-b5a8-456e-8814-108d4d261c00": {
+          "type": "html",
+          "settings": {
+            "code": "<div class=\"text-center px-lg-4\">\n<img class=\"lybn-lazyload lazyload\" alt=\"HTML builder image\" data-src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0599\/1491\/1918\/files\/Towa.svg?v=1640255252\">\n<\/div>",
+            "width": "20%",
+            "align": "center"
+          }
+        },
+        "e57aa034-0fa7-420c-9d31-5850db5cce0f": {
+          "type": "html",
+          "settings": {
+            "code": "<div class=\"text-center px-lg-4\">\n<img class=\"lybn-lazyload lazyload\" alt=\"HTML builder image\" data-src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0599\/1491\/1918\/files\/Rigid.svg?v=1640255252\">\n<\/div>",
+            "width": "20%",
+            "align": "center"
+          }
+        },
+        "b54f1940-d778-4450-b64b-b54afadcddfd": {
+          "type": "html",
+          "settings": {
+            "code": "<div class=\"text-center px-lg-4\">\n<img class=\"lybn-lazyload lazyload\" alt=\"HTML builder image\" data-src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0599\/1491\/1918\/files\/Explo.svg?v=1640255252\">\n<\/div>",
+            "width": "20%",
+            "align": "center"
+          }
+        }
+      },
+      "block_order": [
+        "1640254931c3be0c32-0",
+        "d908118c-93bc-46eb-bd3a-25df3fc201db",
+        "12febc0a-b5a8-456e-8814-108d4d261c00",
+        "e57aa034-0fa7-420c-9d31-5850db5cce0f",
+        "b54f1940-d778-4450-b64b-b54afadcddfd"
+      ],
+      "settings": {
+        "animation": "fade-up",
+        "paddingsection": "120px 0px 0px 0px",
+        "paddingmobile": "60px 0px 60px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "marginmobile": "0px 0px 0px 0px",
+        "zindex": "0",
+        "setwidth": "container",
+        "title_top": "The Partner",
+        "title": "Trusted by these mega Brands",
+        "des": "",
+        "padding": true,
+        "col_center": false,
+        "bgsection": "#fefefe",
+        "rangebg": 0,
+        "bgbefore": "transparent"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "16402476915bccc6a7",
+    "1640249035c0b10739",
+    "1640249067965cb02d",
+    "1640249822349f58c7",
+    "164025010979f1d019",
+    "1640254931d79b340f"
+  ]
+}

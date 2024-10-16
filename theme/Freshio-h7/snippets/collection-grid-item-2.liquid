@@ -1,0 +1,35 @@
+{%- capture current -%}{%- cycle 1, 2, 3, 4, 5, 6 -%}{%- endcapture -%}
+{%- assign collectionTitle = featured_collection.title | default: 'Collection title' -%}
+<div class="{% if template != 'index' %} col-lg-4 {% endif %}col-12 collection-card-2 text-center mb-4" {{ block.shopify_attributes }}>
+  <div class="collection-card__image overflow-hidden position-relative ">
+    <a class="hv-image-brightness" href="{{featured_collection.url | default :'#'}}">
+      {%- if featured_image != blank -%}
+        {% assign img_url = featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+        <img class="image-content__image lazyload transition"
+          src="{{ featured_image| img_url: '1920x' }}"
+          data-src="{{ img_url }}"
+          data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+          data-aspectratio="{{ featured_image.aspect_ratio }}"
+          data-sizes="auto"
+          alt="{{ featured_image.alt | escape }}">
+      {%- elsif featured_collection.image != blank -%}
+        {% assign img_url = featured_collection.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+        <img class="image-content__image lazyload transition"
+          src="{{ featured_collection.image | img_url: '1920x' }}"
+          data-src="{{ img_url }}"
+          data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+          data-aspectratio="{{ featured_collection.image.aspect_ratio }}"
+          data-sizes="auto"
+          alt="{{ featured_collection.image.alt | escape }}">
+      {%- else -%}
+      {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </a>
+    <div class="position-absolute collection-card__meta w-100 d-flex justify-content-between h-100 align-items-center p-4">
+        <a class=" h4 text-white mb-0 text-left" href="{{featured_collection.url | default :'#'}}">
+          {{ collectionTitle }}
+        </a>
+        <span class="badge badge-light"> {{ featured_collection.products_count }}</span>
+    </div>
+  </div>
+</div>

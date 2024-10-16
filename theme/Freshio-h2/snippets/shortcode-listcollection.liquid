@@ -1,0 +1,64 @@
+{% unless collection_image_size %}
+{%- assign collection_image_size = '450x450' -%}
+{% endunless %}
+{% capture listcollection %}{% include 'shortcode-render' render:'action' %}{% endcapture %}
+{% capture title %}{% include 'shortcode-render' render:'title' default:'' %}{% endcapture %}
+{% capture columnsItem %}{% include 'shortcode-render' render:'columns' default:'4' %}{% endcapture %}
+{% capture itemHandle %}{% include 'shortcode-render' render:'handle' default:'' %}{% endcapture %}
+{% capture itemTitle %}{% include 'shortcode-render' render:'title' default:'' %}{% endcapture %}
+{% capture itemHref %}{% include 'shortcode-render' render:'href' default:'' %}{% endcapture %}
+{% case listcollection %}
+{% when 'new list' %}
+{% assign columnsItem = columnsItem | plus:0 %}
+{%- assign colItem = 12 | divided_by:columnsItem -%}
+{%- if columnsItem == 5 -%}
+{%- capture itemWidth -%} col-lg-5ths col-md-5ths col-sm-6 col-6{%- endcapture -%}
+{%- else -%}
+{%- capture itemWidth -%}col-md-{{ colItem }} col-sm-6 col-6{%- endcapture -%}
+{%- endif -%}
+<div class="listCollections">
+
+  <h4>{{ title }}</h4>
+
+  <div class="row">
+    {% when 'end list' %}
+  </div>
+</div>
+{% when 'item' %}
+{% assign itemHandle = itemHandle | handleize %}
+{% assign collection = collections[itemHandle] %}
+{% if itemTitle == blank %}
+{% assign collectionTitle = collection.title %}
+{% else %}
+{% assign collectionTitle = itemTitle %}
+{% endif %}
+{% if itemHref == blank %}
+{% assign collectionHref = collection.url %}
+{% else %}
+{% assign collectionHref = itemHref %}
+{% endif %}
+<div class="block_collection {{ itemWidth }}">
+  <div class="collection_item">
+    <div class="collection-grid-item">
+      <a href="{{ collectionHref }}" class="collection-grid-item__link" title="{{ collection.title }}">
+        {% if collection.image %}
+        {% capture collectionlist_image_url %}{{ collection.image | img_url: collection_image_size, crop: 'top' }}{% endcapture %}
+        <div class="lazyload" style="background-image: url({{ collectionlist_image_url }}); background-position: center;"
+             data-bgset="{% include 'bgset', image: collection_image %}"
+             data-sizes="auto"
+             data-parent-fit="cover"
+             >                            	
+        </div>
+        {% else %}         
+        {{ 'collection-2' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      </a>
+    </div>
+    <div class="collection-meta text-center">
+      <h3 class="h5">
+        <a href="{{ collection.url }}" title="{{ collection_title }}">{{ collection.title }}</a>
+      </h3>
+    </div>
+  </div>
+</div>
+{% endcase %}

@@ -1,0 +1,8 @@
+{%- if settings.enable_compare -%}
+<!-- block-compare.liquid  -->
+<a href="javascript:void(0)" data-toggle="modal" data-target="#jsCompare" class="site-header__link site-header__compare js-open-compare  {% unless settings.header == 'header-2'%} pr-0 {% endunless %}" title="{{ 'products.product.compare_text' | t }}">
+  {%- include 'icon-exchange' -%}
+  <!-- <span class="compare-text">{{ 'products.product.compare_text' | t }}</span> -->
+  <span class="js-compare-count text-center"></span>
+</a>
+{%- endif -%}

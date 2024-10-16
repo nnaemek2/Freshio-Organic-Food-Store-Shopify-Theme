@@ -1,0 +1,234 @@
+<!-- pricing-plan.liquid -->
+<div class="customstyle{{ section.id }}" data-aos="{{section.settings.animation}}" >
+  <div class="{{ section.settings.setwidth }}">
+    {%- include 'style-section' -%}
+  <div class="section-block">
+    {%- include 'section-heading' -%}
+    <div class="dots-negative">
+      <div class="row" id="pricing-list-{{ section.id }}"
+           data-rows="{{section.settings.rows}}"
+           data-slidesToShow="{{section.blocks.size}}"
+           data-slidestoscroll="{{section.blocks.size}}"
+           data-arrows="{{ section.settings.arrows }}"
+           data-dots="{{ section.settings.dots }}" 
+           data-draggable="{{ section.settings.draggable }}" 
+           data-infinite="{{ section.settings.infinite }}" 
+           data-section-id="{{ section.id }}" 
+           data-section-type="slickCarousels">
+        {%- for block in section.blocks -%}
+        <div class="col carousel__slide-wrapper--{{block.id}}" {{ block.shopify_attributes }}>
+          <div class="py-5 px-3 px-lg-5 transition text-center pricing-plan--1 {% if block.settings.special %}pricing-plan--special bg-theme gradient-theme text-white{% else %}bg-theme-50{% endif %}">
+            <p class="plan-title text-uppercase font-family-2 fz-2 m-0">{{block.settings.title}}</p>
+            <p class="plan-price font-family-2">{{block.settings.price}}</p>
+            <div class="plan-info pb-5">{{block.settings.des}}</div>
+            <a href="{{block.settings.btn_link}}" class="plan-link position-relative btn w-50 py-3 btn-theme gradient-theme mt-lg-5 rounded-pill fz-n4 font-weight-bold">{{block.settings.btn_text}}</a>
+          </div>
+        </div>
+        {%- endfor -%}
+      </div>
+    </div>
+    {%- if section.blocks.size == 0 -%}
+    {%- include 'no-blocks' -%}
+    {%- endif -%}
+  </div>
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "Pricing plans",
+  "class": "index-section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "select",
+      "id": "animation",
+      "options": [
+        { "value": "", "label": "None"},
+        { "value": "fade", "label": "Fade"},
+        { "value": "fade-up", "label": "Fade Up"},
+        { "value": "fade-down", "label": "Fade Down"},
+        { "value": "fade-left", "label": "Fade Left"},
+        { "value": "fade-right", "label": "Fade Right"},
+        { "value": "fade-up-right", "label": "Fade Up Right"},
+        { "value": "fade-up-left", "label": "Fade Up Left"},
+        { "value": "fade-down-right", "label": "Fade Down Right"},
+        { "value": "fade-down-left", "label": "Fade Down Left"},
+        { "value": "flip-up", "label": "Flip Up"},
+        { "value": "flip-down", "label": "Flip Down"},
+        { "value": "flip-left", "label": "Flip Left"},
+        { "value": "flip-right", "label": "Flip Right"},
+        { "value": "slide-up", "label": "Slide Up"},
+        { "value": "slide-down", "label": "Slide Down"},
+        { "value": "slide-left", "label": "Slide Left"},
+        { "value": "slide-right", "label": "Slide Right"},
+        { "value": "zoom-in", "label": "Zoom In"},
+        { "value": "zoom-in-up", "label": "Zoom In Up"},
+        { "value": "zoom-in-down", "label": "Zoom In Down"},
+        { "value": "zoom-in-left", "label": "Zoom In Left"},
+        { "value": "zoom-in-right", "label": "Zoom In Right"},
+        { "value": "zoom-out", "label": "Zoom Out"},
+        { "value": "zoom-out-up", "label": "Zoom Out Up"},
+        { "value": "zoom-out-down", "label": "Zoom Out Down"},
+        { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+        { "value": "zoom-out-right", "label": "Zoom Out Right"}
+      ],
+      "label": "Select Animation"
+  },
+    {
+      "type": "text",
+      "id": "paddingsection",
+      "label": "Padding Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "paddingmobile",
+      "label": "Padding Section Mobile",
+      "default": "60px 0px 60px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginsection",
+      "label": "Margin Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginmobile",
+      "label": "Margin Mobile",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "color",
+      "id": "bgsection",
+        "label": "Background Section",
+        "default": "#fefefe"
+    },
+    {
+      "type": "text",
+      "id": "title_top",
+      "label": "Sub Title Top",
+      "default": "Sub Title Top"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Pricing plans"
+    },
+    {
+      "type": "textarea",
+      "id": "des",
+      "label": "HTML / Description"
+    },
+    {
+      "type": "select",
+      "id": "setwidth",
+      "label": "Full Width",
+      "default": "container",
+      "options": [
+        {
+          "value": "container",
+          "label": "Box"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Container Fluid"
+        },
+        {
+          "value": "full",
+          "label": "Full"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "arrows",
+      "label": "Arrows",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "draggable",
+      "label": "Draggable",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "dots",
+      "label": "Dots",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "infinite",
+      "label": "Infinite",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "Plan",
+      "name": "Plan",
+      "settings": [
+        {
+          "id": "special",
+          "type": "checkbox",
+          "label": "Special plan",
+          "default": false
+        },
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Title",
+          "default": "Plan heading"
+        },
+        {
+          "id": "price",
+          "type": "text",
+          "label": "Price",
+          "default": "$399"
+        },
+        {
+          "id": "des",
+          "type": "textarea",
+          "label": "Information"
+        },
+        {
+          "id": "btn_text",
+          "type": "text",
+          "label": "Button text",
+          "default": "View more"
+        },
+        {
+          "id": "btn_link",
+          "type": "url",
+          "label": "Button link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pricing Plans",
+      "category": "Text",
+      "blocks": [
+        {
+          "type": "Plan"
+        },
+        {
+          "type": "Plan"
+        },
+        {
+          "type": "Plan"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

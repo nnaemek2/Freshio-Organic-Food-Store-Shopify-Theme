@@ -1,0 +1,60 @@
+<div class="product-label {{settings.style_label}}">
+    {% capture txtupper %}{% if settings.txtuppercase %}text-uppercase {% endif %}{% endcapture %}
+    {%- if settings.sale_label_enable -%}
+        {%- if product.compare_at_price > product.price -%}
+            <div class="product-tag product-tag--absolute {{txtupper}} {{settings.tagsale}} mb-1 mr-1" aria-hidden="true" style="background-color: {{settings.sale_label_bg}};color:{{settings.sale_label_cl}}">
+                {%- assign sale_minus = product.compare_at_price_min | minus: product.price_min -%}
+                {%- assign sale_percent =  sale_minus | times:100 | divided_by: product.compare_at_price_min -%}
+                {%- if settings.tagsale == 'percent' -%}
+                    -{{ sale_percent | append: '%'}}
+                {%- elsif settings.tagsale == 'txt' -%}
+                    {{ settings.sale_label_text | default:'on sale' }}
+                {%- else -%}
+                 {{ sale_percent | append: '%'}} {{ settings.sale_label_text | default:'on sale' }}
+                {%- endif -%}
+            </div>
+        {%- endif -%}
+    {%- endif -%}
+    {% if settings.new_label_enable %}
+    
+      {%- assign new = false -%}
+      {%- assign new_count = settings.new_label_day | plus: 0 -%}
+      {%- assign date_published_year = product.published_at | date:'%Y' -%}
+      {%- assign date_published_month = product.published_at | date:'%m' -%}
+      {%- assign date_published_day = product.published_at | date:'%d' -%}
+    
+      {%- assign date_now_year = 'now' | date:'%Y' -%}
+      {%- assign date_now_month = 'now' | date:'%m' -%}
+      {%- assign date_now_day = 'now' | date:'%d' -%}
+    
+      {%- assign day_year = date_now_year | minus:date_published_year | times: 365 -%}
+      {%- assign day_month = date_now_month | minus:date_published_month | times: 30 -%}
+      {%- assign day_day = date_now_day | minus:date_published_day -%}
+    
+      {%- assign date_difference = day_year | plus: day_month | plus: day_day -%}
+      {%- if date_difference <= new_count -%}
+      {%- assign new = true -%}
+      {%- endif -%}
+    
+      {% if new %}
+        <span class="product-tag product-tag--absolute mb-1 mr-1 {{txtupper}}" aria-hidden="true" style="background-color:{{settings.new_label_bg}};color:{{settings.new_label_cl}}">
+          {{ settings.new_label_text | default:'new' }}
+        </span>
+      {% endif %}
+    
+    {% endif %}
+
+    {% assign has_my_tag = settings.best_seller %}
+    {% if has_my_tag %}
+    {% assign tagtext = settings.best_seller_text %}
+    {% for tag in product.tags %}
+        {% if tag contains tagtext %}
+            {% assign my_tag = tagtext %}
+            <div class="product-tag product-tag--absolute {{txtupper}}" aria-hidden="true" style="background-color: {{settings.best_seller_bg}};color:{{settings.best_seller_cl}}">
+                {{my_tag}}
+            </div>
+    {% endif %}
+    {% endfor %}
+       
+    {% endif %}
+    </div>

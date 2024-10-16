@@ -1,0 +1,365 @@
+<!-- quotes-special.liquid -->
+<style>
+  .author-avatar .image-content__image{
+    height: 100%;
+    object-fit: cover;
+  }
+  .title-quote{
+    position: relative;
+  }
+  .title-quote svg{
+    position: absolute;
+    top:-2px;
+    left: 0;
+    fill: var(--g-main);
+    width: 44px;
+    height: 44px;
+  }
+</style>
+<div class="customstyle{{ section.id }} ">
+    {%- include 'style-section' -%}
+  <div class="{{ section.settings.setwidth }}">
+    <div class="section-block">
+      {%- include 'section-heading' -%}
+      {%- if section.blocks.size > 0 -%}
+      <div class="quotes-wrapper dots-negative quotes-2 row" > 
+        <div class="col-md-6 col-12">
+          {%- if section.settings.title_left != blank -%}
+            <h3 class="my-3 title-quote pl-5"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Layer_1" x="0px" y="0px" viewBox="0 0 48 38" style="enable-background:new 0 0 48 38;" xml:space="preserve">
+              <path d="M41,0.3c-9.4,6.6-14,14.5-14,23.7c0,4.2,1,7.5,3.1,10.1c2.1,2.6,4.7,3.9,7.9,3.9c2.8,0,5.2-0.9,7.1-2.8  c2-1.9,2.9-4.2,2.9-6.9c0-2.5-0.8-4.7-2.5-6.6c-1.7-1.9-3.7-3-6.2-3.3c-0.2-3.7,2-8.1,6.7-13c0.9-1.1,0.9-2.2,0-3.3l-1.3-1.5  C44.2,0.2,43.5,0,42.5,0C41.8,0,41.3,0.1,41,0.3z M14,0.3C4.7,6.9,0,14.8,0,24c0,4.2,1,7.5,3.1,10.1C5.2,36.7,7.8,38,11,38  c2.8,0,5.2-0.9,7.1-2.8c2-1.9,2.9-4.2,2.9-6.9c0-2.5-0.8-4.7-2.5-6.6c-1.7-1.9-3.7-3-6.2-3.3c-0.2-3.7,2-8.1,6.7-13  c1-1.1,0.9-2.2-0.2-3.3l-1.3-1.5c-0.4-0.4-1.1-0.7-2-0.7C14.9,0,14.4,0.1,14,0.3z"></path>
+              </svg>
+              <div class="pl-lg-5">{{section.settings.title_left}}</div></h3>
+          {%- endif -%}
+          <div class="quotes-slider px-lg-5 mx-lg-5" id="Quotes-{{ section.id }}" 
+              data-rows="{{section.settings.rows}}"
+              data-slidesToShow="{{section.settings.show}}"
+              data-slidestoscroll="{{section.settings.show}}"
+              data-arrows="{{ section.settings.arrows }}"
+              data-dots="{{ section.settings.dots }}" 
+              data-draggable="{{ section.settings.draggable }}" 
+              data-infinite="{{ section.settings.infinite }}" 
+              data-section-id="{{ section.id }}" 
+              data-section-type="slickCarousels">
+              
+            {%- for block in section.blocks -%}
+            <div class="quote__slide-wrapper carousel__slide-wrapper--{{ block.id }}" {{ block.shopify_attributes }}>
+              <div class="quote__slide">
+                <div class="quote-wrap ">
+                  <div class="" data-aos="{{section.settings.animation}}" data-aos-duration="500">
+                      <div class="pb-5">
+                      {%- if block.settings.title != blank -%}
+                          <div class="subtop py-2 mt-2 py-md-4">
+                          {{ block.settings.title }}
+                          </div>
+                          {%- endif -%}
+                          {%- if block.settings.avatar != blank -%}
+                            <div class="author-avatar">
+                                <div class="position-relative">
+                                  <div class="image-content__image-wrapper" style="padding-top:100%;">
+                                  {% assign img_url = block.settings.avatar | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                                  <img class="image-content__image lazyload"
+                                      src="{{ block.settings.avatar | img_url: '550x' }}"
+                                      data-src="{{ img_url }}"
+                                      data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                                      data-aspectratio="{{ block.settings.avatar.aspect_ratio }}"
+                                      data-sizes="auto"
+                                      alt="{{ block.settings.title }}">
+                                  </div>
+                              </div>
+                            </div>
+                        {%- endif -%}
+                          <div class="pt-3 pb-3">
+                            {%- if block.settings.rate > 0 -%}
+                              <ul class="rating mb-3">
+                                {%- for i in (1..5) -%}
+                                  {%- assign iMax = block.settings.rate -%}
+                                  {%- if i <= iMax -%}
+                                  <li class="rated">
+                                      {%- else -%}
+                                  <li>
+                                    {%- endif -%}
+                                {%- endfor -%}
+                              </ul>
+                            {%- endif -%}
+                            <div>{{ block.settings.quote }}</div>
+                          </div>
+                          <div class=" font-family-2 mt-1 font-weight-bold" style="opacity: 0.8;">{{ block.settings.author }}</div>
+                          {%- if block.settings.info != blank -%}
+                          <i class="small">{{ block.settings.info }}</i>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            {%- endfor -%}
+          </div>
+        </div>
+        <div class="col-12 col-md-6" data-aos="{{section.settings.animation}}" data-aos-duration="800">
+          {%- if section.settings.image_right == blank -%}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- else -%}
+          <div class="position-relative">
+            <div class="image-content__image-wrapper" style="padding-top:{{ 1 | divided_by: section.settings.image_right.aspect_ratio | times: 100}}%;">
+            {% assign img_url = section.settings.image_right | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+            <img class="image-content__image lazyload"
+                src="{{ section.settings.image_right | img_url: '800x' }}"
+                data-src="{{ img_url }}"
+                data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                data-aspectratio="{{section.settings.image_right.aspect_ratio }}"
+                data-sizes="auto"
+                alt="{{ section.settings.image_right.title }}">
+            </div>
+        </div>
+        {%- endif -%}
+        </div>
+      </div>
+      {%- endif -%}
+  
+      {%- if section.blocks.size == 0 -%}
+      {%- include 'no-blocks' -%}
+      {%- endif -%}
+    </div>
+  </div>
+  </div>
+  
+  {% schema %}
+  {
+    "name": "Testimonials Special",
+    "class": "index-section",
+    "max_blocks": 10,
+    "settings": [
+    {
+      "type": "select",
+      "id": "animation",
+      "options": [
+        { "value": "", "label": "None"},
+        { "value": "fade", "label": "Fade"},
+        { "value": "fade-up", "label": "Fade Up"},
+        { "value": "fade-down", "label": "Fade Down"},
+        { "value": "fade-left", "label": "Fade Left"},
+        { "value": "fade-right", "label": "Fade Right"},
+        { "value": "fade-up-right", "label": "Fade Up Right"},
+        { "value": "fade-up-left", "label": "Fade Up Left"},
+        { "value": "fade-down-right", "label": "Fade Down Right"},
+        { "value": "fade-down-left", "label": "Fade Down Left"},
+        { "value": "flip-up", "label": "Flip Up"},
+        { "value": "flip-down", "label": "Flip Down"},
+        { "value": "flip-left", "label": "Flip Left"},
+        { "value": "flip-right", "label": "Flip Right"},
+        { "value": "slide-up", "label": "Slide Up"},
+        { "value": "slide-down", "label": "Slide Down"},
+        { "value": "slide-left", "label": "Slide Left"},
+        { "value": "slide-right", "label": "Slide Right"},
+        { "value": "zoom-in", "label": "Zoom In"},
+        { "value": "zoom-in-up", "label": "Zoom In Up"},
+        { "value": "zoom-in-down", "label": "Zoom In Down"},
+        { "value": "zoom-in-left", "label": "Zoom In Left"},
+        { "value": "zoom-in-right", "label": "Zoom In Right"},
+        { "value": "zoom-out", "label": "Zoom Out"},
+        { "value": "zoom-out-up", "label": "Zoom Out Up"},
+        { "value": "zoom-out-down", "label": "Zoom Out Down"},
+        { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+        { "value": "zoom-out-right", "label": "Zoom Out Right"}
+      ],
+      "label": "Select Animation"
+  },
+    {
+      "type": "text",
+      "id": "paddingsection",
+      "label": "Padding Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginsection",
+      "label": "Margin Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "color",
+      "id": "bgsection",
+        "label": "Background Section",
+        "default": "#fefefe"
+    },
+    {
+      "type": "select",
+      "id": "setwidth",
+      "label": "Full Width",
+      "default": "container",
+      "options": [
+        {
+          "value": "container",
+          "label": "Box"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Container Fluid"
+        },
+        {
+          "value": "full",
+          "label": "Full"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "sectionheading",
+      "label": "Style Heading",
+      "default": "heading-0",
+      "options": [
+        {
+          "value": "heading-0",
+          "label": "Heading 0 Border"
+        },
+        {
+          "value": "heading-1",
+          "label": "Heading 1 Center"
+        },
+        {
+          "value": "heading-2",
+          "label": "Heading 2 No Border"
+        },
+        {
+          "value": "heading-3",
+          "label": "Heading 3 Center Border"
+        }
+      ]
+    }, 
+    {
+      "type": "color",
+      "id": "dot_heading0",
+      "label": "Color Dot Header 0, Header 2",
+      "default": "#bac34e"
+    },
+    {
+      "type": "text",
+      "id": "title_top",
+      "label": "Sub Title Top",
+      "default": "Sub Title Top"
+    },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "User reviews"
+      },
+      {
+        "type": "textarea",
+        "id": "des",
+        "label": "HTML / Description"
+      },
+      {
+        "type": "text",
+        "id": "title_left",
+        "label": "Title Block Left",
+        "default": "Why customer love us"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_right",
+        "label": "Right Image"
+      },
+      {
+        "type": "range",
+        "id": "show",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Show",
+        "default": 1
+      },
+      {
+        "type": "checkbox",
+        "id": "arrows",
+        "label": "Arrows",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "draggable",
+        "label": "Draggable",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "dots",
+        "label": "Dots",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "infinite",
+        "label": "Infinite",
+        "default": true
+      }
+    ],
+    "blocks": [
+      {
+        "type": "quote",
+        "name": "Quote",
+        "settings": [
+         {
+            "type": "text",
+            "id": "title",
+            "label": "Comment",
+            "default": "Comment"
+          },
+          {
+            "type": "textarea",
+            "id": "quote",
+            "label": "Text",
+            "default": "Add customer reviews and testimonials to showcase your store’s happy customers."
+           },
+           {
+            "type": "range",
+            "id": "rate",
+            "min": 0,
+            "max": 5,
+            "step": 1,
+            "label": "Rating",
+            "default": 5
+            },
+          {
+            "type": "text",
+            "id": "author",
+            "label": "Author",
+            "default": "Author's name"
+          },
+          {
+            "type": "text",
+            "id": "info",
+            "label": "Author's info"
+          },
+          {
+            "type": "image_picker",
+            "id": "avatar",
+            "label": "Avatar"
+          }
+          
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Testimonials Special",
+        "category": "Text",
+        "blocks": [
+          {
+            "type": "quote"
+          },
+          {
+            "type": "quote"
+          },
+          {
+            "type": "quote"
+          }
+        ]
+      }
+    ]
+  }
+  {% endschema %}
+  

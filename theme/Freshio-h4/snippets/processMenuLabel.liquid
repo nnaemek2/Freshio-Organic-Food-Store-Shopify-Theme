@@ -1,0 +1,10 @@
+{%- if itemName contains '[' and itemName contains ']' -%}
+  {%- assign labelName = itemName| escape | split:'[' | last | replace:']','' -%}
+  {%- case labelName -%}
+  	{%- when 'new' -%} {%- assign labelClass = 'menu-label--new' -%}
+  	{%- when 'hot' -%} {%- assign labelClass = 'menu-label--hot' -%}
+  	{%- when 'sale' -%} {%- assign labelClass = 'menu-label--sale' -%}
+  	{%- else -%} {%- assign labelClass = 'menu-label--other' -%}
+  {%- endcase -%}
+<span class="menu-label {{labelClass}}"><span>{{labelName}}</span></span>
+{%- endif -%}

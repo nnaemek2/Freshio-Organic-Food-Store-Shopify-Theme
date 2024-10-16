@@ -1,0 +1,222 @@
+{%- if section.settings.enable -%}
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+  <!-- sticky-cart.liquid -->
+  <style>
+    :root{
+      --sticky-cart-mix: {{section.settings.mix_1}};
+      --sticky-cart-mix2: {{section.settings.mix_2}};
+      --sticky-cart-text: {{section.settings.text_cl}};
+      --sticky-cart-bg: {{section.settings.cart_bg}};
+      --sticky-cart-cl: {{section.settings.cart_cl}};
+      --sticky-cart-bg-hover: {{section.settings.cart_bg_hover}};
+      --sticky-cart-cl-hover: {{section.settings.cart_cl_hover}};
+      }
+  </style>
+  <style>
+    .sticky-cart-wr{
+      position: fixed;
+      width: 100%;
+      padding:10px 0;
+      bottom: 0;
+      z-index: 999;
+      background: var(--sticky-cart-mix);
+        left:0;
+        -webkit-transition: all ease .45s;
+        -o-transition: all ease .45s;
+        transition: all ease .45s;
+        -webkit-transform: translateY(100%);
+        -ms-transform: translateY(100%);
+        transform: translateY(100%);
+        }
+    .sticky-cart-wr.active{
+      -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+      transform: translateY(0);
+    }
+    .sticky-cart-wr.active .svg-cart{
+      opacity: 0;
+      display: none;
+    }
+    .sticky-cart-wr.disable{
+      -webkit-transform: translateY(100%) !important;
+      -ms-transform: translateY(100%) !important;
+      transform: translateY(100%) !important;
+    }
+    .sticky-cart-wr.disable .svg-cart{
+      opacity: 1;
+      display: block;
+      margin:0 auto;
+    }
+    #js-sticky-btn{
+      border-color:var(--sticky-cart-bg) ;
+      color:var(--sticky-cart-cl);
+    }
+    #js-sticky-btn:before{
+      background:var(--sticky-cart-bg);
+    }
+    #js-sticky-btn:hover{
+      border-color:var(--sticky-cart-bg-hover);
+      color:var(--sticky-cart-cl-hover);
+    }
+    #js-sticky-btn:hover:before{
+      border-color:var(--sticky-cart-bg-hover);
+    }
+    #js-sticky-prd{
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      position:relative;
+    }
+    #js-sticky-prd h3{
+      font-size: 20px;
+      max-width: 500px;
+      overflow: hidden;
+      -o-text-overflow: ellipsis;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color:var(--sticky-cart-text);
+    }
+    #js-sticky-price {
+        color:var(--sticky-cart-text);
+    }
+    #js-sticky-price .money{
+      color:var(--sticky-cart-text);
+    }
+    #js-sticky-img{
+      height:65px;
+    }
+    .sticky-cart-select{
+      background:var(--sticky-cart-mix2);
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+    .sticky-cart-select select{
+      background: transparent;
+      font-weight:bold;
+      padding: 10px;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+    
+    #js-sticky-quantity{
+      max-width: 70px;
+      font-weight: bold;
+      text-align: center;
+      padding: 10px;
+    }
+
+    #js-sticky-close{
+      display: block;
+      width: 40px;
+      height: 40px;
+      border: none;
+      top: 0;
+      left: -50px;
+      line-height: 38px;
+      text-align: center;
+      position: absolute;
+      color:var(--sticky-cart-mix);;
+      border-radius: 5px;
+      filter: brightness(0.8);
+      opacity:0;
+      border-radius: 50%;
+      top: 50%;
+      margin-top: -20px;
+    }
+    #js-sticky-close .icon{margin:0 auto;}
+    .active #js-sticky-close{opacity:1}
+    .active.disable #js-sticky-close{opacity:.6;top:-70px;margin-top: 0;}
+    #js-sticky-close .icon-close+.icon{display:none}
+    .disable #js-sticky-close .icon-close{display:none}
+    .disable #js-sticky-close .icon-close+.icon{display:block}
+    @media (max-width:540px) {
+      .sticky-cart-select label{
+        display: none;
+      }
+      #js-sticky-btn{
+        padding: 4px;
+        font-size: 12px;
+        letter-spacing: 0;
+      }
+      .sticky-cart-select select{
+        padding:2px;
+      }
+    }
+  </style>
+<div id="js-anchor-sticky-cart"></div>
+  <div class="sticky-cart-wr shadow d-flex" >
+    <div id="js-sticky-prd" class="container align-self-center">
+      <img id="js-sticky-img" src="{{product.featured_image | img_url: '200x'}}" />
+      <h3 class="px-4 m-0 d-none d-lg-block">{{product.title}} <span id="js-sticky-title">{%- unless product.has_only_default_variant -%}- {{current_variant.title}}{%- endunless -%}</span></h3>
+      <div class="sticky-cart-selectors d-flex py-2  pr-2 pl-2 pr-lg-4 text-center">
+        {%- unless product.has_only_default_variant -%}
+        {%- for option in product.options_with_values -%}
+        {% unless option.name == 'default' %}
+        <div class="sticky-cart-select px-lg-3 px-1 mx-1">
+          <label>{{ option.name }}</label>
+          <select data-name="{{ option.name }}"
+                  onchange="triggerOption(this)"
+                  id="js-sticky-option-{{ forloop.index }}"
+                  data-radio="ProductSelect-option-{{ forloop.index0 }}"
+                  data-selectbox="SingleOptionSelector-{{ forloop.index0 }}">
+            {% for value in option.values %}
+            <option value="{{ value | escape }}" {% if option.selected_value == value %} selected="selected"{% endif %}>{{ value }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        {%- endunless -%}
+        {%- endfor -%}
+        {%- endunless -%}
+      </div>
+      <div id="js-sticky-price" class="product-card__price">
+        {{ current_variant.price | money }}
+      </div>
+      <button id="js-sticky-btn" {% unless current_variant.available %}disabled="disabled"{% endunless %}
+              class="btn btn-theme my-2 ml-auto" 
+              onclick="triggerCart(this)" 
+              data-buttonid="AddToCart-{{ section.id }}">
+        {%- unless current_variant.available -%}
+        {{ 'products.product.sold_out' | t }}
+        {%- else -%}
+        {{ 'products.product.add_to_cart' | t }}
+        {%- endunless -%}
+      </button>
+      <button id="js-sticky-close">
+        {%- include 'icon-close' -%}
+        {%- include 'icon-cart' -%}
+      </button>
+    </div>
+  </div>
+  <script>
+    triggerCart = function (e){
+      var elementButton = e.getAttribute('data-buttonid');
+      document.getElementById(elementButton).click();
+    }
+
+    triggerOption = function (e){
+      var index = e.selectedIndex;
+      var value = e.value;
+      var elementRadio = document.getElementById(e.getAttribute('data-radio'));
+      var elementSelect = document.getElementById(e.getAttribute('data-selectbox'));
+
+      //     Swatch variant
+      if (elementRadio !== null){
+        elementRadio.getElementsByTagName('input')[index].click();
+      }
+
+      //     dropdown variant
+      if (elementSelect !== null){
+        elementSelect.value  = value;
+        elementSelect.dispatchEvent(new Event('change'));
+      }
+    }
+  </script>
+{%- endif -%}

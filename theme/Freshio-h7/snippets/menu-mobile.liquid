@@ -1,0 +1,87 @@
+<div id="NavDrawer" class="drawer drawer--left">
+  <div class="drawer__inner">
+    <form action="/search" method="get" class="drawer__search mt-3 form-group" role="search">
+      <input type="search" name="q" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}" autocomplete="off" class="drawer__search-input form-control">
+      <button type="submit" class="text-link drawer__search-submit">
+        {%- include 'icon-search' -%}
+        <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
+      </button>
+    </form>
+    <ul class="drawer__nav">
+      {%- for link in linklists[settings.main_linklist].links -%}
+      {%- assign child_list_handle = link.title | handleize -%}
+      {%- if link.links != blank -%}
+      <li class="drawer__nav-item">
+        <div class="drawer__nav-has-sublist">
+          <a href="{{ link.url }}"
+             class="drawer__nav-link drawer__nav-link--top-level drawer__nav-link--split"
+             id="DrawerLabel-{{ child_list_handle }}"
+             {% if link.active %} aria-current="page"{% endif %}
+             >
+            {%- include 'processMenuTitle' with itemName:link.title -%}
+            {%- include 'processMenuLabel' with itemName:link.title -%}
+          </a>
+          <button data-toggle="collapse" data-target="#DrawerLinklist-{{ child_list_handle }}" for="DrawerLinklist-{{ child_list_handle }}"  type="button" aria-controls="DrawerLinklist-{{ child_list_handle }}" class="text-link drawer__nav-toggle-btn collapsed" aria-label="{%- include 'processMenuTitle' with itemName:link.title -%}" aria-expanded="true">
+            <span class="drawer__nav-toggle--open">
+              {%- include 'icon-plus' -%}
+            </span>
+            <span class="drawer__nav-toggle--close">
+              {%- include 'icon-minus' -%}
+            </span>
+          </button>
+        </div>
+        <div class="collapse meganav meganav--drawer" id="DrawerLinklist-{{ child_list_handle }}" aria-labelledby="DrawerLabel-{{ child_list_handle }}" role="navigation">
+          <ul class="meganav__nav">
+            {%- include 'drawer-nav' -%}
+          </ul>
+        </div>
+      </li>
+      {%- else -%}
+      <li class="drawer__nav-item">
+        <a href="{{ link.url }}"
+           class="drawer__nav-link drawer__nav-link--top-level"
+           {% if link.active %} aria-current="page"{% endif %}
+           >
+          {%- include 'processMenuTitle' with itemName:link.title -%}
+          {%- include 'processMenuLabel' with itemName:link.title -%}
+        </a>
+      </li>
+      {%- endif -%}
+      {%- endfor -%}
+
+      <li class="drawer-nav__spacer mt-2"></li>
+      {%- if shop.customer_accounts_optional or shop.customer_accounts_enabled -%}
+      {%- if customer -%}
+      <li class="drawer__nav-item drawer-nav__item--secondary border-top pt-2">
+        <a href="/account" class="drawer__nav-link drawer__nav-link--top-level font-weight-normal">
+          {{ 'layout.customer.account' | t }}
+        </a>
+      </li>
+      <li class="drawer__nav-item drawer-nav__item--secondary">
+        <a href="/account/logout" class="drawer__nav-link drawer__nav-link--top-level font-weight-normal">
+          {{ 'layout.customer.log_out' | t }}
+        </a>
+      </li>
+      {%- else -%}
+      <li class="drawer__nav-item drawer-nav__item--secondary border-top pt-2">
+      <a href="/account" class="drawer__nav-link drawer__nav-link--top-level font-weight-normal">
+        <span class="account-text">{{'customer.login.sign_in' | t}}</span>
+      </a>
+    </li>
+      <li class="drawer__nav-item drawer-nav__item--secondary">
+        <a href="/account/register" class="drawer__nav-link drawer__nav-link--top-level font-weight-normal">
+          {{'customer.register.title' | t}}
+        </a>
+      </li>
+       {%- endif -%}
+      {%- endif -%}
+      {%- if settings.show_multiple_currencies -%}
+      <li class="drawer__nav-item pl-3 drawer-nav__item--secondary">
+        <div class="px-2 border d-inline-block mt-3">
+          {%- include 'block-currencies' -%}
+        </div>
+      </li>
+      {%- endif -%}
+    </ul>
+  </div>
+</div>

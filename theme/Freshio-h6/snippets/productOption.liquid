@@ -1,0 +1,59 @@
+<!-- productOption.liquid -->
+{%- if section.settings.product_selector == 'radio' -%}
+{%- assign isColor = false -%}
+{%- assign optionName = option.name | handleize -%}
+{%- if optionName contains 'colo' -%}
+{%- assign isColor = true -%}
+{%- endif -%}
+<fieldset class="single-option-radio"
+          name="{{ option.name | handleize }}"
+          id="ProductSelect-option-{{ forloop.index0 }}">
+  {%- assign option_index = forloop.index -%}
+  {%- for value in option.values -%}
+    {%- assign variant_label_state = true -%}
+    {%- if product.options.size == 1 -%}
+      {%- unless product.variants[forloop.index0].available -%}
+      {%- assign variant_label_state = false -%}
+      {%- endunless -%}
+    {%- endif -%}
+  {%- for variant in product.variants  %}
+  {%- assign vOption = 'option' | append: option_index -%}
+  {%- if value ==  variant[vOption] -%}
+  {%- assign currenVariant = variant -%}
+  {%- break -%}
+  {%- endif -%}
+  {%- endfor -%}
+  {%- assign hasImage = false -%}
+  {%- if isColor and currenVariant.image -%}
+  {%- assign hasImage = true -%}
+  {%- endif -%}
+  {%- assign swatch_file_extension = 'png' -%}
+  <input type="radio"
+        {% if option.selected_value == value -%} checked="checked"{%- endif %}
+        {% unless variant_label_state -%} disabled="disabled"{%- endunless %}
+         value="{{ value | escape }}"
+         data-index="option{{ option_index }}"
+         name="{{ option.name | handleize }}"
+         class="single-option-selector-{{ section.id }} single-option-selector__radio{% unless variant_label_state %} disabled{% endunless %}"
+         id="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}">
+    <label {% if hasImage %}data-tooltip="true" title="{{ value | escape }}" 
+    {%- if settings.sw_color_product -%} 
+    style="background-color:{{ value | escape }};background-image: url({{ value | handle | append: '.' | append: swatch_file_extension | file_img_url: '50x' | prepend: 'https:' | split: '?' | first }})" 
+    {% else %} 
+    style="background-image:url({{currenVariant.image.src | img_url:'100x'}})" 
+    {% endif %}{% endif %}
+          for="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}"{% unless variant_label_state %} class="disabled"{% endunless %}>
+      {%- unless hasImage -%}{{ value | escape }}{%- endunless -%}
+    </label>
+  {%- endfor -%}
+</fieldset>
+{%- else -%}
+<select class="single-option-selector single-option-selector-{{ section.id }} product-form__input"
+        id="SingleOptionSelector-{{ forloop.index0 }}"
+        data-name="{{ option.name }}"
+        data-index="option{{ forloop.index }}">
+  {%- for value in option.values -%}
+  <option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value }}</option>
+  {%- endfor -%}
+</select>
+{%- endif -%}
