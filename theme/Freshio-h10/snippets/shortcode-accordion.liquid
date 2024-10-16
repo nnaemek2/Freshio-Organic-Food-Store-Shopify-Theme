@@ -1,0 +1,30 @@
+{% capture accordion %}{% include 'shortcode-render' render:'action' %}{% endcapture %}
+{% capture accordionTitle %}{% include 'shortcode-render' render:'title' default:'Accordion Title'%}{% endcapture %}
+{% capture accordionActive %}{% include 'shortcode-render' render:'active' default:'0'%}{% endcapture %}
+{% capture accordionClass %}{% include 'shortcode-render' render:'class' default:'' %}{% endcapture %}
+{% case accordion %}
+{% when 'new accordions' %}
+{% capture shortCodeId %}{{shortCodeId}}-{{ 'now' | date: "%N" }}{% endcapture %}
+<div class="accordion {% if accordionClass != '' %} {{accordionClass}}{% endif %}" id="accordion-{{shortCodeId | split : '-' | last}}" role="tablist" aria-multiselectable="true">
+  {% when 'end accordions' %}
+  {% capture lastTime %}-{{shortCodeId | split : '-' | last}}{% endcapture %}
+  {% capture shortCodeId %}{{shortCodeId | remove: lastTime}}{% endcapture %}
+</div>
+{% when 'new accordion' %}
+<div class="card">
+  {% capture headingId %}{{ 'now' | date: "%N" }}{% endcapture %}
+  <div class="card-header" role="tab" id="heading-{{headingId}}">
+    <h5>
+      <a data-toggle="collapse" data-parent="#accordion-{{shortCodeId | split : '-' | last}}" href="#collapse{{headingId}}">
+        {% if accordionTitle != '' %}{{accordionTitle}}{% endif %}
+      </a>
+      {% include 'icon-arrow-down' %}
+    </h5>
+  </div>
+  <div id="collapse{{headingId}}" class="collapse{% if accordionActive == '1' %} show {% endif %}" role="tabpanel" aria-labelledby="heading-{{headingId}}">
+    <div class="">
+      {% when 'end accordion' %}
+    </div>
+  </div>
+</div>
+{% endcase %}

@@ -1,0 +1,66 @@
+{% capture lookbook %}{% include 'shortcode-render' render:'action' %}{% endcapture %}
+{% capture serviceTitle %}{% include 'shortcode-render' render:'title' %}{% endcapture %}
+{% capture id %}{% include 'shortcode-render' render:'id' default:'' %}{% endcapture %}
+{% capture urlImage %}{% include 'shortcode-render' render:'urlimage' %}{% endcapture %}
+{% capture total %}{% include 'shortcode-render' render:'total-dot' %}{% endcapture %}
+{% capture producthandle %}{% include 'shortcode-render' render:'producthandle' %}{% endcapture %}
+{% capture top %}{% include 'shortcode-render' render:'top' %}{% endcapture %}
+{% capture left %}{% include 'shortcode-render' render:'left' %}{% endcapture %}
+{% capture position %}{% include 'shortcode-render' render:'position' %}{% endcapture %}
+{% capture number %}{% include 'shortcode-render' render:'number' %}{% endcapture %}
+
+{% if id == '' %}
+{% capture id %}modal-{{ 'now' | date: "%N" }}{% endcapture %}
+{% endif %}
+{% case lookbook %}
+{% when 'new lookbook' %}
+<div class="look__book-box">
+  <div class="look__book--item" style="position: relative">
+    <div class="look__book--link">
+      <img src="{{ urlImage }}" alt="image lookbook" class="img-responsive lazyautosizes lazyloaded" sizes="auto" style="width: 100%;">
+    </div>
+    {% when 'new dot' %}
+    <div class="dot__show dot_count1" style="position: absolute;top:{{ top }}%; left:{{ left }}%;" data-show="1"><a class="look__book--link" href="#look1">
+      <span class="dot__show_num">{{ number }}</span>
+      </a>
+      <div class="dot__show-ele pos--{{position}}"><a class="look__book--link" href="#look{{id}}">
+        </a>
+        <div class="dot__show_product text-center"><a class="look__book--link" href="#look{{id}}">
+          </a>
+          {%- assign product = all_products[producthandle] -%}
+          {% capture img_id %}ProductCardImage-{{ product.id }}{% endcapture %}
+          {% capture wrapper_id %}ProductCardImageWrapper-{{ product.id }}{% endcapture %}
+          {%- assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
+          {% unless product.featured_image == blank %}
+          {% include 'image-style' with image: product.featured_image, width: max_height, height: max_height, small_style: true, wrapper_id: wrapper_id, img_id: img_id %}
+          {% endunless %}
+          <a class="img-product" href="{{ product.url }}">
+            <div id="{{ wrapper_id }}" class="grid-view-item__image-wrapper js">
+              <div>
+                <img id="{{ img_id }}"
+                     class="lazyload"
+                     src="{{ img_url | img_url: '1x1' }}"
+                     data-src="{{ img_url }}"
+                     data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                     data-aspectratio="{{ product.featured_image.aspect_ratio }}"
+                     data-sizes="auto"
+                     alt="{{ product.featured_image.alt | escape }}">
+              </div>
+            </div>
+          </a>
+          <div class="pop-ifo">
+            <h4 class="pop-ifo--title"><a href="{{ product.url }}">{{ product.title }}</a></h4><p><span class="price product-price ">
+            <span class="money">{% include 'product-price' %}</span>
+            </span>
+            </p>
+          </div>
+        </div>
+      </div>
+      {% when 'end dot' %}
+    </div>
+    {% when 'end lookbook' %}
+  </div>
+</div>
+{% else %}
+{% endcase %}

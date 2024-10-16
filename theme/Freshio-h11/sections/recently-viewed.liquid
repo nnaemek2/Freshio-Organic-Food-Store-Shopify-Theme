@@ -1,0 +1,53 @@
+{%- if section.settings.enable -%}
+<style>
+  .js-recently-view-button{position:fixed;z-index:1;background-size:contain;background-position:center;bottom:calc(3vh + 60px);right:4vh;width:50px;height:50px;line-height:50px;text-align:center;cursor:pointer;display:block;border:1px solid;border-radius:50%;overflow:hidden;opacity:0;visibility:hidden;transition:all ease .3s}.js-recently-view-button.active{opacity:1;visibility:visible}@media (max-width:767px){.js-recently-view-button{bottom:3vh;right:3vh}}
+</style>
+<a data-tooltip="true" title="{{section.settings.title}}" href="javascript:void(0)" class="js-recently-view-button" data-toggle="modal" data-target="#jsRecentlyViewed" data-limit="{{section.settings.limit}}">
+</a>
+<div class="modal fade" id="jsRecentlyViewed" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog--viewed modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header p-0">
+        
+        <button type="button" class="close" data-dismiss="modal">{%- include 'icon-close' -%}</button>
+      </div>
+      <div class="modal-body p-3 p-md-5">
+        {%- if section.settings.title != blank -%}
+        <h4 class="mb-4 text-uppercase">{{section.settings.title}}</h4>
+        {%- endif -%}
+        <div class="row js-recently-view-content ml-n1 mr-n1 text-center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "Recently Viewed",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable",
+        "label": "Enable",
+		"default":true
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+		"default":"Recently viewed"
+      },
+      {
+        "type": "range",
+        "id": "limit",
+        "label": "Limit",
+        "min": 2,
+        "max": 6,
+        "step": 1,
+        "default": 4
+      }
+    ]
+  }
+{% endschema %}

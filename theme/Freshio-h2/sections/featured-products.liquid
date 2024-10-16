@@ -1,0 +1,684 @@
+<!-- feautured-products.liquid -->
+{%- style -%}
+  .customstyle{{ section.id }}{
+    position: relative;
+    background-position:{{section.settings.e_pos}} !important;
+    background-repeat:{{ section.settings.e_repeat }} !important;
+    background-size:{{ section.settings.e_size }} !important;
+  }
+{%- endstyle -%}
+
+<div class="customstyle{{ section.id }} {% if section.settings.image_bg != blank %} lazyload {% endif %}" data-aos="{{section.settings.animation}}"
+style="{% if section.settings.image_bg != blank %}background-image:url({%- include 'srcBlank' -%}){% endif %}"
+data-bg="{{ section.settings.image_bg | img_url:"1920x" }}"
+>
+    {%- include 'style-section' -%}
+  <div class="{{ section.settings.setwidth }}">
+    <div class="section-block">
+      {%- include 'section-heading' -%}
+      <div class="row">
+        {%- for block in section.blocks -%}
+        {%- case block.settings.width -%}
+        {%- when 'auto' -%}
+        {%- assign block_width = 'col-lg col-12' -%}
+        {%- when '20%' -%}
+        {%- assign block_width = 'col-1-5 col-md-6 col-12' -%}
+        {%- when '25%' -%}
+        {%- assign block_width = 'col-lg-3 col-md-6 ' -%}
+        {%- when '33%' -%}
+        {%- assign block_width = 'col-lg-4 col-md-6 ' -%}
+        {%- when '41%' -%}
+        {%- assign block_width = 'col-lg-5 col-md-12 ' -%}
+        {%- when '50%' -%}
+        {%- assign block_width = 'col-lg-6 ' -%}
+        {%- when '58%' -%}
+        {%- assign block_width = 'col-lg-7 col-md-12 ' -%}
+        {%- when '66%' -%}
+        {%- assign block_width = 'col-lg-8 col-md-12 ' -%}
+        {%- when '75%' -%}
+        {%- assign block_width = 'col-lg-9 col-md-12 ' -%}
+        {%- when '100%' -%}
+        {%- assign block_width = 'col-12 ' -%}
+        {%- endcase -%}
+        <div class="{{block_width}}">
+          {%- case block.type -%} 
+          {%- when 'productlistdeal' -%}
+          {%- style -%}
+          .product-grid-deal-right .js-countdown{
+            padding-top:8px;
+            min-height: 84px;
+          }
+          .product-grid-deal-right .shopify-product-reviews{
+            min-height: 25px;
+          }
+          .product-grid-deal-right .js-countdown li{
+            margin: 0;
+            background-color: transparent;
+            min-width:60px;
+            width: auto;
+            line-height: 1.3;
+            position: relative;
+            padding: 10px 16px;
+          }
+          .product-grid-deal-right .js-countdown li:not(:last-child)::before{
+            position: absolute;
+            top:35px;
+            right:0;
+            width: 5px;
+            height: 5px;
+            border-radius: 100%;
+            content: "";
+            background-color: var(--g-color-heading);
+            opacity: 0.2;
+          }
+          
+          .product-grid-deal-right .js-countdown li:first-child{
+            padding-left: 0;
+          }
+          .product-grid-deal-right .js-countdown li .countdown-time{
+            color: var(--g-main);
+            font-size:30px;
+            font-weight: 600;
+          }
+          .product-grid-deal-right .js-countdown li .countdown-time b{
+            font-weight: 600;
+          }
+          .product-grid-deal-right .js-grid-cart{
+            font-weight: 600;
+            line-height: 1;
+            position: relative;
+            color: var(--g-black);
+            font-size:12px;
+          }
+          .product-grid-deal-right .js-grid-cart svg{
+            margin-top: -2px;
+          }
+          .product-grid-deal-right .js-grid-cart:hover{
+            color: var(--g-main);
+          }
+          @media (min-width:992px) {
+            .pdeal-slider .slick-prev{
+              left: -20%;
+            }
+            .pdeal-slider .slick-next{
+              right: -20%;
+            }
+          }
+          
+          .product-grid-deal-right .js-grid-cart .product-card__loading{
+            left:calc(100% + 10px);
+          }
+          .product-{{block.id}}{
+            border:3px solid {{block.settings.d_border}};
+            border-radius:6px;
+            background:{{section.settings.bgsection}};
+          }
+          {%- endstyle -%}
+            <div>
+              {%- if block.settings.deal_title != blank -%}
+                  <h3 class="mb-4 pb-2">{{block.settings.deal_title}}</h3>
+              {%- endif -%}
+              <div class="product-{{block.id}} productlist-wrapper dots-negative py-4" data-aos="{{section.settings.animation}}">
+                  <div class="productlist-slider " id="Productlist-{{ section.id }}"
+                      style="opacity:0"
+                      data-rows="{{block.settings.rows}}"
+                      data-slidesToShow="{{block.settings.show}}"
+                      data-arrows="{{ block.settings.arrows }}"
+                      data-dots="{{ block.settings.dots }}" 
+                      data-draggable="{{ block.settings.draggable }}" 
+                      data-infinite="{{ block.settings.infinite }}" 
+                      data-section-id="{{ block.id }}" 
+                      data-section-type="productlist">
+                    {%- assign collection = collections[block.settings.collection]  -%}
+                    {%- assign limit = block.settings.limit -%}
+                    {%- if collection != blank -%}
+                    {%- for product in collection.products limit: limit -%}
+                    <div class="productlist-item col">
+                      {%- include 'product-grid-right-deal', product: product -%}
+                    </div>
+                    {%- endfor -%}
+                    {%- else -%}
+                    {%- for i in (1..limit) -%}
+                    <div class="productlist-item col">
+                      {%- include 'product-grid-blank' -%}
+                    </div>
+                    {%- endfor -%}
+                    {%- endif -%}
+                  </div>
+                </div>
+            </div>
+            {%- when 'productgrid' -%}
+            {%- assign collection = collections[block.settings.collection] -%}
+              {%- assign rows = block.settings.rows -%}
+              {%- if collection != blank -%}
+              {%- assign product_limit = rows -%}
+              {%- if block.settings.grid_title != blank -%}
+                <h3 class="mb-4 pb-2">{{block.settings.grid_title}}</h3>
+              {%- endif -%}
+              <div class="row {% unless block.settings.padding %} m-0 {% endunless %}" data-aos="{{section.settings.animation}}">
+                {%- for product in collection.products limit: product_limit -%}
+                <div class="{{block.settings.colgrid}} col-md-6 col-sm-6 col-xs-6 col-6 {% unless block.settings.padding %} p-0 {% endunless %}">
+                  {%- include 'product-card', product: product, collection: collection -%}
+                </div>
+                {%- endfor -%}
+                {% if block.settings.txtbutton != blank %}
+                <div class="text-center col-12">
+                  <a class="btn btn-underline" href="{{block.settings.urlbtn}}">{{block.settings.txtbutton}}</a>
+                </div>
+                {% endif %}
+              </div>
+              {%- else -%}
+              <div class="row">
+                {%- assign product_limit = rows -%}
+                {%- for i in (1..product_limit) -%}
+                {%- case i -%}
+                {%- when 7 -%}
+                {%- assign index = 1 -%}
+                {%- when 8 -%}
+                {%- assign index = 2 -%}
+                {%- when 9 -%}
+                {%- assign index = 3 -%}
+                {%- else -%}
+                {%- assign index = i -%}
+                {%- endcase -%}
+                <div class="{{block.settings.colgrid}} col-sm-6 col-xs-6 ">
+                  {%- include 'product-grid-blank' -%}
+                </div>
+                {%- endfor -%}
+              </div>
+              {%- endif -%}
+          {%- endcase -%}
+          </div>
+        {%- endfor -%}
+          
+      </div>
+      
+    </div>
+  </div>
+  </div>
+  
+  {% schema %}
+  {
+    "name": "Product grid",
+    "class": "index-section",
+    "max_blocks": 2,
+    "settings": [
+    {
+      "type": "select",
+      "id": "animation",
+      "options": [
+        { "value": "", "label": "None"},
+        { "value": "fade", "label": "Fade"},
+        { "value": "fade-up", "label": "Fade Up"},
+        { "value": "fade-down", "label": "Fade Down"},
+        { "value": "fade-left", "label": "Fade Left"},
+        { "value": "fade-right", "label": "Fade Right"},
+        { "value": "fade-up-right", "label": "Fade Up Right"},
+        { "value": "fade-up-left", "label": "Fade Up Left"},
+        { "value": "fade-down-right", "label": "Fade Down Right"},
+        { "value": "fade-down-left", "label": "Fade Down Left"},
+        { "value": "flip-up", "label": "Flip Up"},
+        { "value": "flip-down", "label": "Flip Down"},
+        { "value": "flip-left", "label": "Flip Left"},
+        { "value": "flip-right", "label": "Flip Right"},
+        { "value": "slide-up", "label": "Slide Up"},
+        { "value": "slide-down", "label": "Slide Down"},
+        { "value": "slide-left", "label": "Slide Left"},
+        { "value": "slide-right", "label": "Slide Right"},
+        { "value": "zoom-in", "label": "Zoom In"},
+        { "value": "zoom-in-up", "label": "Zoom In Up"},
+        { "value": "zoom-in-down", "label": "Zoom In Down"},
+        { "value": "zoom-in-left", "label": "Zoom In Left"},
+        { "value": "zoom-in-right", "label": "Zoom In Right"},
+        { "value": "zoom-out", "label": "Zoom Out"},
+        { "value": "zoom-out-up", "label": "Zoom Out Up"},
+        { "value": "zoom-out-down", "label": "Zoom Out Down"},
+        { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+        { "value": "zoom-out-right", "label": "Zoom Out Right"}
+      ],
+      "label": "Select Animation"
+  },
+    {
+      "type": "text",
+      "id": "paddingsection",
+      "label": "Padding Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "paddingmobile",
+      "label": "Padding Section Mobile",
+      "default": "60px 0px 60px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginsection",
+      "label": "Margin Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginmobile",
+      "label": "Margin Mobile",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "color",
+      "id": "bgsection",
+        "label": "Background Section",
+        "default": "#fefefe"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_bg",
+      "label": "Background image"
+    },
+    {
+      "type": "select",
+      "id": "e_size",
+      "label": "Background Size",
+      "default": "auto",
+      "options": [
+        {
+          "value": "auto",
+          "label": "Auto"
+        },
+        {
+          "value": "cover",
+          "label": "Cover"
+        },
+        {
+          "value": "contain",
+          "label": "Contain"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "e_repeat",
+      "label": "Background Repeat",
+      "default": "no-repeat",
+      "options": [
+        {
+          "value": "no-repeat",
+          "label": "No-repeat"
+        },
+        {
+          "value": "repeat",
+          "label": "Repeat"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "e_pos",
+      "label": "Background Position",
+      "default": "center center",
+      "options": [
+        {
+          "value": "center center",
+          "label": "Center"
+        },
+        {
+          "value": "top center",
+          "label": "Top Center"
+        },
+        {
+          "value": "bottom center",
+          "label": "Bottom Center"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_inner",
+      "label": "Enable Padding Inner",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "padding_inner",
+      "label": "Padding Inner ",
+      "default": "0px 0px 0px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "padding_inner_mobile",
+      "label": "Padding Inner Mobile",
+      "default": "0px 0px 0px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "color",
+      "id": "bg_inner",
+        "label": "Background Inner",
+        "default": "#ffffff"
+    },
+    {
+      "type": "select",
+      "id": "setwidth",
+      "label": "Full Width",
+      "default": "container",
+      "options": [
+        {
+          "value": "container",
+          "label": "Box"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Container Fluid"
+        },
+        {
+          "value": "full",
+          "label": "Full"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "sectionheading",
+      "label": "Style Heading",
+      "default": "heading-0",
+      "options": [
+        {
+          "value": "heading-0",
+          "label": "Heading 0 Border"
+        },
+        {
+          "value": "heading-1",
+          "label": "Heading 1 Center"
+        },
+        {
+          "value": "heading-2",
+          "label": "Heading 2 No Border"
+        },
+        {
+          "value": "heading-3",
+          "label": "Heading 3 Center Border"
+        },
+        {
+          "value": "heading-4",
+          "label": "Hide Heading"
+        }
+      ]
+    }, 
+    {
+      "type": "color",
+      "id": "dot_heading0",
+      "label": "Color Dot Heading 0, Heading 2",
+      "default": "#bac34e"
+    },
+    {
+        "type": "text",
+        "id": "title_top",
+        "label": "Sub Title Top",
+        "default": "Sub Title Top"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Product list"
+      },
+      {
+        "type": "textarea",
+        "id": "des",
+        "label": "HTML / Description"
+      }
+    ],
+    "blocks": [
+    {
+      "type": "productlistdeal",
+      "name": "Product List Deal",
+      "limit":1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Container width",
+          "default": "33%",
+          "options": [
+            {
+              "value": "auto",
+              "label": "Auto"
+            },
+            {
+              "value": "20%",
+              "label": "20%"
+            },
+            {
+              "value": "25%",
+              "label": "25%"
+            },
+            {
+              "value": "33%",
+              "label": "33%"
+            },
+            {
+              "value": "41%",
+              "label": "41%"
+            },
+            {
+              "value": "50%",
+              "label": "50%"
+            },
+            {
+              "value": "58%",
+              "label": "58%"
+            },
+            {
+              "value": "66%",
+              "label": "66%"
+            },
+            {
+              "value": "75%",
+              "label": "75%"
+            },
+            {
+              "value": "100%",
+              "label": "100%"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "deal_title",
+          "label": "Title Block ",
+          "default": "Title Block Deal"
+        },
+        {
+          "type": "color",
+          "id": "d_border",
+            "label": "Border Color",
+            "default": "#dfb178"
+        },
+        {
+          "label": "Collection",
+          "id": "collection",
+          "type": "collection"
+        },
+        
+        {
+          "type": "checkbox",
+          "id": "arrows",
+          "label": "Arrows",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "draggable",
+          "label": "Draggable",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "dots",
+          "label": "Dots",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "infinite",
+          "label": "Infinite",
+          "default": true
+        },
+        {
+          "type": "range",
+          "id": "limit",
+          "min": 1,
+          "max": 30,
+          "step": 1,
+          "label": "Limit items",
+          "default": 3
+        },
+        {
+          "type": "range",
+          "id": "show",
+          "min": 1,
+          "max": 6,
+          "step": 1,
+          "label": "Display items",
+          "default": 1
+        }
+      ]
+    },
+    {
+        "type": "productgrid",
+        "name": "Product Grid",
+        "limit":1,
+        "settings": [
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "66%",
+            "options": [
+              {
+                "value": "auto",
+                "label": "Auto"
+              },
+              {
+                "value": "20%",
+                "label": "20%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "41%",
+                "label": "41%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "58%",
+                "label": "58%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "grid_title",
+            "label": "Title Product ",
+            "default": "Product List"
+          },
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          },
+          {
+            "type": "checkbox",
+            "id": "padding",
+            "label": "Padding",
+            "default": true
+          },
+          {
+            "type": "select",
+            "id": "colgrid",
+            "label": "Columns",
+            "default": "col-lg-3",
+            "options": [
+              {
+                "value": "col-1-5",
+                "label": "5"
+              },
+              {
+                "value": "col-lg-3",
+                "label": "4"
+              },
+              {
+                "value": "col-lg-4",
+                "label": "3"
+              },
+              {
+                "value": "col-lg-6",
+                "label": "2"
+              }
+            ]
+          },
+          {
+            "type": "range",
+            "id": "rows",
+            "label": "Limit",
+            "min": 1,
+            "max": 16,
+            "step": 1,
+            "default": 4
+          },
+          {
+            "type": "text",
+            "id": "txtbutton",
+            "label": "Text Button",
+            "default": "show all",
+            "info": "Input is blank it disable"
+          },
+          {
+            "type": "url",
+            "id": "urlbtn",
+            "label": "Link Button"
+          }
+          
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product grid",
+        "category": "Collection",
+        "blocks": [
+            {
+              "type": "productgrid"
+            },
+            {
+              "type": "productlistdeal"
+            }
+          ]
+      }
+    ]
+  }
+  {% endschema %}

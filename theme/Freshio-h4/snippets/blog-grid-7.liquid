@@ -1,0 +1,36 @@
+<!-- blog-grid-6.liquid -->
+<div class="blog__item blog__item--7 {% if template != 'index' %}  blog__item--7-in mb-5{% endif %}">
+  {%- if article.image -%}
+  <div class="content-block__image">
+    <a href="{{ article.url }}">
+      <noscript>
+        {{ article | img_url: '1024x1024' | img_tag: article.title | escape }}
+      </noscript>
+      <div class="article__photo-container mb-0">
+        <div class="article__photo-wrapper" style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;">
+          {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+          <img class="lazyload"
+               src="{%- include 'srcBlank' -%}"
+               data-src="{{ img_url }}"
+               data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+               data-aspectratio="{{ article.image.aspect_ratio }}"
+               data-sizes="auto"
+               alt="{{ article.title | escape }}">
+        </div>
+      </div>
+    </a>
+    <div class=" article__photo-content d-flex flex-column align-items-start {% if template != 'index' %} py-4 px-4 {% else %} position-absolute py-5 px-4{% endif %}">
+      <div class="{% if template != 'index' %} mb-4 {% else %} mt-2{% endif %}">
+        <p class="fz-n2 text-uppercase small text-primary2 mb-1">
+          
+          <span class=" pr-2 mr-2 border-right">{{ article.published_at | time_tag: '%m-%d-%Y' }}</span>
+          {{article.comments.size}} {{ article.comments.size | pluralize: 'comment', 'comments' }}
+        </p>
+        <h4 class="blog__title-link mt-0"><a href="{{ article.url }}">{{ article.title }}</a></h4>
+      </div>
+      <a class="btn btn-underline gradient-theme mt-auto mb-2" href="{{ article.url }}">+ &nbsp; {{ 'blogs.article.read_more' | t }}</a>
+    </div>
+  </div>
+  {%- endif -%}
+ 
+</div>

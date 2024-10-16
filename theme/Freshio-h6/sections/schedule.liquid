@@ -1,0 +1,382 @@
+<!-- schedule.liquid -->
+<div class="customstyle{{ section.id }}" data-aos="{{section.settings.animation}}">
+<div class="{{ section.settings.setwidth }}">
+  {%- include 'style-section' -%}
+  <div class="section-block" >
+    {%- include 'section-heading' -%}
+    {%- for block in section.blocks -%}
+    <div class="row mb-4">
+      <div class="col-lg-3">
+        <div class="js-stick-parent">
+          <div class="schedule-day bg-theme gradient-theme p-5 text-right text-white position-relative font-family-2">
+            <h2 class="text-white m-0">{{ block.settings.title }}</h2>
+            <p>{{ block.settings.des }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-9" {{ block.shopify_attributes }}>
+        {%- for i in (1..6) -%}
+        {%- assign sContent = 'content' | append: i -%}
+        {%- assign sInfo = 'info' | append: i -%}
+        {%- assign sTime = 'time' | append: i -%}
+        {%- assign sRoom = 'room' | append: i -%}
+        {%- assign sPeople = 'people' | append: i -%}
+          {%- if block.settings[sContent] != blank -%}
+          <div class="schedule-speaker p-3 p-md-5 bg-theme-50">
+            <div class="media flex-column flex-sm-row">
+              <div class="media-meta fz-n3 order-1 order-sm-0">
+                {%- if block.settings[sTime] != blank -%}
+                <div class="schedule-time">
+                  <svg class="icon pr-1 text-theme" id="Capa_1" enable-background="new 0 0 443.294 443.294" height="512" viewBox="0 0 443.294 443.294" width="512" xmlns="http://www.w3.org/2000/svg"><path d="m221.647 0c-122.214 0-221.647 99.433-221.647 221.647s99.433 221.647 221.647 221.647 221.647-99.433 221.647-221.647-99.433-221.647-221.647-221.647zm0 415.588c-106.941 0-193.941-87-193.941-193.941s87-193.941 193.941-193.941 193.941 87 193.941 193.941-87 193.941-193.941 193.941z"/><path d="m235.5 83.118h-27.706v144.265l87.176 87.176 19.589-19.589-79.059-79.059z"/></svg>
+                  {{block.settings[sTime]}}
+                </div>
+                {%- endif -%}
+                {%- if block.settings[sRoom] != blank -%}
+                <div class="schedule-room">
+                  <svg class="icon pr-1 text-theme" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"><g><g><path d="M256,0C156.748,0,76,80.748,76,180c0,33.534,9.289,66.26,26.869,94.652l142.885,230.257c2.737,4.411,7.559,7.091,12.745,7.091c0.04,0,0.079,0,0.119,0c5.231-0.041,10.063-2.804,12.75-7.292L410.611,272.22C427.221,244.428,436,212.539,436,180C436,80.748,355.252,0,256,0z M384.866,256.818L258.272,468.186l-129.905-209.34C113.734,235.214,105.8,207.95,105.8,180c0-82.71,67.49-150.2,150.2-150.2S406.1,97.29,406.1,180C406.1,207.121,398.689,233.688,384.866,256.818z"/></g></g><g><g><path d="M256,90c-49.626,0-90,40.374-90,90c0,49.309,39.717,90,90,90c50.903,0,90-41.233,90-90C346,130.374,305.626,90,256,90z M256,240.2c-33.257,0-60.2-27.033-60.2-60.2c0-33.084,27.116-60.2,60.2-60.2s60.1,27.116,60.1,60.2C316.1,212.683,289.784,240.2,256,240.2z"/></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+                  {{block.settings[sRoom]}}
+                </div>
+                {%- endif -%}
+                {%- if block.settings[sPeople] != blank -%}
+                <div class="schedule-people">
+                  <svg class="icon pr-1 text-theme" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;" xml:space="preserve"><g><g><path d="M412.113,170.747c-6.637,0-12.02,5.381-12.02,12.02v75.104c0,79.452-64.639,144.09-144.092,144.09S111.91,337.321,111.91,257.87v-75.104c0-6.639-5.383-12.02-12.02-12.02c-6.639,0-12.02,5.381-12.02,12.02v75.104c0,88.666,68.993,161.512,156.111,167.696v62.395h-62.174c-6.637,0-12.02,5.381-12.02,12.02c0,6.639,5.382,12.02,12.02,12.02h148.386c6.637,0,12.02-5.381,12.02-12.02c0-6.639-5.382-12.02-12.02-12.02H268.02v-62.395c87.119-6.184,156.111-79.031,156.111-167.696v-75.104C424.133,176.128,418.75,170.747,412.113,170.747z"/></g></g><g><g><path d="M264.011,0h-16.02c-54.949,0-99.653,44.704-99.653,99.653V265.88c0,54.949,44.704,99.653,99.653,99.653h16.02c54.949,0,99.653-44.704,99.653-99.653V99.653C363.664,44.704,318.96,0,264.011,0z M339.625,130.853h-43.572c-6.639,0-12.02,5.381-12.02,12.02c0,6.639,5.381,12.02,12.02,12.02h43.572v33.458h-43.572c-6.639,0-12.02,5.381-12.02,12.02s5.381,12.02,12.02,12.02h43.572v33.46h-43.572c-6.639,0-12.02,5.381-12.02,12.02s5.381,12.02,12.02,12.02h43.464c-2.091,39.836-35.157,71.603-75.505,71.603h-16.02c-40.348,0-73.414-31.767-75.505-71.603h43.464c6.639,0,12.02-5.381,12.02-12.02s-5.381-12.02-12.02-12.02h-43.572v-33.46h43.572c6.639,0,12.02-5.381,12.02-12.02s-5.381-12.02-12.02-12.02h-43.572v-33.458h43.572c6.639,0,12.02-5.381,12.02-12.02c0-6.639-5.381-12.02-12.02-12.02h-43.572v-31.2c0-29.964,17.52-55.914,42.854-68.143v33.983c0,6.639,5.382,12.02,12.02,12.02s12.02-5.381,12.02-12.02V24.558c2.863-0.331,30.595-0.331,33.458,0v40.935c0,6.639,5.381,12.02,12.02,12.02c6.637,0,12.02-5.381,12.02-12.02V31.51c25.334,12.229,42.854,38.177,42.854,68.142V130.853z"/></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+                  {{block.settings[sPeople]}}
+                </div>
+                {%- endif -%}
+              </div>
+              <div class="media-body order-0 order-sm-1">
+                <h3 class="font-family-2">
+                  {{block.settings[sContent]}}
+                </h3>
+                {%- if block.settings[sInfo] != blank -%}
+                <div class="pb-3">
+                  {{block.settings[sInfo]}}
+                </div>
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+    {%- endfor -%}
+  </div>
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "Schedule",
+  "class": "index-section",
+  "max_blocks": 10,
+  "settings": [
+    {
+      "type": "select",
+      "id": "animation",
+      "options": [
+        { "value": "", "label": "None"},
+        { "value": "fade", "label": "Fade"},
+        { "value": "fade-up", "label": "Fade Up"},
+        { "value": "fade-down", "label": "Fade Down"},
+        { "value": "fade-left", "label": "Fade Left"},
+        { "value": "fade-right", "label": "Fade Right"},
+        { "value": "fade-up-right", "label": "Fade Up Right"},
+        { "value": "fade-up-left", "label": "Fade Up Left"},
+        { "value": "fade-down-right", "label": "Fade Down Right"},
+        { "value": "fade-down-left", "label": "Fade Down Left"},
+        { "value": "flip-up", "label": "Flip Up"},
+        { "value": "flip-down", "label": "Flip Down"},
+        { "value": "flip-left", "label": "Flip Left"},
+        { "value": "flip-right", "label": "Flip Right"},
+        { "value": "slide-up", "label": "Slide Up"},
+        { "value": "slide-down", "label": "Slide Down"},
+        { "value": "slide-left", "label": "Slide Left"},
+        { "value": "slide-right", "label": "Slide Right"},
+        { "value": "zoom-in", "label": "Zoom In"},
+        { "value": "zoom-in-up", "label": "Zoom In Up"},
+        { "value": "zoom-in-down", "label": "Zoom In Down"},
+        { "value": "zoom-in-left", "label": "Zoom In Left"},
+        { "value": "zoom-in-right", "label": "Zoom In Right"},
+        { "value": "zoom-out", "label": "Zoom Out"},
+        { "value": "zoom-out-up", "label": "Zoom Out Up"},
+        { "value": "zoom-out-down", "label": "Zoom Out Down"},
+        { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+        { "value": "zoom-out-right", "label": "Zoom Out Right"}
+      ],
+      "label": "Select Animation"
+  },
+    {
+      "type": "text",
+      "id": "paddingsection",
+      "label": "Padding Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "paddingmobile",
+      "label": "Padding Section Mobile",
+      "default": "60px 0px 60px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginsection",
+      "label": "Margin Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginmobile",
+      "label": "Margin Mobile",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "color",
+      "id": "bgsection",
+        "label": "Background Section",
+        "default": "#fefefe"
+    },
+    {
+      "type": "text",
+      "id": "title_top",
+      "label": "Sub Title Top",
+      "default": "Sub Title Top"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Schedule"
+    },
+    {
+      "type": "textarea",
+      "id": "des",
+      "label": "HTML / Description"
+    },
+    {
+      "type": "select",
+      "id": "setwidth",
+      "label": "Full Width",
+      "default": "container",
+      "options": [
+        {
+          "value": "container",
+          "label": "Box"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Container Fluid"
+        },
+        {
+          "value": "full",
+          "label": "Full"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "day",
+      "name": "Day",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Day",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "des",
+          "default": "31/12/2020",
+          "label": "Description"
+        },
+        {
+          "type": "header",
+          "content": "Content 1"
+        },
+        {
+          "type": "text",
+          "id": "content1",
+          "label": "Content"
+        },
+        {
+          "type": "textarea",
+          "id": "info1",
+          "label": "Information"
+        },
+        {
+          "type": "text",
+          "id": "time1",
+          "label": "Time"
+        },
+        {
+          "type": "text",
+          "id": "room1",
+          "label": "Room"
+        },
+        {
+          "type": "text",
+          "id": "people1",
+          "label": "Speakers"
+        },
+        {
+          "type": "header",
+          "content": "Content 2"
+        },
+        {
+          "type": "text",
+          "id": "content2",
+          "label": "Content"
+        },
+        {
+          "type": "textarea",
+          "id": "info2",
+          "label": "Information"
+        },
+        {
+          "type": "text",
+          "id": "time2",
+          "label": "Time"
+        },
+        {
+          "type": "text",
+          "id": "room2",
+          "label": "Room"
+        },
+        {
+          "type": "text",
+          "id": "people2",
+          "label": "Speakers"
+        },
+        {
+          "type": "header",
+          "content": "Content 3"
+        },
+        {
+          "type": "text",
+          "id": "content3",
+          "label": "Content"
+        },
+        {
+          "type": "textarea",
+          "id": "info3",
+          "label": "Information"
+        },
+        {
+          "type": "text",
+          "id": "time3",
+          "label": "Time"
+        },
+        {
+          "type": "text",
+          "id": "room3",
+          "label": "Room"
+        },
+        {
+          "type": "text",
+          "id": "people3",
+          "label": "Speakers"
+        },
+        {
+          "type": "header",
+          "content": "Content 4"
+        },
+        {
+          "type": "text",
+          "id": "content4",
+          "label": "Content"
+        },
+        {
+          "type": "textarea",
+          "id": "info4",
+          "label": "Information"
+        },
+        {
+          "type": "text",
+          "id": "time4",
+          "label": "Time"
+        },
+        {
+          "type": "text",
+          "id": "room4",
+          "label": "Room"
+        },
+        {
+          "type": "text",
+          "id": "people4",
+          "label": "Speakers"
+        },
+        {
+          "type": "header",
+          "content": "Content 5"
+        },
+        {
+          "type": "text",
+          "id": "content5",
+          "label": "Content"
+        },
+        {
+          "type": "textarea",
+          "id": "info5",
+          "label": "Information"
+        },
+        {
+          "type": "text",
+          "id": "time5",
+          "label": "Time"
+        },
+        {
+          "type": "text",
+          "id": "room5",
+          "label": "Room"
+        },
+        {
+          "type": "text",
+          "id": "people5",
+          "label": "Speakers"
+        },
+        {
+          "type": "header",
+          "content": "Content 6"
+        },
+        {
+          "type": "text",
+          "id": "content6",
+          "label": "Content"
+        },
+        {
+          "type": "textarea",
+          "id": "info6",
+          "label": "Information"
+        },
+        {
+          "type": "text",
+          "id": "time6",
+          "label": "Time"
+        },
+        {
+          "type": "text",
+          "id": "room6",
+          "label": "Room"
+        },
+        {
+          "type": "text",
+          "id": "people6",
+          "label": "Speakers"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Schedule",
+      "category": "Text"
+    }
+  ]
+}
+{% endschema %}

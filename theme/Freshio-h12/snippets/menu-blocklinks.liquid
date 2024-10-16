@@ -1,0 +1,30 @@
+<div class="row menu-link">
+  {%- if link.links != blank -%}
+  {%- for childlink in link.links -%}
+  <div class="col-link col-sm-{{ settings[ap_col_links] }}">
+    <div class="mega-col-inner ">
+      <div class="menu-title">
+        <a href="{{ childlink.url }}" >
+          {%- include 'processMenuTitle' with itemName:childlink.title -%}
+          {%- include 'processMenuLabel' with itemName:childlink.title -%}
+        </a>
+      </div>
+      <div class="widget-inner">
+        <ul class="nav-links">
+          {%- if childlink.links != blank -%}
+          {%- for grandchildlink in childlink.links -%}
+          <li>
+            <a href="{{ grandchildlink.url }}" >
+              {%- include 'processMenuTitle' with itemName:grandchildlink.title -%}
+              {%- include 'processMenuLabel' with itemName:grandchildlink.title -%}
+            </a>
+          </li>
+          {%- endfor -%}
+          {%- endif -%}
+        </ul>
+      </div>
+    </div>
+  </div>
+  {%- endfor -%}
+  {%- endif -%}
+</div>

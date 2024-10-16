@@ -1,0 +1,38 @@
+{% capture class %}{% include 'shortcode-render' render:'class' default:'' %}{% endcapture %}
+{% capture block_title %}{% include 'shortcode-render' render:'title' default:'' %}{% endcapture %}
+{% capture instagram_clientId %}{% include 'shortcode-render' render:'clientId' default:'f771ffd9812544e99d187d82867f84a2' %}{% endcapture %}
+{% capture instagram_accessToken %}{% include 'shortcode-render' render:'accessToken' default:'' %}{% endcapture %}
+{% capture instagram_get %}{% include 'shortcode-render' render:'get' default:'popular' %}{% endcapture %}
+{% capture instagram_tag %}{% include 'shortcode-render' render:'tagName' default:'' %}{% endcapture %}
+{% capture instagram_locationId %}{% include 'shortcode-render' render:'locationId' default:'' %}{% endcapture %}
+{% capture instagram_userId %}{% include 'shortcode-render' render:'userId' default:'' %}{% endcapture %}
+{% capture instagram_limit %}{% include 'shortcode-render' render:'limit' default:'8' %}{% endcapture %}
+{% capture instagram_slick %}{% include 'shortcode-render' render:'slick' default:'enable' %}{% endcapture %}
+{% capture instagram_column %}{% include 'shortcode-render' render:'column' default:'4' %}{% endcapture %}
+{% capture instagram_row %}{% include 'shortcode-render' render:'row' default:'1' %}{% endcapture %}
+{% capture instagram_resolution %}{% include 'shortcode-render' render:'resolution' default:'low_resolution' %}{% endcapture %}
+{% capture prolistID %}instagram-{{ 'now' | date: "%N" }}{% endcapture %}
+{% assign id = prolistID %}
+<div class="instagram-block {{ class }}" 
+     data-section-id="{{ id }}" 
+     data-section-type="instagrams" 
+     data-clientID="{{instagram_clientId}}" 
+     data-accessToken="{{instagram_accessToken}}"
+     data-get="{{instagram_get}}" 
+     data-tag="{{instagram_tag}}" 
+     data-loactionId="{{instagram_locationId}}" 
+     data-userId="{{instagram_userId}}" 
+     data-limit="{{instagram_limit}}" 
+     data-resolution="{{instagram_resolution}}"
+     data-slide-slick = "{{ id }}"
+     data-shortcode-column="{{instagram_column}}" 
+     data-shortcode-row="{{ instagram_row }}">
+  {% if block_title != blank %}
+  <div class="block-title">
+    <h3>{{ block_title }}</h3>
+  </div>
+  {% endif %}
+  <div class="block-content">
+    <div id="instafeed-{{id}}" {% if instagram_slick == 'enable' %}class="slick-instagram-list-{{id}} row" {% endif %}></div>
+  </div>
+</div>

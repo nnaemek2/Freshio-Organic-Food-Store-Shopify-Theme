@@ -1,0 +1,230 @@
+<!-- instagram.liquid -->
+<style>
+  {% if section.settings.padding == false %}
+  .customstyle{{ section.id }} .instagram .slick-slide{
+    padding:0;
+  }
+  {% endif %}
+</style>
+<div class="customstyle{{ section.id }}" data-aos="{{section.settings.animation}}">
+  {%- include 'style-section' -%}
+<div class="{{ section.settings.setwidth }}">
+  <div class="section-block">
+    {%- include 'section-heading' -%}
+    <div class="instagram row mx-n2 mb-0 dots-negative" id="Instagram-{{ section.id }}"
+         data-style="{{section.settings.style}}"
+         data-accesstoken="{{section.settings.accesstoken}}"
+         data-limit="{{ section.settings.limit }}" 
+         data-slidesToShow="{{section.settings.show}}"
+         data-arrows="{{ section.settings.arrows }}"
+         data-dots="{{ section.settings.dots }}" 
+         data-draggable="{{ section.settings.draggable }}" 
+         data-infinite="{{ section.settings.infinite }}" 
+         
+         data-section-id="{{ section.id }}" 
+         data-section-type="instagrams"
+         data-aos="{{section.settings.animation}}" data-aos-duration="1200" >
+    </div>
+  </div>
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "Instagram",
+  "class": "index-section",
+  "settings": [
+  {
+    "type": "select",
+    "id": "animation",
+    "options": [
+      { "value": "", "label": "None"},
+      { "value": "fade", "label": "Fade"},
+      { "value": "fade-up", "label": "Fade Up"},
+      { "value": "fade-down", "label": "Fade Down"},
+      { "value": "fade-left", "label": "Fade Left"},
+      { "value": "fade-right", "label": "Fade Right"},
+      { "value": "fade-up-right", "label": "Fade Up Right"},
+      { "value": "fade-up-left", "label": "Fade Up Left"},
+      { "value": "fade-down-right", "label": "Fade Down Right"},
+      { "value": "fade-down-left", "label": "Fade Down Left"},
+      { "value": "flip-up", "label": "Flip Up"},
+      { "value": "flip-down", "label": "Flip Down"},
+      { "value": "flip-left", "label": "Flip Left"},
+      { "value": "flip-right", "label": "Flip Right"},
+      { "value": "slide-up", "label": "Slide Up"},
+      { "value": "slide-down", "label": "Slide Down"},
+      { "value": "slide-left", "label": "Slide Left"},
+      { "value": "slide-right", "label": "Slide Right"},
+      { "value": "zoom-in", "label": "Zoom In"},
+      { "value": "zoom-in-up", "label": "Zoom In Up"},
+      { "value": "zoom-in-down", "label": "Zoom In Down"},
+      { "value": "zoom-in-left", "label": "Zoom In Left"},
+      { "value": "zoom-in-right", "label": "Zoom In Right"},
+      { "value": "zoom-out", "label": "Zoom Out"},
+      { "value": "zoom-out-up", "label": "Zoom Out Up"},
+      { "value": "zoom-out-down", "label": "Zoom Out Down"},
+      { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+      { "value": "zoom-out-right", "label": "Zoom Out Right"}
+    ],
+    "label": "Select Animation"
+  },
+  {
+    "type": "text",
+    "id": "paddingsection",
+    "label": "Padding Section",
+    "default": "0px 0px 0px 0px",
+    "info": "Padding: Top Right Bottom Left"
+  },
+  {
+    "type": "text",
+    "id": "paddingmobile",
+    "label": "Padding Section Mobile",
+    "default": "60px 0px 60px 0px",
+    "info": "Padding: Top Right Bottom Left"
+  },
+  {
+    "type": "text",
+    "id": "marginsection",
+    "label": "Margin Section",
+    "default": "0px 0px 0px 0px",
+    "info": "Margin: Top Right Bottom Left"
+  },
+  {
+    "type": "text",
+    "id": "marginmobile",
+    "label": "Margin Mobile",
+    "default": "0px 0px 0px 0px",
+    "info": "Margin: Top Right Bottom Left"
+  },
+  {
+    "type": "color",
+    "id": "bgsection",
+      "label": "Background Section",
+      "default": "#ffffff"
+  },
+  {
+    "type": "select",
+    "id": "setwidth",
+    "label": "Full Width",
+    "default": "container",
+    "options": [
+      {
+        "value": "container",
+        "label": "Box"
+      },
+      {
+        "value": "container-fluid",
+        "label": "Container Fluid"
+      },
+      {
+        "value": "full",
+        "label": "Full"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "id": "title_top",
+    "label": "Sub Title Top",
+    "default": "Sub Title Top"
+  },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "# Instagram"
+    },
+    {
+      "type": "textarea",
+      "id": "des",
+      "label": "HTML / Description"
+    },
+    {
+      "type": "header",
+      "content": "Instagram"
+    },
+    {
+      "type": "text",
+      "id": "accesstoken",
+      "label": "Access Token",
+      "default": "IGQVJXUnhTRnhZASTlWdTA3ODE4S3dpY2x6ZA2dTUWdkaThhLVk4bFBZAWkVZATGRUTS1rWXFrOTZAWcWlvQ2pkMEo4RWNFTWRsOTNJRzJlRW9rM29WamI4TlloZAm5rZAXVOTTA3bWMxVVo2WDQtbUNpQXR6NgZDZD",
+		  "info": "💡 [Get Access Token?](https:\/\/blog.leotheme.com\/how-to-get-instagram-token.html)"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "min": 1,
+      "max": 50,
+      "step": 1,
+      "label": "Limit",
+      "default": 10
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Layout",
+      "default": "carousel",
+      "options": [
+        {
+          "value": "grid",
+          "label": "Grid"
+        },
+        {
+          "value": "carousel",
+          "label": "Carousel"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Carousel"
+    },
+    {
+      "type": "range",
+      "id": "show",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "label": "Show",
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "arrows",
+      "label": "Arrows",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "draggable",
+      "label": "Draggable",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "dots",
+      "label": "Dots",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "infinite",
+      "label": "Infinite",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "padding",
+      "label": "Enable Padding",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Instagram",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

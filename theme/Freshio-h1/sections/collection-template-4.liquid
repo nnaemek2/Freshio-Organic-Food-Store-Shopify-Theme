@@ -1,0 +1,167 @@
+<!-- collection-template-4.liquid -->
+<style>
+  .grid-item-3 {
+	width: 33.33333333333%
+}
+
+.grid-item-4 {
+	width: 25%
+}
+
+.grid-item-5 {
+	width: 20%
+}
+
+@media (max-width:1199px) {
+	.grid-item {
+		width: 33.33333333333%
+	}
+}
+
+@media (max-width:991px) {
+	.grid-item {
+		width: 50%
+	}
+}
+
+@media (max-width:767px) {
+	.grid-item {
+		width: 50%
+	}
+}
+
+
+
+.js-filter-isotope {
+	display: block;
+	padding: 8px 10px;
+	margin: 5px;
+  background-color: #fff;
+  border:1px solid #e8e8e8;
+	border-radius: 2px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.js-filter-isotope.active {
+	background-color: var(--g-main);
+	color: #fff;
+  font-weight: 700;
+  border-color:var(--g-main) ;
+}
+
+.section-header__title--image {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	min-height: 200px;
+	color: #fff;
+	margin-bottom: 20px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center
+}
+
+#js-loading {
+	display: block
+}
+
+.grid-item {
+	padding: 0 10px
+}</style>
+{%- assign hasImage = false -%}
+{%- if section.settings.enable_image and collection.image -%}
+{%- assign hasImage = true -%}
+{%- endif -%}
+
+{%- paginate collection.products by 1000 -%}
+<div class="container enable-isotope">
+  <header class="section-header text-center">
+          {%- if section.settings.enable_title -%}
+          <h1 class="section-header__title js-collection-title h3 mt-3">
+            {{ collection.title }}
+          </h1>
+          {%- endif -%}
+    {%- if section.settings.enable_description and collection.description != blank -%}
+          <div class="section-header__subtext mt-4">
+      {{ collection.description }}
+    </div>
+    {%- endif -%}
+  </header>
+
+  <div class="collections-tags pt-4 pb-5">
+    <ul class="list-unstyled d-flex flex-wrap justify-content-center">
+      <li class="js-filter-isotope" data-filter="*">{{ 'collections.general.view_all' | t }}</li>
+      {%- for tag in collection.all_tags -%}
+      <li class="js-filter-isotope" data-filter="{{tag | camelcase }}">{{ tag | capitalize }}</li>
+      {%- endfor -%}
+    </ul>
+  </div>
+
+  <div class="js-grid">
+    {%- for product in collection.products -%}
+    <div class="pb-4 {{section.settings.item_width}} grid-item {% for tag in product.tags %}{{ tag | camelcase }} {% endfor %}">
+      {%- include 'product-card', product: product -%}
+    </div>
+    {%- else -%}
+    {%- include 'collection-blank' -%}
+    {%- endfor -%}
+  </div>
+  {%- if paginate.pages > 1 -%}
+  <div class="pagination">
+    {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
+  </div>
+  {%- endif -%}
+  {%- include 'coupon_code' -%}
+</div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Collection Masonry",
+  "settings": [
+      {
+        "type": "select",
+        "id": "item_width",
+        "label": "Items width",
+        "default": "grid-item-3",
+        "options": [
+          {
+            "value": "grid-item-3",
+            "label": "33.3333%"
+          },
+          {
+            "value": "grid-item-4",
+            "label": "25%"
+          },
+          {
+            "value": "grid-item-5",
+            "label": "20%"
+          }
+        ]
+      },
+    {
+      "type": "header",
+      "content": "Collection meta"
+    },
+    {
+      "type": "checkbox",
+        "id": "enable_title",
+		"default": true,
+        "label": "Show Title"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_description",
+		"default": true,
+        "label": "Show description"
+      }
+]
+  }
+{% endschema %}

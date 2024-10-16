@@ -1,0 +1,386 @@
+<!-- lookbook-carousel2.liquid -->
+<div class="customstyle{{ section.id }}" data-aos="{{section.settings.animation}}" >
+  <div class="{{ section.settings.setwidth }}">
+    {%- include 'style-section' -%}
+  <div class="section-block">
+    {%- include 'section-heading' -%}
+    <div class="lookbooks-wrapper dots-negative">
+      <div class="lookbooks-slider row mb-0" id="service-list-{{ section.id }}"
+           data-rows="{{section.settings.rows}}"
+           data-slidesToShow="{{section.settings.show}}"
+           data-slidestoscroll="{{section.settings.show}}"
+           data-arrows="{{ section.settings.arrows }}"
+           data-dots="{{ section.settings.dots }}" 
+           data-draggable="{{ section.settings.draggable }}" 
+           data-infinite="{{ section.settings.infinite }}" 
+           data-section-id="{{ section.id }}" 
+           data-section-type="slickCarousels">
+        {%- for block in section.blocks -%}
+        <div class="col lookbooks-item carousel__slide-wrapper--{{block.id}} " {{ block.shopify_attributes }}>
+          <div class="position-relative {% if section.settings.hover %} hv-image-brightness {% endif %} image-content__image-wrapper" style="padding-top:{{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100}}%;">
+            {%- if block.settings.image != blank -%}
+                <img src="{%- include 'srcBlank' -%}" 
+                  class="lazyload image-content__image transition" 
+                  data-src="{{block.settings.image | img_url : '1500x'}}" 
+                  src="{{ img_url | img_url: '1x1' }}"
+                  data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                  data-aspectratio="{{ product.featured_image.aspect_ratio }}"
+                  data-sizes="auto" />
+            {%- else -%}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+            
+            {%- for i in (1..4) -%}
+              {%- assign sProduct = 'product' | append:i -%}
+              {%- assign sLeft = 'left' | append:i -%}
+              {%- assign sTop = 'top' | append:i -%}
+              {%- assign sColor = 'dot_color' | append:i -%}
+              {%- if block.settings[sProduct] != blank -%}
+                {%- assign productLookbook = all_products[block.settings[sProduct]] -%}
+                <a data-handle="{{productLookbook.handle}}" style="left:{{block.settings[sLeft]}}%;top:{{block.settings[sTop]}}%" class="position-absolute js-btn-quickview" data-toggle="modal" data-target="#jsQuickview" data-pavailable="{% if productLookbook.available %}true{% else %}false{% endif %}" >
+                  <span data-tooltip="true" title="{{productLookbook.title}}" class="lookbook__dot" style="background:{{block.settings[sColor]}}"></span>
+                  {% if productLookbook.metafields.info.shortdesc != blank %}
+                  <span class=" txt-short hide" >
+                    {{productLookbook.metafields.info.shortdesc | strip_html | truncatewords: 8 }}
+                  </span>
+                {%- endif -%}
+                </a>
+              {%- endif -%}
+            {%- endfor -%}
+            
+          </div>
+        </div>
+        {%- endfor -%}
+      </div>
+    </div>
+    {%- if section.blocks.size == 0 -%}
+    {%- include 'no-blocks' -%}
+    {%- endif -%}
+  </div>
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "Lookbook 2",
+  "class": "index-section",
+  "max_blocks": 20,
+  "settings": [
+    {
+      "type": "select",
+      "id": "animation",
+      "options": [
+        { "value": "", "label": "None"},
+        { "value": "fade", "label": "Fade"},
+        { "value": "fade-up", "label": "Fade Up"},
+        { "value": "fade-down", "label": "Fade Down"},
+        { "value": "fade-left", "label": "Fade Left"},
+        { "value": "fade-right", "label": "Fade Right"},
+        { "value": "fade-up-right", "label": "Fade Up Right"},
+        { "value": "fade-up-left", "label": "Fade Up Left"},
+        { "value": "fade-down-right", "label": "Fade Down Right"},
+        { "value": "fade-down-left", "label": "Fade Down Left"},
+        { "value": "flip-up", "label": "Flip Up"},
+        { "value": "flip-down", "label": "Flip Down"},
+        { "value": "flip-left", "label": "Flip Left"},
+        { "value": "flip-right", "label": "Flip Right"},
+        { "value": "slide-up", "label": "Slide Up"},
+        { "value": "slide-down", "label": "Slide Down"},
+        { "value": "slide-left", "label": "Slide Left"},
+        { "value": "slide-right", "label": "Slide Right"},
+        { "value": "zoom-in", "label": "Zoom In"},
+        { "value": "zoom-in-up", "label": "Zoom In Up"},
+        { "value": "zoom-in-down", "label": "Zoom In Down"},
+        { "value": "zoom-in-left", "label": "Zoom In Left"},
+        { "value": "zoom-in-right", "label": "Zoom In Right"},
+        { "value": "zoom-out", "label": "Zoom Out"},
+        { "value": "zoom-out-up", "label": "Zoom Out Up"},
+        { "value": "zoom-out-down", "label": "Zoom Out Down"},
+        { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+        { "value": "zoom-out-right", "label": "Zoom Out Right"}
+      ],
+      "label": "Select Animation"
+  },
+    {
+      "type": "text",
+      "id": "paddingsection",
+      "label": "Padding Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "paddingmobile",
+      "label": "Padding Section Mobile",
+      "default": "60px 0px 60px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginsection",
+      "label": "Margin Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginmobile",
+      "label": "Margin Mobile",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "color",
+      "id": "bgsection",
+        "label": "Background Section",
+        "default": "#fefefe"
+    },
+    {
+      "type": "text",
+      "id": "title_top",
+      "label": "Sub Title Top",
+      "default": "Sub Title Top"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Lookbook"
+    },
+    {
+      "type": "textarea",
+      "id": "des",
+      "label": "HTML / Description"
+    },
+    {
+      "type": "select",
+      "id": "setwidth",
+      "label": "Full Width",
+      "default": "container",
+      "options": [
+        {
+          "value": "container",
+          "label": "Box"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Container Fluid"
+        },
+        {
+          "value": "full",
+          "label": "Full"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "hover",
+      "label": "Enable Hover Image",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "arrows",
+      "label": "Arrows",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "draggable",
+      "label": "Draggable",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "dots",
+      "label": "Dots",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "infinite",
+      "label": "Infinite",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "show",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "Show",
+      "default": 2
+    }
+  ],
+  "blocks": [
+    {
+      "type": "lookbook",
+      "name": "Lookbook",
+      "settings": [
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Image"
+        },
+        {
+          "type": "header",
+          "content": "Product 1"
+        },
+        {
+          "type": "product",
+          "id": "product1",
+          "label": "Product"
+        },
+        {
+          "type": "color",
+          "id": "dot_color1",
+          "label": "Color",
+      	  "default": "#E65252"
+        },
+        {
+          "type": "range",
+          "id": "left1",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position - from left",
+          "default": 25
+        },
+        {
+          "type": "range",
+          "id": "top1",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position - from top",
+          "default": 25
+        },
+        {
+          "type": "header",
+          "content": "Product 2"
+        },
+        {
+          "type": "product",
+          "id": "product2",
+          "label": "Product"
+        },
+        {
+          "type": "color",
+          "id": "dot_color2",
+          "label": "Color",
+      	  "default": "#E65252"
+        },
+        {
+          "type": "range",
+          "id": "left2",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position - from left",
+          "default": 75
+        },
+        {
+          "type": "range",
+          "id": "top2",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position - from top",
+          "default": 25
+        },
+        {
+          "type": "header",
+          "content": "Product 3"
+        },
+        {
+          "type": "product",
+          "id": "product3",
+          "label": "Product"
+        },
+        {
+          "type": "color",
+          "id": "dot_color3",
+          "label": "Color",
+      	  "default": "#E65252"
+        },
+        {
+          "type": "range",
+          "id": "left3",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position - from left",
+          "default": 75
+        },
+        {
+          "type": "range",
+          "id": "top3",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position - from top",
+          "default": 75
+        },
+        {
+          "type": "header",
+          "content": "Product 4"
+        },
+        {
+          "type": "product",
+          "id": "product4",
+          "label": "Product"
+        },
+        {
+          "type": "color",
+          "id": "dot_color4",
+          "label": "Color",
+      	  "default": "#E65252"
+        },
+        {
+          "type": "range",
+          "id": "left4",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position - from left",
+          "default": 25
+        },
+        {
+          "type": "range",
+          "id": "top4",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position - from top",
+          "default": 75
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lookbook 2",
+      "category": "Text",
+      "blocks": [
+        {
+          "type": "lookbook"
+        },
+        {
+          "type": "lookbook"
+        },
+        {
+          "type": "lookbook"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

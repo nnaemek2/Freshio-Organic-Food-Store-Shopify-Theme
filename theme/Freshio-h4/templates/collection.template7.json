@@ -1,0 +1,23 @@
+{
+  "sections": {
+    "product-grid": {
+      "type": "collection-template-7",
+      "settings": {
+        "collection_width": "container",
+        "products_per_page": 16,
+        "collection_perrow": "4",
+        "enable_filtering": true,
+        "enable_sorting": true,
+        "enable_filtering_sidebar": false,
+        "collapse_on_larger_devices": false,
+        "enable_color": true,
+        "style_color": "color_list",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "product-grid"
+  ]
+}

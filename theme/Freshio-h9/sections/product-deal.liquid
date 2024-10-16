@@ -1,0 +1,367 @@
+<!-- product-deal.liquid -->
+<style>
+    .customstyle{{ section.id }}{
+      background-position:center !important;
+      background-repeat:no-repeat !important;
+      background-size:cover !important;
+    }
+    .product-grid-deal .js-countdown{
+      padding-top:8px;
+      min-height: 84px;
+    }
+    .product-grid-deal .shopify-product-reviews{
+      min-height: 25px;
+    }
+    .product-grid-deal .js-countdown li{
+      margin: 0;
+      background-color: transparent;
+      min-width:60px;
+      width: auto;
+      line-height: 1.3;
+      position: relative;
+      padding: 10px 16px;
+    }
+    .product-grid-deal .js-countdown li:not(:last-child)::before{
+      position: absolute;
+      top:35px;
+      right:0;
+      width: 5px;
+      height: 5px;
+      border-radius: 100%;
+      content: "";
+      background-color: var(--g-color-heading);
+      opacity: 0.2;
+    }
+    
+    .product-grid-deal .js-countdown li:first-child{
+      padding-left: 0;
+    }
+    .product-grid-deal .js-countdown li .countdown-time{
+      color: var(--g-main);
+      font-size:30px;
+      font-weight: 600;
+    }
+    .product-grid-deal .js-countdown li .countdown-time b{
+      font-weight: 600;
+    }
+    .product-grid-deal .js-grid-cart{
+      font-weight: 600;
+      line-height: 1;
+      position: relative;
+      color: var(--g-black);
+    }
+    .product-grid-deal .js-grid-cart svg{
+      margin-top: -2px;
+    }
+    .product-grid-deal .js-grid-cart:hover{
+      color: var(--g-main);
+    }
+    @media (min-width:992px) {
+      .pdeal-slider .slick-prev{
+        left: -20%;
+      }
+      .pdeal-slider .slick-next{
+        right: -20%;
+      }
+    }
+    
+    .product-grid-deal .js-grid-cart .product-card__loading{
+      left:calc(100% + 10px);
+    }
+  </style>
+  <div class="customstyle{{ section.id }} {% if section.settings.image_bg != blank %} lazyload {% endif %}" 
+  data-aos={{section.settings.animation}} 
+  style="{% if section.settings.image_bg != blank %}background-image:url({%- include 'srcBlank' -%}){% endif %}"
+  data-bg="{{ section.settings.image_bg | img_url:"1920x" }}">
+    {%- include 'style-section' -%}
+  <div class="{{ section.settings.setwidth }}">
+    <div class="section-block section-inner">
+      {%- include 'section-heading' -%}
+      {%- if section.blocks.size > 0 -%}
+      <div class="pdeal-wrapper dots-negative " data-aos="{{section.settings.animation}}" data-aos-delay="200"> 
+        <div class="row  justify-content-center">
+            <div class="col-md-9 col-12">
+                <div class="bg-white p-lg-5 py-4" style="border:3px solid {{section.settings.bd_deal}};border-radius:8px;">
+                <div class="pdeal-slider mb-0" id="Pdeal-{{ section.id }}" 
+                    data-rows="{{section.settings.rows}}"
+                    data-slidesToShow="{{section.settings.show}}"
+                    data-slidestoscroll="{{section.settings.show}}"
+                    data-arrows="{{ section.settings.arrows }}"
+                    data-dots="{{ section.settings.dots }}" 
+                    data-draggable="{{ section.settings.draggable }}" 
+                    data-infinite="{{ section.settings.infinite }}" 
+                    data-section-id="{{ section.id }}" 
+                    data-section-type="slickCarousels">
+                {%- for block in section.blocks -%}
+                {%- assign product = all_products[block.settings.product] -%}
+                <div class="pdeal-item" {{ block.shopify_attributes }}>
+                    <div class="">
+                        {% include 'product-grid-deal'%}
+                    </div>
+                </div>
+                {%- endfor -%}
+                </div>
+              </div>
+            </div>
+        </div>
+        </div>
+      {%- endif -%}
+  
+      {%- if section.blocks.size == 0 -%}
+      {%- include 'no-blocks' -%}
+      {%- endif -%}
+    </div>
+  </div>
+  </div>
+  
+  {% schema %}
+  {
+    "name": "Product list Deal",
+    "class": "index-section",
+    "max_blocks": 10,
+    "settings": [
+    {
+      "type": "select",
+      "id": "animation",
+      "options": [
+        { "value": "", "label": "None"},
+        { "value": "fade", "label": "Fade"},
+        { "value": "fade-up", "label": "Fade Up"},
+        { "value": "fade-down", "label": "Fade Down"},
+        { "value": "fade-left", "label": "Fade Left"},
+        { "value": "fade-right", "label": "Fade Right"},
+        { "value": "fade-up-right", "label": "Fade Up Right"},
+        { "value": "fade-up-left", "label": "Fade Up Left"},
+        { "value": "fade-down-right", "label": "Fade Down Right"},
+        { "value": "fade-down-left", "label": "Fade Down Left"},
+        { "value": "flip-up", "label": "Flip Up"},
+        { "value": "flip-down", "label": "Flip Down"},
+        { "value": "flip-left", "label": "Flip Left"},
+        { "value": "flip-right", "label": "Flip Right"},
+        { "value": "slide-up", "label": "Slide Up"},
+        { "value": "slide-down", "label": "Slide Down"},
+        { "value": "slide-left", "label": "Slide Left"},
+        { "value": "slide-right", "label": "Slide Right"},
+        { "value": "zoom-in", "label": "Zoom In"},
+        { "value": "zoom-in-up", "label": "Zoom In Up"},
+        { "value": "zoom-in-down", "label": "Zoom In Down"},
+        { "value": "zoom-in-left", "label": "Zoom In Left"},
+        { "value": "zoom-in-right", "label": "Zoom In Right"},
+        { "value": "zoom-out", "label": "Zoom Out"},
+        { "value": "zoom-out-up", "label": "Zoom Out Up"},
+        { "value": "zoom-out-down", "label": "Zoom Out Down"},
+        { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+        { "value": "zoom-out-right", "label": "Zoom Out Right"}
+      ],
+      "label": "Select Animation"
+  },
+    {
+      "type": "text",
+      "id": "paddingsection",
+      "label": "Padding Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "paddingmobile",
+      "label": "Padding Section Mobile",
+      "default": "60px 0px 60px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginsection",
+      "label": "Margin Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginmobile",
+      "label": "Margin Mobile",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "color",
+      "id": "bgsection",
+        "label": "Background Section",
+        "default": "#fefefe"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_bg",
+      "label": "Background image"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_inner",
+      "label": "Enable Padding Inner",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "padding_inner",
+      "label": "Padding Inner ",
+      "default": "0px 0px 0px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "padding_inner_mobile",
+      "label": "Padding Inner Mobile",
+      "default": "0px 0px 0px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "color",
+      "id": "bg_inner",
+        "label": "Background Inner",
+        "default": "#ffffff"
+    },
+    {
+      "type": "select",
+      "id": "setwidth",
+      "label": "Full Width",
+      "default": "container",
+      "options": [
+        {
+          "value": "container",
+          "label": "Box"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Container Fluid"
+        },
+        {
+          "value": "full",
+          "label": "Full"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "sectionheading",
+      "label": "Style Heading",
+      "default": "heading-0",
+      "options": [
+        {
+          "value": "heading-0",
+          "label": "Heading 0 Border"
+        },
+        {
+          "value": "heading-1",
+          "label": "Heading 1 Center"
+        },
+        {
+          "value": "heading-2",
+          "label": "Heading 2 No Border"
+        },
+        {
+          "value": "heading-3",
+          "label": "Heading 3 Center Border"
+        },
+        {
+          "value": "heading-4",
+          "label": "Hide Heading"
+        }
+      ]
+    }, 
+    {
+      "type": "color",
+      "id": "dot_heading0",
+      "label": "Color Dot Heading 0, Heading 2",
+      "default": "#bac34e"
+    },
+    {
+      "type": "text",
+      "id": "title_top",
+      "label": "Sub Title Top",
+      "default": "Our Offer"
+    },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Special Products"
+      },
+      {
+        "type": "textarea",
+        "id": "des",
+        "label": "HTML / Description"
+      },
+      {
+        "type": "color",
+        "id": "bd_deal",
+        "label": "Border Color Deal",
+        "default": "#e0bf96"
+      },
+      
+      {
+        "type": "range",
+        "id": "show",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Show",
+        "default": 1
+      },
+      {
+        "type": "checkbox",
+        "id": "arrows",
+        "label": "Arrows",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "draggable",
+        "label": "Draggable",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "dots",
+        "label": "Dots",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "infinite",
+        "label": "Infinite",
+        "default": true
+      }
+    ],
+    "blocks": [
+      {
+        "type": "product",
+        "name": "Product",
+        "settings": [
+        {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product list Deal",
+        "category": "Collection",
+        "blocks": [
+          {
+            "type": "product"
+          },
+          {
+            "type": "product"
+          },
+          {
+            "type": "product"
+          }
+        ]
+      }
+    ]
+  }
+  {% endschema %}
+  

@@ -1,0 +1,11 @@
+<div class="collection-sortby text-right">
+  {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+  <label class="px-2" for="SortBy">{{ 'collections.sorting.title' | t }}</label>
+  <select name="SortBy" id="js-sortby" 
+  aria-describedby="a11y-refresh-page-message a11y-selection-message"
+  data-default-sortby="{{ collection.default_sort_by }}">
+    {%- for option in collection.sort_options -%}
+        <option value="{{ option.value }}" {% if option.value == sort_by %}selected="selected"{% endif %}>{{ option.name }}</option>
+      {%- endfor -%}
+  </select>
+</div>

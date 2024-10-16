@@ -1,0 +1,47 @@
+
+<div class="customstyle{{ block.id }} {{block.settings.setwidthcontent}}" data-aos="fade-up">
+  <style>
+    .bg-herovideo{
+        position:relative;
+    }
+    .bgvideo-{{ block.id }} {padding: {{block.settings.padding_desktop}}px 0;}@media (max-width:991px){.bgvideo-{{ block.id }} {padding: {{block.settings.padding_mobile}}px 0;}}
+    .bgvideo-{{ block.id }} .parallax-banner__meta::before{
+    background-color: {{block.settings.bg_box}};
+    opacity: {{block.settings.opacity_bgbox}};
+  }
+    </style>
+  <div class="section-block">
+    <div class=" bgvideo-{{ block.id }}  txt-{{block.settings.align}} bg-herovideo" data-block-id="{{ block.id }}" data-block-type="background-video" >
+        {% if block.settings.link_video != blank %}
+        <div class="hero-video">
+         <video id="Mp4{{ block.id }}" src="{{block.settings.link_video}}" loop="" muted="" playsinline="" autoplay="" ></video>
+        </div>
+        {% else if %}
+        <div class="hero-video">
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+        {% endif %}
+      <div class="parallax-banner__meta bg-herovideo-meta" data-aos="fade-up" data-aos-duration="1000">
+        {%- if block.settings.title != blank -%}
+        <h4 class="parallax-banner__title pb-4" style="color:{{block.settings.title_color}}">
+          {{block.settings.title}}
+        </h4>
+        {%- endif -%}
+  
+        {%- if block.settings.subtext != blank -%}
+        <div class="m-0 pb-5" style="color:{{block.settings.subtitle_color}}">
+          {{block.settings.subtext}}
+        </div>
+        {%- endif -%}
+  
+        {%- if block.settings.button != blank and block.settings.link != blank -%}
+        <div class="parallax-banner__btn">
+          <a href="{{ block.settings.link }}" class="btn btn-theme gradient-theme">
+            {{ block.settings.button | escape }}
+          </a>
+        </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+  </div>

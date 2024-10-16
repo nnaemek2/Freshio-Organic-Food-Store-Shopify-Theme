@@ -1,0 +1,342 @@
+<!-- grid-banner-2.liquid -->
+<div class="customstyle{{ section.id }} banner-theme-text" data-aos="{{section.settings.animation}}" >
+  {%- include 'style-section' -%}
+<div class="{{ section.settings.setwidth }}">
+  <div class="section-block">
+    {%- include 'section-heading' -%}
+    <div class="row {% if section.settings.no_gutter %}no-gutters{% endif %}">
+      {%- for block in section.blocks -%}
+      <style>
+       .banner-{{block.id}}{
+         border:1px solid {{block.settings.border_banner}};
+         background-color:{{block.settings.bg_banner}};
+         position:relative;
+       }
+       .banner-{{block.id}}:before{
+         content:"";
+         position: absolute;
+         left:0;
+         top:0;
+         width: 100%;
+         height: 100%;
+         object-fit:cover;
+         background-repeat: no-repeat;
+         background-image:url("{{block.settings.bg_image}}");
+         opacity: {{block.settings.opbg_banner}};
+       }
+      </style>
+      <div class="col-md-{{block.settings.width}}" {{ block.shopify_attributes }}>
+      <div class="banner-{{block.id}}" style="padding:{{block.settings.paddingblock}}">
+        <figure class="position-relative m-0 hv-image-saturate text-{{block.settings.text_align}} {% if section.settings.no_gutter %}m-0{% endif %} d-flex {{block.settings.reverse}}">
+          {%- if block.settings.image != blank -%}
+          {%- if block.settings.button_link != blank -%}<a href="{{block.settings.button_link}}"> {%- endif -%}
+          <img src="{% include 'srcBlank' %}" class="lazyload transition" data-src="{{block.settings.image | img_url:'1920x'}}">
+          {%- if block.settings.button_link != blank -%}</a> {%- endif -%}
+          {%- else -%}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+          <figcaption class="figcaption--{{block.id}} py-4">
+            {%- if block.settings.description -%}
+            {{block.settings.description}}
+            {%- endif -%}
+            {%- if block.settings.button_text != blank -%}
+            <a href="{{block.settings.button_link}}" class="btn btn-theme gradient-theme">
+              <span class="px-2">{{block.settings.button_text}}</span>
+              {{block.settings.button_icon}}
+            </a>
+            {%- endif -%}
+          </figcaption>		
+        </figure>
+        </div>
+      </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+</div>
+  
+  {% schema %}
+  {
+    "name": "Grid banner Text",
+    "class": "index-section",
+    "settings": [
+    {
+        "type": "select",
+        "id": "animation",
+        "options": [
+          { "value": "", "label": "None"},
+          { "value": "fade", "label": "Fade"},
+          { "value": "fade-up", "label": "Fade Up"},
+          { "value": "fade-down", "label": "Fade Down"},
+          { "value": "fade-left", "label": "Fade Left"},
+          { "value": "fade-right", "label": "Fade Right"},
+          { "value": "fade-up-right", "label": "Fade Up Right"},
+          { "value": "fade-up-left", "label": "Fade Up Left"},
+          { "value": "fade-down-right", "label": "Fade Down Right"},
+          { "value": "fade-down-left", "label": "Fade Down Left"},
+          { "value": "flip-up", "label": "Flip Up"},
+          { "value": "flip-down", "label": "Flip Down"},
+          { "value": "flip-left", "label": "Flip Left"},
+          { "value": "flip-right", "label": "Flip Right"},
+          { "value": "slide-up", "label": "Slide Up"},
+          { "value": "slide-down", "label": "Slide Down"},
+          { "value": "slide-left", "label": "Slide Left"},
+          { "value": "slide-right", "label": "Slide Right"},
+          { "value": "zoom-in", "label": "Zoom In"},
+          { "value": "zoom-in-up", "label": "Zoom In Up"},
+          { "value": "zoom-in-down", "label": "Zoom In Down"},
+          { "value": "zoom-in-left", "label": "Zoom In Left"},
+          { "value": "zoom-in-right", "label": "Zoom In Right"},
+          { "value": "zoom-out", "label": "Zoom Out"},
+          { "value": "zoom-out-up", "label": "Zoom Out Up"},
+          { "value": "zoom-out-down", "label": "Zoom Out Down"},
+          { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+          { "value": "zoom-out-right", "label": "Zoom Out Right"}
+        ],
+        "label": "Select Animation"
+      },
+      {
+        "type": "text",
+        "id": "paddingsection",
+        "label": "Padding Section",
+        "default": "0px 0px 0px 0px",
+        "info": "Padding: Top Right Bottom Left"
+      },
+      {
+        "type": "text",
+        "id": "paddingmobile",
+        "label": "Padding Section Mobile",
+        "default": "60px 0px 60px 0px",
+        "info": "Padding: Top Right Bottom Left"
+      },
+      {
+        "type": "text",
+        "id": "marginsection",
+        "label": "Margin Section",
+        "default": "0px 0px 0px 0px",
+        "info": "Margin: Top Right Bottom Left"
+      },
+      {
+        "type": "text",
+        "id": "marginmobile",
+        "label": "Margin Mobile",
+        "default": "0px 0px 0px 0px",
+        "info": "Margin: Top Right Bottom Left"
+      },
+      {
+        "type": "color",
+        "id": "bgsection",
+          "label": "Background Section",
+          "default": "#fefefe"
+      },
+      {
+        "type": "text",
+        "id": "title_top",
+        "label": "Sub Title Top",
+        "default": "Sub Title Top"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Grid banner Text"
+      },
+      {
+        "type": "textarea",
+        "id": "des",
+        "label": "HTML / Description"
+      },
+      {
+        "type": "select",
+        "id": "setwidth",
+        "label": "Full Width",
+        "default": "container",
+        "options": [
+          {
+            "value": "container",
+            "label": "Box"
+          },
+          {
+            "value": "container-fluid",
+            "label": "Container Fluid"
+          },
+          {
+            "value": "full",
+            "label": "Full"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "no_gutter",
+        "label": "No gutters",
+        "default": false
+      }
+    ],
+    "blocks": [
+      {
+        "type": "banner",
+        "name": "Banner",
+        "settings": [
+        {
+          "type": "text",
+          "id": "paddingblock",
+          "label": "Padding Section",
+          "default": "0px 0px 0px 0px",
+          "info": "Padding: Top Right Bottom Left"
+        },
+        {
+          "type": "textarea",
+          "id": "bg_image",
+          "label": "Background Image",
+          "info": "Padding: Top Right Bottom Left"
+        },
+        {
+          "type": "color",
+          "id": "border_banner",
+            "label": "Border Block",
+            "default": "#dddddd"
+        },
+        {
+          "type": "color",
+          "id": "bg_banner",
+            "label": "Background Block",
+            "default": "#f1f1f1"
+        },
+        {
+          "type": "range",
+          "id": "opbg_banner",
+          "label": "Opacity Background",
+          "max": 1,
+          "min": 0,
+          "step": 0.1,
+          "unit": " op",
+          "default": 0.4
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width",
+          "default": "6",
+          "options": [
+            {
+              "value": "2",
+              "label": "16.67%"
+            },
+            {
+              "value": "3",
+              "label": "25%"
+            },
+            {
+              "value": "4",
+              "label": "33.33%"
+            },
+            {
+              "value": "5",
+              "label": "41.67%"
+            },
+            {
+              "value": "6",
+              "label": "50%"
+            },
+            {
+              "value": "7",
+              "label": "58.33%"
+            },
+            {
+              "value": "8",
+              "label": "66.67%"
+            },
+            {
+              "value": "9",
+              "label": "75%"
+            },
+            {
+              "value": "10",
+              "label": "83.33%"
+            },
+            {
+              "value": "12",
+              "label": "100%"
+            }
+          ]
+        },
+          {
+            "type": "textarea",
+            "id": "description",
+            "label": "HTML / Description",
+            "default": "<h3 class='mb-2'>Banner title</h3><p>Lorem ipsum dolor sit amet</p>",
+            "info":"💡 [HTML Buider.](https:\/\/ap2020.myshopify.com\/pages\/html-builder)"
+          },
+          {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button text",
+            "default": "View more"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          },
+        {
+          "type": "select",
+          "id": "reverse",
+          "label": "Reverse",
+          "default": "flex-column",
+          "options": [
+            {
+              "value": "flex-column",
+              "label": "Normal"
+            },
+            {
+              "value": "flex-column-reverse",
+              "label": "Reverse"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "text_align",
+          "label": "Text align",
+          "default": "center",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ]
+        }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Grid banner Text",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "banner"
+          },
+          {
+            "type": "banner"
+          }
+        ]
+      }
+    ]
+  }
+  {% endschema %}

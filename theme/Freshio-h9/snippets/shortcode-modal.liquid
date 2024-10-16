@@ -1,0 +1,44 @@
+{% capture modalBs %}{% include 'shortcode-render' render:'action' default:'' %}{% endcapture %}
+{% capture id %}{% include 'shortcode-render' render:'id' default:'' %}{% endcapture %}
+{% capture close %}{% include 'shortcode-render' render:'close' default:'' %}{% endcapture %}
+{% capture type %}{% include 'shortcode-render' render:'type' default:'' %}{% endcapture %}
+{% capture url %}{% include 'shortcode-render' render:'url' default:'' %}{% endcapture %}
+{% capture height %}{% include 'shortcode-render' render:'height' default:'' %}{% endcapture %}
+{% capture modalTitle %}{% include 'shortcode-render' render:'title' default:'' %}{% endcapture %}
+{% capture des %}{% include 'shortcode-render' render:'description' default:'' %}{% endcapture %}
+{% if id == '' %}
+{% capture id %}modal-{{ 'now' | date: "%N" }}{% endcapture %}
+{% endif %}
+<!-- Button trigger modal -->
+{% case modalBs %}
+{% when 'new modal' %}
+<div class="newmodal">
+  {% if type == 'video' %}
+  <a href="#" class="btn btn-theme" data-toggle="modal" data-target="#{{ id }}" data-theVideo="{{ url }}">{{ modalTitle }}</a>
+  {% else %}
+  <button type="button" class="btn btn-theme" data-toggle="modal" data-target="#{{ id }}">
+    {{ modalTitle }}
+  </button>
+  {% endif %}
+  <div class="modal fade" id="{{ id }}" tabindex="-1" role="dialog" aria-labelledby="videoModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div>
+            {% if type == 'video' %}
+            <iframe width="100%" height="{{ height }}" src="{{url}}"></iframe>
+            {% elsif type == 'image' %}
+            <img src="{{ url }}"  alt="{{ modalTitle }}"/>
+            {% else type == "text" %} 	
+            {% endif %}
+            {% when 'end modal' %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endcase %}

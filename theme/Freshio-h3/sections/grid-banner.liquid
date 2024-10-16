@@ -1,0 +1,805 @@
+<!-- grid-banner.liquid -->
+<style>
+  {%- if section.settings.show_overlay -%}
+  :root{
+    --color-banner-before-{{section.id}}:{{section.settings.bg_overlay.red}}, {{section.settings.bg_overlay.green}}, {{section.settings.bg_overlay.blue}};
+    --alpha-banner-{{section.id}}:{{ section.settings.opacity_overlay }};
+  }
+  {%- endif -%}
+    .customstyle{{ section.id }} .banner-theme .banner-overlay{
+      position: absolute;
+      top:0;
+      right:0;
+      bottom:0;
+      left: 0;
+      {%- if section.settings.show_overlay %}
+        {%- if section.settings.gradient_overlay -%}
+          background:linear-gradient(180deg, rgba(var(--color-banner-before-{{section.id}}), 0) 0%, rgba(var(--color-banner-before-{{section.id}}),var(--alpha-banner-{{section.id}})) 100%);
+        {%- else -%}
+          background-color: rgba(var(--color-banner-before-{{section.id}}), var(--alpha-banner-{{section.id}}));
+        {%- endif -%}
+      opacity: 1;
+      {%- endif -%}
+      z-index: 1;
+    }
+  .customstyle{{ section.id }} .banner-theme{
+    border-radius:{{section.settings.radius_banner}}px;
+  }
+  .h-block-banner figcaption{
+    max-width: 100% !important;
+    flex: 1 0 100%;
+    transform:none !important;
+    position: static;
+    flex-direction: column; 
+  }
+  .customstyle{{ section.id }}.disable_hover .banner-theme:hover img{
+    transform: scale(1.0);
+  }
+</style>
+
+<div class="customstyle{{ section.id }} {% if section.settings.enable_hover %} enable_hover {% else %} disable_hover {% endif %}" data-aos="{{section.settings.animation}}" >
+  {%- include 'style-section' -%}
+<div class="{{ section.settings.setwidth }}">
+  <div class="section-block section-inner">
+    {%- include 'section-heading' -%}
+    <div class="row {% if section.settings.no_gutter %}no-gutters{% endif %}">
+      {%- for block in section.blocks -%}
+      {%- case block.type -%}
+      {%- when 'banner' -%}
+      <style>
+		/* Custom caption width, default value is 290px */
+        .figcaption--{{block.id}} .bg-des{background-color: {{block.settings.bg_color}};opacity: {{block.settings.opacity_bg}};}
+        
+        .banner-theme-{{block.id}} figcaption div>*{
+          color:{{block.settings.colordef}};
+        }
+        {%- if block.settings.e_height -%}
+        #banner-{{block.id}}.banner-theme-left{
+          padding-left:{{block.settings.pos_l}}%;
+        }
+        #banner-{{block.id}}.banner-theme-top{
+          padding-top:{{block.settings.pos_t}}%;
+        }
+        #banner-{{block.id}}.banner-theme-right{
+          padding-right:{{block.settings.pos_r}}%;
+        }
+        #banner-{{block.id}}.banner-theme-bottom {
+          padding-bottom:{{block.settings.pos_b}}%;
+        }
+        .h_{{block.id}}{
+          min-height:{{block.settings.e_height_banner}}px;
+        }
+        .h_{{block.id}} > img{
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top:0;
+          left: 0;
+          object-fit: cover;
+        }
+        {%- endif -%}
+        @media only screen and (max-width: 989px){
+          .banner-theme-center .figcaption--{{block.id}}{margin-left:0px !important;}
+          {%- if block.settings.e_height -%}
+            .h_{{block.id}}{
+              min-height:280px;
+            }
+            {%- endif -%}
+        }
+        #banner-{{block.id}}.banner-theme-left figcaption{
+          left:{{block.settings.pos_l}}%;
+        }
+        #banner-{{block.id}}.banner-theme-top figcaption{
+          top:{{block.settings.pos_t}}%;
+        }
+        #banner-{{block.id}}.banner-theme-right figcaption{
+          right:{{block.settings.pos_r}}%;
+        }
+        #banner-{{block.id}}.banner-theme-bottom figcaption{
+          bottom:{{block.settings.pos_b}}%;
+        }
+        
+      </style>
+      {%- case block.settings.vertical -%}
+      {%- when 'top' -%}
+      {%- assign v_pos = 'justify-content-start' -%}
+      {%- when 'mid' -%}
+      {%- assign v_pos = 'justify-content-center' -%}
+      {%- when 'bottom' -%}
+      {%- assign v_pos = 'justify-content-end' -%}
+      {%- endcase -%}
+
+      {%- case block.settings.horizontal -%}
+      {%- when 'left' -%}
+      {%- assign h_pos = 'align-items-start' -%}
+      {%- when 'center' -%}
+      {%- assign h_pos = 'align-items-center' -%}
+      {%- when 'right' -%}
+      {%- assign h_pos = 'align-items-end' -%}
+      {%- endcase -%}
+      <div class="col-md-{{block.settings.width}}" {{ block.shopify_attributes }} data-aos="{{section.settings.animation}}" data-aos-duration="1000">
+        <figure id="banner-{{block.id}}" class="mb-lg-0 mb-3 banner-theme hv-image-saturate 
+        banner-theme-{{block.settings.vertical}} 
+        banner-theme-{{block.settings.horizontal}} 
+        text-{{block.settings.text_align}} 
+        {% if section.settings.no_gutter %}m-0{% endif %} banner-theme-{{block.id}}
+        {% if block.settings.e_height %}h_{{block.id}} d-flex h-block-banner flex-column {% endif %}
+        ">
+          {%- if block.settings.image != blank -%}
+          <img src="{% include 'srcBlank' %}" class="lazyload transition" data-src="{{block.settings.image | img_url:'1920x'}}">
+          <a class="banner-overlay" href="{{block.settings.button_link| default:"#"}}"></a>
+          {%- else -%}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+          <figcaption class="figcaption--{{block.id}}  {% if block.settings.e_height %}w-100 h-100 {{v_pos}} {{h_pos}} d-flex{% endif %}">
+            <div>
+            {%- if block.settings.description -%}
+              <div class="position-relative">
+                <div class="bg-des"></div>
+                <div class="position-relative" style="z-index: 3;">
+                  {{block.settings.description}}
+                </div>
+              </div>
+            {%- endif -%}
+            {%- if block.settings.button_text != blank -%}
+            <a href="{{block.settings.button_link}}" class="btn {{block.settings.style_btn}} gradient-theme mt-3">
+              {{block.settings.button_text}}
+            </a>
+            {%- endif -%}
+          </div>
+          </figcaption>		
+          {%- if block.settings.button_link != blank -%}
+          <a href="{{block.settings.button_link}}"></a>
+          {%- endif -%}
+        </figure>
+      </div>
+      {%- when 'email' -%}
+       
+        <div class="col-md-{{block.settings.width}}" {{ block.shopify_attributes }} data-aos="{{section.settings.animation}}" data-aos-duration="1000">
+          <div class="form-vertical y-4 px-lg-5 px-4 d-flex align-items-center pro-email lazyload"  
+          style="{% if block.settings.image_email != blank %}background-image:url({%- include 'srcBlank' -%}){% endif %}" 
+          data-bgset="{%- include 'bgset', image: block.settings.image_email -%}" 
+          data-sizes="auto"
+          data-parent-fit="cover">
+          <div>
+            {%- if block.settings.enable_icon -%}
+              
+            <svg class="svg-mail mb-3"  viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13.5078 5.20703C13.2891 5.04297 13.0339 4.85156 12.7422 4.63281C12.4688 4.41406 12.0404 4.09505 11.457 3.67578C10.8919 3.25651 10.0716 2.65495 8.99609 1.87109C8.92318 1.81641 8.84115 1.7526 8.75 1.67969C8.49479 1.47917 8.21224 1.27865 7.90234 1.07812C7.57422 0.877604 7.27344 0.768229 7 0.75C6.72656 0.768229 6.42578 0.877604 6.09766 1.07812C5.78776 1.27865 5.50521 1.47917 5.25 1.67969C5.15885 1.7526 5.07682 1.81641 5.00391 1.87109C3.92839 2.65495 3.10807 3.25651 2.54297 3.67578C1.95964 4.09505 1.53125 4.41406 1.25781 4.63281C0.966146 4.85156 0.710938 5.04297 0.492188 5.20703C0.164062 5.48047 0 5.82682 0 6.24609V13.4375C0.0182292 13.8021 0.145833 14.112 0.382812 14.3672C0.638021 14.6042 0.947917 14.7318 1.3125 14.75H12.6875C13.0521 14.7318 13.362 14.6042 13.6172 14.3672C13.8542 14.1302 13.9818 13.8294 14 13.4648V6.24609C14 5.82682 13.8359 5.48047 13.5078 5.20703ZM13.125 13.4375C13.1068 13.7109 12.9609 13.8568 12.6875 13.875H1.3125C1.03906 13.8568 0.893229 13.7109 0.875 13.4375V6.24609C0.875 6.10026 0.929688 5.98177 1.03906 5.89062C1.07552 5.8724 1.11198 5.84505 1.14844 5.80859C1.33073 5.66276 1.56771 5.48047 1.85938 5.26172C2.13281 5.04297 2.55208 4.73307 3.11719 4.33203C3.68229 3.91276 4.48438 3.32943 5.52344 2.58203C5.59635 2.52734 5.6875 2.45443 5.79688 2.36328C5.94271 2.25391 6.14323 2.10807 6.39844 1.92578C6.65365 1.76172 6.85417 1.66146 7 1.625C7.16406 1.66146 7.36458 1.76172 7.60156 1.92578C7.85677 2.10807 8.05729 2.25391 8.20312 2.36328C8.3125 2.45443 8.41276 2.52734 8.50391 2.58203C9.57943 3.36589 10.3997 3.96745 10.9648 4.38672C11.5482 4.82422 11.9766 5.14323 12.25 5.34375C12.5234 5.5625 12.7604 5.74479 12.9609 5.89062C13.0703 5.98177 13.125 6.10026 13.125 6.24609V13.4375ZM11.5664 7.83203L7.92969 10.5117C7.63802 10.7122 7.32812 10.8125 7 10.8125C6.67188 10.8125 6.36198 10.7122 6.07031 10.5117L2.43359 7.83203C2.21484 7.6862 2.01432 7.72266 1.83203 7.94141C1.70443 8.16016 1.74089 8.36068 1.94141 8.54297L5.55078 11.2227C5.98828 11.5143 6.47135 11.6602 7 11.6602C7.52865 11.6602 8.01172 11.5052 8.44922 11.1953L12.0859 8.51562C12.2682 8.33333 12.2956 8.13281 12.168 7.91406C11.9857 7.73177 11.7852 7.70443 11.5664 7.83203Z"/>
+            </svg>
+  
+            {%- endif -%}
+            {%- if block.settings.title_promomail  != blank -%}
+            <h4 style="color:{{block.settings.color_title}};">{{block.settings.title_promomail}}</h4>
+            {%- endif -%}
+            {%- if block.settings.des_promomail  != blank -%}
+            <div class="mb-3" style="color:{{block.settings.color_des}};">{{block.settings.des_promomail}}</div>
+            {%- endif -%}
+            {%- form 'customer' -%}
+              {{ form.errors | default_errors }}
+              {%- if form.posted_successfully? -%}
+                <p class="form-success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+              {%- else -%}
+                <input type="hidden" name="contact[tags]" value="newsletter">
+                <label for="NewsletterEmail-{{ block.id }}" class="label--hidden">{{ 'general.newsletter_form.newsletter_label' | t }}</label>
+                <div class=" form-group text-center input-group mb-0">
+                  <input class="form-control" type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_placeholder' | t }}" name="contact[email]" id="NewsletterEmail-{{ block.id }}" autocorrect="off" autocapitalize="off">
+                  <div class="input-group-append">
+                    <button type="submit" class="btn btn-theme btn-white" name="commit">
+                      <span class="d-block"><i class="icon-arrow-thin-right"></i></span>
+                    </button>
+                  </div>
+                </div>
+              {%- endif -%}
+            {%- endform -%}
+          </div>
+          </div>
+        </div>
+        <style>
+          .pro-email{
+            min-height: {{block.settings.e_height_banner}}px;
+            background-size:cover;
+            border-radius:4px;
+          }
+          .pro-email .svg-mail{
+              width: 48px;
+              height: 48px;
+              fill:{{block.settings.color_svg}};
+          }
+          .pro-email .form-group .form-control{
+            border-top-left-radius: var(--g-font-radius-btn);
+            border-bottom-left-radius:var(--g-font-radius-btn) ;
+            background-color: white;
+            margin: 0;
+            border:none;
+            height:46px;
+            padding: 8px 0 8px 32px;
+          }
+          .pro-email .form-group .btn{
+            height:46px;
+            padding: 0px 32px;
+          }
+        </style>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "Grid Banner & Email",
+  "class": "index-section",
+  "settings": [
+  {
+      "type": "select",
+      "id": "animation",
+      "options": [
+        { "value": "", "label": "None"},
+        { "value": "fade", "label": "Fade"},
+        { "value": "fade-up", "label": "Fade Up"},
+        { "value": "fade-down", "label": "Fade Down"},
+        { "value": "fade-left", "label": "Fade Left"},
+        { "value": "fade-right", "label": "Fade Right"},
+        { "value": "fade-up-right", "label": "Fade Up Right"},
+        { "value": "fade-up-left", "label": "Fade Up Left"},
+        { "value": "fade-down-right", "label": "Fade Down Right"},
+        { "value": "fade-down-left", "label": "Fade Down Left"},
+        { "value": "flip-up", "label": "Flip Up"},
+        { "value": "flip-down", "label": "Flip Down"},
+        { "value": "flip-left", "label": "Flip Left"},
+        { "value": "flip-right", "label": "Flip Right"},
+        { "value": "slide-up", "label": "Slide Up"},
+        { "value": "slide-down", "label": "Slide Down"},
+        { "value": "slide-left", "label": "Slide Left"},
+        { "value": "slide-right", "label": "Slide Right"},
+        { "value": "zoom-in", "label": "Zoom In"},
+        { "value": "zoom-in-up", "label": "Zoom In Up"},
+        { "value": "zoom-in-down", "label": "Zoom In Down"},
+        { "value": "zoom-in-left", "label": "Zoom In Left"},
+        { "value": "zoom-in-right", "label": "Zoom In Right"},
+        { "value": "zoom-out", "label": "Zoom Out"},
+        { "value": "zoom-out-up", "label": "Zoom Out Up"},
+        { "value": "zoom-out-down", "label": "Zoom Out Down"},
+        { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+        { "value": "zoom-out-right", "label": "Zoom Out Right"}
+      ],
+      "label": "Select Animation"
+    },
+    {
+      "type": "text",
+      "id": "paddingsection",
+      "label": "Padding Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "paddingmobile",
+      "label": "Padding Section Mobile",
+      "default": "60px 0px 60px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginsection",
+      "label": "Margin Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginmobile",
+      "label": "Margin Mobile",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "color",
+      "id": "bgsection",
+        "label": "Background Section",
+        "default": "#fefefe"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_inner",
+      "label": "Enable Padding Inner",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "padding_inner",
+      "label": "Padding Inner ",
+      "default": "0px 0px 0px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "padding_inner_mobile",
+      "label": "Padding Inner Mobile",
+      "default": "0px 0px 0px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "color",
+      "id": "bg_inner",
+        "label": "Background Inner",
+        "default": "#ffffff"
+    },
+    {
+      "type": "select",
+      "id": "setwidth",
+      "label": "Full Width",
+      "default": "container",
+      "options": [
+        {
+          "value": "container",
+          "label": "Box"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Container Fluid"
+        },
+        {
+          "value": "full",
+          "label": "Full"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "sectionheading",
+      "label": "Style Heading",
+      "default": "heading-0",
+      "options": [
+        {
+          "value": "heading-0",
+          "label": "Heading 0 Border"
+        },
+        {
+          "value": "heading-1",
+          "label": "Heading 1 Center"
+        },
+        {
+          "value": "heading-2",
+          "label": "Heading 2 No Border"
+        },
+        {
+          "value": "heading-3",
+          "label": "Heading 3 Center Border"
+        },
+        {
+          "value": "heading-4",
+          "label": "Hide Heading"
+        }
+      ]
+    }, 
+    {
+      "type": "color",
+      "id": "dot_heading0",
+      "label": "Color Dot Heading 0, Heading 2",
+      "default": "#bac34e"
+    },
+    {
+      "type": "text",
+      "id": "title_top",
+      "label": "Sub Title Top",
+      "default": "Sub Title Top"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Grid banner"
+    },
+    {
+      "type": "textarea",
+      "id": "des",
+      "label": "HTML / Description"
+    },
+    {
+      "type": "checkbox",
+      "id": "no_gutter",
+      "label": "No gutters",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_hover",
+      "label": "Enable Hover",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_overlay",
+      "label": "Show overlay",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "gradient_overlay",
+      "label": "Gradient overlay",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "bg_overlay",
+      "label": "Background Overlay",
+      "default": "#000"
+    },
+    {
+      "type": "range",
+      "id": "opacity_overlay",
+      "label": "Opacity Overlay",
+      "max": 1,
+      "min": 0,
+      "step": 0.1,
+      "unit": " op",
+      "default": 0.4
+    },
+    {
+      "type": "range",
+      "id": "radius_banner",
+      "label": "Border Radius ",
+      "max": 50,
+      "min": 0,
+      "step": 1,
+      "unit": " px",
+      "default": 4
+    }
+    
+  ],
+  "blocks": [
+    {
+      "type": "banner",
+      "name": "Banner",
+      "settings": [
+      {
+        "type": "checkbox",
+        "id": "e_height",
+        "label": "Enable Height",
+        "default": false
+      },
+      {
+        "type": "range",
+        "id": "e_height_banner",
+        "label": "Height Banner",
+        "max": 800,
+        "min": 200,
+        "step": 10,
+        "unit": " px",
+        "default": 300
+      },
+      {
+        "type": "range",
+        "id": "pos_l",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "label": "Position Left",
+        "default": 8
+      },
+      {
+        "type": "range",
+        "id": "pos_r",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "label": "Position Right",
+        "default": 8
+      },
+      {
+        "type": "range",
+        "id": "pos_t",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "label": "Position Top",
+        "default": 8
+      },
+      {
+        "type": "range",
+        "id": "pos_b",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "label": "Position Bottom",
+        "default": 8
+      },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+      {
+        "type": "select",
+        "id": "width",
+        "label": "Width",
+        "default": "6",
+        "options": [
+          {
+            "value": "2",
+            "label": "16.67%"
+          },
+          {
+            "value": "3",
+            "label": "25%"
+          },
+          {
+            "value": "4",
+            "label": "33.33%"
+          },
+          {
+            "value": "5",
+            "label": "41.67%"
+          },
+          {
+            "value": "6",
+            "label": "50%"
+          },
+          {
+            "value": "7",
+            "label": "58.33%"
+          },
+          {
+            "value": "8",
+            "label": "66.67%"
+          },
+          {
+            "value": "9",
+            "label": "75%"
+          },
+          {
+            "value": "10",
+            "label": "83.33%"
+          },
+          {
+            "value": "12",
+            "label": "100%"
+          }
+        ]
+      },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "HTML / Description",
+          "default": "<h3 class='mb-2'>Banner title</h3><p>Lorem ipsum dolor sit amet</p>",
+		  "info":"💡 [HTML Buider.](https:\/\/ap2020.myshopify.com\/pages\/html-builder)"
+        },
+        {
+          "type": "color",
+          "id": "colordef",
+            "label": "Color Description ",
+            "default": "#ffffff"
+        },
+        {
+          "type": "select",
+          "id": "style_btn",
+          "label": "Style Button",
+          "default": "btn-underline btn-underline-white",
+          "options": [
+            {
+              "value": "btn-theme",
+              "label": "Button Box"
+            },
+            {
+              "value": "btn-theme btn-white",
+              "label": "Button Box White"
+            },
+            {
+              "value": "btn-underline",
+              "label": "Button Line"
+            },
+            {
+              "value": "btn-underline btn-underline-white",
+              "label": "Button Line White"
+            },
+            {
+              "value": "btn-underline btn-underline-heading",
+              "label": "Button Line Dark"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button text",
+          "default": "View more"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+      {
+        "type": "select",
+        "id": "vertical",
+        "label": "Vertical align",
+        "default": "bottom",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top"
+          },
+          {
+            "value": "mid",
+            "label": "Mid"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "horizontal",
+        "label": "Horizontal align",
+        "default": "center",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "text_align",
+        "label": "Text align",
+        "default": "center",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      }
+      ]
+    },
+    {
+      "type": "email",
+      "name": "Email",
+      "limit":1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width",
+          "default": "6",
+          "options": [
+            {
+              "value": "2",
+              "label": "16.67%"
+            },
+            {
+              "value": "3",
+              "label": "25%"
+            },
+            {
+              "value": "4",
+              "label": "33.33%"
+            },
+            {
+              "value": "5",
+              "label": "41.67%"
+            },
+            {
+              "value": "6",
+              "label": "50%"
+            },
+            {
+              "value": "7",
+              "label": "58.33%"
+            },
+            {
+              "value": "8",
+              "label": "66.67%"
+            },
+            {
+              "value": "9",
+              "label": "75%"
+            },
+            {
+              "value": "10",
+              "label": "83.33%"
+            },
+            {
+              "value": "12",
+              "label": "100%"
+            }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "e_height_banner",
+          "label": "Height Banner",
+          "max": 800,
+          "min": 200,
+          "step": 10,
+          "unit": " px",
+          "default": 300
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_icon",
+          "label": "Enable Icon",
+          "default": true
+        },
+        {
+          "type": "color",
+          "id": "color_svg",
+            "label": "Color Icon",
+            "default": "#ffffff"
+        },
+        {
+          "type": "text",
+          "id": "title_promomail",
+          "label": "Title",
+          "default": "Subscribe Us"
+        },
+        
+        {
+          "type": "color",
+          "id": "color_title",
+            "label": "Color Title",
+            "default": "#0a472e"
+        },
+        {
+          "type": "textarea",
+          "id": "des_promomail",
+          "label": "HTML / Description",
+          "default": "Sign up and get a voucher of worth $250.00"
+        },
+        {
+          "type": "color",
+          "id": "color_des",
+            "label": "Color Des",
+            "default": "#ffffff"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_email",
+          "label": "Background Block"
+        }
+
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Grid Banner & Email",
+      "category": "Image",
+      "blocks": [
+        {
+          "type": "banner"
+        },
+        {
+          "type": "banner"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

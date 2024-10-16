@@ -1,0 +1,240 @@
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+<link rel="preload" href="{{ 'component-rte.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- assign productPerpage = section.settings.products_per_page -%}
+{%- assign productPerrow = section.settings.collection_perrow -%}
+{%- if productPerrow == '2' -%}
+	{%- assign gridProduct = 'js-col col-sm-6 col-6' -%}
+{%- elsif productPerrow == '3' -%}
+	{%- assign gridProduct = 'js-col col-sm-6 col-6 col-lg-4' -%}
+{%- elsif productPerrow == '4' -%}
+	{%- assign gridProduct = 'js-col col-sm-6 col-6 col-lg-3' -%}
+{%- elsif productPerrow == '5' -%}
+	{%- assign gridProduct = 'js-col col-sm-6 col-6 col-lg-2-4' -%}
+{%- elsif productPerrow == '6' -%}
+	{%- assign gridProduct = 'js-col col-sm-6 col-6 col-lg-2' -%}
+{%- endif -%}
+
+{%- liquid
+    assign is_sidebar = section.settings.enable_filtering_sidebar
+-%}
+
+<div class="section-{{ section.id }}-padding {% if is_sidebar %} container facet-filter-left{% endif %}">
+  {%- if is_sidebar -%}
+      <div class="row">
+  {%- endif -%}
+  {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
+    {{ 'component-facets.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+    {%- if is_sidebar -%}
+      <div class="col-md-3">
+    {% endif %}
+    <div class="{% if is_sidebar %} js-stick-parent {% else %} container {% endif %}" id="main-collection-filters" data-id="{{ section.id }}">
+      {%- if is_sidebar -%}
+      {% render 'facets-sidebar', results: collection, enable_filtering: section.settings.enable_filtering, enable_sorting: section.settings.enable_sorting, collapse_on_larger_devices: section.settings.collapse_on_larger_devices %}
+      {%- else -%}
+      {% render 'facets', results: collection, enable_filtering: section.settings.enable_filtering, enable_sorting: section.settings.enable_sorting, collapse_on_larger_devices: section.settings.collapse_on_larger_devices %}
+      {%- endif -%}
+      
+    </div>
+    {%- if is_sidebar -%}
+      </div>
+    {% endif %}
+  {%- endif -%}
+  {%- if is_sidebar -%}
+    <div class="col-md-9">
+  {% endif %}
+  <div id="ProductGridContainer">
+    {%- paginate collection.products by section.settings.products_per_page -%}
+      {%- if collection.products.size == 0 -%}
+        <div class="collection collection--empty {{section.settings.collection_width}}" id="product-grid" data-id="{{ section.id }}">
+          <div class="loading-overlay gradient"></div>
+          <div class="title-wrapper text-center">
+            <h2 class="title title--primary h3">
+              {{ 'sections.collection_template.empty' | t }}<br>
+              {{ 'sections.collection_template.use_fewer_filters_html' | t: link: collection.url, class: "underlined-link link" }}
+            </h2>
+          </div>
+        </div>
+      {%- else -%}
+        <div class="collection {{section.settings.collection_width}}">
+          <div class="loading-overlay gradient"></div>
+  
+          <ul id="product-grid" data-id="{{ section.id }}" class="
+            grid grid--2-col product-grid row
+            {% if collection.products_count < 4 %} grid--{{ collection.products_count }}-col-tablet{% else %}
+              {% if collection.products_count == 4 %} grid--4-col-desktop{% else %} grid--3-col-tablet grid--one-third-max grid--4-col-desktop grid--quarter-max{% endif %}
+            {% endif %}">
+            {%- for product in collection.products -%}
+              {% assign lazy_load = false %}
+              {%- if forloop.index > 2 -%}
+                {%- assign lazy_load = true -%}
+              {%- endif -%}
+
+              <li class="grid__item {{gridProduct}}">
+                {%- include 'product-card', product: product -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+  
+          {%- if paginate.pages > 1 -%}
+            {% render 'pagination', paginate: paginate, anchor: '' %}
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+  {%- if is_sidebar -%}
+        </div>
+      </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Collection OS 2.0",
+  "class": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "collection_width",
+      "label": "Set Width Collection",
+      "default": "container",
+      "options": [
+        {
+          "value": "container",
+          "label": "Container"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Container Fluid"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 8,
+      "max": 24,
+      "step": 4,
+      "default": 16,
+      "label": "Products per page"
+    },
+    {
+      "type": "select",
+      "id": "collection_perrow",
+      "label": "Products per row",
+      "default": "3",
+      "options": [
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Filter"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_filtering",
+      "default": true,
+      "label": "Enable filtering",
+      "info": "Customize [filters](/admin/menus)"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sorting",
+      "default": true,
+      "label": "Enable sorting"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_filtering_sidebar",
+      "default": false,
+      "label": "Display filter with left"
+    },
+    {
+      "type": "checkbox",
+      "id": "collapse_on_larger_devices",
+      "default": false,
+      "label": "Collapse on desktop"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_color",
+      "default": true,
+      "label": "Enable Color Filter"
+    },
+    {
+      "type": "select",
+      "id": "style_color",
+      "label": "Style Color Filter",
+      "default": "color_list",
+      "options": [
+        {
+          "value": "color_list",
+          "label": "List Color"
+        },
+        {
+          "value": "color_grid",
+          "label": "Grid Color"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

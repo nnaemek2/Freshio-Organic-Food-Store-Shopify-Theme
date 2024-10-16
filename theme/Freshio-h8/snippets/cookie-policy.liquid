@@ -1,0 +1,19 @@
+{%- if settings.cookie_enable -%}
+<!-- cookie-policy.liquid -->
+<style>
+  .js-cookie-policy{display:none;position:fixed;width:100%;bottom:0;left:0;z-index:99;background:#101010;padding:15px 0;color:#999}.js-cookie-policy a{color:#fff;text-decoration:underline}.js-btn-ok{padding:6px 30px;font-size: 12px;}
+</style>
+<div class="js-cookie-policy">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 col-sm-8 col-md-9 col-lg-10">
+        {{settings.cookie_message}}
+        {%- if settings.cookie_url != blank and settings.cookie_url_text != blank  -%}
+        <a href="{{settings.cookie_url}}" target="_blank">{{settings.cookie_url_text}}</a>
+        {%- endif -%}
+      </div>
+      <div class="col"><button class="btn btn-theme js-btn-ok">{{settings.cookie_ok}}</button></div>
+    </div>
+  </div>
+</div>
+{%- endif -%}

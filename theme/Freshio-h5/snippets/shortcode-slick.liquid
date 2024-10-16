@@ -1,0 +1,27 @@
+{% capture slick %}{% include 'shortcode-render' render:'action' %}{% endcapture %}
+{% capture title %}{% include 'shortcode-render' render:'title' %}{% endcapture %}
+{% capture columns_product %}{% include 'shortcode-render' render:'columns' %}{% endcapture %}
+{% capture row_product %}{% include 'shortcode-render' render:'row' %}{% endcapture %}
+{% capture id %}{% include 'shortcode-render' render:'id' %}{% endcapture %}
+{% capture procarouselId %}procarousel-{{ 'now' | date: "%N" }}{% endcapture %}
+{% if id == '' %}
+{% capture slideID %}slide-{{ 'now' | date: "%N" }}{% endcapture %}
+{% assign id = slideID %}
+{% endif %}
+{% assign columns_product = columns_product | plus: 0 %}
+{% assign product_in_list = product_in_list | plus: 0 %}
+{% if interval == '' %}{% assign interval = 5000 %}{% endif %}
+{% case  slick%}
+{% when 'new slick slider' %}
+<div id="{{ id }}" class="js-slick-carousel">
+  <h4>{{ title }}</h4>
+  <div class="slick_content" data-section-id=sc-slick-{{id}} data-section-type="slickCarousels" data-column="{{columns_product}}" data-row="{{ row_product }}" data-dots="true">
+    {% when 'end slick slider' %}
+  </div>
+</div>
+{% when 'new item slick' %}
+<div class="item">
+  {% when 'end item slick' %}           
+</div>
+{% else %}
+{% endcase %}

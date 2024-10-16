@@ -1,0 +1,15 @@
+<div class="block-html">
+  {%- if settings[ap_html_title] != blank -%}
+  <div class="menu-title">{{ settings[ap_html_title] }}</div>
+  {%- endif -%}
+  <div class="widget-inner">
+    {%- if settings[ap_html_eimg] -%}
+    <div class="box-image">
+      <img class="lazyload" data-src="{{ settings[ap_html_img] | img_url:'1170x' }}" alt="{{settings[ap_html_title]}}"/>
+    </div>
+    {%- endif -%}
+    {%- if settings[ap_html_des] != blank -%}
+    {{ settings[ap_html_des] }}
+    {%- endif -%}
+  </div>
+</div>

@@ -1,0 +1,631 @@
+<!-- service.liquid -->
+
+<style>
+  .customstyle{{ section.id }}{
+    position: relative;
+    z-index: {{section.settings.zindex}};
+    background-position:{{section.settings.e_pos}} !important;
+    background-repeat:{{ section.settings.e_repeat }} !important;
+    background-size:{{ section.settings.e_size }} !important;
+  }
+  .media .iconx8 i, .media .iconx8 .icon,.media .iconx8 [class^=icon-]{
+    width: {{section.settings.width_icon}}px;
+    height:{{section.settings.width_icon}}px;
+    font-size:{{section.settings.width_icon}}px;
+  }
+  .media .iconx8 svg{
+    width: {{section.settings.width_icon}}px;
+    height:{{section.settings.width_icon}}px;
+  }
+  {%- if section.settings.layout == 'style-3' -%}
+  @media (min-width: 991px){
+      .block-sv3 .services-wrapper{
+        padding: 0 90px;
+      }
+      .block-sv3 .services-slider{
+        margin:0 -45px;
+      }
+      .block-sv3 .services-item{
+        padding:0 45px;
+      }
+    }
+  {%- endif -%}
+  {%- if section.settings.layout == 'style-4' -%}
+  .service-4{
+    align-items: center;
+  }
+  @media (min-width: 991px){
+      .service-4:before{
+        content: "";
+      background: rgba(0,0,0,.1);
+      width: 60px;
+      height: 1px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 25px;
+      }
+  }
+  {%- endif -%}
+  {%- if section.settings.effect  -%}
+  .customstyle{{ section.id }} .effect-column-underline:after{
+    position: absolute;
+    content: '';
+    display: block;
+    width: 50%;
+    height: 3px;
+    opacity: 0;
+    bottom: 0;
+    background-color: var(--g-color-heading);
+    transition: all .3s ease;
+  }
+  .customstyle{{ section.id }} .effect-column-underline:hover:after{
+    width: 100%;
+    opacity: 1;
+  }
+  
+  {%- endif -%}
+  .customstyle{{ section.id }} .media{
+    padding:{{section.settings.padding-item}};
+  }
+  @media (max-width: 749px){
+    .customstyle{{ section.id }} .media{
+      padding:{{section.settings.padding-itemmobile}};
+    }
+  }
+</style>
+<div class="customstyle{{ section.id }} {% if section.settings.layout == 'style-3' %} block-sv3 {% endif %} {% if section.settings.image_bg != blank %} lazyload {% endif %}" data-aos="{{section.settings.animation}}"
+style="{% if section.settings.image_bg != blank %}background-image:url({%- include 'srcBlank' -%}){% endif %}"  
+data-section-id="{{ section.id }}"  data-bg="{{ section.settings.image_bg | img_url:"1920x" }}" >
+  {%- include 'style-section' -%}
+<div class="{{ section.settings.setwidth }}">
+  <div class="section-block section-inner">
+    {%- include 'section-heading' -%}
+    {% assign e_left =  section.settings.e_lefthtml  %}
+    <div class="services-wrapper dots-negative {% if e_left %} row {% endif %}">
+      {% if e_left %}
+        <div class="col-lg-4 col-12 mb-5 mb-lg-0">
+          {{ section.settings.left_blockhtml }}
+        </div>
+      {% endif %}
+      {% assign carousel =  section.settings.enable_carousel %}
+      {% if e_left %}
+        <div class="col-lg-8 col-12">
+      {% endif %}
+      <div class="services-slider row mb-0" id="service-list-{{ section.id }}"
+           data-rows="{{section.settings.rows}}"
+           data-slidesToShow="{{section.blocks.size}}"
+           data-slidestoscroll="{{section.blocks.size}}"
+           data-arrows="{{ section.settings.arrows }}"
+           data-dots="{{ section.settings.dots }}" 
+           data-draggable="{{ section.settings.draggable }}" 
+           data-infinite="{{ section.settings.infinite }}" 
+           data-section-id="{{ section.id }}" 
+           {% if carousel %}
+           data-section-type="slickCarousels"
+           {% endif %}>
+        {%- for block in section.blocks -%}
+        <div class=" {% if carousel %}  col {% else %} col-12 col-lg mb-4 mb-lg-0 {% endif %} services-item carousel__slide-wrapper--{{block.id}}" {{ block.shopify_attributes }}>
+          {%- case section.settings.layout -%}
+          {%- when 'style-1' -%}
+          <div class="media service-1 text-left {% if section.settings.effect  %} effect-column-underline {% endif %} position-relative" style="background-color:{{block.settings.bgblock}};">
+            {%- if block.settings.type_icon == 'font' -%}
+            <div class=" mr-4 iconx8" style="color:{{section.settings.iconcolor}};">
+              {{block.settings.icon | default:'[[ Icon ]]'}}
+            </div>
+            {%- else -%}
+            <div class="mr-4" style="width: {{section.settings.width_icon}}px">
+              {%- if block.settings.image != blank -%}
+              <img src="{%- include 'srcBlank' -%}" 
+                class="lazyload image-content__image transition" 
+                data-src="{{block.settings.image | img_url : '120x'}}" 
+                src="{{ img_url | img_url: '1x1' }}"
+                data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                data-sizes="auto" />
+              {%- else -%}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+            </div>
+            {%- endif -%}
+            <div class="media-body">
+              <h6 class="mt-0 mb-2 h4" style="color:{{section.settings.titlecolor}};">{{block.settings.title}}</h6>
+              <div style="color:{{section.settings.subcolor}};">{{block.settings.description}}</div>
+            </div>
+          </div>
+          {%- when 'style-2' -%}
+          <div class="media service-2 text-center {% if section.settings.effect  %} effect-column-underline {% endif %} position-relative">
+            <div class="media-body py-4" style="background-color:{{block.settings.bgblock}};">
+              {%- if block.settings.type_icon == 'font' -%}
+              <div class=" mb-4 iconx8" style="color:{{section.settings.iconcolor}};">
+                {{block.settings.icon | default:'[[ Icon ]]'}}
+              </div>
+              {%- else -%}
+              <div class="mb-4 mx-auto" style="width: {{section.settings.width_icon}}px">
+                {%- if block.settings.image != blank -%}
+                <img src="{%- include 'srcBlank' -%}" 
+                  class="lazyload image-content__image transition" 
+                  data-src="{{block.settings.image | img_url : '120x'}}" 
+                  src="{{ img_url | img_url: '1x1' }}"
+                  data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                  data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                  data-sizes="auto" />
+                {%- else -%}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+              </div>
+              {%- endif -%}
+                <h6 class="mt-0 mb-4 h4 text-uppercase" style="color:{{section.settings.titlecolor}};">{{block.settings.title}}</h6>
+              <div style="color:{{section.settings.subcolor}};">{{block.settings.description}}</div>
+            </div>
+          </div>
+          {%- when 'style-3' -%}
+          <div class="media service-3 text-center {% if section.settings.effect  %} effect-column-underline {% endif %} position-relative">
+              <div class="media-body py-3" style="background-color:{{block.settings.bgblock}};">
+                <div class="py-4">
+                  {%- if block.settings.type_icon == 'font' -%}
+                  <div class=" mb-4 iconx8" style="color:{{section.settings.iconcolor}};">
+                    {{block.settings.icon | default:'[[ Icon ]]'}}
+                  </div>
+                  {%- else -%}
+                  <div class="mb-4 mx-auto" style="width: {{section.settings.width_icon}}px">
+                    {%- if block.settings.image != blank -%}
+                    <img src="{%- include 'srcBlank' -%}" 
+                      class="lazyload image-content__image transition" 
+                      data-src="{{block.settings.image | img_url : '120x'}}" 
+                      src="{{ img_url | img_url: '1x1' }}"
+                      data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                      data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                      data-sizes="auto" />
+                    {%- else -%}
+                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {%- endif -%}
+                  </div>
+                  {%- endif -%}
+                  <h6 class="mt-0 mb-2 h4 text-uppercase" style="color:{{section.settings.titlecolor}};">{{block.settings.title}}</h6>
+                <div style="color:{{section.settings.subcolor}};">{{block.settings.description}}</div>
+              </div>
+            </div>
+          </div>
+          {%- when 'style-4' -%}
+          <div class="media service-1 service-4 text-left {% if section.settings.effect  %} effect-column-underline {% endif %} position-relative" style="background-color:{{block.settings.bgblock}};">
+            {%- if block.settings.type_icon == 'font' -%}
+              <div class=" mr-4 iconx8" style="color:{{section.settings.iconcolor}};">
+                {{block.settings.icon | default:'[[ Icon ]]'}}
+              </div>
+              {%- else -%}
+              <div class="mr-4" style="width: {{section.settings.width_icon}}px">
+                {%- if block.settings.image != blank -%}
+                <img src="{%- include 'srcBlank' -%}" 
+                  class="lazyload image-content__image transition" 
+                  data-src="{{block.settings.image | img_url : '120x'}}" 
+                  src="{{ img_url | img_url: '1x1' }}"
+                  data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                  data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                  data-sizes="auto" />
+                {%- else -%}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+              </div>
+              {%- endif -%}
+            <div class="media-body">
+              <h6 class="mt-0 mb-2 h4" style="color:{{section.settings.titlecolor}};">{{block.settings.title}}</h6>
+              <div style="color:{{section.settings.subcolor}};">{{block.settings.description}}</div>
+            </div>
+          </div>
+          {%- when 'style-5' -%}
+          <div class="media rounded p-4 service-1 text-left {% if section.settings.effect  %} effect-column-underline {% endif %} position-relative" style="background-color:{{block.settings.bgblock}};">
+            {%- if block.settings.type_icon == 'font' -%}
+            <div class=" mr-4 iconx8" style="color:{{section.settings.iconcolor}};">
+              {{block.settings.icon | default:'[[ Icon ]]'}}
+            </div>
+            {%- else -%}
+            <div class="mr-4" style="width: {{section.settings.width_icon}}px">
+              {%- if block.settings.image != blank -%}
+              <img src="{%- include 'srcBlank' -%}" 
+                class="lazyload image-content__image transition" 
+                data-src="{{block.settings.image | img_url : '120x'}}" 
+                src="{{ img_url | img_url: '1x1' }}"
+                data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                data-sizes="auto" />
+              {%- else -%}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+            </div>
+            {%- endif -%}
+            <div class="media-body">
+              <h6 class="mt-0 mb-2 h4" style="color:{{section.settings.titlecolor}};">{{block.settings.title}}</h6>
+              <div style="color:{{section.settings.subcolor}};">{{block.settings.description}}</div>
+            </div>
+          </div>
+          {%- endcase -%}
+        </div>
+        {%- endfor -%}
+      </div>
+      {% if e_left %}
+        </div>
+      {% endif %}
+    </div>
+    {%- if section.blocks.size == 0 -%}
+    {%- include 'no-blocks' -%}
+    {%- endif -%}
+  </div>
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "Services",
+  "class": "index-section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "select",
+      "id": "animation",
+      "options": [
+        { "value": "", "label": "None"},
+        { "value": "fade", "label": "Fade"},
+        { "value": "fade-up", "label": "Fade Up"},
+        { "value": "fade-down", "label": "Fade Down"},
+        { "value": "fade-left", "label": "Fade Left"},
+        { "value": "fade-right", "label": "Fade Right"},
+        { "value": "fade-up-right", "label": "Fade Up Right"},
+        { "value": "fade-up-left", "label": "Fade Up Left"},
+        { "value": "fade-down-right", "label": "Fade Down Right"},
+        { "value": "fade-down-left", "label": "Fade Down Left"},
+        { "value": "flip-up", "label": "Flip Up"},
+        { "value": "flip-down", "label": "Flip Down"},
+        { "value": "flip-left", "label": "Flip Left"},
+        { "value": "flip-right", "label": "Flip Right"},
+        { "value": "slide-up", "label": "Slide Up"},
+        { "value": "slide-down", "label": "Slide Down"},
+        { "value": "slide-left", "label": "Slide Left"},
+        { "value": "slide-right", "label": "Slide Right"},
+        { "value": "zoom-in", "label": "Zoom In"},
+        { "value": "zoom-in-up", "label": "Zoom In Up"},
+        { "value": "zoom-in-down", "label": "Zoom In Down"},
+        { "value": "zoom-in-left", "label": "Zoom In Left"},
+        { "value": "zoom-in-right", "label": "Zoom In Right"},
+        { "value": "zoom-out", "label": "Zoom Out"},
+        { "value": "zoom-out-up", "label": "Zoom Out Up"},
+        { "value": "zoom-out-down", "label": "Zoom Out Down"},
+        { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+        { "value": "zoom-out-right", "label": "Zoom Out Right"}
+      ],
+      "label": "Select Animation"
+    },
+    {
+      "type": "text",
+      "id": "paddingsection",
+      "label": "Padding Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "paddingmobile",
+      "label": "Padding Section Mobile",
+      "default": "60px 0px 60px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginsection",
+      "label": "Margin Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginmobile",
+      "label": "Margin Mobile",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "select",
+      "id": "setwidth",
+      "label": "Full Width",
+      "default": "container",
+      "options": [
+        {
+          "value": "container",
+          "label": "Box"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Container Fluid"
+        },
+        {
+          "value": "full",
+          "label": "Full"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bgsection",
+        "label": "Background Section",
+        "default": "#fefefe"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_bg",
+      "label": "Background image"
+    },
+    {
+      "type": "select",
+      "id": "e_size",
+      "label": "Background Size",
+      "default": "auto",
+      "options": [
+        {
+          "value": "auto",
+          "label": "Auto"
+        },
+        {
+          "value": "cover",
+          "label": "Cover"
+        },
+        {
+          "value": "contain",
+          "label": "Contain"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "e_repeat",
+      "label": "Backgroudn Repeat",
+      "default": "no-repeat",
+      "options": [
+        {
+          "value": "no-repeat",
+          "label": "No-repeat"
+        },
+        {
+          "value": "repeat",
+          "label": "Repeat"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "e_pos",
+      "label": "Backgroudn Position",
+      "default": "center center",
+      "options": [
+        {
+          "value": "center center",
+          "label": "Center"
+        },
+        {
+          "value": "top center",
+          "label": "Top Center"
+        },
+        {
+          "value": "bottom center",
+          "label": "Bottom Center"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_inner",
+      "label": "Enable Padding Inner",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "effect",
+      "label": "Enable Hover",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "bg_inner",
+        "label": "Background Inner",
+        "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "padding-item",
+      "label": "Padding Items",
+      "default": "0px 0px 0px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "padding-itemmobile",
+      "label": "Padding Items Mobile",
+      "default": "0px 0px 0px 0px",
+      "info": "Padding Mobile: Top Right Bottom Left"
+    },
+    {
+      "type": "color",
+      "id": "iconcolor",
+        "label": "Icon Color",
+        "default": "#222222"
+    },
+    {
+      "type": "color",
+      "id": "titlecolor",
+        "label": "Title Color",
+        "default": "#222222"
+    },
+    {
+      "type": "color",
+      "id": "subcolor",
+        "label": "Sub Title Color",
+        "default": "#999999"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Style",
+      "default": "style-1",
+      "options": [
+        {
+          "value": "style-1",
+          "label": "Style 1"
+        },
+        {
+          "value": "style-2",
+          "label": "Style 2"
+        },
+        {
+          "value": "style-3",
+          "label": "Style 3"
+        },
+        {
+          "value": "style-4",
+          "label": "Style 4"
+        },
+        {
+          "value": "style-5",
+          "label": "Style 5"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "title_top",
+      "label": "Sub Title Top",
+      "default": "Sub Title Top"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Service"
+    },
+    {
+      "type": "textarea",
+      "id": "des",
+      "label": "HTML / Description"
+    },
+    {
+      "type": "checkbox",
+      "id": "e_lefthtml",
+      "label": "Enable Left Block",
+      "default": false
+    },
+    {
+      "type": "textarea",
+      "id": "left_blockhtml",
+      "label": "Block Left HTML"
+    },
+    {
+      "type": "range",
+      "id": "width_icon",
+      "min": 32,
+      "max": 148,
+      "step": 2,
+      "unit": "px",
+      "label": "Width Icon",
+      "default": 62
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_carousel",
+      "label": "Enable Carousel",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "arrows",
+      "label": "Arrows",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "draggable",
+      "label": "Draggable",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "dots",
+      "label": "Dots",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "infinite",
+      "label": "Infinite",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "service",
+      "name": "Service",
+      "settings": [
+        {
+          "type": "color",
+          "id": "bgblock",
+            "label": "Background Block",
+            "default": "#f1f1f1"
+        },
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Title",
+          "default": "Service heading"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "HTML / Description",
+          "default": "Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.",
+		  "info":"💡 [HTML Buider.](https:\/\/ap2020.myshopify.com\/pages\/html-builder)"
+        },
+        {
+          "type": "radio",
+          "id": "type_icon",
+          "label": "Type Icon",
+          "options": [
+            {
+              "value": "font",
+              "label": "Font or SVG"
+            },
+            {
+              "value": "image",
+              "label": "Image"
+            }
+          ],
+          "default": "font"
+        },
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon",
+		      "info":"💡 [SVG Icon.](https:\/\/ap2020.myshopify.com\/pages\/html-builder#html-icon)"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "-- Image Icon"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Services",
+      "category": "Text",
+      "blocks": [
+        {
+          "type": "service"
+        },
+        {
+          "type": "service"
+        },
+        {
+          "type": "service"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

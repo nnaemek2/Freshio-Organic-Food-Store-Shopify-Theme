@@ -1,0 +1,21 @@
+{%- capture current -%}{%- cycle 1, 2, 3, 4, 5, 6 -%}{%- endcapture -%}
+{%- assign collectionTitle = featured_collection.title | default: 'Collection title' -%}
+<div class="collection-card-1 text-center col-12 p-0 {% if template != "index" %} col-lg-4 {% endif %}" {{ block.shopify_attributes }}>
+  <div class="collection-card__image overflow-hidden">
+    <a class="hv-image-saturate" href="{{featured_collection.url | default :'#'}}">
+      {%- if featured_image != blank -%}
+      <img class="lazyload transition" src="{%- include 'srcBlank' -%}" data-srcset="{{ featured_image | img_url: '800x'}}">
+      {%- elsif featured_collection.image != blank -%}
+      <img class="lazyload transition" src="{%- include 'srcBlank' -%}" data-srcset="{{ featured_collection.image | img_url: '800x'}}">
+      {%- else -%}
+      {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </a>
+  </div>
+  <h4 class="pt-3 m-0">
+    <a class="text-theme text-uppercase" href="{{featured_collection.url | default :'#'}}">
+      {{ collectionTitle }}
+    </a>
+  </h4>
+  <p class="pb-5">{{ featured_collection.products_count | default: 0 }} {{ featured_collection.products_count | pluralize: 'product', 'products' }}</p>
+</div>

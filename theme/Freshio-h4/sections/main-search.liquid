@@ -1,0 +1,89 @@
+<style>
+    .section-header__item{
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: end;
+      -ms-flex-align: end;
+      align-items: flex-end;
+    }
+    .section-header{
+      margin-bottom:30px;
+    }
+    .page-and-article{
+      padding:20px 0;
+    }
+  </style>
+  <!-- search.liquid  -->
+  {%- paginate search.results by 20 -%}
+  <div class="container">
+    <header class="row section-header small--text-center">
+      <div class="col-md-9 section-header__item">
+        <h1 class="section-header__title h3">{{ 'general.search.title' | t }}</h1>
+  
+      </div>
+      <div class="col-md-3 section-header__item">
+        {%- if search.performed -%}
+        <p class="section-header__subtext">{{ 'general.search.results_count_html' | t: count: search.results_count, terms: search.terms }}</p>
+        {%- endif -%}
+      </div>
+    </header> 
+  
+    {%- if search.performed -%}
+  
+    {%- assign product_count = 0 -%}
+    {%- assign page_count = 0 -%}
+    {%- for item in search.results -%}
+    {%- if item.object_type == 'product' -%}
+    {%- assign product_count = product_count | plus: 1 -%}
+    {%- else -%}
+    {%- assign page_count = page_count | plus: 1 -%}
+    {%- endif -%}
+    {%- endfor -%}
+  
+    {%- if product_count > 0 -%}
+    <h2 class="h4 small--text-center hide">{{ 'general.search.products' | t }}</h2>
+  
+    <div class="row">
+      {%- for item in search.results -%}
+      {%- if item.object_type == 'product' -%}
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        {%- include 'product-card', product: item -%}
+      </div>
+      {%- endif -%}
+      {%- endfor -%}
+    </div>
+    {%- endif -%}
+  
+    {%- if product_count and page_count -%}
+    <hr>
+    {%- endif -%}
+  
+    {%- if page_count > 0 -%}
+    <h4 class="small--text-center">{{ 'general.search.pages_and_articles' | t }}</h4>
+  
+    <div class="page-and-article">
+      <div class="row">
+        {%- for item in search.results -%}
+        {%- unless item.object_type == 'product' -%}
+        <div class="col-sm-6 col-md-4 content-block__item">
+          <h5>{{ item.title | link_to: item.url }}</h5>
+          <div class="rte">{{ item.content | strip_html | truncate: 150 }}</div>
+          <p><a href="{{ item.url }}"><strong>{{ 'general.search.read_more' | t }}</strong></a></p>
+        </div>
+        {%- endunless -%}
+        {%- endfor -%}
+      </div>
+    </div>
+    {%- endif -%}
+  
+    {%- if paginate.pages > 1 -%}
+    <div class="pagination">
+      {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
+    </div>
+    {%- endif -%}
+  
+    {%- endif -%}
+  </div>
+  {%- endpaginate -%}
+  

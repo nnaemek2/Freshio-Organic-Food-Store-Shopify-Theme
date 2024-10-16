@@ -1,0 +1,20 @@
+{%- if product.metafields.info.upsell != blank -%}
+{%- assign upsellHandle = product.metafields.info.upsell | strip -%}
+{%- assign productUpsell = all_products[upsellHandle] -%}
+
+<div class="modal fade" id="jsUpsell" role="dialog" aria-hidden="true" data-delay="{{settings.upsell_time | times:1000}}" data-id="{{productUpsell.selected_or_first_available_variant.id}}">
+  <div class="modal-dialog modal-dialog--upsell modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">{%- include 'icon-close' -%}</button>
+      </div>
+      <div class="modal-body p-4 pb-5">
+        <p class="upsell-promotion">{{product.metafields.info.promotion}}</p>
+        <div class="upsell-image"><img class="lazyload" data-src="{{productUpsell.featured_image.src | img_url: '300x'}}" /></div>
+        <button class="btn btn-theme gradient-theme js-btn-accept">{{settings.upsell_accept}}</button>
+        <button class="btn btn-theme btn-decline ml-md-2 mt-2 mt-md-0">{{settings.upsell_decline}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+{%- endif -%}

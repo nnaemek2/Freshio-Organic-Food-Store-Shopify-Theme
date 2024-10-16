@@ -1,0 +1,12 @@
+{%- if template != 'index' -%}
+<!-- loading.liquid -->
+<style>
+  .js-loading{display:none}.loading_site{z-index:999;background:rgba(255,255,255,.97);border:1px solid rgba(0,0,0,.15);position:fixed;top:0;left:0;width:100%;height:100%;overflow:hidden;padding:0;border-radius:3px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
+</style>
+<!-- Use id #js-loading to overwrite CSS {display:none} in javascript or specific page -->
+<div id="js-loading" class="js-loading">
+  <div  class="loading_site">
+    <div class="spinner-{{settings.loading}}" role="status"></div>
+  </div>
+</div>
+{%- endif -%}

@@ -1,0 +1,206 @@
+<!-- image-content-3.liquid -->
+<style>
+    .contentimg-right .contentimg3-des{
+            padding-right: 130px;
+            position: relative;
+            z-index: 1;
+    }
+    .contentimg-left .contentimg3-des{
+            padding-left: 130px;
+            position: relative;
+            z-index: 1;
+    }
+    {%- if section.settings.enable_subbg -%}
+    .imgblock{
+        padding-bottom: 175px;
+    }
+    {%- endif -%}
+    .imgblock .imgblock-bg{
+        content: "";
+        height: 350px;
+        background-color: #F4F1EB;
+        width: 115%;
+        bottom: 0px;
+        right:110px;
+        position: absolute;
+    }
+    .contentimg-left .imgblock .imgblock-bg{
+        left: 110px;
+        right: auto;
+    }
+    @media only screen and (max-width: 991px){
+      .contentimg-right .contentimg3-des{
+            padding-right: 0px;
+      }
+      .contentimg-left .contentimg3-des{
+              padding-left: 0px;
+      }
+    }
+</style>
+<div class="customstyle{{ section.id }} contentimg3 {% if section.settings.leftimage %} contentimg-left {% else %} contentimg-right {% endif %}" >
+    {%- include 'style-section' -%}
+  <div class="container">
+    <div class="section-block">
+      <div class="row d-flex justify-content-center m-0">
+          <div class="col-12 col-lg-6 p-0 col-left" data-aos="{{section.settings.animation}}" data-aos-duration="{%- if section.settings.leftimage -%} 1200 {%- else -%} 500 {%- endif -%}">
+            {%- if section.settings.des != blank -%}
+                <div class="contentimg3-des">
+                    {{section.settings.des}}
+                </div>
+            {%- endif -%}
+          </div>
+          <div class="col-12 col-lg-6 p-0 {% if section.settings.leftimage %} order-first {% endif %} col-right">
+            {%- if section.settings.image != blank -%}
+                <div class="position-relative imgblock">
+                    {%- if section.settings.enable_subbg-%}
+                    <div class="imgblock-bg"  data-aos="{{section.settings.animation}}" data-aos-duration="{%- if section.settings.leftimage -%} 800 {%- else -%} 1500 {%- endif -%}" style="background:{{section.settings.bgimage}}"></div>
+                    {%- endif -%}
+                    <div class="image-content__image-wrapper" style="padding-top:{{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100}}%;"  data-aos="{{section.settings.animation}}" data-aos-duration="{%- if section.settings.leftimage -%} 500 {%- else -%} 1200 {%- endif -%}">
+                        {% assign img_url = section.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                        <a href="{{section.settings.linkimg}}">
+                          <img class="image-content__image lazyload"
+                              src="{{ section.settings.image | img_url: '300x300' }}"
+                              data-src="{{ img_url }}"
+                              data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                              data-aspectratio="{{ section.settings.image.aspect_ratio }}"
+                              data-sizes="auto"
+                              alt="{{ section.settings.image.alt | escape }}">
+                        </a>
+                    </div>
+                </div>
+            {%- else -%}
+              <div class="position-relative imgblock">
+                  <div class="image-content__image" style="position: relative;z-index: 10;">
+                      {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                  </div>
+                  {%- if section.settings.enable_subbg -%}
+                      <div class="imgblock-bg"  data-aos="{{section.settings.animation}}" data-aos-duration="{%- if section.settings.leftimage -%} 800 {%- else -%} 1500 {%- endif -%}" style="background:{{section.settings.bgimage}}"></div>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+          </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+  
+  {% schema %}
+  {
+    "name": "Image with text Style 3",
+    "class": "index-section",
+    "settings": [
+    {
+      "type": "select",
+      "id": "animation",
+      "options": [
+        { "value": "", "label": "None"},
+        { "value": "fade", "label": "Fade"},
+        { "value": "fade-up", "label": "Fade Up"},
+        { "value": "fade-down", "label": "Fade Down"},
+        { "value": "fade-left", "label": "Fade Left"},
+        { "value": "fade-right", "label": "Fade Right"},
+        { "value": "fade-up-right", "label": "Fade Up Right"},
+        { "value": "fade-up-left", "label": "Fade Up Left"},
+        { "value": "fade-down-right", "label": "Fade Down Right"},
+        { "value": "fade-down-left", "label": "Fade Down Left"},
+        { "value": "flip-up", "label": "Flip Up"},
+        { "value": "flip-down", "label": "Flip Down"},
+        { "value": "flip-left", "label": "Flip Left"},
+        { "value": "flip-right", "label": "Flip Right"},
+        { "value": "slide-up", "label": "Slide Up"},
+        { "value": "slide-down", "label": "Slide Down"},
+        { "value": "slide-left", "label": "Slide Left"},
+        { "value": "slide-right", "label": "Slide Right"},
+        { "value": "zoom-in", "label": "Zoom In"},
+        { "value": "zoom-in-up", "label": "Zoom In Up"},
+        { "value": "zoom-in-down", "label": "Zoom In Down"},
+        { "value": "zoom-in-left", "label": "Zoom In Left"},
+        { "value": "zoom-in-right", "label": "Zoom In Right"},
+        { "value": "zoom-out", "label": "Zoom Out"},
+        { "value": "zoom-out-up", "label": "Zoom Out Up"},
+        { "value": "zoom-out-down", "label": "Zoom Out Down"},
+        { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+        { "value": "zoom-out-right", "label": "Zoom Out Right"}
+      ],
+      "label": "Select Animation"
+    },
+    {
+      "type": "text",
+      "id": "paddingsection",
+      "label": "Padding Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "paddingmobile",
+      "label": "Padding Section Mobile",
+      "default": "60px 0px 60px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginsection",
+      "label": "Margin Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginmobile",
+      "label": "Margin Mobile",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "color",
+      "id": "bgsection",
+        "label": "Background Section",
+        "default": "#fefefe"
+    },
+    
+    {
+        "type": "textarea",
+        "id": "des",
+        "label": "HTML / Description",
+        "default":"HTML / Description"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "id": "linkimg",
+        "type": "url",
+        "label": "Link Image"
+      },
+      {
+        "type": "color",
+        "id": "bgimage",
+          "label": "Background Image",
+          "default": "#F4F1EB"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_subbg",
+        "label": "Enable Sub Background",
+        "default":true
+      }
+      ,
+      {
+        "type": "checkbox",
+        "id": "leftimage",
+        "label": "Enable Left Image"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image with text Style 3",
+        "category": "Image"
+      }
+    ]
+  }
+  {% endschema %}
+  

@@ -1,0 +1,420 @@
+<!-- featured-collections.liquid -->
+<style>
+  .collection-card__image .hv-image-saturate{
+    position: relative;
+    padding-bottom: 100%;
+    display: block;
+    overflow: hidden;
+    border-radius: 50%;
+    transition: all .3s;
+  }
+  .hv-image-saturate .placeholder-svg{
+    position: absolute;
+    top:0;
+    left:0;
+  }
+  .collection-card__image .hv-image-saturate img{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.0) !important;
+  }
+  .collection-card__image .hv-image-saturate:before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    right: 0;
+    background: linear-gradient(0deg,rgba(0,0,0,.8) 0%,rgba(0,0,0,.8) 0%,rgba(0,0,0,0) 100%); 
+    transition: all .4s;
+    border-radius: 100%;
+    opacity: 1;
+    z-index: 1;
+  }
+  .product-cat-caption{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .product-cat-caption svg{
+    position: absolute;
+    opacity: 0;
+    fill: var(--g-main);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all .4s;
+  }
+  .cat-title{
+    z-index: 1;
+    transform: translateY(0px);
+    transition: transform .3s;
+  }
+  .cat-title-heading{
+    position: relative;
+    font-weight: 400;
+  }
+  .cat-title-heading:before{
+    width: 0px;
+    height: 1px;
+    background-color: #fff;
+    content: "";
+    margin: 0 auto;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    transition: all .4s;
+  }
+  .cat-title-item{
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all .3s;
+  }
+  .collection-card__image:hover .hv-image-saturate{
+    transform: scale(.85);
+  }
+  .collection-card__image:hover .product-cat-caption svg{
+    opacity: 1;
+  }
+  .collection-card__image:hover  .cat-title-heading:before{
+    width: 50px;
+  }
+  .collection-card__image:hover .cat-title-item{
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  .collection-card__image:hover .cat-title{
+    transform: translateY(-16px);
+  }
+</style>
+<div class="customstyle{{ section.id }}" data-aos="{{section.settings.animation}}"  >
+{%- include 'style-section' -%}
+  <div class="{{ section.settings.setwidth }}">
+    <div class="section-block  section-inner">
+      {%- include 'section-heading' -%}
+      <div class="collectionlist-wrapper">
+        <div class="collectionlist-slider row mb-0 pb-4 pb-lg-0" id="collection-list-{{ section.id }}"
+            data-rows="{{section.settings.rows}}"
+            data-slidesToShow="{{section.blocks.size}}"
+            data-slidestoscroll="1"
+            data-arrows="{{ section.settings.arrows }}"
+            data-dots="{{ section.settings.dots }}" 
+            data-draggable="{{ section.settings.draggable }}" 
+            data-infinite="{{ section.settings.infinite }}" 
+            data-section-id="{{ section.id }}" 
+            data-section-type="slickCarousels">
+          {%- for block in section.blocks -%}
+          <div class="col collectionlist-item carousel__slide-wrapper--{{block.id}}" {{ block.shopify_attributes }} >
+            {%- assign featured_collection = collections[block.settings.collection] -%}
+            {%- assign featured_image = block.settings.image -%}
+            <div>
+              {%- capture current -%}{%- cycle 1, 2, 3, 4, 5, 6 -%}{%- endcapture -%}
+                {%- assign collectionTitle = featured_collection.title | default: 'Collection title' -%}
+                <div class="collection-card-1 text-center col-12 p-0 {% if template != "index" %} col-lg-4 {% endif %}" {{ block.shopify_attributes }}>
+                  <div class="collection-card__image overflow-hidden">
+                    <a class="hv-image-saturate" href="{{featured_collection.url | default :'#'}}" >
+                      {%- if featured_image != blank -%}
+                      <img class="lazyload transition" src="{%- include 'srcBlank' -%}" data-srcset="{{ featured_image | img_url: '800x'}}">
+                      {%- elsif featured_collection.image != blank -%}
+                      <img class="lazyload transition" src="{%- include 'srcBlank' -%}" data-srcset="{{ featured_collection.image | img_url: '800x'}}">
+                      {%- else -%}
+                      {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                      {%- endif -%}
+                    </a>
+                    <div class="product-cat-caption position-absolute d-flex align-items-center flex-column justify-content-end pb-2">
+                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 190 190" style="enable-background:new 0 0 190 190;" xml:space="preserve"><g>
+                        <g>
+                        <path d="M189.7,87.6c-0.3-4.1-0.9-8.1-1.7-12.1c-2.4-11.5-6.8-22.2-13.1-32c-0.4-0.7-0.9-1.4-1.4-2c-0.4-0.6-0.9-1.3-1.3-1.9 c-0.5-0.7-1-1.3-1.5-2c-0.5-0.6-0.9-1.2-1.4-1.8c-0.5-0.6-1-1.3-1.6-1.9c-0.5-0.6-0.9-1.3-1.5-1.7c-0.7-0.5-1.1-1.2-1.6-1.8 c-0.2-0.2-0.4-0.3-0.5-0.4c-0.4,0.2-0.8,0.3-1.2,0.5c-0.6,0.3-1,0.1-1.4-0.3c-0.3-0.3-0.5-0.7-0.5-1.1c0-1-0.3-1.8-1.2-2.4 c-0.3-0.2-0.3-0.4-0.2-0.8c0-0.1,0.1-0.3,0.1-0.4c-0.3-0.3-0.4-0.6-0.8-0.6c-0.2,0.2-0.3,0.4-0.4,0.6c-0.1-0.1-0.2-0.1-0.3-0.1 c-0.6-0.8-1.2-1.6-2-2.3c-0.1-0.1-0.1-0.1-0.1-0.2c0-0.8-0.7-1.1-1.1-1.5c-3.7-3-7.6-5.7-11.7-8.1c-1.1-0.6-2.2-1.2-3.3-1.9 c-0.4-0.2-0.7-0.3-1.2-0.2c-0.4,0.1-0.8,0.1-1.2,0.2c-0.4,0.1-0.8,0.3-1.2,0.4c-0.3-0.8,0.1-1.6-0.2-2.4c-4-1.9-8.1-3.6-12.5-5 c-0.4,0.8-1,0.9-1.8,0.6c0-0.2-0.1-0.4-0.1-0.6c-0.1-0.2-0.1-0.5-0.2-0.7c-2.1-0.7-3.3-1-4.2-1c-0.2,0.3-0.3,0.7-0.5,1.1 c-0.6,1.3-1.5,2.2-2.8,2.8c-0.6,0.3-0.7,0.2-1.3-0.3c0.5-0.8,0.9-1.6,2-1.7c0.1,0,0.2-0.1,0.2-0.1c0.4-0.3,0.4-0.8,0-1.1
+                              c-0.3-0.2-0.5-0.2-0.8-0.1c-0.7,0.4-1.4,0.7-2.2,1.1c-0.2,0.1-0.5,0.2-0.8,0.3c-0.7-0.8-0.4-1.6,0.1-2.3c-0.2-0.2-0.3-0.4-0.4-0.6 c-1.1,0.4-1.6,1.1-1.5,2.2c0,0.3,0,0.6,0,1c-0.4,0.3-0.7,0.6-1,0.9c-0.1,0.1-0.3,0.3-0.2,0.4c2.4,0.5,4.8,1,7.2,1.5
+                              c0.2,0,0.5,0.2,0.7,0.1c0.7-0.4,1.3-0.1,1.8,0.3c0.5,0.4,1.1,0.6,1.7,0.7c0.7,0.2,1.3,0.4,2,0.6c28.9,9.1,52,32.3,59.9,62.7 c1.5,5.6,2.4,11.3,2.8,17.1c0.3,4.2,0.2,8.5-0.1,12.7c-0.2,2.9-0.6,5.8-1.1,8.6c-1.6,8.6-4.3,16.8-8.3,24.6
+                              c-1.2,2.3-2.5,4.6-3.8,6.8c-0.1,0.2-0.2,0.4-0.3,0.5c0,0.2,0.1,0.4,0.2,0.7c-0.4,0.3-0.9,0.6-1.3,0.9c-0.4,0.4-0.6,0.9-0.9,1.3 c0,0.1,0,0.2,0,0.2c0.6,1.3,0,1.7-1,2c-0.1,0-0.2,0-0.2,0.1c-0.4,0.1-0.7,0.3-1,0.7c-0.2,0.3-0.4,0.5-0.6,0.8
+                              c-9.4,12.2-21.1,21.5-35.3,27.7c-6.2,2.7-12.7,4.7-19.3,5.9c-2.6,0.5-5.2,0.9-7.9,1.1c-1.3,0.1-2.7,0.2-4,0.3c-3,0.2-6,0.2-9,0 c-1.3-0.1-2.6-0.2-3.9-0.2c-0.1,0.2-0.2,0.4-0.3,0.7c-0.1,0.3-0.2,0.5-0.3,0.8c-0.1,0.3-0.4,0.5-0.7,0.3c-0.5-0.2-1-0.4-1.6-0.7
+                              c0.1-0.5,0.5-1,0-1.4c-0.4-0.1-0.9-0.2-1.4-0.2c-1.6-0.3-3.3-0.5-4.9-0.8c-5.5-1.1-10.9-2.8-16.1-4.9c-0.4-0.2-0.7-0.4-1.2-0.3 c-0.1,0-0.2-0.1-0.3-0.1c-0.3-0.5-0.8-0.5-1.2-0.7c-4.1-1.8-8-4-11.8-6.4c0,0,0,0,0,0c-0.3-0.2-0.6-0.5-1-0.6
+                              c-0.4-0.1-0.9-0.1-1.3-0.2c-0.1-0.7-0.1-0.7-0.6-1.1c-0.2-0.1-0.3-0.2-0.5-0.3c-11.8-8.4-21.1-19-27.8-31.8 c-3.6-6.9-6.2-14.2-7.9-21.8c-0.1-0.4-0.1-0.7-0.4-1c-0.2,0-0.4-0.1-0.6-0.1c-0.2,0-0.5,0-0.6,0c-0.5,0.7-1,1.4-1.5,2
+                              c-0.6,0.6-1.3,1-1.9,1.5c0.4,2,1,3.9,1.6,5.9c0.1,0.2,0.3,0.3,0.5,0.5c-0.1,0.8-0.1,0.8,0.1,1.7c2.3,6.9,5.3,13.4,9.1,19.6 c0.1,0.2,0.3,0.5,0.5,0.7c0.3-0.2,0.5-0.4,0.7-0.5c0.5-0.2,0.9,0,0.9,0.6c0.1,0.7,0,1.5-0.3,2.2c0.5,0.7,1,1.5,1.4,2.2
+                              c8.8,12.5,20,22.3,33.5,29.4c8.1,4.3,16.6,7.3,25.6,9.1c2.9,0.6,5.8,1,8.7,1.4c1.3,0.2,2.5,0.2,3.8,0.3c0.3,0,0.6,0,0.8-0.2 c0.6-0.5,1.3-0.6,2-0.9c0.2-0.1,0.4-0.1,0.6,0.1c0,0.3-0.1,0.7-0.2,1.1c1.1,0.2,2.2,0.1,3.2,0.1c1.1,0,2.1,0,3.2,0
+                              c1.1,0,2.1-0.2,3.1-0.2c0.8-1.3,1.3-2.8,2.2-4c0.6,0.4,0.9,0.7,1,1.1c0.1,0.3,0.2,0.7,0.2,1.1c0.1,0.6-0.4,1.1-0.7,1.6 c0.4,0,0.8,0,1.1,0c1.5-0.2,3.1-0.4,4.6-0.6c0.3,0,0.6,0,0.8-0.1c0.3-0.1,0.5-0.4,0.7-0.6c0.3,0.4,0.6,0.5,1,0.3
+                              c0.5-0.1,1-0.2,1.6-0.3c6.8-1.4,13.4-3.5,19.7-6.3c17.2-7.7,30.9-19.6,41.2-35.4c2.4-3.7,4.5-7.6,6.3-11.6 c0.2-0.4,0.3-0.8,0.2-1.3c-0.1-0.6,0.1-1.3,0.7-1.7c0.5-0.3,0.7-0.8,0.9-1.2c3.9-9.6,6.1-19.5,6.8-29.8
+                              C190.1,96.4,190,92,189.7,87.6z M122.3,7.7c-0.4,0-0.8,0-1.2-0.1c-0.5-0.1-0.6-0.7-0.4-1.1c0.1-0.1,0.1-0.2,0.2-0.3 c0.1-0.1,0.3-0.2,0.4-0.2c0.7,0.4,1.2,1,1.7,1.5C122.8,7.8,122.5,7.7,122.3,7.7z M124.9,5.9c-0.1,0.1-0.3,0.2-0.4,0.2
+                              c-0.4,0-0.7-0.2-0.7-0.7c0.4,0,0.8-0.1,1.1-0.1C125.2,5.6,125.1,5.7,124.9,5.9z M4,120.1c-0.2,0-0.4-0.1-0.4-0.3 c0-0.3,0.1-0.5,0.5-0.5c0.1,0.1,0.3,0.2,0.3,0.3C4.5,119.9,4.3,120.1,4,120.1z M4.7,117.2c-0.2,0-0.4-0.1-0.4-0.3
+                              c0-0.1,0.1-0.3,0.1-0.3c0.3,0,0.6,0.2,0.6,0.4C5,117,4.8,117.2,4.7,117.2z M8.2,131.5c-0.1-0.6,0.2-1,0.5-1.3 c0.1-0.1,0.3-0.2,0.4-0.2c0.6,0.1,1.1,0.3,1.5,0.8C9.8,131.1,9,131.4,8.2,131.5z M20.6,152.5c0-0.1-0.2-0.2-0.1-0.3
+                              c0.2-0.4,0.5-0.5,0.9-0.6c0.1,0,0.2,0.2,0.2,0.2C21.4,152.2,21,152.5,20.6,152.5z M46.2,171.6c-0.1,0.1-0.2,0.1-0.3,0.1 c-0.1,0-0.2-0.1-0.2-0.2c-0.1-0.4,0.2-0.7,0.4-1c0.2-0.2,0.4-0.3,0.7-0.2C46.8,170.8,46.5,171.2,46.2,171.6z M48.5,173.8
+                              c-0.3-0.2-0.4-0.5-0.6-1.6c1-0.1,1.3,0.2,1.8,1.6C49.3,174,48.9,174,48.5,173.8z M69.7,184.4c-0.3,0.3-0.7,0.6-1.5,0.9 c0-0.2-0.1-0.4,0-0.6c0.1-0.5,0.1-0.9,0-1.4c-0.2-0.7-0.1-0.9,0.6-1.7c0.6,0.4,0.9,0.9,1.2,1.4C70.2,183.6,70.1,184,69.7,184.4z
+                               M89.7,187.6c-0.1,0.3-0.2,0.4-0.5,0.4c-0.3,0-0.5-0.1-0.6-0.3c-0.4-0.6-0.2-1.2,0.5-2C89.8,186.3,89.9,186.9,89.7,187.6z M135,179.8c-0.2,0.2-0.5,0.2-0.7,0c-0.2-0.3-0.4-0.9-0.5-2c0.3,0,0.4,0,0.6,0.1C135.6,178.2,135.8,178.8,135,179.8z M178.5,132.7
+                              c0.6-0.5,0.7-0.5,1,0c0.1,0.1,0.2,0.3,0.2,0.4c0,0.1,0,0.2,0.1,0.3c-0.1,0.1-0.3,0.3-0.5,0.4C178.8,133.6,178.6,133.2,178.5,132.7 z M179.7,135.3c-0.1,0-0.3-0.1-0.3-0.2c-0.1-0.2,0.2-0.4,0.7-0.4c0,0.1,0.2,0.2,0.2,0.3C180.2,135.2,180,135.3,179.7,135.3z
+                               M181.6,128.9c0,0.5,0.1,1-0.3,1.4c-0.1,0-0.2,0-0.3-0.1c-1.3-1-1.2-1.8,0.5-2.7C181.8,128,181.6,128.5,181.6,128.9z M182.5,123.5 c-0.5,0.1-0.8,0.1-1.1-0.3c0.3-0.8,1.2-2.1,2.1-2.7C183.8,121.9,183,122.7,182.5,123.5z M183.9,120.2c-0.1-0.1-0.2-0.2-0.2-0.2
+                              c0.1-0.1,0.2-0.3,0.4-0.4c0,0,0.2,0.1,0.2,0.2C184.2,119.9,184.1,120,183.9,120.2z M3.9,111.2c-0.1-0.1-0.3-0.2-0.4-0.2 c-0.2-0.1-0.4-0.1-0.6-0.2c-0.5-0.2-0.7-0.5-0.8-1c-0.2-1-0.5-2-0.7-3c-0.1-0.2-0.1-0.5-0.1-0.8c0.3,0,0.4,0,0.4,0.1
+                              c0.3,0.2,0.5,0.4,0.8,0.6c0.5,0.5,1,1,1.6,1.6c0.8,0.8,1.7,1.3,2.7,1.7c0.2-1,0.2-1-0.3-2c-0.1,0-0.3,0-0.5,0 c-1,0.3-1.7-0.1-2.2-0.9c-0.9-1.3-1-2.6-0.4-4c0.8-0.6,1.7-0.4,2.6-0.7c0-0.7-0.1-1.3-0.1-2c-0.2-0.1-0.4-0.3-0.6-0.4
+                              c-0.3-0.3-0.4-0.5-0.2-0.9C4.9,99,5,98.8,5.1,98.7c0.4-0.4,0.5-0.9,0.5-1.4c0-2.2,0.1-4.5,0.1-6.7c0.1-4,0.7-7.9,1.4-11.8 c0.1-0.6,0.2-1.1-0.1-1.7c-0.2-0.5-0.1-1,0.3-1.3C7.7,75.5,7.8,75,8,74.5c0.4-1.5,0.7-2.9,1.2-4.4C17.2,42.3,38.7,18.9,68,9.7
+                              c0.4-0.1,0.8-0.3,1-0.4c0.3-0.3-0.1-0.7,0.3-0.9c0.3,0,0.6,0,0.9,0.1c0.6,0.2,1.1,0.1,1.7,0c1.2-0.3,2.4-0.6,3.6-0.9 c3.3-0.8,6.7-1.3,10.1-1.7c1.2-0.1,2.3-0.2,3.5-0.3c3.8-0.3,7.7-0.2,11.5,0c1.5,0.1,2.9,0.3,4.4,0.4c0.5,0,0.9,0.1,1.5,0.1
+                              c0.1-0.7,0.2-1.3,0.2-1.9c0-0.1,0-0.2,0-0.4c0-1.2-0.5-1.8-1.6-2c-0.3-0.1-0.7-0.2-1.1-0.3c0.2-0.4,0.4-0.7,0.6-1.1 c-4.2-0.8-15.6-1-25.5,0.7c-12.4,2.2-24,6.5-34.7,13.2c-11,6.9-20.1,15.7-27.5,26.4C9.4,51.9,4.3,63.9,1.7,76.9
+                              C0.3,84-0.3,94.1,0.2,97.5c0.2,0,0.4,0,0.6,0.1c0.4,0.1,0.6,0.5,0.4,0.8c-0.3,0.4-0.6,0.7-0.9,1c0,0.4,0,0.8,0,1.2 c0.2,4.2,0.8,8.3,1.5,12.4c0,0.1,0.1,0.2,0.3,0.3c0.4-0.7,1.1-0.8,1.8-1.1C4.2,112,4.2,111.5,3.9,111.2z M75.3,2.9
+                              c0.6,0.2,0.9,0.6,0.9,1.4c-0.1,0.1-0.2,0.3-0.3,0.3c-0.7,0.1-1.3-0.5-1.3-1.1C74.6,3.1,74.9,2.8,75.3,2.9z M65.8,6.2 c-0.1,0.2-0.1,0.4-0.1,0.5c-0.2,0.2-0.4,0.4-0.7,0.4c-0.2,0.1-0.4,0-0.6-0.1c-0.3-0.2-0.5-0.4-0.5-0.8C64.5,6.1,65.1,6.1,65.8,6.2
+                              z M12.6,53.7c0.2-0.2,0.4-0.2,0.5,0c0.2,0.2,0.4,0.4,0.6,0.6c-0.2,0.4-0.4,0.5-0.7,0.3c-0.2-0.1-0.3-0.2-0.4-0.4 C12.5,54.1,12.5,53.9,12.6,53.7z M2.2,101.9c0.2-0.3,0.5-0.3,0.7-0.2c0.1,0,0.1,0.2,0.3,0.3c-0.1,0.2-0.2,0.4-0.3,0.4
+                              c-0.2,0.1-0.5,0.1-0.6-0.1C2.1,102.3,2.1,102,2.2,101.9z M112.8,2.6c0.1-0.4,0.2-0.7-0.2-0.8c-0.3-0.1-0.4,0.3-0.5,0.5 c0,0,0,0.1,0,0.2C112.3,2.5,112.5,2.5,112.8,2.6z"></path>
+                        </g>
+                        </g></svg>
+                        <div class="cat-title position-relative px-4">
+                          <h6 class="pb-3 m-0 cat-title-heading">
+                            <a class="text-white" href="{{featured_collection.url | default :'#'}}">
+                              {{ collectionTitle }}
+                            </a>
+                          </h6>
+                          <p class="mt-2 mb-1 text-white  cat-title-item">{{ featured_collection.products_count | default: 0 }} {{ featured_collection.products_count | pluralize: 'product', 'products' }}</p>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+          {%- endfor -%}
+        </div>
+      </div>
+      {%- if section.blocks.size == 0 -%}
+      {%- include 'no-blocks' -%}
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection list",
+  "class": "index-section",
+  "max_blocks": 6,
+  "settings": [
+  {
+    "type": "select",
+    "id": "animation",
+    "options": [
+      { "value": "", "label": "None"},
+      { "value": "fade", "label": "Fade"},
+      { "value": "fade-up", "label": "Fade Up"},
+      { "value": "fade-down", "label": "Fade Down"},
+      { "value": "fade-left", "label": "Fade Left"},
+      { "value": "fade-right", "label": "Fade Right"},
+      { "value": "fade-up-right", "label": "Fade Up Right"},
+      { "value": "fade-up-left", "label": "Fade Up Left"},
+      { "value": "fade-down-right", "label": "Fade Down Right"},
+      { "value": "fade-down-left", "label": "Fade Down Left"},
+      { "value": "flip-up", "label": "Flip Up"},
+      { "value": "flip-down", "label": "Flip Down"},
+      { "value": "flip-left", "label": "Flip Left"},
+      { "value": "flip-right", "label": "Flip Right"},
+      { "value": "slide-up", "label": "Slide Up"},
+      { "value": "slide-down", "label": "Slide Down"},
+      { "value": "slide-left", "label": "Slide Left"},
+      { "value": "slide-right", "label": "Slide Right"},
+      { "value": "zoom-in", "label": "Zoom In"},
+      { "value": "zoom-in-up", "label": "Zoom In Up"},
+      { "value": "zoom-in-down", "label": "Zoom In Down"},
+      { "value": "zoom-in-left", "label": "Zoom In Left"},
+      { "value": "zoom-in-right", "label": "Zoom In Right"},
+      { "value": "zoom-out", "label": "Zoom Out"},
+      { "value": "zoom-out-up", "label": "Zoom Out Up"},
+      { "value": "zoom-out-down", "label": "Zoom Out Down"},
+      { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+      { "value": "zoom-out-right", "label": "Zoom Out Right"}
+    ],
+    "label": "Select Animation"
+},
+{
+  "type": "text",
+  "id": "paddingsection",
+  "label": "Padding Section",
+  "default": "0px 0px 0px 0px",
+  "info": "Padding: Top Right Bottom Left"
+},
+{
+  "type": "text",
+  "id": "paddingmobile",
+  "label": "Padding Section Mobile",
+  "default": "60px 0px 60px 0px",
+  "info": "Padding: Top Right Bottom Left"
+},
+{
+  "type": "text",
+  "id": "marginsection",
+  "label": "Margin Section",
+  "default": "0px 0px 0px 0px",
+  "info": "Margin: Top Right Bottom Left"
+},
+{
+  "type": "text",
+  "id": "marginmobile",
+  "label": "Margin Mobile",
+  "default": "0px 0px 0px 0px",
+  "info": "Margin: Top Right Bottom Left"
+},
+{
+  "type": "color",
+  "id": "bgsection",
+    "label": "Background Section",
+    "default": "#fefefe"
+},
+{
+  "type": "checkbox",
+  "id": "enable_inner",
+  "label": "Enable Padding Inner",
+  "default": true
+},
+{
+  "type": "text",
+  "id": "padding_inner",
+  "label": "Padding Inner ",
+  "default": "0px 0px 0px 0px",
+  "info": "Padding: Top Right Bottom Left"
+},
+{
+  "type": "text",
+  "id": "padding_inner_mobile",
+  "label": "Padding Inner Mobile",
+  "default": "0px 0px 0px 0px",
+  "info": "Padding: Top Right Bottom Left"
+},
+{
+  "type": "color",
+  "id": "bg_inner",
+    "label": "Background Inner",
+    "default": "#ffffff"
+},
+{
+  "type": "select",
+  "id": "setwidth",
+  "label": "Full Width",
+  "default": "container",
+  "options": [
+    {
+      "value": "container",
+      "label": "Box"
+    },
+    {
+      "value": "container-fluid",
+      "label": "Container Fluid"
+    },
+    {
+      "value": "full",
+      "label": "Full"
+    }
+  ]
+},
+{
+  "type": "select",
+  "id": "sectionheading",
+  "label": "Style Heading",
+  "default": "heading-0",
+  "options": [
+    {
+      "value": "heading-0",
+      "label": "Heading 0 Border"
+    },
+    {
+      "value": "heading-1",
+      "label": "Heading 1 Center"
+    },
+    {
+      "value": "heading-2",
+      "label": "Heading 2 No Border"
+    },
+    {
+      "value": "heading-3",
+      "label": "Heading 3 Center Border"
+    },
+    {
+      "value": "heading-4",
+      "label": "Hide Heading"
+    }
+  ]
+}, 
+{
+  "type": "color",
+  "id": "dot_heading0",
+  "label": "Color Dot Heading 0, Heading 2",
+  "default": "#bac34e"
+},
+{
+  "type": "text",
+  "id": "title_top",
+  "label": "Sub Title Top",
+  "default": "Sub Title Top"
+},
+{
+  "type": "text",
+  "id": "title",
+  "label": "Title",
+  "default": "Product tab"
+},
+{
+  "type": "textarea",
+  "id": "des",
+  "label": "HTML / Description"
+},
+    {
+      "type": "checkbox",
+      "id": "arrows",
+      "label": "Arrows",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "draggable",
+      "label": "Draggable",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "dots",
+      "label": "Dots",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "infinite",
+      "label": "Infinite",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "id": "collection",
+          "type": "collection",
+          "label": "Collection"
+        },
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection list",
+      "category": "Collection",
+      "blocks": [
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

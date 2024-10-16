@@ -1,0 +1,239 @@
+<!-- layout-special-1.liquid -->
+<div class="customstyle{{ section.id }} marsonry-2columns" >
+    {%- include 'style-section' -%}
+    <div class="{{ section.settings.setwidth }}">
+      <div class="section-block">
+        {%- include 'section-heading' -%}
+        <div class="js-masonry row" data-section-id="{{ section.id }}" data-section-type="masonries" style="opacity:0">
+          <div class="grid-sizer"></div>
+          {%- for block in section.blocks -%}
+          <div class="grid-item col-lg-6 col-12" {{ block.shopify_attributes }} data-aos="{{section.settings.animation}}" >
+            {%- case block.type -%}
+              {%- when 'html' -%}
+                <div class="mb-5">
+                {{ block.settings.code }}
+              </div>
+              {%- when 'banner' -%}
+                <figure class=" hv-image-saturate text-{{block.settings.text_align}} mb-5 pb-5">
+                  {%- if block.settings.image != blank -%}
+                  <img src="{%- include 'srcBlank' -%}" class="lazyload transition img-fluid" data-src="{{block.settings.image | img_url:'960x'}}">
+                  {%- else -%}
+                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                  {%- endif -%}
+                  <figcaption class="figcaption--{{block.id}}">
+                    {%- if block.settings.description -%}
+                    {{block.settings.description}}
+                    {%- endif -%}
+                    {%- if block.settings.button_text != blank -%}
+                    <a class="btn btn-underline" href="{{block.settings.button_link}}">
+                      {{block.settings.button_text}}
+                    </a>
+                    {%- endif -%}
+                  </figcaption>		
+                </figure>
+              {%- endcase -%}
+          </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  {% schema %}
+  {
+    "name": "Masonry Layout",
+    "class": "index-section",
+    "settings": [
+    {
+        "type": "select",
+        "id": "animation",
+        "options": [
+          { "value": "", "label": "None"},
+          { "value": "fade", "label": "Fade"},
+          { "value": "fade-up", "label": "Fade Up"},
+          { "value": "fade-down", "label": "Fade Down"},
+          { "value": "fade-left", "label": "Fade Left"},
+          { "value": "fade-right", "label": "Fade Right"},
+          { "value": "fade-up-right", "label": "Fade Up Right"},
+          { "value": "fade-up-left", "label": "Fade Up Left"},
+          { "value": "fade-down-right", "label": "Fade Down Right"},
+          { "value": "fade-down-left", "label": "Fade Down Left"},
+          { "value": "flip-up", "label": "Flip Up"},
+          { "value": "flip-down", "label": "Flip Down"},
+          { "value": "flip-left", "label": "Flip Left"},
+          { "value": "flip-right", "label": "Flip Right"},
+          { "value": "slide-up", "label": "Slide Up"},
+          { "value": "slide-down", "label": "Slide Down"},
+          { "value": "slide-left", "label": "Slide Left"},
+          { "value": "slide-right", "label": "Slide Right"},
+          { "value": "zoom-in", "label": "Zoom In"},
+          { "value": "zoom-in-up", "label": "Zoom In Up"},
+          { "value": "zoom-in-down", "label": "Zoom In Down"},
+          { "value": "zoom-in-left", "label": "Zoom In Left"},
+          { "value": "zoom-in-right", "label": "Zoom In Right"},
+          { "value": "zoom-out", "label": "Zoom Out"},
+          { "value": "zoom-out-up", "label": "Zoom Out Up"},
+          { "value": "zoom-out-down", "label": "Zoom Out Down"},
+          { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+          { "value": "zoom-out-right", "label": "Zoom Out Right"}
+        ],
+        "label": "Select Animation"
+    },
+      {
+        "type": "text",
+        "id": "paddingsection",
+        "label": "Padding Section",
+        "default": "0px 0px 0px 0px",
+        "info": "Padding: Top Right Bottom Left"
+      },
+      {
+        "type": "text",
+        "id": "marginsection",
+        "label": "Margin Section",
+        "default": "0px 0px 0px 0px",
+        "info": "Margin: Top Right Bottom Left"
+      },
+      {
+        "type": "color",
+        "id": "bgsection",
+          "label": "Background Section",
+          "default": "#fefefe"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Masonry banner"
+      },
+      {
+        "type": "textarea",
+        "id": "des",
+        "label": "HTML / Description"
+      },
+      {
+          "type": "select",
+          "id": "setwidth",
+          "label": "Full Width",
+          "default": "container",
+          "options": [
+            {
+              "value": "container",
+              "label": "Box"
+            },
+            {
+              "value": "container-fluid",
+              "label": "Container Fluid"
+            },
+            {
+              "value": "full",
+              "label": "Full"
+            }
+          ]
+        }
+    ],
+    "blocks": [
+      {
+          "type": "html",
+          "name": "Custom HTML",
+          "settings": [
+           
+            {
+              "type": "textarea",
+              "id": "code",
+              "label": "HTML",
+              "default": "<h2>Use HTML to format your text so it can be easily read.</h2>This text can be used to share information about your brand with customers."
+            },
+            {
+              "type": "select",
+              "id": "align",
+              "label": "Align",
+              "default": "auto",
+              "options": [
+                {
+                  "value": "auto",
+                  "label": "Top"
+                },
+                {
+                  "value": "center",
+                  "label": "Mid"
+                },
+                {
+                  "value": "end",
+                  "label": "Bottom"
+                }
+              ]
+            }
+          ]
+        },
+      {
+        "type": "banner",
+        "name": "Banner",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "textarea",
+            "id": "description",
+            "label": "HTML / Description",
+            "default": "<h3 class='mb-2'>Banner title</h3><p>Lorem ipsum dolor sit amet</p>",
+            "info":"💡 [HTML Buider.](https:\/\/ap2020.myshopify.com\/pages\/html-builder)"
+          },
+          {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button text",
+            "default": "View more"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          },
+        {
+          "type": "select",
+          "id": "text_align",
+          "label": "Text align",
+          "default": "center",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ]
+        }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Masonry Layout",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "banner"
+          },
+          {
+            "type": "html"
+          },
+          {
+            "type": "banner"
+          },
+          {
+            "type": "banner"
+          }
+        ]
+      }
+    ]
+  }
+  {% endschema %}

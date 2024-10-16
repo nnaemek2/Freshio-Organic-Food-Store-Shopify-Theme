@@ -1,0 +1,154 @@
+{% if section.settings.pnewletter_enable %}
+<!-- pnewsletter-1.liquid  -->
+<div class="modal fade" id="jsPopupNewsletter" role="dialog" aria-hidden="true" data-delay="{{section.settings.pnewletter_time_delay}}">
+  <div class="modal-dialog modal-dialog--newsletter modal-dialog-centered" role="document">
+    <div class="modal-content modal-content--newsletter">
+      <div class="modal-header p-0">
+        <button type="button" class="close close-newsletter" data-dismiss="modal">{%- include 'icon-close' -%}</button>
+      </div>
+      <div class="modal-body p-0">
+        <div class="row m-0  {% if section.settings.image_right %}flex-lg-row-reverse {% endif %}">
+          <div class="col-lg-6 col-12 p-0 bg-newsletter"></div>
+          <div class="popup-newsletter--content d-flex  flex-column col p-4 p-lg-5 justify-content-center"> 
+            {% if section.settings.pnewletter_title != blank %}
+            <h3 class="modal-title popup-newsletter--title mb-3">
+              {{section.settings.pnewletter_title | escape}}
+            </h3>
+            {% endif %}
+            {% if section.settings.pnewletter_description != blank %}
+            <div class="popup-newsletter--description pb-4 pb-lg-5">
+              {{section.settings.pnewletter_description}}
+            </div>
+            {% endif %}
+  
+            {% form 'customer' %}
+            {{ form.errors | default_errors }}
+            {% if form.posted_successfully? %}
+            <p class="form-success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+            {% else %}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <label class="label--hidden">{{ 'general.newsletter_form.newsletter_label' | t }}</label>
+            <div class="input-group form-group">
+              <input id="popupNewsletter" type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_placeholder' | t }}" name="contact[email]" class="form-control pr-3" autocapitalize="off">
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-theme js-btnPopupNewsletter" name="commit">
+                  <span class="d-sm-inline">{{ 'general.newsletter_form.submit' | t }}</span>
+                </button>
+              </div>
+            </div> 
+            {% endif %}
+            {% endform %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  {%- style -%}
+  .bg-newsletter{
+    {% if section.settings.pnewletter_bgimage != blank %}
+    background-image:url({{section.settings.pnewletter_bgimage | img_url: '500x'}});
+    {% endif %}
+    background-color:{{section.settings.pnewletter_background}};
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .popup-newsletter--title{
+    line-height: 1.2;
+  }
+  .popup-newsletter--title,.close-newsletter,.close-newsletter:hover{
+      color:{{section.settings.pnewletter_title_cl}};
+  }
+  .popup-newsletter--description{
+      color:{{section.settings.pnewletter_description_cl}}
+  }
+  .popup-newsletter--description ul{
+      padding: 0 20px;
+  }
+  {%- endstyle -%}
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": "Popup newsletter 1",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "pnewletter_enable",
+        "label": "Enable"
+      },
+      {
+        "type": "checkbox",
+        "id": "image_right",
+        "label": "Right Image"
+      },
+      {
+        "type": "range",
+        "id": "pnewletter_time_delay",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "s",
+        "label": "Delayed popups",
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "pnewletter_time",
+        "min": 10,
+        "max": 900,
+        "step": 10,
+        "unit": "min",
+        "label": "Cookie times to show popup again",
+        "default": 20
+      },
+      {
+        "type": "header",
+        "content": "Background"
+      },
+      {
+        "type": "color",
+        "id": "pnewletter_background",
+        "label": "Color"
+      },
+      {
+        "type": "image_picker",
+        "id": "pnewletter_bgimage",
+        "label": "Image"
+      },
+      {
+        "type": "header",
+        "content": "Title"
+      },
+      {
+        "type": "text",
+        "id": "pnewletter_title",
+        "label": "Text",
+        "default": "Follow us"
+      },
+      {
+        "type": "color",
+        "id": "pnewletter_title_cl",
+        "label": "Color"
+      },
+      {
+        "type": "header",
+        "content": "Description"
+      },
+      {
+        "type": "textarea",
+        "id": "pnewletter_description",
+        "label": "Text \/ HTML codes",
+        "default": "<p>We promise we won't write to you often, only for the fun stuff.<\/p>\n<ul>\n<li>Exclusive offers<\/li>\n<li>Sales<\/li>\n<\/ul>"
+      },
+      {
+        "type": "color",
+        "id": "pnewletter_description_cl",
+        "label": "Color"
+      }
+	]
+  }
+{% endschema %}

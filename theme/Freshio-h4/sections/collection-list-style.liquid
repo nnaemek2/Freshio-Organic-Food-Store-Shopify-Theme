@@ -1,0 +1,238 @@
+
+<!-- collection list style -->
+<div class="customstyle{{ section.id }}" data-aos="{{section.settings.animation}}" >
+    {%- include 'style-section' -%}
+    <div class="block-section bgcollection-{{section.id}}" {%- if section.settings.custom_space != blank -%} style="{{ section.settings.custom_space }};background-color: {{section.settings.bg_section }}" {%- endif -%} data-section-type="bgcollection" data-section-id="{{ section.id }}">
+    <div class="block_content bgcollection-wrapper">
+        {%- case section.settings.grid -%}
+        {%- when '2' -%}
+            {%- assign grid_item_width = 'col-xs-12 col-md-6 col-sm-6' -%}
+        {%- when '3' -%}
+            {%- assign grid_item_width = 'col-xs-12 col-md-4 col-sm-4' -%}
+        {%- when '4' -%}
+            {%- assign grid_item_width = 'col-xs-12 col-md-3 col-sm-6' -%}
+        {%- when '5' -%}
+            {%- assign grid_item_width = 'col-xs-12 col-md-2-4 col-sm-4' -%}
+        {%- endcase -%}
+        <div class="colgrid" id="Bgcollection-{{ section.id }}">
+        <div class="{{ section.settings.setwidth }} h-100">
+          <div class="row h-100 d-flex align-items-center" style="z-index: 1;position: relative;">
+              {%- for block in section.blocks limit: section.blocks.size -%}
+              {%- assign collection = collections[block.settings.collection] -%}
+              {%- if block.settings.image != blank -%}
+                  {%- assign img_url = block.settings.image | img_url: image_size, crop: 'center' -%}
+              {%- else -%}
+                  {%- assign img_url = '' -%}
+              {%- endif -%}
+              <div class=" {{ grid_item_width }} colgrid-col" >
+                  <a class="colgrid__box lazyload h-100 colgrid__box-{{block.id}} " href="{%- if collection.empty? -%}#{%- else -%}{{ collection.url }}{%- endif -%}" data-index="{{ forloop.index }}" data-bgset="{% include 'bgset', image: block.settings.image %}"
+          data-sizes="auto" data-src="background-image: url({{ img_url }})" data-index="{{ forloop.index }}" >
+                    <div class="d-flex align-items-start flex-column h-100 colgrid__boxtop">
+                      <div class="mb-auto">
+                        <h3 class="colgrid__box--tit mb-1">
+                        {%- if collection.empty? -%}
+                            {{ 'homepage.onboarding.collection_title' | t }}
+                        {%- else -%}
+                            {{ collection.title }}
+                        {%- endif -%}
+                        </h3>
+                        <span class="colgrid__box--number">{{ collection.products_count }} {{ collection.products_count | pluralize: 'Item', 'Items' }}</span>
+                      </div>
+                      <span class="colgrid__box--link btn btn-theme btn-white">+ view collection</span>
+                    </div>
+                    <div class="d-flex align-items-start flex-column h-100 colgrid__boxbottom">
+                      <div class="mt-auto">
+                        <h3 class="colgrid__box--tit mb-1">
+                        {%- if collection.empty? -%}
+                            {{ 'homepage.onboarding.collection_title' | t }}
+                        {%- else -%}
+                            {{ collection.title }}
+                        {%- endif -%}
+                        </h3>
+                        <span class="colgrid__box--number">{{ collection.products_count }} {{ collection.products_count | pluralize: 'Item', 'Items' }}</span>
+                      </div>
+                    </div>
+                  </a>
+              </div>
+              {%- endfor -%}
+          </div>
+        </div>
+        <div class="colgrid__bg">
+        {%- for block in section.blocks limit: section.blocks.size -%}
+        {%- if block.settings.image != blank -%}
+                {%- assign img_url = block.settings.image | img_url: image_size, crop: 'center' -%}
+            {%- else -%}
+                {%- assign img_url = '' -%}
+            {%- endif -%}
+        <div class="colgrid__bg--full lazyload" data-bgset="{% include 'bgset', image: block.settings.image %}"
+        data-sizes="auto" data-src="background-image: url({{ img_url }})" data-index="{{ forloop.index }}"></div>
+        {%- endfor -%}
+        </div>
+        </div>
+
+        {%- if section.blocks.size == 0 -%}
+        {%- include 'no-blocks' -%}
+        {%- endif -%}
+    </div>
+    </div>
+</div>
+<style>
+  {%- for block in section.blocks limit: section.blocks.size -%}
+  .colgrid  .colgrid__box-{{block.id}}:hover{
+    background-color:{{ block.settings.bgcol | color_modify: 'alpha', 0.9 }};
+    border-color:{{ block.settings.bgcol | color_modify: 'alpha', 0.9 }}
+  }
+  {%- endfor -%}
+</style>
+{% schema %}
+{
+  "name": "Collection List Style 2",
+  "class": "index-section",
+  "max_blocks": 8,
+  "settings": [
+  {
+    "type": "select",
+    "id": "animation",
+    "options": [
+      { "value": "", "label": "None"},
+      { "value": "fade", "label": "Fade"},
+      { "value": "fade-up", "label": "Fade Up"},
+      { "value": "fade-down", "label": "Fade Down"},
+      { "value": "fade-left", "label": "Fade Left"},
+      { "value": "fade-right", "label": "Fade Right"},
+      { "value": "fade-up-right", "label": "Fade Up Right"},
+      { "value": "fade-up-left", "label": "Fade Up Left"},
+      { "value": "fade-down-right", "label": "Fade Down Right"},
+      { "value": "fade-down-left", "label": "Fade Down Left"},
+      { "value": "flip-up", "label": "Flip Up"},
+      { "value": "flip-down", "label": "Flip Down"},
+      { "value": "flip-left", "label": "Flip Left"},
+      { "value": "flip-right", "label": "Flip Right"},
+      { "value": "slide-up", "label": "Slide Up"},
+      { "value": "slide-down", "label": "Slide Down"},
+      { "value": "slide-left", "label": "Slide Left"},
+      { "value": "slide-right", "label": "Slide Right"},
+      { "value": "zoom-in", "label": "Zoom In"},
+      { "value": "zoom-in-up", "label": "Zoom In Up"},
+      { "value": "zoom-in-down", "label": "Zoom In Down"},
+      { "value": "zoom-in-left", "label": "Zoom In Left"},
+      { "value": "zoom-in-right", "label": "Zoom In Right"},
+      { "value": "zoom-out", "label": "Zoom Out"},
+      { "value": "zoom-out-up", "label": "Zoom Out Up"},
+      { "value": "zoom-out-down", "label": "Zoom Out Down"},
+      { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+      { "value": "zoom-out-right", "label": "Zoom Out Right"}
+    ],
+    "label": "Select Animation"
+},
+  {
+    "type": "text",
+    "id": "paddingsection",
+    "label": "Padding Section",
+    "default": "0px 0px 0px 0px",
+    "info": "Padding: Top Right Bottom Left"
+  },
+  {
+    "type": "text",
+    "id": "marginsection",
+    "label": "Margin Section",
+    "default": "0px 0px 0px 0px",
+    "info": "Margin: Top Right Bottom Left"
+  },
+  {
+    "type": "color",
+    "id": "bgsection",
+      "label": "Background Section",
+      "default": "#fefefe"
+  },
+  {
+    "type": "select",
+    "id": "setwidth",
+    "label": "Full Width",
+    "default": "container",
+    "options": [
+      {
+        "value": "container",
+        "label": "Box"
+      },
+      {
+        "value": "container-fluid",
+        "label": "Container Fluid"
+      },
+      {
+        "value": "full",
+        "label": "Full"
+      }
+    ]
+  },
+    {
+      "type": "select",
+      "id": "grid",
+      "label": "Collections per row",
+      "default": "3",
+      "options": [
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "5",
+          "label": "5"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured_collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "label": "Collection",
+          "id": "collection",
+          "type": "collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "color",
+          "id": "bgcol",
+          "label": "Background Collection",
+          "default": "#82c4c3"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection List Style 2",
+      "category": "Collection",
+      "settings": {
+        "grid": "3"
+      },
+      "blocks": [
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

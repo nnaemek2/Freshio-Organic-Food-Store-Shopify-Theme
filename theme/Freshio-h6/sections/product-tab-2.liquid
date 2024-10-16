@@ -1,0 +1,270 @@
+<!-- product-tab-2.liquid  -->
+<div class="customstyle{{ section.id }} p-tab2"  data-aos="{{section.settings.animation}}" >
+  {%- include 'style-section' -%}
+  <div class="{{ section.settings.setwidth }}">
+    <div class="section-block">
+     
+      <div id="producttabs-{{ section.id }}" data-section-id="{{ section.id }}" >
+          <div class="row">
+              <div class="col-lg-6 col-12 text-left">
+                  {%- include 'section-heading' -%}
+              </div>
+              <div class="col-lg-6 col-12 d-flex justify-content-lg-end">
+                  <ul class="nav nav-tabs nav-tabs-1 mt-n3 mb-4 font-weight-bold text-right" role="tablist">
+                      {%- for block in section.blocks -%}
+                      <li class="nav-item">
+                        <a class="nav-link nav-link-{{block.id}} {% if forloop.first %}active{% endif %}" data-toggle="tab" href="#prdtab2-{{block.id}}" role="tab" {{ block.shopify_attributes }}>
+                          {{block.settings.title}}
+                        </a>
+                      </li>
+                      {%- endfor -%}
+                  </ul>
+              </div>
+          </div>
+
+        <div class="tab-content">
+          {%- for block in section.blocks -%}
+          {%- assign collection = collections[block.settings.collection]  -%}
+          {%- assign limit = section.settings.limit -%}
+          <div class="tab-pane fade {% if forloop.first %}show active{% endif %}" id="prdtab2-{{block.id}}" role="tabpanel">
+            <div class="prdtab-content row">
+              {%- if collection != blank -%}
+                  <div class="col-lg-6 col-12">
+                      {%- if block.settings.image != blank -%}
+                      <div class="image-content__image-container mb-4 mb-lg-0">
+                          <div class="image-content__image-wrapper" style="padding-top:{{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100}}%;">
+                              {% assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                              <img class="image-content__image lazyload"
+                                  src="{{ block.settings.image | img_url: '300x300' }}"
+                                  data-src="{{ img_url }}"
+                                  data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                                  data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                                  data-sizes="auto"
+                                  alt="{{ block.settings.image.alt | escape }}">
+                              {%- if block.settings.title != blank -%}
+                                  <div class="p-4 position-absolute p-tab2--text text-{{block.settings.aligntext}} w-100">
+                                      <h3><a href="{{collection.url}}" style="color:{{block.settings.colortabimage}}">{{block.settings.title}}</a></h4>
+                                      <a href="{{collection.url}}" style="color:{{block.settings.colortabimage}}">{{ collection.products_count | default: 0 }} {{ collection.products_count | pluralize: 'product', 'products' }}</a>
+                                  </div>
+                                  
+                              {%- endif -%}
+                          </div>
+                      </div>
+                      {%- else -%}
+                          <div class="image-content__image">
+                              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                          </div>
+                      {%- endif -%}
+                  </div>
+                  <div class="col-lg-6 col-12">
+                      <div class="row">
+                          {%- for product in collection.products limit: limit -%}
+                              <div class="col-6">
+                                  <div class="producttab-item " data-scroll data-scroll-speed="1">
+                                      {%- include 'product-card', product: product -%}
+                                  </div>
+                              </div>
+                          {%- endfor -%}
+                      </div>
+                  </div>
+                  
+              {%- else -%}
+                  <div class="col-6">
+                      {%- if block.settings.image == blank -%}
+                      <div class="image-content__image">
+                          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                      </div>
+                      {%- endif -%}
+                  </div>
+                  <div class="col-lg-6 col-12">
+                      <div class="row">
+                          {%- for i in (1..limit) -%}
+                              <div class="col-6">
+                                  <div class="producttab-item">
+                                      {%- include 'product-grid-blank' -%}
+                                  </div>
+                              </div>
+                          {%- endfor -%}
+                      </div>
+                  </div>
+                  
+              {%- endif -%}
+            </div>
+          </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Product tab 2",
+  "class": "index-section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "select",
+      "id": "animation",
+      "options": [
+        { "value": "", "label": "None"},
+        { "value": "fade", "label": "Fade"},
+        { "value": "fade-up", "label": "Fade Up"},
+        { "value": "fade-down", "label": "Fade Down"},
+        { "value": "fade-left", "label": "Fade Left"},
+        { "value": "fade-right", "label": "Fade Right"},
+        { "value": "fade-up-right", "label": "Fade Up Right"},
+        { "value": "fade-up-left", "label": "Fade Up Left"},
+        { "value": "fade-down-right", "label": "Fade Down Right"},
+        { "value": "fade-down-left", "label": "Fade Down Left"},
+        { "value": "flip-up", "label": "Flip Up"},
+        { "value": "flip-down", "label": "Flip Down"},
+        { "value": "flip-left", "label": "Flip Left"},
+        { "value": "flip-right", "label": "Flip Right"},
+        { "value": "slide-up", "label": "Slide Up"},
+        { "value": "slide-down", "label": "Slide Down"},
+        { "value": "slide-left", "label": "Slide Left"},
+        { "value": "slide-right", "label": "Slide Right"},
+        { "value": "zoom-in", "label": "Zoom In"},
+        { "value": "zoom-in-up", "label": "Zoom In Up"},
+        { "value": "zoom-in-down", "label": "Zoom In Down"},
+        { "value": "zoom-in-left", "label": "Zoom In Left"},
+        { "value": "zoom-in-right", "label": "Zoom In Right"},
+        { "value": "zoom-out", "label": "Zoom Out"},
+        { "value": "zoom-out-up", "label": "Zoom Out Up"},
+        { "value": "zoom-out-down", "label": "Zoom Out Down"},
+        { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+        { "value": "zoom-out-right", "label": "Zoom Out Right"}
+      ],
+      "label": "Select Animation"
+  },
+    {
+      "type": "text",
+      "id": "paddingsection",
+      "label": "Padding Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginsection",
+      "label": "Margin Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "color",
+      "id": "bgsection",
+        "label": "Background Section",
+        "default": "#fefefe"
+    },
+    {
+      "type": "select",
+      "id": "setwidth",
+      "label": "Full Width",
+      "default": "container",
+      "options": [
+        {
+          "value": "container",
+          "label": "Box"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Container Fluid"
+        },
+        {
+          "value": "full",
+          "label": "Full"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Product tab"
+    },
+    {
+      "type": "textarea",
+      "id": "des",
+      "label": "HTML / Description"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "Limit items",
+      "default":4
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Title tab"
+        },
+        {
+          "label": "Collection",
+          "id": "collection",
+          "type": "collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "color",
+          "id": "colortabimage",
+            "label": "Color Text on Image",
+            "default": "#fefefe"
+        },
+        {
+          "type": "select",
+          "id": "aligntext",
+          "label": "Align Text",
+          "default": "left",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product tab 2",
+      "category": "Collection",
+      "blocks": [
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

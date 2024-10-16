@@ -1,0 +1,289 @@
+<!-- lookbook-carousel.liquid -->
+<style>
+  .template-page .index-section,.template-page .slick-slider{margin:0}.main-content{padding:0}.breadcrumb{display:none}
+  .lookbooks-wrapper .slick-dots{
+    bottom: 30px;
+  }
+  .lookbook__slide .position-relative img{ width: 100%;}
+</style>
+<div class="customstyle{{ section.id }}" data-aos="{{section.settings.animation}}" >
+  <div class="{{ section.settings.setwidth }}">
+    {%- include 'style-section' -%}
+  <div class="section-block" >
+    {%- include 'section-heading' -%}
+    {%- if section.blocks.size > 0 -%}
+    <div class="lookbooks-wrapper">
+      <div class="lookbooks-slider m-0" id="Lookbooks-{{ section.id }}" 
+          data-rows="{{section.settings.rows}}"
+          data-slidesToShow="1"
+          data-slidestoscroll="1"
+          data-arrows="{{ section.settings.arrows }}"
+          data-dots="{{ section.settings.dots }}" 
+          data-draggable="{{ section.settings.draggable }}" 
+          data-infinite="{{ section.settings.infinite }}" 
+          data-section-id="{{ section.id }}" 
+          data-section-type="slickCarousels">
+        {%- for block in section.blocks -%}
+        {%- assign productLookbook = all_products[block.settings.product] -%}
+        <div class="lookbook__slide carousel__slide-wrapper--{{ block.id }}" style="background:{{section.settings.background}}" {{ block.shopify_attributes }}>
+          <div class="row no-gutters">
+            <div class="col-md-8 col-lg-9">
+              <div class="position-relative image-content__image-wrapper" style="padding-top:{{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100}}%;">
+                {%- if block.settings.image != blank -%}
+                <img src="{%- include 'srcBlank' -%}" 
+                  class="lazyload image-content__image" 
+                  data-src="{{block.settings.image | img_url : '1500x'}}" 
+                  src="{{ img_url | img_url: '1x1' }}"
+                  data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                  data-aspectratio="{{ product.featured_image.aspect_ratio }}"
+                  data-sizes="auto" />
+                {%- else -%}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+                <a cla data-handle="{{productLookbook.handle}}" style="left:{{block.settings.left}}%;top:{{block.settings.top}}%" class="position-absolute js-btn-quickview" data-toggle="modal" data-target="#jsQuickview" data-pavailable="{% if productLookbook.available %}true{% else %}false{% endif %}">
+                  <span data-tooltip="true" title="{{productLookbook.title}}" class="lookbook__dot" style="background:{{block.settings.dot_color}}"></span>
+                  {% if productLookbook.metafields.info.shortdesc != blank %}
+                  <span class=" txt-short hide" >
+                    {{productLookbook.metafields.info.shortdesc | strip_html | truncatewords: 8 }}
+                  </span>
+                {%- endif -%}
+                </a>
+                {%- if block.settings.instagram != blank -%}
+                <a class="lookbook__instagram text-hover-theme text-white" href="{{block.settings.instagram}}">{%- include 'icon-instagram' -%}</a>
+                {%- endif -%}
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-3 d-none d-md-block">
+              <div class="d-flex w-100 h-100 justify-content-center align-items-center p-5">
+                {%- if productLookbook != blank -%}
+                {%- include 'product-card', product: productLookbook -%}
+                {%- else -%}
+                {%- include 'product-grid-blank' -%}
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        </div>
+        {%- endfor -%}
+      </div>
+    </div>
+    {%- endif -%}
+    {%- if section.blocks.size == 0 -%}
+    {%- include 'no-blocks' -%}
+    {%- endif -%}
+  </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Lookbook carousel",
+  "class": "index-section m-0",
+  "max_blocks": 20,
+  "settings": [
+    {
+      "type": "select",
+      "id": "animation",
+      "options": [
+        { "value": "", "label": "None"},
+        { "value": "fade", "label": "Fade"},
+        { "value": "fade-up", "label": "Fade Up"},
+        { "value": "fade-down", "label": "Fade Down"},
+        { "value": "fade-left", "label": "Fade Left"},
+        { "value": "fade-right", "label": "Fade Right"},
+        { "value": "fade-up-right", "label": "Fade Up Right"},
+        { "value": "fade-up-left", "label": "Fade Up Left"},
+        { "value": "fade-down-right", "label": "Fade Down Right"},
+        { "value": "fade-down-left", "label": "Fade Down Left"},
+        { "value": "flip-up", "label": "Flip Up"},
+        { "value": "flip-down", "label": "Flip Down"},
+        { "value": "flip-left", "label": "Flip Left"},
+        { "value": "flip-right", "label": "Flip Right"},
+        { "value": "slide-up", "label": "Slide Up"},
+        { "value": "slide-down", "label": "Slide Down"},
+        { "value": "slide-left", "label": "Slide Left"},
+        { "value": "slide-right", "label": "Slide Right"},
+        { "value": "zoom-in", "label": "Zoom In"},
+        { "value": "zoom-in-up", "label": "Zoom In Up"},
+        { "value": "zoom-in-down", "label": "Zoom In Down"},
+        { "value": "zoom-in-left", "label": "Zoom In Left"},
+        { "value": "zoom-in-right", "label": "Zoom In Right"},
+        { "value": "zoom-out", "label": "Zoom Out"},
+        { "value": "zoom-out-up", "label": "Zoom Out Up"},
+        { "value": "zoom-out-down", "label": "Zoom Out Down"},
+        { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+        { "value": "zoom-out-right", "label": "Zoom Out Right"}
+      ],
+      "label": "Select Animation"
+  },
+    {
+      "type": "text",
+      "id": "paddingsection",
+      "label": "Padding Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "paddingmobile",
+      "label": "Padding Section Mobile",
+      "default": "60px 0px 60px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginsection",
+      "label": "Margin Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginmobile",
+      "label": "Margin Mobile",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "color",
+      "id": "bgsection",
+        "label": "Background Section",
+        "default": "#fefefe"
+    },
+    {
+      "type": "text",
+      "id": "title_top",
+      "label": "Sub Title Top",
+      "default": "Sub Title Top"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Lookbook"
+    },
+    {
+      "type": "textarea",
+      "id": "des",
+      "label": "HTML / Description"
+    },
+    {
+      "type": "select",
+      "id": "setwidth",
+      "label": "Full Width",
+      "default": "container",
+      "options": [
+        {
+          "value": "container",
+          "label": "Box"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Container Fluid"
+        },
+        {
+          "value": "full",
+          "label": "Full"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background Product",
+      "default": "#f6f6f6"
+    },
+    {
+      "type": "checkbox",
+      "id": "arrows",
+      "label": "Arrows",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "draggable",
+      "label": "Draggable",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "dots",
+      "label": "Dots",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "infinite",
+      "label": "Infinite",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "lookbook",
+      "name": "Lookbook",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "instagram",
+          "label": "Instagram link",
+		  "default": "https://instagram.com"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "header",
+          "content": "Dot"
+        },
+        {
+          "type": "color",
+          "id": "dot_color",
+          "label": "Color",
+      	  "default": "#E65252"
+        },
+        {
+          "type": "range",
+          "id": "left",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position - from left",
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "top",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position - from top",
+          "default": 50
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lookbook",
+      "category": "Text",
+      "blocks": [
+        {
+          "type": "lookbook"
+        },
+        {
+          "type": "lookbook"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

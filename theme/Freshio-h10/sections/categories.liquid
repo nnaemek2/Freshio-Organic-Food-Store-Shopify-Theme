@@ -1,0 +1,355 @@
+<!-- categories.liquid -->
+<div  class="customstyle{{ section.id }}">
+    {%- include 'style-section' -%}
+<div class="{{ section.settings.setwidth }}">
+  <div class="section-block section-inner">
+    {%- include 'section-heading' -%}
+    <div class="category-wrapper dots-negative">
+      {% assign carousel =  section.settings.enable_carousel %}
+      {%- if section.settings.rows == '2' -%}
+      {%- assign slidesToShow = section.blocks.size | divided_by:2 -%}
+      {%- else -%}
+      {%- assign slidesToShow = section.blocks.size -%}
+      {%- endif -%}
+      <div class="category-slider row mb-0" id="collection-list-{{ section.id }}"
+           data-rows="1"
+           data-slidesToShow="{{slidesToShow}}"
+           data-slidestoscroll="1"
+           data-arrows="{{ section.settings.arrows }}"
+           data-dots="{{ section.settings.dots }}" 
+           data-draggable="{{ section.settings.draggable }}" 
+           data-infinite="{{ section.settings.infinite }}" 
+           data-section-id="{{ section.id }}" 
+           {% if carousel %}
+           data-section-type="slickCarousels"
+           {% endif %}>
+        {%- for block in section.blocks -%}
+        <div class="{% if carousel %}  col {% else %} col-12 col-lg {% endif %} p-lg-0 category-item carousel__slide-wrapper--{{block.id}}" {{ block.shopify_attributes }}>
+          
+          <div class="category-item-image {% if block.settings.image != blank %} lazyload {% endif %} " 
+          style="{% if block.settings.image != blank %}background-image:url({%- include 'srcBlank' -%}){% endif %}"
+          data-bg="{{ block.settings.image | img_url:"1920x" }}" >
+          {%- if block.settings.image == blank -%}
+          <div class="placeholder-background">
+            {%- capture current -%}{%- cycle 1, 2 -%}{%- endcapture -%}
+            {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+          {%- endif -%}
+            {% if block.settings.title !=blank %}
+            <h4 class="text-capitalize my-3 h6" style="color:{{section.settings.title_cl}}">
+                {{block.settings.title | default:"Title"}}
+            </h4>
+            {% endif %}
+            
+            {% if block.settings.linklist !=blank %}
+            <ul class="category-item-list list--no-bullets">
+                {%- for link in linklists[block.settings.linklist].links -%}
+                <li>
+                <a href="{{link.url}}" title="{{link.title}}" style="color:{{section.settings.list_cl}}">
+                    {{link.title | default:"Link"}}
+                </a>
+                </li>
+                {% endfor %}
+            </ul>
+            {%- else -%}
+            <ul class="category-item-list list--no-bullets">
+              <li>
+                <a href="#"  style="color:{{section.settings.list_cl}}">link menu</a>
+              </li>
+            </ul>
+            {% endif %}
+          </div>
+        </div>
+        {%- endfor -%}
+      </div>
+    </div>
+    {%- if section.blocks.size == 0 -%}
+    {%- include 'no-blocks' -%}
+    {%- endif -%}
+  </div>
+</div>
+</div>
+
+<style>
+    
+    @media (min-width:768px){
+      .category-slider{
+          margin: 0 calc(0px - var(--g-gutter));
+      }
+      .category-item:not(:last-child){
+        border-right: 1px solid #e2e2e2;
+      }
+    }
+    .category-item-image{
+        background-position: bottom right;
+        background-repeat: no-repeat;
+        padding:0px 0 100px 30px;
+    }
+  .category-item-list li{position:relative;padding: 4px 0 4px 20px;}
+  .category-item-list li:before{content:"\e904";position:absolute;left:0;top:8px;font-family: icomoon!important;color: var(--g-main);font-size: 10px;}
+  .category-item-list a:hover{color:var(--color-accent-hover) !important; }
+</style>
+
+{% schema %}
+{
+  "name": "Categories",
+  "class": "index-section",
+  "max_blocks": 20,
+  "settings": [
+  {
+    "type": "select",
+    "id": "animation",
+    "options": [
+        { "value": "", "label": "None"},
+        { "value": "fade", "label": "Fade"},
+        { "value": "fade-up", "label": "Fade Up"},
+        { "value": "fade-down", "label": "Fade Down"},
+        { "value": "fade-left", "label": "Fade Left"},
+        { "value": "fade-right", "label": "Fade Right"},
+        { "value": "fade-up-right", "label": "Fade Up Right"},
+        { "value": "fade-up-left", "label": "Fade Up Left"},
+        { "value": "fade-down-right", "label": "Fade Down Right"},
+        { "value": "fade-down-left", "label": "Fade Down Left"},
+        { "value": "flip-up", "label": "Flip Up"},
+        { "value": "flip-down", "label": "Flip Down"},
+        { "value": "flip-left", "label": "Flip Left"},
+        { "value": "flip-right", "label": "Flip Right"},
+        { "value": "slide-up", "label": "Slide Up"},
+        { "value": "slide-down", "label": "Slide Down"},
+        { "value": "slide-left", "label": "Slide Left"},
+        { "value": "slide-right", "label": "Slide Right"},
+        { "value": "zoom-in", "label": "Zoom In"},
+        { "value": "zoom-in-up", "label": "Zoom In Up"},
+        { "value": "zoom-in-down", "label": "Zoom In Down"},
+        { "value": "zoom-in-left", "label": "Zoom In Left"},
+        { "value": "zoom-in-right", "label": "Zoom In Right"},
+        { "value": "zoom-out", "label": "Zoom Out"},
+        { "value": "zoom-out-up", "label": "Zoom Out Up"},
+        { "value": "zoom-out-down", "label": "Zoom Out Down"},
+        { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+        { "value": "zoom-out-right", "label": "Zoom Out Right"}
+        ],
+        "label": "Select Animation"
+    },
+    {
+        "type": "text",
+        "id": "paddingsection",
+        "label": "Padding Section",
+        "default": "0px 0px 0px 0px",
+        "info": "Padding: Top Right Bottom Left"
+    },
+    {
+        "type": "text",
+        "id": "paddingmobile",
+        "label": "Padding Section Mobile",
+        "default": "60px 0px 60px 0px",
+        "info": "Padding: Top Right Bottom Left"
+    },
+    {
+        "type": "text",
+        "id": "marginsection",
+        "label": "Margin Section",
+        "default": "0px 0px 0px 0px",
+        "info": "Margin: Top Right Bottom Left"
+    },
+    {
+        "type": "text",
+        "id": "marginmobile",
+        "label": "Margin Mobile",
+        "default": "0px 0px 0px 0px",
+        "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "color",
+      "id": "bgsection",
+        "label": "Background Section",
+        "default": "#fefefe"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_inner",
+      "label": "Enable Padding Inner",
+      "default": true
+    },
+    {
+        "type": "text",
+        "id": "padding_inner",
+        "label": "Padding Inner ",
+        "default": "0px 0px 0px 0px",
+        "info": "Padding: Top Right Bottom Left"
+      },
+      {
+        "type": "text",
+        "id": "padding_inner_mobile",
+        "label": "Padding Inner Mobile",
+        "default": "0px 0px 0px 0px",
+        "info": "Padding: Top Right Bottom Left"
+      },
+    {
+      "type": "color",
+      "id": "bg_inner",
+        "label": "Background Inner",
+        "default": "#ffffff"
+    },
+    {
+      "type": "select",
+      "id": "setwidth",
+      "label": "Full Width",
+      "default": "container",
+      "options": [
+        {
+          "value": "container",
+          "label": "Box"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Container Fluid"
+        },
+        {
+          "value": "full",
+          "label": "Full"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "sectionheading",
+      "label": "Style Heading",
+      "default": "heading-0",
+      "options": [
+        {
+          "value": "heading-0",
+          "label": "Heading 0 Border"
+        },
+        {
+          "value": "heading-1",
+          "label": "Heading 1 Center"
+        },
+        {
+          "value": "heading-2",
+          "label": "Heading 2 No Border"
+        },
+        {
+          "value": "heading-3",
+          "label": "Heading 3 Center Border"
+        },
+        {
+          "value": "heading-4",
+          "label": "Hide Heading"
+        }
+      ]
+    }, 
+    {
+      "type": "color",
+      "id": "dot_heading0",
+      "label": "Color Dot Heading 0, Heading 2",
+      "default": "#bac34e"
+    },
+    {
+        "type": "text",
+        "id": "title_top",
+        "label": "Sub Title Top",
+        "default": "Sub Title Top"
+      },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Categories"
+    },
+    {
+      "type": "textarea",
+      "id": "des",
+      "label": "HTML / Description"
+    },
+    
+    
+    {
+      "type": "checkbox",
+      "id": "enable_carousel",
+      "label": "Enable Carousel",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "arrows",
+      "label": "Arrows",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "draggable",
+      "label": "Draggable",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "dots",
+      "label": "Dots",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "infinite",
+      "label": "Infinite",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "title_cl",
+      "label": "Category title",
+      "default": "#18191c"
+    },
+    {
+      "type": "color",
+      "id": "list_cl",
+      "label": "List",
+      "default": "#777"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default":"Title"
+        },
+        {
+          "type": "link_list",
+          "id": "linklist",
+          "label": "Menu"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Categories",
+      "category": "Collection",
+      "blocks": [
+        {
+          "type": "category"
+        },
+        {
+          "type": "category"
+        },
+        {
+          "type": "category"
+        },
+        {
+          "type": "category"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

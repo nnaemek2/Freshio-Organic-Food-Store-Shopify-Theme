@@ -1,0 +1,5 @@
+<div class="block-video js-menu-video mt-3" style="height:{{settings[ap_video_height]}}px">
+  <video {% if settings[ap_video_mute] %}muted{% endif %} {% if settings[ap_video_loop] %}loop{% endif %} onmouseover="this.play()" onmouseout="this.pause()">
+    <source type="video/mp4" src="{{settings[ap_video]}}">
+  </video>
+</div>

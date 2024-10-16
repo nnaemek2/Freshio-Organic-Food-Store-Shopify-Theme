@@ -1,0 +1,115 @@
+<!-- blog-template-1.liquid -->
+<style>
+  .sidebar-blog-wrap.is_stuck{padding-top:20px}
+  .blog__item .blog__content{
+    text-align: left;
+  }
+  @media (min-width: 768px){
+    .blog__item {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .blog__item .content-block__image,.blog__item .blog__content{
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+    .blog__item .blog__content{
+      padding:20px 20px 50px 40px;
+    }
+  }
+ 
+  .blog__title-link{
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
+  {%- if settings.bloggrid  == 'blog-3'%}
+    .blog__item.blog__item--3 .content-block__image,.blog__item.blog__item--3 .blog__content{
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+    .article__photo-container{
+      margin-bottom: 0;
+    }
+  {%- endif -%}
+  {%- if settings.bloggrid  == 'blog-5'%}
+    .blog__item.blog__item--5 .content-block__image,.blog__item.blog__item--5 .blog__content{
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+    .article__photo-container{
+      margin-bottom: 0;
+    }
+  {%- endif -%}
+</style>
+{%- if settings.bloggrid  == 'blog-3'%}
+  {% assign col = "col-6" %}
+{%- else -%}
+  {% assign col = "col-12 col-md-12" %}
+{%- endif -%}
+<div class="container pt-4">
+  <div class="row {% if section.settings.sidebar_position == 'left' %}flex-row-reverse{% endif %}">
+    {%- assign limit = section.settings.limit | minus:1 -%}
+    {%- paginate blog.articles by limit -%}
+    <div class="{% if section.settings.sidebar_enable %}col-md-9 {% if section.settings.sidebar_position == 'left' %} pl-lg-5{% else %} pr-lg-5{% endif %} {% else %}col-12{% endif %}">
+      <div class="row">
+        {%- for article in blog.articles -%}
+        <div class="{{col}} {% if forloop.index == 3 %}col--last{% endif %}">
+          {%- include 'blog-card' -%}
+        </div>
+        {%- endfor -%}
+      </div>
+      {%- if paginate.pages > 1 -%}
+      <div class="pagination">
+        {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
+      </div>
+      {%- endif -%}
+    </div>
+    {%- endpaginate -%}
+    {%- if section.settings.sidebar_enable -%}
+    {%- include 'blogSidebar' -%}
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Blog template 1",
+    "settings": [
+      {
+        "type": "range",
+        "id": "limit",
+        "min": 6,
+        "max": 50,
+        "step": 1,
+        "label": "Limit",
+        "default": 8
+      },
+      {
+        "type": "header",
+        "content": "Sidebar"
+      },
+      {
+        "type": "checkbox",
+        "id": "sidebar_enable",
+        "label": "Enable",
+		"default": true
+      },
+      {
+        "type": "select",
+        "id": "sidebar_position",
+        "label": "Position",
+        "default": "right",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      }
+]
+  }
+{% endschema %}

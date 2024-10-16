@@ -1,0 +1,46 @@
+{% if shop.products_count == 0 %}
+<div class="grid__item">
+  <div class="grid grid--no-gutters grid--uniform">
+    {% assign collection_index = 1 %}
+    {% for i in (1..10) %}
+    {% case i %}
+    {% when 7 %}
+    {% assign collection_index = 1 %}
+    {% when 8 %}
+    {% assign collection_index = 2 %}
+    {% when 9 %}
+    {% assign collection_index = 3 %}
+    {% when 10 %}
+    {% assign collection_index = 4 %}
+    {% endcase %}
+    <div class="grid__item small--one-half medium-up--one-fifth">
+      <a href="/admin/products" class="product-card">
+        <div class="product-card__image-container">
+          <div class="product-card__image-wrapper">
+            <div class="product-card__image">
+              {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+              {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          </div>
+        </div>
+        <div class="product-card__info">
+          <div class="product-card__name">{{ 'homepage.onboarding.product_title' | t }}</div>
+          <div class="product-card__price">
+            $19.99
+          </div>
+        </div>
+        <div class="product-card__overlay">
+          {% assign view_string_length = 'products.product.view' | t | size %}
+          <span class="btn product-card__overlay-btn {% if view_string_length > 8 %} btn--narrow{% endif %}">{{ 'products.product.view' | t }}</span>
+        </div>
+      </a>
+    </div>
+    {% assign collection_index = collection_index | plus: 1 %}
+    {% endfor %}
+  </div>
+</div>
+{% else %}
+<div class="grid__item small--text-center collection-nomatch-text">
+  <p class="alert alert-warning d-inline-block my-3">{{ 'collections.general.no_matches' | t }}</p>
+</div>
+{% endif %}

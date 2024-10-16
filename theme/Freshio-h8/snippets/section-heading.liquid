@@ -1,0 +1,73 @@
+<!-- section-heading.liquid - Apply for all section title -->
+{%- if section.settings.sectionheading == 'heading-0' -%}
+  {%- if section.settings.title != blank -%}
+  <style>
+    .customstyle{{ section.id }} .section-title-0::before{
+      border-color: {{section.settings.dot_heading0}};
+    }
+  </style>
+  <h3 class="section-title-0 text-left">
+    <span>{{section.settings.title}}</span>
+  </h3>
+  {%- endif -%}
+  {%- if section.settings.des != blank -%}
+  <p class="mb-5">{{section.settings.des}}</p>
+  {%- endif -%}
+{%- elsif section.settings.sectionheading == 'heading-1' -%}
+  {%- if section.settings.title_top != blank -%}
+    <div class="subtop text-center text-top mb-2" data-aos="{{section.settings.animation}}" data-aos-duration="500">{{section.settings.title_top}}</div>
+  {%- endif -%}
+  {%- if section.settings.title != blank -%}
+  <h3 class="section-title-1 text-center  mb-5" data-aos="{{section.settings.animation}}" data-aos-duration="800">
+    <span>{{section.settings.title}}</span>
+  </h3>
+  {%- endif -%}
+  {%- if section.settings.des != blank -%}
+  <p class="text-center font-family-2 mb-5" data-aos="{{section.settings.animation}}" data-aos-duration="1100">{{section.settings.des}}</p>
+  {%- endif -%}
+{%- elsif section.settings.sectionheading == 'heading-2' -%}
+  
+  {%- if section.settings.title != blank -%}
+  <style>
+    .customstyle{{ section.id }} .section-title-2::before{
+      border-color: {{section.settings.dot_heading0}};
+    }
+  </style>
+  <h3 class="section-title-2 text-left d-flex justify-content-lg-between flex-column flex-lg-row">
+    <span>{{section.settings.title}}</span>
+    {%- if section.settings.e_deal != blank -%}
+      {{section.settings.e_deal}}
+    {%- endif -%}
+    {%- if section.settings.e_linkall != blank -%}
+    <span>
+      <a class="btn-underline btn mr-auto mr-lg-0 pt-0" href="{{section.settings.e_link}}">{{section.settings.e_linkall}}</a>
+    </span>
+    {%- endif -%}
+  </h3>
+  {%- endif -%}
+  {%- if section.settings.des != blank -%}
+  <p class="mb-5">{{section.settings.des}}</p>
+  {%- endif -%}
+{%- elsif section.settings.sectionheading == 'heading-3' -%}
+  <style>
+    .section-title-3>span{
+      background:{{section.settings.bgsection}};
+    }
+  </style>
+  {%- if section.settings.title_top != blank -%}
+  <div class="subtop text-center text-top mb-2" data-aos="{{section.settings.animation}}" data-aos-duration="500">{{section.settings.title_top}}</div>
+  {%- endif -%}
+  {%- if section.settings.title != blank -%}
+  <h3 class="section-title-3 text-center  mb-5" data-aos="{{section.settings.animation}}" data-aos-duration="800">
+    <span>{{section.settings.title}}</span>
+  </h3>
+  {%- endif -%}
+  {%- if section.settings.des != blank -%}
+  <p class="text-center font-family-2 mb-5" data-aos="{{section.settings.animation}}" data-aos-duration="1100">{{section.settings.des}}</p>
+  {%- endif -%}
+{%- elsif section.settings.sectionheading == 'heading-4' -%}
+{%- elsif section.settings.sectionheading == 'heading-5' -%}
+{%- elsif section.settings.sectionheading == 'heading-6' -%}
+{%- elsif section.settings.sectionheading == 'heading-7' -%}
+{%- elsif section.settings.sectionheading == 'heading-8' -%}
+{%- endif -%}

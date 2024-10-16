@@ -1,0 +1,15 @@
+{%- if template == 'index' -%}
+  {%- case settings.slideshow -%}
+    {%- when 'slideshow-1' -%} {%- section 'slideshow-1' -%}
+    {%- when 'slideshow-2' -%} {%- section 'slideshow-2' -%}
+    {%- when 'slideshow-3' -%} {%- section 'slideshow-3' -%}
+    {%- when 'slideshow-4' -%} {%- section 'slideshow-4' -%}
+    {%- when 'slideshow-5' -%} {%- section 'slideshow-5' -%}
+    {%- when 'slideshow-6' -%} {%- section 'slideshow-6' -%}
+    {%- when 'slideshow-7' -%} {%- section 'slideshow-7' -%}
+    {%- when 'slideshow-8' -%} {%- section 'slideshow-8' -%}
+    {%- when 'slideshow-9' -%} {%- section 'slideshow-9' -%}
+  {%- else -%}
+    Missing liquid
+  {%- endcase -%}
+{%- endif -%}

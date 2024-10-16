@@ -1,0 +1,72 @@
+<!-- product-grid-deal.liquid -->
+<div class=" js-product-card product-grid-deal px-3" data-price="{{ product.price }}">
+  <div class="row align-items-center">
+    <div class="col-md-6 col-12">
+    <div class="product-card__image-wr overflow-hidden ">
+      {%- assign image = product.featured_image -%}
+      <a class="product-card__image js image-content__image-wrapper {{settings.size_image_grid}}" href="{{ product.url | within: collection }}" style="padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100}}%;" data-image-id="{{ image.id }}">
+        {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        <img class="lazyload transition first-image"
+             data-src="{{ img_url }}"
+             src="{%- include 'srcBlank' -%}"
+             data-sizes="auto"
+             alt="{{ image.alt | escape }}">
+      </a>
+    {% include 'product-label' %}
+    </div>
+  </div>
+    <div class="col-md-6 col-12">
+      <div class="product-card__info  mb-0 py-0">
+        
+        {% for collection in product.collections limit:2 %}
+          <a href="{{ collection.url }}">
+              {{ collection.title }}{% if forloop.last %}{% else %}, {% endif %}
+          </a> 
+          {% endfor %}
+        <a href="{{ product.url | within: collection }}" title="{{product.title}}" class="d-block h4 py-2 mb-3 {% if settings.t_product %} text-uppercase {% endif %}">{{ product.title }}</a>
+        <p>
+          {{product.description | strip_html | truncate: 70, '...'}}
+        </p>
+        <div class="shopify-product-reviews">
+          <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+        </div>
+        {%- if product.available -%}
+        <div class="product-card__price font-family-1">
+          {%- if product.compare_at_price > product.price -%}
+          {%- if product.price_varies -%}
+          {%- assign sale_price = product.price | money -%}
+          {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+          {%- else -%}
+          <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+          {{ product.price | money }}
+          <s class="product-card__regular-price">{{ product.compare_at_price | money }}</s>
+          <span class="visually-hidden">{{ 'products.product.sale_price' | t }}</span>
+          
+          {%- endif -%}
+          {%- else -%}
+          {%- if product.price_varies -%}
+          {%- assign price = product.price | money -%}
+          {{ 'products.product.from_text_html' | t: price: price }}
+          {%- else -%}
+          <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+          {{ product.price | money }}
+          {%- endif -%}
+    
+          {%- endif -%}
+        </div>
+        {%- else -%}
+        <div class="product-card__availability">
+          {{ 'products.product.sold_out' | t }}
+        </div>
+        {%- endif -%}
+          {%- include 'product-countdown' -%}
+        <span class="line my-3"></span>
+        <span  class="js-grid-cart text-uppercase d-inline-flex align-items-center justify-content-center" title="{{ 'products.product.add_to_cart' | t }}" data-id="{{product.selected_or_first_available_variant.id}}">
+          <div class="product-card__loading spinner-{{settings.loading}}" role="status"></div>
+          <span>{{ 'products.product.add_to_cart' | t }}</span>
+          <svg class="ml-1" height="1792" viewBox="0 0 1792 1792" width="1792" xmlns="http://www.w3.org/2000/svg"><path d="M979 960q0 13-10 23l-466 466q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l393-393-393-393q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l466 466q10 10 10 23zm384 0q0 13-10 23l-466 466q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l393-393-393-393q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l466 466q10 10 10 23z"/></svg>
+        </span>
+      </div>
+    </div>
+  </div>
+  </div>

@@ -1,0 +1,260 @@
+<!-- parallax-banner -->
+<!-- product-list.liquid -->
+<div class="customstyle{{ section.id }} " data-aos="{{section.settings.animation}}">
+    {%- include 'style-section' -%}
+  <style>
+    .bgvideo-{{ section.id }} {padding: {{section.settings.padding_desktop}}px 0;}@media (max-width:991px){.bgvideo-{{ section.id }} {padding: {{section.settings.padding_mobile}}px 0;}}
+    .bgvideo-{{ section.id }}::before{
+        content:"";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        background-color: {{section.settings.bg_overlay}};
+      opacity: {{section.settings.opacity_bg_overlay}};
+    }
+    .bgvideo-{{ section.id }} .parallax-banner__meta::before{
+    background-color: {{section.settings.bg_box}};
+    opacity: {{section.settings.opacity_bgbox}};
+  }
+    </style>
+  <div class="{{ section.settings.setwidth }}">
+  <div class="section-block"  >
+    <div class=" bgvideo-{{ section.id }}  txt-{{section.settings.align}} bg-herovideo" data-section-id="{{ section.id }}" data-section-type="background-video" >
+        {% if section.settings.link_video != blank %}
+        <div class="hero-video">
+         <video id="Mp4{{ section.id }}" src="{{section.settings.link_video}}" loop="" muted="" playsinline="" autoplay="" ></video>
+        </div>
+        {% else if %}
+        <div class="hero-video">
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+        {% endif %}
+      <div class="parallax-banner__meta bg-herovideo-meta">
+        {%- if section.settings.title != blank -%}
+        <h4 class="parallax-banner__title pb-4" style="color:{{section.settings.title_color}}">
+          {{section.settings.title}}
+        </h4>
+        {%- endif -%}
+  
+        {%- if section.settings.subtext != blank -%}
+        <div class="m-0 pb-5" style="color:{{section.settings.subtitle_color}}">
+          {{section.settings.subtext}}
+        </div>
+        {%- endif -%}
+  
+        {%- if section.settings.button != blank and section.settings.link != blank -%}
+        <div class="parallax-banner__btn">
+          <a href="{{ section.settings.link }}" class="btn btn-theme gradient-theme">
+            {{ section.settings.button | escape }}
+          </a>
+        </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  {% schema %}
+  {
+    "name": "Background Video",
+    "class": "index-section",
+    "settings": [
+    {
+      "type": "select",
+      "id": "animation",
+      "options": [
+        { "value": "", "label": "None"},
+        { "value": "fade", "label": "Fade"},
+        { "value": "fade-up", "label": "Fade Up"},
+        { "value": "fade-down", "label": "Fade Down"},
+        { "value": "fade-left", "label": "Fade Left"},
+        { "value": "fade-right", "label": "Fade Right"},
+        { "value": "fade-up-right", "label": "Fade Up Right"},
+        { "value": "fade-up-left", "label": "Fade Up Left"},
+        { "value": "fade-down-right", "label": "Fade Down Right"},
+        { "value": "fade-down-left", "label": "Fade Down Left"},
+        { "value": "flip-up", "label": "Flip Up"},
+        { "value": "flip-down", "label": "Flip Down"},
+        { "value": "flip-left", "label": "Flip Left"},
+        { "value": "flip-right", "label": "Flip Right"},
+        { "value": "slide-up", "label": "Slide Up"},
+        { "value": "slide-down", "label": "Slide Down"},
+        { "value": "slide-left", "label": "Slide Left"},
+        { "value": "slide-right", "label": "Slide Right"},
+        { "value": "zoom-in", "label": "Zoom In"},
+        { "value": "zoom-in-up", "label": "Zoom In Up"},
+        { "value": "zoom-in-down", "label": "Zoom In Down"},
+        { "value": "zoom-in-left", "label": "Zoom In Left"},
+        { "value": "zoom-in-right", "label": "Zoom In Right"},
+        { "value": "zoom-out", "label": "Zoom Out"},
+        { "value": "zoom-out-up", "label": "Zoom Out Up"},
+        { "value": "zoom-out-down", "label": "Zoom Out Down"},
+        { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+        { "value": "zoom-out-right", "label": "Zoom Out Right"}
+      ],
+      "label": "Select Animation"
+  },
+    {
+      "type": "text",
+      "id": "paddingsection",
+      "label": "Padding Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginsection",
+      "label": "Margin Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "color",
+      "id": "bgsection",
+        "label": "Background Section",
+        "default": "#ffffff"
+    },
+    {
+      "type": "select",
+      "id": "setwidth",
+      "label": "Full Width",
+      "default": "container",
+      "options": [
+        {
+          "value": "container",
+          "label": "Box"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Container Fluid"
+        },
+        {
+          "value": "full",
+          "label": "Full"
+        }
+      ]
+    },
+      {
+        "type": "select",
+        "id": "align",
+        "label": "Text align",
+        "default": "right",
+        "options": [
+          {
+            "label": "Left",
+            "value": "left"
+          },
+          {
+            "label": "Center",
+            "value": "center"
+          },
+          {
+            "label": "Right",
+            "value": "right"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "padding_desktop",
+        "min": 100,
+        "max": 500,
+        "step": 10,
+        "unit": "px",
+        "label": "Padding desktop",
+        "default": 300
+      },
+      {
+        "type": "range",
+        "id": "padding_mobile",
+        "min": 0,
+        "max": 300,
+        "step": 10,
+        "unit": "px",
+        "label": "Padding mobile",
+        "default": 80
+      },
+      {
+        "type": "color",
+        "id": "bg_box",
+        "label": "Background Boxed",
+        "default": "#fff"
+      },
+      {
+        "type": "range",
+        "id": "opacity_bgbox",
+        "min": 0,
+        "max": 1,
+        "step": 0.1,
+        "label": "Opacity Background Boxed",
+        "default": 1
+      },
+      {
+        "type": "color",
+        "id": "bg_overlay",
+        "label": "Background Overlay",
+        "default": "#000"
+      },
+      {
+        "type": "range",
+        "id": "opacity_bg_overlay",
+        "min": 0,
+        "max": 1,
+        "step": 0.1,
+        "label": "Opacity Overlay",
+        "default": 0.1
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Elements"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Title",
+        "default": "#fff"
+      },
+      {
+        "type": "textarea",
+        "id": "subtext",
+        "label": "Subtitle",
+        "default": "Protection from the"
+      },
+      {
+        "type": "color",
+        "id": "subtitle_color",
+        "label": "Title",
+        "default": "#fff"
+      },
+      {
+        "type": "text",
+        "id": "button",
+        "label": "Button text",
+        "default": "discover now"
+      },
+      {
+        "type": "url",
+        "id": "link",
+        "label": "Link",
+        "info": "Optional"
+      },
+      {
+        "type": "textarea",
+        "id": "link_video",
+        "label": "Link Video",
+        "info": "Upload video in your host"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Background Video",
+        "category": "Video"
+      }
+    ]
+  }
+  {% endschema %}

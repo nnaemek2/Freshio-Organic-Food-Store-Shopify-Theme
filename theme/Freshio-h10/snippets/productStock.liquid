@@ -1,0 +1,16 @@
+<span id="ProductStock-{{ section.id }}" class="product-single__stock {% unless current_variant.inventory_management and current_variant.inventory_quantity < 10 and current_variant.inventory_quantity > 0 or  current_variant.inventory_management and current_variant.inventory_quantity <= 0 and current_variant.incoming %} hide{% endunless %}">
+  {% if current_variant.inventory_management %}
+  {% if current_variant.inventory_quantity < 10 and current_variant.inventory_quantity > 0 %}
+  {% assign qty = current_variant.inventory_quantity %}
+  {{ 'products.product.stock_available' | t: count: qty }}
+  {% elsif current_variant.inventory_quantity == 0 or current_variant.inventory_quantity < 0 and current_variant.incoming %}
+  {% if current_variant.available %}
+  {% assign date = current_variant.next_incoming_date | date: "%B %-d, %Y" %}
+  {{ 'products.product.will_not_ship_until' | t: date: date  }}
+  {% else %}
+  {% assign date = current_variant.next_incoming_date | date: "%B %-d, %Y" %}
+  {{ 'products.product.will_be_in_stock_after' | t: date: date  }}
+  {% endif %}
+  {% endif %}
+  {% endif %}
+</span>

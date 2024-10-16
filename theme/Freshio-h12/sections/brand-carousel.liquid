@@ -1,0 +1,427 @@
+<!-- brand-carousel.liquid -->
+<style>
+  .brand-item{
+    text-align: center;
+  }
+  .brand-item a{
+    display: inline-block;
+    color: var(--g-color-heading);
+  }
+  .brand-item.svglink a{
+    display: block;
+  }
+  .brand-item .brand-link{
+    opacity: 0.4;
+    transition: all 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  .brand-item:hover .brand-link{
+    opacity: 1;
+  }
+  .brand-item .logo-svg svg{
+    width: 100%;
+    height: auto;
+  }
+</style>
+<div class="customstyle{{ section.id }} " data-aos="{{section.settings.animation}}" >
+  {%- include 'style-section' -%}
+  <div class="{{ section.settings.setwidth }}">
+    <div class="section-block section-inner">
+      {%- include 'section-heading' -%}
+      <div class="brand-wrapper dots-negative">
+        <div class="brand-slider row mb-0" id="collection-list-{{ section.id }}"
+            data-rows="{{section.settings.rows}}"
+            data-slidesToShow="{{section.settings.slidestoshow}}"
+            data-slidestoscroll="{{section.settings.slidescroll}}"
+            data-arrows="{{ section.settings.arrows }}"
+            data-dots="{{ section.settings.dots }}" 
+            data-draggable="{{ section.settings.draggable }}" 
+            data-infinite="{{ section.settings.infinite }}" 
+            data-section-id="{{ section.id }}" 
+            data-section-type="slickCarousels">
+          {%- for block in section.blocks -%}
+          <div class="col brand-item carousel__slide-wrapper--{{block.id}} {{block.settings.type_logo}}" {{ block.shopify_attributes }}>
+            <a href="{{block.settings.link | default:'#'}}" class="brand-link {% if section.settings.grayscale %} hv-image-grayscale {% endif %}">
+              {% if block.settings.type_logo  == 'image' %}
+                {%- if block.settings.image != blank -%}
+                <img class="lazyload transition mx-auto" src="{% include 'srcBlank' %}" data-src="{{ block.settings.image | img_url: '400x' }}" alt="{{ block.settings.image.alt }}" style="width: {{section.settings.width_image}}%;">
+                {%- else -%}
+                <div class="image-block__image">
+                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                </div>
+                {%- endif -%}
+              {%- elsif block.settings.type_logo  == 'svgcode' -%}
+                {%- if block.settings.svg_code != blank -%}
+                <div class="logo-svg mx-auto" style="width: {{section.settings.width_image}}%;">
+                  {{block.settings.svg_code}}
+                </div>
+                {%- else -%}
+                <div class="image-block__image">
+                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                </div>
+                {%- endif -%}
+              {%- elsif block.settings.type_logo  == 'svglink' -%}
+                  {%- if block.settings.svg_link != blank -%}
+                  <img class="lazyload transition mx-auto" src="{% include 'srcBlank' %}" data-src="{{ block.settings.svg_link }}" alt="{{ block.settings.image.alt }}" style="width: {{section.settings.width_image}}%;">
+                {%- else -%}
+                <div class="image-block__image">
+                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                </div>
+                {%- endif -%}
+              {%- endif -%}
+            </a>
+          </div>
+          {%- endfor -%}
+        </div>
+      </div>
+      {%- if section.blocks.size == 0 -%}
+      {%- include 'no-blocks' -%}
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Logo carousel",
+  "class": "index-section",
+  "max_blocks": 20,
+  "settings": [
+  {
+    "type": "select",
+    "id": "animation",
+    "options": [
+      { "value": "", "label": "None"},
+      { "value": "fade", "label": "Fade"},
+      { "value": "fade-up", "label": "Fade Up"},
+      { "value": "fade-down", "label": "Fade Down"},
+      { "value": "fade-left", "label": "Fade Left"},
+      { "value": "fade-right", "label": "Fade Right"},
+      { "value": "fade-up-right", "label": "Fade Up Right"},
+      { "value": "fade-up-left", "label": "Fade Up Left"},
+      { "value": "fade-down-right", "label": "Fade Down Right"},
+      { "value": "fade-down-left", "label": "Fade Down Left"},
+      { "value": "flip-up", "label": "Flip Up"},
+      { "value": "flip-down", "label": "Flip Down"},
+      { "value": "flip-left", "label": "Flip Left"},
+      { "value": "flip-right", "label": "Flip Right"},
+      { "value": "slide-up", "label": "Slide Up"},
+      { "value": "slide-down", "label": "Slide Down"},
+      { "value": "slide-left", "label": "Slide Left"},
+      { "value": "slide-right", "label": "Slide Right"},
+      { "value": "zoom-in", "label": "Zoom In"},
+      { "value": "zoom-in-up", "label": "Zoom In Up"},
+      { "value": "zoom-in-down", "label": "Zoom In Down"},
+      { "value": "zoom-in-left", "label": "Zoom In Left"},
+      { "value": "zoom-in-right", "label": "Zoom In Right"},
+      { "value": "zoom-out", "label": "Zoom Out"},
+      { "value": "zoom-out-up", "label": "Zoom Out Up"},
+      { "value": "zoom-out-down", "label": "Zoom Out Down"},
+      { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+      { "value": "zoom-out-right", "label": "Zoom Out Right"}
+    ],
+    "label": "Select Animation"
+  },
+  {
+    "type": "text",
+    "id": "paddingsection",
+    "label": "Padding Section",
+    "default": "0px 0px 0px 0px",
+    "info": "Padding: Top Right Bottom Left"
+  },
+  {
+    "type": "text",
+    "id": "paddingmobile",
+    "label": "Padding Section Mobile",
+    "default": "60px 0px 60px 0px",
+    "info": "Padding: Top Right Bottom Left"
+  },
+  {
+    "type": "text",
+    "id": "marginsection",
+    "label": "Margin Section",
+    "default": "0px 0px 0px 0px",
+    "info": "Margin: Top Right Bottom Left"
+  },
+  {
+    "type": "text",
+    "id": "marginmobile",
+    "label": "Margin Mobile",
+    "default": "0px 0px 0px 0px",
+    "info": "Margin: Top Right Bottom Left"
+  },
+  {
+    "type": "color",
+    "id": "bgsection",
+      "label": "Background Section",
+      "default": "#fefefe"
+  },
+  {
+    "type": "checkbox",
+    "id": "enable_inner",
+    "label": "Enable Padding Inner",
+    "default": true
+  },
+  {
+    "type": "text",
+    "id": "padding_inner",
+    "label": "Padding Inner ",
+    "default": "0px 0px 0px 0px",
+    "info": "Padding: Top Right Bottom Left"
+  },
+  {
+    "type": "text",
+    "id": "padding_inner_mobile",
+    "label": "Padding Inner Mobile",
+    "default": "0px 0px 0px 0px",
+    "info": "Padding: Top Right Bottom Left"
+  },
+  {
+    "type": "color",
+    "id": "bg_inner",
+      "label": "Background Inner",
+      "default": "#ffffff"
+  },
+  {
+    "type": "select",
+    "id": "setwidth",
+    "label": "Full Width",
+    "default": "container",
+    "options": [
+      {
+        "value": "container",
+        "label": "Box"
+      },
+      {
+        "value": "container-fluid",
+        "label": "Container Fluid"
+      },
+      {
+        "value": "full",
+        "label": "Full"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "id": "sectionheading",
+    "label": "Style Heading",
+    "default": "heading-0",
+    "options": [
+      {
+        "value": "heading-0",
+        "label": "Heading 0 Border"
+      },
+      {
+        "value": "heading-1",
+        "label": "Heading 1 Center"
+      },
+      {
+        "value": "heading-2",
+        "label": "Heading 2 No Border"
+      },
+      {
+        "value": "heading-3",
+        "label": "Heading 3 Center Border"
+      },
+      {
+        "value": "heading-4",
+        "label": "Hide Heading"
+      }
+    ]
+  }, 
+  {
+    "type": "color",
+    "id": "dot_heading0",
+    "label": "Color Dot Heading 0, Heading 2",
+    "default": "#bac34e"
+  },
+  {
+    "type": "text",
+    "id": "title_top",
+    "label": "Sub Title Top",
+    "default": "Sub Title Top"
+  },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Logo Carousel"
+    },
+    {
+      "type": "textarea",
+      "id": "des",
+      "label": "HTML / Description"
+    },
+    {
+      "type": "checkbox",
+      "id": "grayscale",
+      "label": "Grayscale effect",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "arrows",
+      "label": "Arrows",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "draggable",
+      "label": "Draggable",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "dots",
+      "label": "Dots",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "infinite",
+      "label": "Infinite",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "width_image",
+      "label": "Width Image of Column",
+      "max": 100,
+      "min": 50,
+      "step": 1,
+      "unit": "%",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "slidestoshow",
+      "label": "Show",
+      "max": 18,
+      "min": 1,
+      "step": 1,
+      "unit": "lm",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "slidescroll",
+      "label": "Scroll",
+      "max": 6,
+      "min": 1,
+      "step": 1,
+      "unit": "ste",
+      "default": 1
+    },
+    {
+      "type": "select",
+      "id": "rows",
+      "label": "Rows",
+      "default": "1",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 row"
+        },
+        {
+          "value": "2",
+          "label": "2 rows"
+        },
+        {
+          "value": "3",
+          "label": "3 rows"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "radio",
+          "id": "type_logo",
+          "label": "Type Logo",
+          "options": [
+            {
+              "value": "image",
+              "label": "Image"
+            },
+            {
+              "value": "svgcode",
+              "label": "Svg Code"
+            },
+            {
+              "value": "svglink",
+              "label": "Svg Link"
+            }
+          ],
+          "default": "image"
+        },
+        {
+          "type": "header",
+          "content": "-- Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "header",
+          "content": "-- Svg Code"
+        },
+        {
+          "type": "textarea",
+          "id": "svg_code",
+          "label": "HTML / SVG Code"
+        },
+        {
+          "type": "header",
+          "content": "-- Svg Link"
+        },
+        {
+          "type": "text",
+          "id": "svg_link",
+          "label": "Link SVG"
+        },
+        {
+          "type": "header",
+          "content": "--- Link Logo"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Logo link to"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Logo carousel",
+      "category": "Image",
+      "blocks": [
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

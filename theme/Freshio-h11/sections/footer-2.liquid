@@ -1,0 +1,607 @@
+<style>
+  :root{
+    --g-footer-top-bg:{{section.settings.footertopbg}};
+    --g-footer-top-text:{{section.settings.footertoptext}};
+    --g-footer-mid-bg:{{section.settings.footermidbg}};
+    --g-footer-mid-text:{{section.settings.footermidtext}};
+    --g-footer-mid-link:{{section.settings.footermidlink}};
+    --g-footer-bot-bg:{{section.settings.footerbotbg}};
+    --g-footer-bot-text:{{section.settings.footerbottext}};
+    }
+</style>
+<style>
+  {%- if section.settings.cssfooter != blank -%}
+      {{section.settings.cssfooter}}
+    {%- endif -%}
+  .footer-top {
+	color: var(--g-footer-top-text);
+	padding: 29px 0;
+	text-transform: capitalize;
+	background: var(--g-footer-top-bg)
+}
+.footer-top *{
+  color: var(--g-footer-top-text);
+}
+.footer-top__service {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	margin: 15px 0
+}
+
+.footer-top__service-icon {
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 60px;
+	flex: 0 0 60px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	border: 2px solid;
+	border-radius: 50%;
+	width: 60px;
+	height: 60px
+}
+
+.footer-top__service-icon svg {
+	width: 20px;
+	height: 20px
+}
+
+.footer-top__service-meta {
+	margin-left: 20px
+}
+
+.rtl .footer-top__service-meta {
+	margin-right: 20px;
+	margin-left: 0
+}
+
+.footer-top__service-meta h3 {
+	color: var(--g-footer-top-text);
+	font-size: 24px
+}
+
+.footer-mid {
+	background: var(--g-footer-mid-bg);
+	color: var(--g-footer-mid-text);
+	padding: 15px 0 45px
+}
+
+.footer-mid .footer-mid__title {
+	color: var(--g-footer-mid-text);
+}
+
+.footer-mid a {
+	color: var(--g-footer-mid-link)
+}
+
+.footer-mid a:hover {
+	opacity: .85
+}
+
+.footer-bot {
+	background: var(--g-footer-bot-bg);
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center
+}
+
+.footer-bot__powered,
+.footer-bot__powered a {
+	color: var(--g-footer-bot-text)
+}
+
+.footer-mid__contact-form input {
+	width: 100%;
+	margin-bottom: 10px;
+	font-size: 14px;
+	background: var(--g-footer-mid-text);
+	border: 1px solid #ccc
+}
+
+.footer-mid__contact-form textarea {
+	width: 100%;
+	height: 86px;
+	font-size: 14px;
+	background: var(--g-footer-mid-text);
+	border: 1px solid #ccc
+}
+
+.footer-mid__contact-form .form-success {
+	margin-top: 10px
+}
+
+.footer-mid__contact-form .btn {
+	padding: 15px 0;
+	margin-top: 5px;
+	width: 100%;
+	text-transform: uppercase;
+	font-size: 12px
+}
+
+.footer-mid__linklist ul {
+	-webkit-column-count: 2;
+	column-count: 2;
+	-webkit-column-gap: 20px;
+	column-gap: 20px;
+	padding-left: 20px;
+	margin-bottom: 40px
+}
+
+.rtl .footer-mid__linklist ul {
+	padding-left: 0;
+	padding-right: 20px
+}
+
+.footer-mid__linklist li {
+	padding: 5px 0
+}
+
+.footer-container {
+	margin: 0 auto
+}
+
+.rtl .footer-container {
+	text-align: right
+}
+
+.footer-mid__title {
+	font-size: 26px;
+	text-transform: none;
+	margin-bottom: 35px;
+	margin-top: 0;
+	border-bottom: 1px solid rgba(255, 255, 255, .2);
+	padding: 35px 0;
+	position: relative
+}
+
+.rtl .footer-mid__title {
+	padding-left: 0;
+	padding-right: 20px
+}
+
+.footer-mid__des {
+	font-size: 18px;
+}
+
+.footer-mid__info li {
+	padding: 12px 0;
+	border-bottom: 1px solid rgba(255, 255, 255, .2);
+	line-height: 30px
+}
+
+.footer-mid__info li:last-child {
+	border: none
+}
+
+.footer-mid__info i {
+	width: 20px;
+	margin-right: 10px
+}
+
+.rtl .footer-mid__info .icon {
+	margin-left: 10px;
+	margin-right: 0
+}
+
+.footer-mid__social ul {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap
+}
+
+.footer-mid__social li {
+	width: 44px;
+	height: 44px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	border: 2px solid rgba(255, 255, 255, .1);
+	border-radius: 50%;
+	margin-right: 10px;
+	margin-bottom: 10px
+}
+
+.footer-mid__contact-form .btn .icon {
+	margin: 0 4px
+}</style>
+
+<!-- footer-2.liquid -->
+<div class="footer-container">  	
+  {%- if section.settings.footertop_enable -%}
+  <section class="footer-top"> 
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-6 col-12">
+          <div class="footer-top__service">
+            <div class="footer-top__service-icon">
+              {{ section.settings.iconleft }}
+            </div>      
+            <div class="footer-top__service-meta">
+              <h4 class="mb-1">{{ section.settings.titleleft }}</h4>
+              <p>{{ section.settings.desleft }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-12">      
+          <div class="footer-top__service">
+            <div class="footer-top__service-icon">
+              {{ section.settings.iconright }}
+            </div>      
+            <div class="footer-top__service-meta">
+              <p class="mb-1">{{ section.settings.desright }}</p>
+              <h4>{{ section.settings.titleright }}</h4>
+            </div>
+          </div>
+        </div>
+      </div>        
+    </div>
+  </section>  	
+  {%- endif -%}
+  <section class="footer-mid">
+    <div class="container">
+      <div class="row">                  
+        <div class="col-lg-8 col-md-6 col-12 pr-lg-3">
+          {%- if section.settings.contact_title != blank -%}
+          <h3 class="footer-mid__title">{{section.settings.contact_title}}</h3>
+          {%- endif -%}
+          <div class="row">
+            <div class="col footer-mid__contact-meta">
+              {%- if section.settings.contact_des != blank -%}
+              <p class="footer-mid__des" >{{section.settings.contact_des}}</p>
+              {%- endif -%}
+              <ul class="list-unstyled footer-mid__info">
+                {%- if section.settings.contact_addess != blank -%}
+                <li>
+                  {%- include 'icon-home' -%}{{section.settings.contact_addess}}
+                </li>
+                {%- endif -%}
+                {%- if section.settings.contact_phone != blank -%}
+                <li>
+                  {%- include 'icon-mobile-phone' -%}{{section.settings.contact_phone}}
+                </li>
+                {%- endif -%}
+                {%- if section.settings.contact_mail != blank -%}
+                <li>
+                  {%- include 'icon-envelope' -%}{{section.settings.contact_mail}}
+                </li>
+                {%- endif -%}
+                {%- if section.settings.contact_web != blank -%}
+                <li>
+                  {%- include 'icon-globe-europe' -%}{{section.settings.contact_web}}
+                </li>
+                {%- endif -%}
+              </ul>
+            </div>
+            {%- if section.settings.contact_enable -%}
+            <div class="col-lg-6 footer-mid__contact-form pl-lg-4">
+              {%- form 'contact' -%}
+              <input type="text" id="FooterContactFormName" name="contact[name]" placeholder="{{ 'contact.form.name' | t }}" value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+              <input type="email" id="FooterContactFormEmail" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+              <input type="tel" id="FooterContactFormPhone" name="contact[phone]" placeholder="{{ 'contact.form.phone' | t }}" pattern="[0-9\-]*" value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+              <textarea rows="10" id="FooterContactFormMessage" name="contact[body]" placeholder="{{ 'contact.form.message' | t }}">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+              <button type="submit" class="btn btn-theme gradient-theme">{{ 'contact.form.send_message' | t }}</button>
+
+              {%- if form.posted_successfully? -%}
+              <p class="form-success">
+                {{ 'contact.form.post_success' | t }}
+              </p>
+              {%- endif -%}
+              {{ form.errors | default_errors }}
+              {%- endform -%}
+            </div>
+            {%- endif -%}
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-12 pl-lg-3">
+          {%- if section.settings.linklist_title != blank -%}
+          <h3 class="footer-mid__title">
+            {{section.settings.linklist_title}}
+          </h3>
+          {%- endif -%}
+          {%- if section.settings.linklist_link != blank -%}
+          <div class="footer-mid__linklist">
+            <ul>
+              {%- for link in linklists[section.settings.linklist_link].links -%}
+              <li><a href="{{link.url}}" title="{% include 'processMenuTitle' with itemName:link.title %}">{% include 'processMenuTitle' with itemName:link.title %}</a></li>
+              {%- endfor -%}
+            </ul>
+          </div>
+          {%- endif -%}
+          {%- if section.settings.social_enable -%}
+          <div class="footer-mid__social">
+            <ul class="list--inline social-icons">
+              {%- if settings.social_facebook_link != blank -%}
+              <li>
+                <a href="{{ settings.social_facebook_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}">
+                  {%- include 'icon-facebook' -%}
+                  <span class="icon__fallback-text">Facebook</span>
+                </a>
+              </li>
+              {%- endif -%}
+              {%- if settings.social_twitter_link != blank -%}
+              <li>
+                <a href="{{ settings.social_twitter_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}">
+                  {%- include 'icon-twitter' -%}
+                  <span class="icon__fallback-text">Twitter</span>
+                </a>
+              </li>
+              {%- endif -%}
+              {%- if settings.social_pinterest_link != blank -%}
+              <li>
+                <a href="{{ settings.social_pinterest_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}">
+                  {%- include 'icon-pinterest' -%}
+                  <span class="icon__fallback-text">Pinterest</span>
+                </a>
+              </li>
+              {%- endif -%}
+              {%- if settings.social_tumblr_link != blank -%}
+              <li>
+                <a href="{{ settings.social_tumblr_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tumblr' }}">
+                  {%- include 'icon-tumblr' -%}
+                  <span class="icon__fallback-text">Tumblr</span>
+                </a>
+              </li>
+              {%- endif -%}
+              {%- if settings.social_snapchat_link != blank -%}
+              <li>
+                <a href="{{ settings.social_snapchat_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Snapchat' }}">
+                  {%- include 'icon-snapchat' -%}
+                  <span class="icon__fallback-text">Snapchat</span>
+                </a>
+              </li>
+              {%- endif -%}
+              {%- if settings.social_youtube_link != blank -%}
+              <li>
+                <a href="{{ settings.social_youtube_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}">
+                  {%- include 'icon-youtube' -%}
+                  <span class="icon__fallback-text">YouTube</span>
+                </a>
+              </li>
+              {%- endif -%}
+              {%- if settings.social_instagram_link != blank -%}
+              <li>
+                <a href="{{ settings.social_instagram_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}">
+                  {%- include 'icon-instagram' -%}
+                  <span class="icon__fallback-text">Instagram</span>
+                </a>
+              </li>
+              {%- endif -%}
+              {%- if settings.social_vimeo_link != blank -%}
+              <li>
+                <a href="{{ settings.social_vimeo_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Vimeo' }}">
+                  {%- include 'icon-vimeo' -%}
+                  <span class="icon__fallback-text">Vimeo</span>
+                </a>
+              </li>
+              {%- endif -%}
+            </ul>
+          </div>
+          {%- endif -%}
+        </div>                    
+      </div>
+    </div>
+  </section>
+  <section class="footer-bot text-center">
+    <div class="footer-bot__powered py-4">
+      {%- if section.settings.copyright -%}
+        <p>&copy; {{ 'now' | date: "%Y" }}, <b class="text-capitalize">{{ shop.name | link_to: '/' }}</b>. {{ powered_by_link }}</p>
+      {%- else -%}
+        <div>{{section.settings.customcopyright}}</div>
+      {%- endif -%}
+      
+    </div>
+  </section>
+</div>
+{% schema %}
+{
+  "name": "Footer 2",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "cssfooter",
+      "label": "Custom css Footer"
+    },
+      {
+        "type": "checkbox",
+        "id": "footertop_enable",
+        "label": "Enable footer top",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "footertopbg",
+        "label": "Background",
+        "default": "#e43636"
+      },
+      {
+        "type": "color",
+        "id": "footertoptext",
+        "label": "Text color",
+        "default": "#fff"
+      },
+      {
+        "type": "header",
+        "content": "Top - service left"
+      },
+      {
+        "type": "textarea",
+        "id": "iconleft",
+        "label": "SVG Icon",
+		"default": "<svg aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fas\" data-icon=\"truck\" role=\"img\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 640 512\" class=\"svg-inline--fa fa-truck fa-w-20 fa-2x\"><path fill=\"currentColor\" d=\"M624 352h-16V243.9c0-12.7-5.1-24.9-14.1-33.9L494 110.1c-9-9-21.2-14.1-33.9-14.1H416V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48v320c0 26.5 21.5 48 48 48h16c0 53 43 96 96 96s96-43 96-96h128c0 53 43 96 96 96s96-43 96-96h48c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zM160 464c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm320 0c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm80-208H416V144h44.1l99.9 99.9V256z\" class=\"\"><\/path><\/svg>"
+      },
+      {
+        "type": "text",
+        "id": "titleleft",
+        "label": "Title",
+        "default": "free shipping"
+      },
+      {
+        "type": "text",
+        "id": "desleft",
+        "label": "Description",
+        "default": "totally free shipping on all baby gear!"
+      },
+      {
+        "type": "header",
+        "content": "Top - service right"
+      },
+      {
+        "type": "textarea",
+        "id": "iconright",
+        "label": "SVG Icon",
+		"default":"<svg aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fas\" data-icon=\"anchor\" role=\"img\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 576 512\" class=\"svg-inline--fa fa-anchor fa-w-18 fa-2x\"><path fill=\"currentColor\" d=\"M12.971 352h32.394C67.172 454.735 181.944 512 288 512c106.229 0 220.853-57.38 242.635-160h32.394c10.691 0 16.045-12.926 8.485-20.485l-67.029-67.029c-4.686-4.686-12.284-4.686-16.971 0l-67.029 67.029c-7.56 7.56-2.206 20.485 8.485 20.485h35.146c-20.29 54.317-84.963 86.588-144.117 94.015V256h52c6.627 0 12-5.373 12-12v-40c0-6.627-5.373-12-12-12h-52v-5.47c37.281-13.178 63.995-48.725 64-90.518C384.005 43.772 341.605.738 289.37.01 235.723-.739 192 42.525 192 96c0 41.798 26.716 77.35 64 90.53V192h-52c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h52v190.015c-58.936-7.399-123.82-39.679-144.117-94.015h35.146c10.691 0 16.045-12.926 8.485-20.485l-67.029-67.029c-4.686-4.686-12.284-4.686-16.971 0L4.485 331.515C-3.074 339.074 2.28 352 12.971 352zM288 64c17.645 0 32 14.355 32 32s-14.355 32-32 32-32-14.355-32-32 14.355-32 32-32z\" class=\"\"><\/path><\/svg>"
+      },
+      {
+        "type": "text",
+        "id": "titleright",
+        "label": "Title",
+        "default": "customer service"
+      },
+      {
+        "type": "text",
+        "id": "desright",
+        "label": "Description",
+        "default": "1900 - 123 - 4567"
+      },
+      {
+        "type": "header",
+        "content": "Mid footer"
+      },
+      {
+        "type": "color",
+        "id": "footermidbg",
+        "label": "Background",
+        "default": "#1e1e1e"
+      },
+      {
+        "type": "color",
+        "id": "footermidtext",
+        "label": "Text color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "footermidlink",
+        "label": "Link color",
+        "default": "#999"
+      },
+      {
+        "type": "header",
+        "content": "Mid - Information"
+      },
+      {
+        "type": "text",
+        "id": "contact_title",
+        "label": "Title",
+        "default": "Contact Us"
+      },
+      {
+        "type": "textarea",
+        "id": "contact_des",
+        "label": "Description",
+        "default": "Have a question? Give us a call or fill out the contact form. We’d love to hear from you"
+      },
+      {
+        "type": "text",
+        "id": "contact_addess",
+        "label": "Addess",
+        "default": "123 Sky Tower, West 21th Street, Suite 721, NY"
+      },
+      {
+        "type": "text",
+        "id": "contact_phone",
+        "label": "Phone",
+        "default": "+844 123 456 789"
+      },
+      {
+        "type": "text",
+        "id": "contact_mail",
+        "label": "Email",
+        "default": "sale@yourcompany.com"
+      },
+      {
+        "type": "text",
+        "id": "contact_web",
+        "label": "Website",
+        "default": "www.example.com"
+      },
+      {
+        "type": "checkbox",
+        "id": "contact_enable",
+        "label": "Enable contact form",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Mid - Linklist"
+      },
+      {
+        "type": "text",
+        "id": "linklist_title",
+        "label": "Title",
+        "default": "Useful links"
+      },
+      {
+        "type": "link_list",
+        "id": "linklist_link",
+        "label": "Menu"
+      },
+      {
+        "type": "checkbox",
+        "id": "social_enable",
+        "label": "Enable social",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Bottom - Copyright"
+      },
+      {
+        "type": "color",
+        "id": "footerbotbg",
+        "label": "Background",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "footerbottext",
+        "label": "Text",
+        "default": "#656565"
+      },
+      {
+        "type": "checkbox",
+        "id": "copyright",
+        "label": "Enable Copyright Default",
+        "default": true,
+        "info": "If disable you would use Custom Copyright"
+      },
+      {
+        "type": "textarea",
+        "id": "customcopyright",
+        "label": "Custom Copyright",
+        "default": "© 2021, Your Store. Powered by Shopify"
+      }
+  ]
+}
+{% endschema %}

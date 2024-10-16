@@ -1,0 +1,97 @@
+<!-- product-grid-3.liquid -->
+<div class="product-card js-product-card product-card--style3" data-price="{{ product.price }}">
+  <div class="product-card__image-wr transition overflow-hidden">
+    {%- assign image = product.featured_image -%}
+    <a class="product-card__image js image-content__image-wrapper" href="{{ product.url | within: collection }}" style="max-width: 680px;padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100}}%;" data-image-id="{{ image.id }}">
+      {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+      <img class="lazyload transition first-image"
+           data-src="{{ img_url }}"
+           src="{%- include 'srcBlank' -%}"
+           data-sizes="auto"
+           alt="{{ image.alt | escape }}">
+      {% include 'second-image'%}
+    </a>
+    <div class="product-card__overlay d-flex justify-content-center flex-column">
+      {%- if settings.enable_wishlsit -%}
+      <span data-toggle="tooltip" data-placement="left" data-tooltipalltimes="true" class="btn gradient-theme-vertical product-card__overlay-btn js-btn-wishlist" title="{{ 'products.product.wishlist_text' | t }}" data-handle="{{product.handle}}">
+        {%- include 'icon-heart' -%}
+      </span>
+      {%- endif -%}
+      {%- assign variantCount = product.variants | size -%}
+      {%- if variantCount > 1 -%}
+      <a href="{{ product.url | within: collection }}" data-tooltip="true" data-placement="left" class="btn product-card__overlay-btn btn-grid-cart" title="{{ 'products.product.view' | t }}">
+        <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="info-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-info-circle fa-w-16 fa-3x"><path fill="currentColor" d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm0-338c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" class=""></path></svg>
+        <span>{{ 'products.product.view' | t }}</span>
+      </a>
+      {%- else -%}
+      <span data-tooltip="true" data-placement="left" class="btn product-card__overlay-btn js-grid-cart btn-grid-cart {% unless product.available %} hide {% endunless %}" title="{{ 'products.product.add_to_cart' | t }}" data-id="{{product.selected_or_first_available_variant.id}}">
+        {%- include 'icon-cart' -%}
+        <div class="product-card__loading spinner-{{settings.loading}}" role="status"></div>
+        <span>{{ 'products.product.add_to_cart' | t }}</span>
+      </span>
+      {%- endif -%}
+      {%- if settings.qv_box -%}
+      <span data-tooltip="true" data-placement="left" class="btn product-card__overlay-btn js-btn-quickview" title="{{ 'products.product.quickview_text' | t }}" data-toggle="modal" data-target="#jsQuickview" data-handle="{{product.handle}}" data-pavailable="{% if product.available %}true{% else %}false{% endif %}">
+        {%- include 'icon-quickview' -%}
+        <span>{{ 'products.product.quickview_text' | t }}</span>
+        {% if product.metafields.info.shortdesc != blank %}
+          <span class=" txt-short hide" >
+            {{product.metafields.info.shortdesc | strip_html | truncatewords: 12 }}
+          </span>
+        {%- endif -%}
+      </span>
+      {%- endif -%}
+      {%- if settings.enable_compare -%}
+      <span data-tooltip="true" data-placement="left" class="btn product-card__overlay-btn js-btn-compare" title="{{ 'products.product.compare_text' | t }}" data-handle="{{product.handle}}">
+        {%- include 'icon-exchange' -%}
+        {%- include 'icon-close' -%}
+        <span>{{ 'products.product.compare_text' | t }}</span>
+      </span>
+      {%- endif -%}
+    </div>
+    {%- if settings.enable_countdown_card -%}{%- include 'product-countdown' -%}{%- endif -%}
+    {%- if settings.enablevideo -%}
+     {% for media in product.media %}
+        {% render 'productVideo', media: media %}
+      {% endfor %}
+    {%- endif -%}
+
+    {% include 'product-label' %}
+  </div>
+  <div class="product-card__info">
+    {%- if settings.enable_type -%}
+    <div class="text-uppercase small mb-2" style="opacity: 0.8;">{{ product.type }}</div>
+    {%- endif -%}
+    <a href="{{ product.url | within: collection }}" title="{{product.title}}" class="product-card__name {% if settings.t_product %} text-uppercase {% endif %}">{{ product.title }}</a>
+
+    {%- if product.available -%}
+    <div class="product-card__price">
+      {%- if product.compare_at_price > product.price -%}
+      {%- if product.price_varies -%}
+      {%- assign sale_price = product.price | money -%}
+      {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+      {%- else -%}
+      <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+      {{ product.price | money }}
+      <s class="product-card__regular-price">{{ product.compare_at_price | money }}</s>
+      <span class="visually-hidden">{{ 'products.product.sale_price' | t }}</span>
+      
+      {%- endif -%}
+      {%- else -%}
+      {%- if product.price_varies -%}
+      {%- assign price = product.price | money -%}
+      {{ 'products.product.from_text_html' | t: price: price }}
+      {%- else -%}
+      <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+      {{ product.price | money }}
+      {%- endif -%}
+
+      {%- endif -%}
+    </div>
+    {%- else -%}
+    <div class="product-card__availability">
+      {{ 'products.product.sold_out' | t }}
+    </div>
+    {%- endif -%}
+  </div>
+</div>

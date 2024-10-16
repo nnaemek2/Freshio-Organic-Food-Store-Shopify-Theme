@@ -1,0 +1,42 @@
+<!-- blog-grid-6.liquid -->
+<div class="blog__item blog__item--6 {% if template != 'index' %}  blog__item--6-in mb-5{% endif %}">
+  {%- if article.image -%}
+  <div class="content-block__image">
+    <a href="{{ article.url }}">
+      <noscript>
+        {{ article | img_url: '1024x1024' | img_tag: article.title | escape }}
+      </noscript>
+      <div class="article__photo-container">
+        <div class="article__photo-wrapper" style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;">
+          {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+          <img class="lazyload"
+               src="{%- include 'srcBlank' -%}"
+               data-src="{{ img_url }}"
+               data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+               data-aspectratio="{{ article.image.aspect_ratio }}"
+               data-sizes="auto"
+               alt="{{ article.title | escape }}">
+        </div>
+      </div>
+    </a>
+    <div class="position-absolute article__photo-content w-100 p-4 d-flex flex-column align-items-start">
+      <div class="{% if template != 'index' %}  mb-4 {% endif %}">
+        <p class="fz-n2 text-uppercase small text-primary2 mb-1">
+          {% if template != 'index' %}
+            {%- if article.tags.size > 0 -%}
+            {%- for tag in article.tags limit:3 -%}
+            <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="text-primary2">{{ tag }}</a>{% if forloop.last %}{% else %}, {% endif %}
+            {%- endfor -%}
+          {% endif %}
+          {%- endif -%}
+          <span class=" {% if template != 'index' %} px-2 mx-2 border border-top-0 border-bottom-0 {% else %} pr-2 mr-2 border-right {% endif %}">{{ article.published_at | time_tag: '%m-%d-%Y' }}</span>
+          {{article.comments.size}} {{ article.comments.size | pluralize: 'comment', 'comments' }}
+        </p>
+        <h4 class="blog__title-link mt-3"><a href="{{ article.url }}">{{ article.title }}</a></h4>
+      </div>
+      <a class="btn btn-underline gradient-theme mt-auto mb-1" href="{{ article.url }}">+ &nbsp; {{ 'blogs.article.read_more' | t }}</a>
+    </div>
+  </div>
+  {%- endif -%}
+ 
+</div>

@@ -1,0 +1,283 @@
+<!-- featured-articles-2.liquid -->
+<style>
+    .blog-section{{section.id}}{
+      position: relative;
+      z-index: {{section.settings.zindex}};
+    }
+    .blog-section{{section.id}}::before{
+      position: absolute;
+      top:0;
+      right:0;
+      left:0;
+      content: "";
+      height: {{section.settings.rangebg}}%;
+      background-color: {{section.settings.bgbefore}};
+    }
+    .blog-first .blog__item{
+        position: relative;
+    }
+    .blog-first .blog__content{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right:0;
+    }
+    .mask{
+        background: linear-gradient(transparent,rgba(0,0,0,.8));
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+    }
+    .blog-list-right .blog__item{
+        padding-bottom: 30px;
+    }
+  </style>
+  <div class="customstyle{{ section.id }} blog-section{{section.id}}" data-aos="{{section.settings.animation}}">
+    {%- include 'style-section' -%}
+  <div class="{{ section.settings.setwidth }}">
+    <div class="section-block">
+      {%- include 'section-heading' -%}
+      <div class="bloglist-wrapper dots-negative " data-aos="{{section.settings.animation}}">
+        <div class="bloglist-slider row {% if section.settings.reverse %} flex-lg-row-reverse {% endif %}" >
+          {%- assign blog = blogs[section.settings.blog] -%}
+          {%- assign limit = 3 -%}
+          {%- if blog != blank -%}
+          <div class="col-lg-6">
+          {%- for article in blog.articles limit: 1  -%}
+            <div class="bloglist-item blog-first">
+                <div class="blog__item pb-0">
+                    {%- if article.image -%}
+                        <div class="content-block__image mb-3">
+                            <a href="{{ article.url }}">
+                                <noscript>
+                                {{ article | img_url: '1024x1024' | img_tag: article.title | escape }}
+                                </noscript>
+                                <div class="article__photo-container">
+                                <div class="article__photo-wrapper" style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;">
+                                    {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                                    <img class="lazyload"
+                                        src="{%- include 'srcBlank' -%}"
+                                        data-src="{{ img_url }}"
+                                        data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                                        data-aspectratio="{{ article.image.aspect_ratio }}"
+                                        data-sizes="auto"
+                                        alt="{{ article.title | escape }}">
+                                </div>
+                                </div>
+                            </a>
+                            <a href="{{ article.url }}" class="mask"></a>
+                        </div>
+                        {%- endif -%}
+                        <div class="blog__content p-lg-5 p-4">
+                        <p class="blog__meta mb-3 font-family-2 text-white">
+                        {{ article.published_at | time_tag: format: 'month_day_year' }}
+                        </p>
+                        <h3 class="blog__title-link text-white"><a class="text-white" href="{{ article.url }}">{{ article.title }}</a></h3>
+                    </div>
+                </div>
+            </div>
+          {%- endfor -%}
+          </div>
+          <div class="col-lg-6 blog-list-right">
+          {%- for article in blog.articles limit: limit offset: 1  -%}
+            <div class="bloglist-item ">
+                <div class="blog__item row align-items-center">
+                    {%- if article.image -%}
+                        <div class="content-block__image col-4">
+                            <a href="{{ article.url }}">
+                                <noscript>
+                                {{ article | img_url: '1024x1024' | img_tag: article.title | escape }}
+                                </noscript>
+                                <div class="article__photo-container mb-0">
+                                <div class="article__photo-wrapper" style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;">
+                                    {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                                    <img class="lazyload"
+                                        src="{%- include 'srcBlank' -%}"
+                                        data-src="{{ img_url }}"
+                                        data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                                        data-aspectratio="{{ article.image.aspect_ratio }}"
+                                        data-sizes="auto"
+                                        alt="{{ article.title | escape }}">
+                                </div>
+                                </div>
+                            </a>
+                        </div>
+                        {%- endif -%}
+                        <div class="blog__content col">
+                        <p class="blog__meta mb-2 font-family-2 text-theme">
+                        {{ article.published_at | time_tag: format: 'month_day_year' }}
+                        </p>
+                        <h5 class="blog__title-link"><a href="{{ article.url }}">{{ article.title }}</a></h5>
+                    </div>
+                </div>
+            </div>
+          {%- endfor -%}
+        </div>
+          {%- else -%}
+          {%- for i in (1..limit) -%}
+          <div class="bloglist-item col">
+            {%- include 'blog-grid-blank' -%}
+          </div>
+          {%- endfor -%}
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+  {% schema %}
+  {
+    "name": "Blog posts special",
+    "class": "index-section",
+    "settings": [
+    {
+      "type": "select",
+      "id": "animation",
+      "options": [
+        { "value": "", "label": "None"},
+        { "value": "fade", "label": "Fade"},
+        { "value": "fade-up", "label": "Fade Up"},
+        { "value": "fade-down", "label": "Fade Down"},
+        { "value": "fade-left", "label": "Fade Left"},
+        { "value": "fade-right", "label": "Fade Right"},
+        { "value": "fade-up-right", "label": "Fade Up Right"},
+        { "value": "fade-up-left", "label": "Fade Up Left"},
+        { "value": "fade-down-right", "label": "Fade Down Right"},
+        { "value": "fade-down-left", "label": "Fade Down Left"},
+        { "value": "flip-up", "label": "Flip Up"},
+        { "value": "flip-down", "label": "Flip Down"},
+        { "value": "flip-left", "label": "Flip Left"},
+        { "value": "flip-right", "label": "Flip Right"},
+        { "value": "slide-up", "label": "Slide Up"},
+        { "value": "slide-down", "label": "Slide Down"},
+        { "value": "slide-left", "label": "Slide Left"},
+        { "value": "slide-right", "label": "Slide Right"},
+        { "value": "zoom-in", "label": "Zoom In"},
+        { "value": "zoom-in-up", "label": "Zoom In Up"},
+        { "value": "zoom-in-down", "label": "Zoom In Down"},
+        { "value": "zoom-in-left", "label": "Zoom In Left"},
+        { "value": "zoom-in-right", "label": "Zoom In Right"},
+        { "value": "zoom-out", "label": "Zoom Out"},
+        { "value": "zoom-out-up", "label": "Zoom Out Up"},
+        { "value": "zoom-out-down", "label": "Zoom Out Down"},
+        { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+        { "value": "zoom-out-right", "label": "Zoom Out Right"}
+      ],
+      "label": "Select Animation"
+    },
+    {
+      "type": "text",
+      "id": "paddingsection",
+      "label": "Padding Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "paddingmobile",
+      "label": "Padding Section Mobile",
+      "default": "60px 0px 60px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginsection",
+      "label": "Margin Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginmobile",
+      "label": "Margin Mobile",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "zindex",
+      "label": "Z Index Section",
+      "default": "0"
+    },
+    {
+      "type": "color",
+      "id": "bgsection",
+        "label": "Background Section",
+        "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "rangebg",
+      "label": "Height Background sub",
+      "max": 100,
+      "min": 0,
+      "step": 10,
+      "unit": " %",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "bgbefore",
+        "label": "Background sub ",
+        "default": "#E3C9B8"
+    },
+    {
+      "type": "text",
+      "id": "title_top",
+      "label": "Sub Title Top",
+      "default": "Sub Title Top"
+    },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Blog posts Special"
+      },
+      {
+        "type": "textarea",
+        "id": "des",
+        "label": "HTML / Description"
+      },
+      {
+        "label": "Blog",
+        "id": "blog",
+        "type": "blog"
+      },
+      {
+        "type": "select",
+        "id": "setwidth",
+        "label": "Full Width",
+        "default": "container",
+        "options": [
+          {
+            "value": "container",
+            "label": "Box"
+          },
+          {
+            "value": "container-fluid",
+            "label": "Container Fluid"
+          },
+          {
+            "value": "full",
+            "label": "Full"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "reverse",
+        "label": "Reverse",
+        "default": false
+      }
+    ],
+    "presets": [
+      {
+        "name": "Blog posts special",
+        "category": "Text"
+      }
+    ]
+  }
+  {% endschema %}

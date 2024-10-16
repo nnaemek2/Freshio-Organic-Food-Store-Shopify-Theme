@@ -1,0 +1,34 @@
+<!-- customers/register.liquid -->
+<div class="page-width">
+  <div class="grid">
+    <div class="grid__item medium-up--one-half medium-up--push-one-quarter">
+      <div class="content-block text-center">
+        <h1 class="h3 mb-3">{{ 'customer.register.title' | t }}</h1>
+        <div class="form-vertical text-center">
+          {%- form 'create_customer' -%}
+          {{ form.errors | default_errors }}
+          <div class="form-group">
+            <label for="FirstName" class="label--hidden">{{ 'customer.register.first_name' | t }}</label>
+            <input class="form-control" type="text" name="customer[first_name]" id="FirstName" placeholder="{{ 'customer.register.first_name' | t }}" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autofocus>
+          </div>
+          <div class="form-group">
+            <label for="LastName" class="label--hidden">{{ 'customer.register.last_name' | t }}</label>
+            <input class="form-control" type="text" name="customer[last_name]" id="LastName" placeholder="{{ 'customer.register.last_name' | t }}" {% if form.last_name %}value="{{ form.last_name }}"{% endif %}>
+          </div>
+          <div class="form-group">
+            <label for="Email" class="label--hidden">{{ 'customer.register.email' | t }}</label>
+            <input class="form-control" type="email" name="customer[email]" id="Email" class="{% if form.errors contains 'email' %} input--error{% endif %}" placeholder="{{ 'customer.register.email' | t }}" {% if form.email %} value="{{ form.email }}"{% endif %} autocorrect="off" autocapitalize="off">
+          </div>
+          <div class="form-group">
+            <label for="CreatePassword" class="label--hidden">{{ 'customer.register.password' | t }}</label>
+            <input class="form-control" type="password" name="customer[password]" id="CreatePassword" class="{% if form.errors contains 'password' %} input--error{% endif %}" placeholder="{{ 'customer.register.password' | t }}">
+          </div>
+          <p>
+            <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn btn-theme gradien-theme mt-4">
+          </p>
+          {%- endform -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

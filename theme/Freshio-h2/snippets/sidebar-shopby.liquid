@@ -1,0 +1,256 @@
+{%- if settings.shop_by_vendor_enable and shop.vendors.size > 0 -%}
+<div id="shopbyvendor">
+  {%- if settings.shop_by_vendor_title != blank -%}
+  <h5 class="title_block" data-toggle="collapse" data-target="#ul_catalog_vendor" aria-expanded="{% if settings.shop_by_vendor_collapse %}true{% else %}false{% endif %}">
+    {{ settings.shop_by_vendor_title }}
+  </h5>
+  {%- endif -%}
+  <div class="block_content">
+    <ul id="ul_catalog_vendor" class="mt-4 collapse list-unstyled {% if settings.shop_by_vendor_collapse %}show{% endif %}">
+      {%- if settings.shop_by_vendor_custom_list != blank -%}
+      {%- assign items = settings.shop_by_vendor_custom_list | split:"," | strip -%}
+      {%- for vendor in shop.vendors limit:settings.shop_by_vendor_number -%}
+      {%- if items contains vendor -%}
+      {%- if collection.current_vendor == vendor -%}
+      <li class="active" data-group="{{ settings.shop_by_vendor_title }}" data-handle="{{ collection.current_vendor | handleize }}">
+        {{ vendor | link_to_vendor }}
+      </li>
+      {%- else -%}
+      <li data-group="{{ settings.shop_by_vendor_title }}">
+        {{ vendor | link_to_vendor }}
+      </li>
+      {%- endif -%}
+
+      {%- endif -%}
+      {%- endfor -%}
+      {%- else -%}
+      {%- for vendor in shop.vendors limit:settings.shop_by_vendor_number -%}
+      {%- if collection.current_vendor == vendor -%}
+      <li class="active" data-group="{{ settings.shop_by_vendor_title }}" data-handle="{{ collection.current_vendor | handleize }}">
+        {{ vendor | link_to_vendor }}
+      </li>
+      {%- else -%}
+      <li data-group="{{ settings.shop_by_vendor_title }}">
+        {{ vendor | link_to_vendor }}
+      </li>
+      {%- endif -%}
+      {%- endfor -%}
+      {%- endif -%}
+    </ul>
+  </div>
+</div>
+{%- endif -%}
+
+{%- if settings.shop_by_type_enable and shop.types.size > 0 -%}
+<div id="shopbytype">
+  {%- if settings.shop_by_type_title != blank -%}
+  <h5 class="title_block" data-toggle="collapse" data-target="#ul_catalog_type" aria-expanded="{% if settings.shop_by_type_collapse %}true{% else %}false{% endif %}">
+    {{ settings.shop_by_type_title }}
+  </h5>
+  {%- endif -%}
+  <div class="block_content ">
+    <ul id="ul_catalog_type" class="mt-4 collapse list-unstyled {% if settings.shop_by_type_collapse %}show{% endif %}">
+      {%- if settings.shop_by_type_custom_list != blank -%}
+      {%- assign items = settings.shop_by_type_custom_list | split:"," | strip -%}
+      {%- for type in shop.types limit:settings.shop_by_type_number -%}
+      {%- if type != blank -%}
+      {%- if items contains type -%}
+      <li {% if collection.current_type == type %}class="active"{% endif %}>
+        {{ type | link_to_type }}
+      </li>
+      {%- endif -%}
+      {%- endif -%}
+      {%- endfor -%}
+      {%- else -%}
+      {%- for type in shop.types limit:settings.shop_by_type_number -%}
+      {%- if type != blank -%}
+      <li {% if collection.current_type == type %}class="active" {% endif %}>
+        {{ type | link_to_type }}
+      </li>
+      {%- endif -%}
+      {%- endfor -%}
+      {%- endif -%}
+    </ul>
+  </div>
+</div>
+{%- endif -%}
+
+{%- if settings.price_range_enable -%}
+<div class="slider-range-wr">
+  {%- if settings.price_range_title != blank -%}
+  <h5 class="title_block">
+    {{ settings.price_range_title }}
+  </h5>
+  {%- endif -%}
+  <div class="block_content mt-5 pt-1">
+    <div id="js-slider-range" data-url="{{ collection.url }}"></div>
+    <div class="amount"><span class="js-range-min"></span> - <span class="js-range-max"></span></div>
+  </div>
+</div>
+{%- endif -%}
+
+{%- if settings.shop_by_catalog_enable and template contains 'collection' -%}
+{%- if settings.filter_eachcollection -%}
+  <div id="js-fillter">
+    {%- if settings.shop_by_color_enable -%}
+    {%- capture checktags -%}
+    {%- for i in (1..20) -%}
+          {%- capture color_text -%}shop_by_color_text_{{i}}{%- endcapture -%}
+          {%- capture color_image -%}color-{{i}}.png{%- endcapture -%}
+          {%- assign listObjectcolor = settings[color_text] | strip -%}
+          {%- for tag in  listObjectcolor -%}
+            {%- if collection.all_tags contains tag -%}
+                {%- assign checktag = 'true'| replace: ' ', '-' -%}
+                {{checktag}}
+            {%- else -%}
+                {%- assign checktag = 'hide'| replace: ' ', '-' -%}
+                {{checktag}}
+            {%- endif -%}
+          {%- endfor -%}
+    {%- endfor -%}
+    {%- endcapture -%}
+    <div class="catalog_filters {{checktags}}">
+      {%- if settings.shop_by_color_title != blank -%}
+      <h5 class="title_block" data-toggle="collapse" data-target="#ul_catalog_color" aria-expanded="true">
+        {{ settings.shop_by_color_title }}
+      </h5>
+      {%- endif -%}
+      <div class="block_content ">
+        <ul id="ul_catalog_color" class="mt-4 collapse show list-unstyled catalog_filter_ul color-group">
+          {%- for i in (1..20) -%}
+          {%- capture color_text -%}shop_by_color_text_{{i}}{%- endcapture -%}
+          {%- capture color_image -%}color-{{i}}.png{%- endcapture -%}
+          {%- if settings[color_text] != blank -%}
+          {%- assign custom_tag = settings[color_text] | strip -%}
+          {% for tag in  custom_tag%}
+            {%- if current_tags contains tag -%}
+            <li class="advanced-filter active-filter" data-handle="{{ custom_tag | handleize }}">
+              <a href="javascript:void(0);" data-tooltip="true" class="catalog_color" title="{{settings[color_text]}}">
+                <img src="{%- include 'srcBlank' -%}" class="lazyload" alt="{{ settings[color_text] }}" data-src="{{ color_image | asset_url }}" />
+              </a>
+            </li>
+            {%- elsif collection.all_tags contains tag -%}
+            <li class="advanced-filter" data-handle="{{ custom_tag | handleize }}">
+              <a href="javascript:void(0);" data-tooltip="true" class="catalog_color" title="{{settings[color_text]}}">
+                <img src="{%- include 'srcBlank' -%}" class="lazyload" alt="{{ settings[color_text] }}" data-src="{{ color_image | asset_url }}" />
+              </a>
+            </li>
+            {%- endif -%}
+          {%- endfor -%}
+          {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+    {%- endif -%}
+
+    {%- for i in (1..3) -%}
+    {%- assign title = 'filter_title_' | append: i -%}
+    {%- assign list = 'filter_list_' | append: i -%}
+    {%- capture checktagsother -%}
+      {%- assign listObject = settings[list] | split: ',' -%}
+        {%- for tag in  listObject -%}
+        {%- if collection.all_tags contains tag -%}
+            {%- assign checktag = 'true'| replace: ' ', '-' -%}
+            {{checktag}}
+        {%- else -%}
+            {%- assign checktag = 'hide'| replace: ' ', '-' -%}
+            {{checktag}}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+    {%- if settings[list] != blank -%}
+    <div class="catalog_filters catalog_other  {{checktagsother}}">
+      {%- if settings[title] != blank -%}
+      <h5 class="title_block" data-toggle="collapse" data-target="#filter-{{i}}" aria-expanded="true">
+        {{settings[title]}}
+      </h5>
+      {%- endif -%}
+      <div class="block_content ">
+        <ul id="filter-{{i}}" class="mt-4 collapse show list-unstyled catalog_filter_ul">
+          {% for tag in  listObject%}
+          {%- if current_tags contains tag -%}
+          <li class="advanced-filter active-filter" data-handle="{{ tag | handleize }}">
+            {%- include 'icon-check-circle' -%} <a href="javascript:void(0);">{{tag }}</a>
+          </li>
+          {% elsif collection.all_tags contains tag %}
+          <li class="advanced-filter" data-handle="{{ tag | handleize }}">
+            {%- include 'icon-circle' -%} <a href="javascript:void(0);">{{ tag }}</a>
+          </li>
+          {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+    {%- endif -%}
+    {%- endfor -%}
+  </div>
+{%- else -%}
+<div id="js-fillter">
+  {%- if settings.shop_by_color_enable -%}
+  <div class="catalog_filters">
+    {%- if settings.shop_by_color_title != blank -%}
+    <h5 class="title_block" data-toggle="collapse" data-target="#ul_catalog_color" aria-expanded="true">
+      {{ settings.shop_by_color_title }}
+    </h5>
+    {%- endif -%}
+    <div class="block_content ">
+      <ul id="ul_catalog_color" class="mt-4 collapse show list-unstyled catalog_filter_ul color-group">
+        {%- for i in (1..20) -%}
+        {%- capture color_text -%}shop_by_color_text_{{i}}{%- endcapture -%}
+        {%- capture color_image -%}color-{{i}}.png{%- endcapture -%}
+        {%- if settings[color_text] != blank -%}
+        {%- assign custom_tag = settings[color_text] | strip -%}
+        {%- if current_tags contains custom_tag -%}
+        <li class="advanced-filter active-filter" data-handle="{{ custom_tag | handleize }}">
+          <a href="javascript:void(0);" data-tooltip="true" class="catalog_color" title="{{settings[color_text]}}">
+            <img src="{%- include 'srcBlank' -%}" class="lazyload" alt="{{ settings[color_text] }}" data-src="{{ color_image | asset_url }}" />
+          </a>
+        </li>
+        {%- else -%}
+        <li class="advanced-filter" data-handle="{{ custom_tag | handleize }}">
+          <a href="javascript:void(0);" data-tooltip="true" class="catalog_color" title="{{settings[color_text]}}">
+            <img src="{%- include 'srcBlank' -%}" class="lazyload" alt="{{ settings[color_text] }}" data-src="{{ color_image | asset_url }}" />
+          </a>
+        </li>
+        {%- endif -%}
+        {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+  {%- endif -%}
+
+  {%- for i in (1..3) -%}
+  {%- assign title = 'filter_title_' | append: i -%}
+  {%- assign list = 'filter_list_' | append: i -%}
+
+  {%- if settings[list] != blank -%}
+  <div class="catalog_filters catalog_other">
+    {%- if settings[title] != blank -%}
+    <h5 class="title_block" data-toggle="collapse" data-target="#filter-{{i}}" aria-expanded="true">
+      {{settings[title]}}
+    </h5>
+    {%- endif -%}
+    <div class="block_content ">
+      <ul id="filter-{{i}}" class="mt-4 collapse show list-unstyled catalog_filter_ul">
+        {%- assign listObject = settings[list] | split: ',' -%}
+        {%- for listItem in listObject -%}
+        {%- if current_tags contains listItem -%}
+        <li class="advanced-filter active-filter" data-handle="{{ listItem | handleize }}">
+          {%- include 'icon-check-circle' -%} {{ listItem | link_to_remove_tag: listItem }}
+        </li>
+        {%- else -%}
+        <li class="advanced-filter" data-handle="{{ listItem | handleize }}">
+          {%- include 'icon-circle' -%} {{ listItem | link_to_add_tag: listItem }}
+        </li>
+        {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+  {%- endif -%}
+  {%- endfor -%}
+</div>
+{%- endif -%}
+{%- endif -%}

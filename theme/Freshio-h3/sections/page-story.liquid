@@ -1,0 +1,255 @@
+<style>
+  .section-story-links{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-ms-flex-wrap:wrap;flex-wrap:wrap;margin:20px 0}.section-story-links .story_link{width:40px;height:40px;border:1px solid rgba(0,0,0,.2);font-size:13px;font-weight:600;text-transform:uppercase;display:flex;justify-content:center;align-items:center}.section-story-links .story_link.disabled{pointer-events:none;color:#b3b3b3}.section-story__subheading{margin-bottom:10px}.title_story{text-transform:uppercase;font-weight:700;-webkit-box-flex:0;-ms-flex:0 0 100px;flex:0 0 100px;width:100px}.content_story{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.link_story{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;width:100%;-ms-flex-wrap:wrap;flex-wrap:wrap}.story__info{position:relative;margin-bottom:20px}.link_story li{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;padding-bottom:10px;border-bottom:1px dashed rgba(0,0,0,.1);margin:0 0 30px}.story__image{-webkit-box-flex:0;-ms-flex:0 0 130px;flex:0 0 130px;width:130px;padding-right:30px}.link_story a:hover{color:var(--g-main)}hr{border-color:rgba(0,0,0,.1)}.section-story .first hr{border-color:transparent!important}.section-story__subheading{margin:10px 0 30px}.modal-dialog--story input,.modal-dialog--story textarea{width:100%;margin-bottom:15px}.btn-submit-story{max-width:300px;margin:0 auto;padding:15px}.share-story__des,.share-story__image{margin-bottom:10px}.share-story__title{margin-bottom:15px}.modal-dialog--story .share-story__title{text-align:center}.share-story{margin-bottom:30px}
+</style>
+
+<!-- page-story.liquid -->
+<div class="customstyle{{ section.id }}">
+  {%- include 'style-section' -%}
+  <div class="{{ section.settings.setwidth }}">
+<div class="section-story">
+  {% if section.settings.heading != blank %}
+  <h3 class="section-story__heading text-center">
+    {{section.settings.heading}}
+  </h3>
+  {% endif %}
+
+  {% if section.settings.subheading != blank %}
+  <div class="section-story__subheading text-center">
+    {{section.settings.subheading}}
+  </div>
+  {% endif %}
+
+
+  <div class="row flex-column-reverse flex-sm-row">
+    <div class="col-md-8 col-lg-9 pr-md-5">
+      <ul class="link_story list--inline list-unstyled">
+        {% for block in section.blocks %}
+        <li class="s-story {% if forloop.first %}first{% endif %} pb-4">
+          <div class="story__image">
+            <img class="lazyload" data-src="{{ block.settings.avatar | img_url: '120x' }}" />
+          </div>
+          <div class="story__meta">
+            {% if block.settings.name != blank %}
+            <h5 class="story__name">
+              {{block.settings.name}}
+            </h5>
+            {% endif %}
+            {% if block.settings.info != blank %}
+            <div class="story__info small">
+              {{block.settings.info}}
+            </div>
+            {% endif %}
+            {% if block.settings.story != blank %}
+            <p class="story__text">
+              {{block.settings.story}}
+            </p>
+            {% endif %}
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col-md-4 col-lg-3">
+      <div class="share-story">
+        <div class="share-story__image mb-4">
+          {% if section.settings.banner %}
+          <img class="lazyload" data-src="{{ section.settings.banner | img_url: '600x' }}" />
+          {% else %}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+        </div>
+        {% if section.settings.righttitle != blank %}
+        <h4 class="share-story__title">
+          {{section.settings.righttitle}}
+        </h4>
+        {% endif %}
+        {% if section.settings.righttext != blank %}
+        <p class="share-story__des mb-4">
+          {{section.settings.righttext}}
+        </p>
+        {% endif %}
+        <button class="share-story__button btn btn-theme gradient-theme" data-toggle="modal" data-target="#jsStory">
+          {{section.settings.button | default: 'Share it now'}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "Our story",
+  "class": "page-section",
+  "settings": [
+  {
+    "type": "text",
+    "id": "paddingsection",
+    "label": "Padding Section",
+    "default": "0px 0px 0px 0px",
+    "info": "Padding: Top Right Bottom Left"
+  },
+  {
+    "type": "text",
+    "id": "paddingmobile",
+    "label": "Padding Section Mobile",
+    "default": "0px 0px 0px 0px",
+    "info": "Padding: Top Right Bottom Left"
+  },
+  {
+    "type": "text",
+    "id": "marginsection",
+    "label": "Margin Section",
+    "default": "0px 0px 0px 0px",
+    "info": "Margin: Top Right Bottom Left"
+  },
+  {
+    "type": "text",
+    "id": "marginmobile",
+    "label": "Margin Mobile",
+    "default": "0px 0px 0px 0px",
+    "info": "Margin: Top Right Bottom Left"
+  },
+    {
+      "type": "select",
+      "id": "setwidth",
+      "label": "Full Width",
+      "default": "container",
+      "options": [
+        {
+          "value": "container",
+          "label": "Box"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Container Fluid"
+        },
+        {
+          "value": "full",
+          "label": "Full"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Title",
+      "default": "Our story"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subtitle",
+      "default": "<p>Promotions, new products and sales. Directly to your inbox.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Right sidebar"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner",
+	  "label": "Banner"
+    },
+    {
+      "type": "text",
+      "id": "righttitle",
+      "label": "Title",
+      "default": "Tell us your story"
+    },
+    {
+      "type": "textarea",
+      "id": "righttext",
+      "label": "Description",
+      "default": "Give us a call, shoot us an email, or drop in for some wonderfully brewed coffee, or click the button below"
+    },
+    {
+      "type": "text",
+      "id": "button",
+      "label": "Button",
+      "default": "Share it now"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "story",
+      "name": "Story",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Avatar"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "textarea",
+          "id": "info",
+          "label": "Information"
+        },
+        {
+          "type": "textarea",
+          "id": "story",
+          "label": "Story"
+        }
+
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+
+<!-- page-story.liquid | Modal story -->
+<div class="modal fade" id="jsStory" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog--story modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        {% form 'contact' %}
+
+        {% if section.settings.righttitle != blank %}
+        <h4 class="share-story__title">
+          {{section.settings.righttitle}}
+        </h4>
+        {% endif %}
+
+        {{ form.errors | default_errors }}
+
+        <div class="row">
+          <div class="col-12 col-sm-6 pr-sm-0">
+            <label for="ContactFormName" class="label--hidden">{{ 'contact.form.name' | t }}</label>
+            <input type="text" id="ContactFormName" name="contact[name]" placeholder="{{ 'contact.form.name' | t }}" value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+          </div>
+          <div class="col-12 col-sm-6">
+            <label for="ContactFormEmail" class="label--hidden">{{ 'contact.form.email' | t }}</label>
+            <input type="email" id="ContactFormEmail" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+          </div>
+          <div class="col-12 col-sm-6 pr-sm-0">
+            <label for="ContactFormPhone" class="label--hidden">{{ 'contact.form.phone' | t }}</label>
+            <input type="tel" id="ContactFormPhone" name="contact[phone]" placeholder="{{ 'contact.form.phone' | t }}" pattern="[0-9\-]*" value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+          </div>
+          <div class="col-12 col-sm-6">
+            <label for="ContactFormJob" class="label--hidden">{{ 'contact.form.job' | t }}</label>
+            <input type="text" id="ContactFormJob" name="contact[job]" placeholder="{{ 'contact.form.job' | t }}">
+          </div>
+          <div class="col-12 col-sm-12">
+            <label for="ContactFormMessage" class="label--hidden">{{ 'contact.form.story' | t }}</label>
+            <textarea rows="10" id="ContactFormMessage" name="contact[body]" placeholder="{{ 'contact.form.story' | t }}">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <input type="submit" class="btn btn-theme gradient-theme btn-submit-story" value="{{ 'contact.form.send' | t }}">
+        </div>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="row no-gutters">
+  <div class="col-12">
+    <h4 id="html-text" class="html-title pt-4"># Typography</h4>
+  </div>
+  <div class="col-12 col-md-7">
+    <div class="input-group mt-4 mb-4">
+      <div class="input-group-prepend">
+        <label class="font-weight-bold input-group-text">Select type</label>
+      </div>
+      <select class="custom-select js-html-select box-shadow-none" data-id="Text">
+        <optgroup class="text-primary" label="Easy">
+          <option selected value="h1">Heading h1</option>
+          <option value="h2">Heading h2</option>
+          <option value="h3">Heading h3</option>
+          <option value="h4">Heading h4</option>
+          <option value="h5">Heading h5</option>
+          <option value="h6">Heading h6</option>
+          <option value="rte">Normal text</option>
+          <option value="font-italic">Italic text</option>
+          <option value="font-weight-bold">Bold text</option>
+        </optgroup>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="row no-gutters">
+  <div class="col-md-7 col-left">
+    <textarea id="htmlCode-Text" class="html-code">
+      <h1 class="h1">This is H1 heading</h1>
+    </textarea>
+  </div>
+  <div class="col-md-2 col-mid">
+    <button class="btn btn-outline-secondary btn-html-view" data-id="Text">Preview{%- include 'icon-arrow-right' -%}</button>
+    <button class="btn btn-secondary btn-html-copy" data-id="Text">Copy {%- include 'icon-copy' -%}</button>
+  </div>
+  <div class="col-md-3 col-right">
+    <div id="htmlView-Text" class="html-view shadow html-view--widow">
+      <h1 class="h1">This is H1 heading</h1>
+    </div>
+  </div>
+
+  <div id="htmlContent-Text" class="js-html-content hide" data-id="Text">
+    <h1 class="h1">This is H1 heading</h1>
+    <h2 class="h2">This is H2 heading</h2>
+    <h3 class="h3">This is H3 heading</h3>
+    <h4 class="h4">This is H4 heading</h4>
+    <h5 class="h5">This is H5 heading</h5>
+    <h6 class="h6">This is H6 heading</h6>
+    <p class="rte">Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+    <p class="font-italic">Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+    <p class="font-weight-bold">Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+  </div>
+</div>
+<hr />

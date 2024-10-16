@@ -1,0 +1,173 @@
+<!-- newsletter-footer.liquid -->
+
+{%- if section.settings.section_footer -%}
+<style>
+    .customstyle{{ section.id }} .form-group .form-control{
+        width:250px;
+      border-color:{{section.settings.colorborder}};  
+    }
+  </style>
+  <div class="customstyle{{ section.id }}" data-aos="{{section.settings.animation}}" style="border-top:1px solid {{section.settings.bordertop}};border-bottom:1px solid {{section.settings.borderbottom}};">
+    {%- include 'style-section' -%}
+    <div class="{{ section.settings.setwidth }}">
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-10">
+          <div class="d-flex align-items-lg-center justify-content-lg-between  flex-lg-row flex-column">
+              {% if section.settings.description != blank %}
+                {{section.settings.description}}
+              {% endif %}
+              <div class="form-vertical pl-md-5 pt-lg-0 pt-4">
+                {%- form 'customer' -%}
+                  {{ form.errors | default_errors }}
+                  {%- if form.posted_successfully? -%}
+                    <p class="form-success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+                  {%- else -%}
+                    <input type="hidden" name="contact[tags]" value="newsletter">
+                    <label for="NewsletterEmail-{{ block.id }}" class="label--hidden">{{ 'general.newsletter_form.newsletter_label' | t }}</label>
+                    <div class=" form-group text-center input-group mb-0">
+                      <input class="form-control" type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_placeholder' | t }}" name="contact[email]" id="NewsletterEmail-{{ block.id }}" autocorrect="off" autocapitalize="off">
+                      <div class="input-group-append pl-3">
+                        <button type="submit" class="btn btn-theme" name="commit">
+                          <span class="d-none d-sm-block">{{ 'general.newsletter_form.submit' | t }}</span>
+                          <span class="d-block d-sm-none"><i class="icon-send"></i></span>
+                        </button>
+                      </div>
+                    </div>
+                  {%- endif -%}
+                {%- endform -%}
+              </div>
+          </div>
+        </div>
+      </div>
+      
+      
+    </div>
+  </div>
+  {%- endif -%}
+  {% schema %}
+  {
+    "name": "Newsletter Footer",
+    "class": "index-section",
+    "settings": [
+    {
+        "type": "checkbox",
+        "id": "section_footer",
+        "label": "Enable Section ",
+        "default": true
+      },
+    {
+      "type": "select",
+      "id": "animation",
+      "options": [
+        { "value": "", "label": "None"},
+        { "value": "fade", "label": "Fade"},
+        { "value": "fade-up", "label": "Fade Up"},
+        { "value": "fade-down", "label": "Fade Down"},
+        { "value": "fade-left", "label": "Fade Left"},
+        { "value": "fade-right", "label": "Fade Right"},
+        { "value": "fade-up-right", "label": "Fade Up Right"},
+        { "value": "fade-up-left", "label": "Fade Up Left"},
+        { "value": "fade-down-right", "label": "Fade Down Right"},
+        { "value": "fade-down-left", "label": "Fade Down Left"},
+        { "value": "flip-up", "label": "Flip Up"},
+        { "value": "flip-down", "label": "Flip Down"},
+        { "value": "flip-left", "label": "Flip Left"},
+        { "value": "flip-right", "label": "Flip Right"},
+        { "value": "slide-up", "label": "Slide Up"},
+        { "value": "slide-down", "label": "Slide Down"},
+        { "value": "slide-left", "label": "Slide Left"},
+        { "value": "slide-right", "label": "Slide Right"},
+        { "value": "zoom-in", "label": "Zoom In"},
+        { "value": "zoom-in-up", "label": "Zoom In Up"},
+        { "value": "zoom-in-down", "label": "Zoom In Down"},
+        { "value": "zoom-in-left", "label": "Zoom In Left"},
+        { "value": "zoom-in-right", "label": "Zoom In Right"},
+        { "value": "zoom-out", "label": "Zoom Out"},
+        { "value": "zoom-out-up", "label": "Zoom Out Up"},
+        { "value": "zoom-out-down", "label": "Zoom Out Down"},
+        { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+        { "value": "zoom-out-right", "label": "Zoom Out Right"}
+      ],
+      "label": "Select Animation"
+    },
+    {
+      "type": "text",
+      "id": "paddingsection",
+      "label": "Padding Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "paddingmobile",
+      "label": "Padding Section Mobile",
+      "default": "60px 0px 60px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginsection",
+      "label": "Margin Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginmobile",
+      "label": "Margin Mobile",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "color",
+      "id": "bgsection",
+        "label": "Background Section",
+        "default": "#fefefe"
+    },
+    {
+        "type": "color",
+        "id": "bordertop",
+          "label": "Border top",
+          "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "borderbottom",
+          "label": "Border Bottom",
+          "default": "#ffffff"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "HTML / Description"
+      },
+      {
+        "type": "select",
+        "id": "setwidth",
+        "label": "Full Width",
+        "default": "container",
+        "options": [
+          {
+            "value": "container",
+            "label": "Box"
+          },
+          {
+            "value": "container-fluid",
+            "label": "Container Fluid"
+          },
+          {
+            "value": "full",
+            "label": "Full"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "colorborder",
+          "label": "Border Color Input",
+          "default": "#222222"
+      }
+    ]
+  }
+  {% endschema %}
+  

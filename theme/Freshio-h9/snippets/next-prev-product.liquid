@@ -1,0 +1,45 @@
+{%- if section.settings.next_prev_enable -%}
+<!-- next-prev-product.liquid -->
+<style>
+  .next-prev-product {
+    position: fixed;
+    top: 50%;
+    margin-top: -50px;
+    z-index: 1;
+    max-width: 60px;
+    -webkit-transition: all ease .3s;
+    -o-transition: all ease .3s;
+    transition: all ease .3s
+  }
+
+  .next-prev-product:hover {
+    max-width: 70px
+  }
+
+  .next-prev-product.prev {
+    left: 0
+  }
+
+  .next-prev-product.next {
+    right: 0
+  }
+  @media (max-width:991px) {
+    .next-prev-product {
+      display: none
+    }
+  }
+</style>
+  {%- if collection.previous_product -%}
+  {%- assign prevProduct = collection.previous_product -%}
+  <a class="next-prev-product prev shadow" href="{{prevProduct.url}}" title="{{prevProduct.title}}">
+    <img class="lazyload" data-src="{{prevProduct.featured_image | img_url:'120x'}}" alt="{{prevProduct.featured_image.alt}}" />
+  </a>
+  {%- endif -%}
+
+  {%- if collection.next_product -%}
+  {%- assign nextProduct = collection.next_product -%}
+  <a class="next-prev-product next shadow" href="{{nextProduct.url}}" title="{{nextProduct.title}}">
+    <img class="lazyload" data-sizes="auto" data-src="{{nextProduct.featured_image | img_url:'120x'}}" alt="{{nextProduct.featured_image.alt}}" />
+  </a>
+  {%- endif -%}
+{%- endif -%}

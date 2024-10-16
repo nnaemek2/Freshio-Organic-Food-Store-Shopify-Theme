@@ -1,0 +1,48 @@
+{%- if settings.categories_block_enable -%}
+<!-- sidebar-categories -->
+<div id="categories_block">
+  {%- if settings.categories_block_title != blank -%}
+  <h5 class="title_block" data-toggle="collapse" data-target="#ul_list_categories" aria-expanded="{% if settings.categories_block_collapse %}true{% else %}false{% endif %}">
+    {{ settings.categories_block_title }}
+  </h5>
+  {%- endif -%}
+  <div class="block_content">
+    <ul id="ul_list_categories" class=" mt-4 collapse list-unstyled {% if settings.categories_block_collapse %}show{% endif %}">
+      {%- if settings.categories_block_items == blank -%}
+      {%- for category in collections limit:settings.categories_block_number -%}
+      <li {% if collection.handle == category.handle %} class="active" {% endif %}>
+        <a class="justify-content-between d-flex" href="{{ category.url }}" title="{{ category.title }}">
+          {{ category.title }}
+          {%- if settings.categories_block_productcount -%}
+          {%- if category.all_products_count > 0 -%}
+          <span id="apolloQty{{ category.id }}" class="apolloQty pull-right">({{ category.all_products_count }})</span>
+          {%- endif -%}
+          {%- endif -%}
+        </a>
+      </li>
+      {%- endfor -%}
+      {%- else -%}
+      {%- assign category_items = settings.categories_block_items | split:"," -%}
+      {%- for category in category_items -%}
+      {%- assign categoryCustom = category | downcase -%}
+      {%- for category_site in collections -%}
+      {%- assign cat = category_site.title | downcase -%}
+      {%- if categoryCustom contains cat -%}
+      <li {% if collection.handle == category_site.handle %} class="active" {% endif %}>
+        <a class="justify-content-between d-flex" href="{{ category_site.url }}" title="{{ category_site.title }}">
+          {{ category_site.title }}
+          {%- if settings.categories_block_productcount -%}
+          {%- if category_site.all_products_count > 0 -%}
+          <span id="appolloQty{{ category_site.id }}" class="apolloQty pull-right">({{ category_site.all_products_count }})</span>
+          {%- endif -%}
+          {%- endif -%}
+        </a>
+      </li>
+      {%- endif -%}
+      {%- endfor -%}
+      {%- endfor -%}
+      {%- endif -%}
+    </ul>
+  </div>
+</div>
+{%- endif -%}

@@ -1,0 +1,305 @@
+<h3 id="html-layout" class="html-title pt-4">1.Layouts</h3>
+<div class="input-group mt-4 mb-4">
+  <div class="input-group-prepend">
+    <label class="font-weight-bold input-group-text">Select layout</label>
+  </div>
+  <select class="custom-select js-html-select box-shadow-none" data-id="Layout">
+    <optgroup class="text-primary" label="Easy">
+      <option selected value="layout-column-2">2 columns (50%)</option>
+      <option value="layout-column-239">2 columns (25% - 75%)</option>
+      <option value="layout-column-248">2 columns (33% - 67%)</option>
+      <option value="layout-column-3">3 columns (33.3%)</option>
+      <option value="layout-column-3225">3 columns (25% - 25% - 50%)</option>
+      <option value="layout-column-3252">3 columns (25% - 50% - 25%)</option>
+      <option value="layout-column-3522">3 columns (50% - 25% - 25%)</option>
+      <option value="layout-column-4">4 columns (25%)</option>
+      <option value="layout-column-6">6 columns (16.67%)</option>
+    </optgroup>
+    <optgroup class="text-success" label="Medium">
+      <option value="layout-carousel">Slideshow</option>
+    </optgroup>
+    <optgroup class="text-danger" label="Hard">
+      <option value="layout-timeline">Timeline</option>
+    </optgroup>
+  </select>
+</div>
+<div class="row no-gutters">
+  <div class="col-md-12 col-left">
+    <textarea id="htmlCode-Layout" name="message" class="html-code html-code--with-select">
+      <div class="row align-items-center text-center layout-column-2">
+        <div class="col-12 col-md-6 mb-2 mt-2">
+          [[ COLUMN LEFT ]] 
+        </div>
+        <div class="col-12 col-md-6 mb-2 mt-2">
+          [[COLUMN RIGHT ]]
+        </div>
+      </div>
+    </textarea>
+  </div>
+  <div class="col-md-12 col-mid-layout text-center mt-3 mb-3">
+    <button class="btn btn-outline-secondary btn-html-view" data-id="Layout">Preview{%- include 'icon-arrow-down' -%}</button>
+    <button class="btn btn-secondary btn-html-copy" data-id="Layout">Copy {%- include 'icon-copy' -%}</button>
+  </div>
+  <div class="col-md-12 col-right">
+    <div id="htmlView-Layout" class="html-view shadow html-view--layout rounded">
+      <div class="row align-items-center text-center layout-column-2">
+        <div class="col-12 col-md-6 mb-2 mt-2">
+          [[ COLUMN LEFT ]] 
+        </div>
+        <div class="col-12 col-md-6 mb-2 mt-2">
+          [[COLUMN RIGHT ]]
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="htmlContent-Layout" class="js-html-content hide" data-id="Layout">
+
+    <div class="row align-items-center text-center layout-column-2">
+      <div class="col-12 col-md-6 mb-2 mt-2">
+        [[ COLUMN LEFT ]] 
+      </div>
+      <div class="col-12 col-md-6 mb-2 mt-2">
+        [[COLUMN RIGHT ]]
+      </div>
+    </div>
+
+    <div class="row align-items-center text-center layout-column-239">
+      <div class="col-12 col-md-12 col-lg-3 mb-2 mt-2">
+        [[ COLUMN LEFT ]] 
+      </div>
+      <div class="col-12 col-md-12 col-lg-9 mb-2 mt-2">
+        [[COLUMN RIGHT ]]
+      </div>
+    </div>
+
+    <div class="row align-items-center text-center layout-column-248">
+      <div class="col-12 col-md-12 col-lg-4 mb-2 mt-2">
+        [[ COLUMN LEFT ]] 
+      </div>
+      <div class="col-12 col-md-12 col-lg-8 mb-2 mt-2">
+        [[COLUMN RIGHT ]]
+      </div>
+    </div>
+
+    <div class="row align-items-center text-center layout-column-3">
+      <div class="col-12 col-md-12 col-lg-4 mb-2 mt-2">
+        [[ COLUMN LEFT ]]
+      </div>
+      <div class="col-12 col-md-12 col-lg-4 mb-2 mt-2">
+        [[ COLUMN MIDDLE ]]
+      </div>
+      <div class="col-12 col-md-12 col-lg-4 mb-2 mt-2">
+        [[ COLUMN RIGHT ]]
+      </div>
+    </div>
+
+    <div class="row align-items-center text-center layout-column-3225">
+      <div class="col-12 col-md-6 col-lg-3 mb-2 mt-2">
+        [[ SMALL COLUMN 1 ]]
+      </div>
+      <div class="col-12 col-md-6 col-lg-3 mb-2 mt-2">
+        [[ SMALL COLUMN 2 ]]
+      </div>
+      <div class="col-12 col-md-12 col-lg-6 mb-2 mt-2">
+        [[ BIG COLUMN ]]
+      </div>
+    </div>
+
+    <div class="row align-items-center text-center layout-column-3252">
+      <div class="col-12 col-md-6 col-lg-3 mb-2 mt-2">
+        [[ SMALL COLUMN 1 ]]
+      </div>
+      <div class="col-12 col-md-6 order-lg-2 col-lg-3 mb-2 mt-2">
+        [[ SMALL COLUMN 2 ]]
+      </div>
+      <div class="col-12 col-md-12 order-lg-1 col-lg-6 mb-2 mt-2">
+        [[ BIG COLUMN ]]
+      </div>
+    </div>
+
+    <div class="row align-items-center text-center layout-column-3522">
+      <div class="col-12 col-md-6 order-lg-2 col-lg-3 mb-2 mt-2">
+        [[ SMALL COLUMN 1 ]]
+      </div>
+      <div class="col-12 col-md-6 order-lg-3 order-lg-2 col-lg-3 mb-2 mt-2">
+        [[ SMALL COLUMN 2 ]]
+      </div>
+      <div class="col-12 col-md-12 order-lg-1 order-lg-1 col-lg-6 mb-2 mt-2">
+        [[ BIG COLUMN ]]
+      </div>
+    </div>
+
+    <div class="row align-items-center text-center layout-column-4">
+      <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-2 mt-2">
+        [[ COLUMN LEFT ]]
+      </div>
+      <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-2 mt-2">
+        [[ COLUMN MIDDLE 1 ]]
+      </div>
+      <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-2 mt-2">
+        [[ COLUMN MIDDLE 2 ]]
+      </div>
+      <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-2 mt-2">
+        [[ COLUMN RIGHT ]]
+      </div>
+    </div>
+
+    <div class="row align-items-center text-center layout-column-6">
+      <div class="col-6 col-sm-4 col-md-4 col-lg-2 mb-2 mt-2">
+        [[ COLUMN 1 ]]
+      </div>
+      <div class="col-6 col-sm-4 col-md-4 col-lg-2 mb-2 mt-2">
+        [[ COLUMN 2 ]]
+      </div>
+      <div class="col-6 col-sm-4 col-md-4 col-lg-2 mb-2 mt-2">
+        [[ COLUMN 3 ]]
+      </div>
+      <div class="col-6 col-sm-4 col-md-4 col-lg-2 mb-2 mt-2">
+        [[ COLUMN 4 ]]
+      </div>
+      <div class="col-6 col-sm-4 col-md-4 col-lg-2 mb-2 mt-2">
+        [[ COLUMN 5 ]]
+      </div>
+      <div class="col-6 col-sm-4 col-md-4 col-lg-2 mb-2 mt-2">
+        [[ COLUMN 6 ]]
+      </div>
+    </div>
+
+    <div class="htmlContent-item layout-carousel">
+      <div id="lyCarousel-{{uniqueID}}" class="carousel slide" data-ride="carousel" data-interval="5000">
+        <ol class="carousel-indicators">
+          <li data-target="#lyCarousel-{{uniqueID}}" data-slide-to="0" class="active"></li>
+          <li data-target="#lyCarousel-{{uniqueID}}" data-slide-to="1"></li>
+          <li data-target="#lyCarousel-{{uniqueID}}" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block w-100" src="https://cdn.shopify.com/s/files/1/0092/7563/7839/files/1.jpg?54890" alt="First slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="https://cdn.shopify.com/s/files/1/0092/7563/7839/files/2.jpg?54890" alt="Second slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="https://cdn.shopify.com/s/files/1/0092/7563/7839/files/3.jpg?54890" alt="Third slide">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#lyCarousel-{{uniqueID}}" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </a>
+        <a class="carousel-control-next" href="#lyCarousel-{{uniqueID}}" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </a>
+      </div>
+    </div>
+    <div class="htmlContent-item layout-timeline">
+      <div class="container py-2">
+        <div class="row">
+          <div class="col-auto text-center flex-column d-none d-sm-flex">
+            <div class="row h-50">
+            </div>
+            <h5 class="m-2">
+              <span class="badge badge-pill bg-light border">&nbsp;</span>
+            </h5>
+            <div class="row h-50">
+              <div class="col border-right">&nbsp;</div>
+              <div class="col">&nbsp;</div>
+            </div>
+          </div>
+          <div class="col py-2">
+            <div class="card">
+              <div class="card-body">
+                [[ HTML CONTENT FIRST ]]
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-auto text-center flex-column d-none d-sm-flex">
+            <div class="row h-50">
+              <div class="col border-right">&nbsp;</div>
+              <div class="col">&nbsp;</div>
+            </div>
+            <h5 class="m-2">
+              <span class="badge badge-pill  bg-light border">&nbsp;</span>
+            </h5>
+            <div class="row h-50">
+              <div class="col border-right">&nbsp;</div>
+              <div class="col">&nbsp;</div>
+            </div>
+          </div>
+          <div class="col py-2">
+            <div class="card">
+              <div class="card-body">
+                [[ HTML CONTENT MIDDLE 1 ]]
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-auto text-center flex-column d-none d-sm-flex">
+            <div class="row h-50">
+              <div class="col border-right">&nbsp;</div>
+              <div class="col">&nbsp;</div>
+            </div>
+            <h5 class="m-2">
+              <span class="badge badge-pill bg-light border">&nbsp;</span>
+            </h5>
+            <div class="row h-50">
+              <div class="col border-right">&nbsp;</div>
+              <div class="col">&nbsp;</div>
+            </div>
+          </div>
+          <div class="col py-2">
+            <div class="card">
+              <div class="card-body">
+                [[ HTML CONTENT MIDDLE 2 ]]
+              </div>
+            </div>
+          </div>
+        </div>        
+        <div class="row">
+          <div class="col-auto text-center flex-column d-none d-sm-flex">
+            <div class="row h-50">
+              <div class="col border-right">&nbsp;</div>
+              <div class="col">&nbsp;</div>
+            </div>
+            <h5 class="m-2">
+              <span class="badge badge-pill bg-light border">&nbsp;</span>
+            </h5>
+            <div class="row h-50">
+              <div class="col border-right">&nbsp;</div>
+              <div class="col">&nbsp;</div>
+            </div>
+          </div>
+          <div class="col py-2">
+            <div class="card">
+              <div class="card-body">
+                [[ HTML CONTENT MIDDLE 3 ]]
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-auto text-center flex-column d-none d-sm-flex">
+            <div class="row h-50">
+              <div class="col border-right">&nbsp;</div>
+              <div class="col">&nbsp;</div>
+            </div>
+            <h5 class="m-2">
+              <span class="badge badge-pill bg-light border">&nbsp;</span>
+            </h5>
+            <div class="row h-50">
+            </div>
+          </div>
+          <div class="col py-2">
+            <div class="card">
+              <div class="card-body">
+                [[ HTML CONTENT LAST ]]
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

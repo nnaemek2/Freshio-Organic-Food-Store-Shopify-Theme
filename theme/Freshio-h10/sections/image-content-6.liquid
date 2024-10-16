@@ -1,0 +1,499 @@
+<!-- image-content-6.liquid -->
+  </style>
+  <div class="customstyle{{ section.id }} {% if section.settings.image_bg != blank %} lazyload {% endif %}" 
+  style="{% if section.settings.image_bg != blank %}background-image:url({%- include 'srcBlank' -%}){% endif %}"  
+  data-section-id="{{ section.id }}"  data-bg="{{ section.settings.image_bg | img_url:"1920x" }}" >
+    {%- include 'style-section' -%}
+  <div class="{{ section.settings.setwidth }}">
+    <div class="section-block">
+      {%- include 'section-heading' -%}
+      <div class="row {% unless section.settings.padding %} m-0{% endunless %} {% if section.settings.col_center %} justify-content-center {% endif %}">
+        {%- for block in section.blocks -%}
+        {%- case block.settings.width -%}
+        {%- when 'auto' -%}
+        {%- assign block_width = 'col-lg col-12' -%}
+        {%- when '20%' -%}
+        {%- assign block_width = 'col-1-5 col-md-6 col-12' -%}
+        {%- when '25%' -%}
+        {%- assign block_width = 'col-lg-3 col-md-6 ' -%}
+        {%- when '33%' -%}
+        {%- assign block_width = 'col-lg-4 col-md-6 ' -%}
+        {%- when '41%' -%}
+        {%- assign block_width = 'col-lg-5 col-md-12 ' -%}
+        {%- when '50%' -%}
+        {%- assign block_width = 'col-lg-6 ' -%}
+        {%- when '58%' -%}
+        {%- assign block_width = 'col-lg-7 col-md-12 ' -%}
+        {%- when '66%' -%}
+        {%- assign block_width = 'col-lg-8 col-md-12 ' -%}
+        {%- when '75%' -%}
+        {%- assign block_width = 'col-lg-9 col-md-12 ' -%}
+        {%- when '100%' -%}
+        {%- assign block_width = 'col-12 ' -%}
+        {%- endcase -%}
+        <div class="{{block_width}} align-self-{{block.settings.align}}  {% unless section.settings.padding %} p-0{% endunless %} {% if forloop.last == true %} mb-0 {% else %} mb-5 mb-lg-0  {% endif %}" {{ block.shopify_attributes }}>
+          <div class="grid__item-inner grid__item-inner--{{ block.type }}">
+            {%- case block.type -%}
+            {%- when 'list' -%}
+              <div data-aos="{{section.settings.animation}}" data-aos-duration="500">
+                {%- for i in (1..3) -%}
+                {%- assign img = 'f_img' | append:i -%}
+                {%- assign title = 'f_title' | append:i -%}
+                {%- assign des = 'f_des' | append:i -%}
+                
+                <div class="media {% if forloop.last == true %} mb-0 {% else %} mb-5  {% endif %}">
+                    {%- if block.settings[img] != blank -%}
+                    <img class="mr-4 lazyload transition" src="{%- include 'srcBlank' -%}" data-src="{{block.settings[img] | img_url : '120x'}}" alt="{{block.settings[img].alt}}" width="86">
+                    {%- else -%}
+                    <div class="mr-4" style="width: 86px;">
+                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                    </div>
+                    {%- endif -%}
+                    <div class="media-body">
+                       {%- if block.settings[title] != blank -%}
+                        <h6 class="mt-0 mb-2">{{ block.settings[title] }}</h6>
+                       {%- endif -%}
+                       {%- if block.settings[des] != blank -%}
+                            {{block.settings[des]}}
+                        {%- endif -%}
+                    </div>
+                </div>
+                {%- endfor -%}
+              </div>
+            {%- when 'image' -%}
+              {%- if block.settings.image != blank -%}
+              <div class="">
+                <a href="{{block.settings.image_link | default:'#'}}" class="d-block" data-aos="{{section.settings.animation}}" data-aos-duration="800">
+                    <img src="{%- include 'srcBlank' -%}" class="lazyload transition w-100" data-src="{{block.settings.image | img_url : '1920x'}}" />
+                </a>
+                </div>
+              {%- else -%}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+            {%- endcase -%}
+          </div>
+        </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+  </div>
+  
+  {% schema %}
+  {
+    "name": "Image with text Creative",
+    "max_blocks": 12,
+    "settings": [
+    {
+      "type": "select",
+      "id": "animation",
+      "options": [
+        { "value": "", "label": "None"},
+        { "value": "fade", "label": "Fade"},
+        { "value": "fade-up", "label": "Fade Up"},
+        { "value": "fade-down", "label": "Fade Down"},
+        { "value": "fade-left", "label": "Fade Left"},
+        { "value": "fade-right", "label": "Fade Right"},
+        { "value": "fade-up-right", "label": "Fade Up Right"},
+        { "value": "fade-up-left", "label": "Fade Up Left"},
+        { "value": "fade-down-right", "label": "Fade Down Right"},
+        { "value": "fade-down-left", "label": "Fade Down Left"},
+        { "value": "flip-up", "label": "Flip Up"},
+        { "value": "flip-down", "label": "Flip Down"},
+        { "value": "flip-left", "label": "Flip Left"},
+        { "value": "flip-right", "label": "Flip Right"},
+        { "value": "slide-up", "label": "Slide Up"},
+        { "value": "slide-down", "label": "Slide Down"},
+        { "value": "slide-left", "label": "Slide Left"},
+        { "value": "slide-right", "label": "Slide Right"},
+        { "value": "zoom-in", "label": "Zoom In"},
+        { "value": "zoom-in-up", "label": "Zoom In Up"},
+        { "value": "zoom-in-down", "label": "Zoom In Down"},
+        { "value": "zoom-in-left", "label": "Zoom In Left"},
+        { "value": "zoom-in-right", "label": "Zoom In Right"},
+        { "value": "zoom-out", "label": "Zoom Out"},
+        { "value": "zoom-out-up", "label": "Zoom Out Up"},
+        { "value": "zoom-out-down", "label": "Zoom Out Down"},
+        { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+        { "value": "zoom-out-right", "label": "Zoom Out Right"}
+      ],
+      "label": "Select Animation"
+  },
+    {
+      "type": "text",
+      "id": "paddingsection",
+      "label": "Padding Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "paddingmobile",
+      "label": "Padding Section Mobile",
+      "default": "60px 0px 60px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginsection",
+      "label": "Margin Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginmobile",
+      "label": "Margin Mobile",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "select",
+      "id": "sectionheading",
+      "label": "Style Heading",
+      "default": "heading-0",
+      "options": [
+        {
+          "value": "heading-0",
+          "label": "Heading 0 Border"
+        },
+        {
+          "value": "heading-1",
+          "label": "Heading 1 Center"
+        },
+        {
+          "value": "heading-2",
+          "label": "Heading 2 No Border"
+        },
+        {
+          "value": "heading-3",
+          "label": "Heading 3 Center Border"
+        },
+        {
+          "value": "heading-4",
+          "label": "Hide Heading"
+        }
+      ]
+    }, 
+    {
+      "type": "text",
+      "id": "title_top",
+      "label": "Sub Title Top",
+      "default": "Sub Title Top"
+    },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Custom content"
+      },
+      {
+        "type": "textarea",
+        "id": "des",
+        "label": "HTML / Description"
+      },
+      {
+        "type": "select",
+        "id": "setwidth",
+        "label": "Full Width",
+        "default": "container",
+        "options": [
+          {
+            "value": "container",
+            "label": "Box"
+          },
+          {
+            "value": "container-fluid",
+            "label": "Container Fluid"
+          },
+          {
+            "value": "full",
+            "label": "Full"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "padding",
+        "label": "Enable Padding",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "bgsection",
+          "label": "Background Section",
+          "default": "#fefefe"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_bg",
+        "label": "Background image"
+      },
+      {
+        "type": "select",
+        "id": "e_size",
+        "label": "Backgroudn Size",
+        "default": "auto",
+        "options": [
+          {
+            "value": "auto",
+            "label": "Auto"
+          },
+          {
+            "value": "cover",
+            "label": "Cover"
+          },
+          {
+            "value": "contain",
+            "label": "Contain"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "e_repeat",
+        "label": "Backgroudn Repeat",
+        "default": "no-repeat",
+        "options": [
+          {
+            "value": "no-repeat",
+            "label": "No-repeat"
+          },
+          {
+            "value": "repeat",
+            "label": "Repeat"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "list",
+        "name": "List Feautured",
+        "settings": [
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "33%",
+            "options": [
+              {
+                "value": "auto",
+                "label": "Auto"
+              },
+              {
+                "value": "20%",
+                "label": "20%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "41%",
+                "label": "41%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "58%",
+                "label": "58%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "align",
+            "label": "Align",
+            "default": "auto",
+            "options": [
+              {
+                "value": "auto",
+                "label": "Top"
+              },
+              {
+                "value": "center",
+                "label": "Mid"
+              },
+              {
+                "value": "end",
+                "label": "Bottom"
+              }
+            ]
+          },
+          {
+            "type": "image_picker",
+            "id": "f_img1",
+            "label": "Image 1"
+          },
+          {
+            "type": "text",
+            "id": "f_title1",
+            "label": "Title 1",
+            "default": "Title 1"
+          },
+          {
+            "type": "textarea",
+            "id": "f_des1",
+            "label": "Description 1",
+            "default": "Description 1"
+          },
+          {
+            "type": "image_picker",
+            "id": "f_img2",
+            "label": "Image 2"
+          },
+          {
+            "type": "text",
+            "id": "f_title2",
+            "label": "Title 2",
+            "default": "Title 2"
+          },
+          {
+            "type": "textarea",
+            "id": "f_des2",
+            "label": "Description 2",
+            "default": "Description 2"
+          },
+          {
+            "type": "image_picker",
+            "id": "f_img3",
+            "label": "Image 3"
+          },
+          {
+            "type": "text",
+            "id": "f_title3",
+            "label": "Title 3",
+            "default": "Title 3"
+          },
+          {
+            "type": "textarea",
+            "id": "f_des3",
+            "label": "Description 3",
+            "default": "Description 3"
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "33%",
+            "options": [
+              {
+                "value": "auto",
+                "label": "Auto"
+              },
+              {
+                "value": "20%",
+                "label": "20%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "41%",
+                "label": "41%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "58%",
+                "label": "58%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "align",
+            "label": "Align Vertical",
+            "default": "auto",
+            "options": [
+              {
+                "value": "auto",
+                "label": "Top"
+              },
+              {
+                "value": "center",
+                "label": "Mid"
+              },
+              {
+                "value": "end",
+                "label": "Bottom"
+              }
+            ]
+          },
+         
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "url",
+            "id": "image_link",
+            "label": "Image link to"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image with text Creative",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "list"
+          },
+          {
+            "type": "image"
+          },
+          {
+            "type": "list"
+          }
+        ]
+      }
+    ]
+  }
+  {% endschema %}

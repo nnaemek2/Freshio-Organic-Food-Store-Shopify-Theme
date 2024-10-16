@@ -1,0 +1,48 @@
+{%- capture apvideo -%}vapmenuitem_evideo_{{ intMega }}{%- endcapture -%}
+{%- capture approduct -%}vapmenuitem_eproduct_{{ intMega }}{%- endcapture -%}
+{%- capture aphtml -%}vapmenuitem_ehtml_{{ intMega }}{%- endcapture -%}
+{%- capture aplink -%}vapmenuitem_eblocklinks_{{ intMega }}{%- endcapture -%}
+{%- capture ordervideo -%}vapmenuitem_ovideo_{{ intMega }}{%- endcapture -%}
+{%- capture orderproduct -%}vapmenuitem_oproduct_{{ intMega }}{%- endcapture -%}
+{%- capture orderhtml -%}vapmenuitem_ohtml_{{ intMega }}{%- endcapture -%}
+{%- capture orderlink -%}vapmenuitem_oblocklinks_{{ intMega }}{%- endcapture -%}
+{%- capture ap_colvideo -%}vapmenuitem_columns_blockvideo_{{ intMega }}{%- endcapture -%}
+{%- capture ap_colproduct -%}vapmenuitem_columns_blockproducts_{{ intMega }}{%- endcapture -%}
+{%- capture ap_colhtml -%}vapmenuitem_columns_blockhtml_{{ intMega }}{%- endcapture -%}
+{%- capture ap_collink -%}vapmenuitem_columns_blocklinks_{{ intMega }}{%- endcapture -%}
+
+<div class="container">
+  <div class="row">
+    {%- if settings[aplink] -%}
+    <div class="mega-col megalink col-sm-{{ settings[ap_collink] }} order-{{settings[orderlink]}}">
+      {%- capture ap_col_links -%}vapmenuitem_columns_{{ intMega }}{%- endcapture -%}
+      {%- include 'menu-blocklinks' -%}
+    </div>
+    {%- endif -%}
+    {%- if settings[apvideo] -%}
+    <div class="mega-col col-sm-{{ settings[ap_colvideo] }} order-{{settings[ordervideo]}}">
+      {%- capture ap_video -%}vapmenuitem_cvideo_{{ intMega }}{%- endcapture -%}
+      {%- capture ap_video_mute -%}vapmenuitem_video_mute_{{ intMega }}{%- endcapture -%}
+      {%- capture ap_video_loop -%}vapmenuitem_video_loop_{{ intMega }}{%- endcapture -%}
+      {%- capture ap_video_height -%}vapmenuitem_video_height_{{ intMega }}{%- endcapture -%}
+      {%- include 'menu-blockvideos' -%}
+    </div>
+    {%- endif -%}
+    {%- if settings[approduct] -%}
+    <div class="mega-col col-sm-{{ settings[ap_colproduct] }} order-{{settings[orderproduct]}}">
+      {%- capture collection_menu -%}vapmenuitem_cproduct_{{ intMega }}{%- endcapture -%}
+      {%- capture collection_menu_title -%}vapmenuitem_tproduct_{{ intMega }}{%- endcapture -%}
+      {%- include 'menu-blockproducts' -%}
+    </div>
+    {%- endif -%}
+    {%- if settings[aphtml] -%}
+    <div class="mega-col col-sm-{{ settings[ap_colhtml] }} order-{{settings[orderhtml]}}">
+      {%- capture ap_html_title -%}vapmenuitem_thtml_{{ intMega }}{%- endcapture -%}
+      {%- capture ap_html_eimg -%}vapmenuitem_eihtml_{{ intMega }}{%- endcapture -%}
+      {%- capture ap_html_img -%}vapmenuitem_ihtml_{{ intMega }}{%- endcapture -%}
+      {%- capture ap_html_des -%}vapmenuitem_chtml_{{ intMega }}{%- endcapture -%}
+      {%- include 'menu-blockhtml' -%}
+    </div>
+    {%- endif -%}
+  </div>
+</div>

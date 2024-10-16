@@ -1,0 +1,25 @@
+<style>
+    .customstyle{{ section.id }}{
+      background:{{section.settings.bgsection}};
+      padding: {{section.settings.paddingsection}};
+      margin: {{section.settings.marginsection}}
+    }
+    @media (max-width:991px){
+      .customstyle{{ section.id }}{
+        padding: {{section.settings.paddingmobile}};
+        margin: {{section.settings.marginmobile}}
+      }
+    }
+    {%- if section.settings.enable_inner -%}
+    .customstyle{{ section.id }} .section-inner{
+      background-color: {{section.settings.bg_inner}};
+      border-radius: 4px;
+      padding: {{section.settings.padding_inner}};
+    }
+    @media (max-width:749px){
+      .customstyle{{ section.id }} .section-inner{
+        padding: {{section.settings.padding_inner_mobile}};
+      }
+    }
+    {%- endif -%}
+  </style>

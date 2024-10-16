@@ -1,0 +1,301 @@
+<!-- article-content.liquid -->
+{%- assign new_comment = false -%}
+{%- if comment and comment.created_at -%}
+  {%- assign new_comment = true -%}
+  {%- assign new_comment_id = comment.id -%}
+{%- endif -%}
+
+{%- if new_comment -%}
+  {%- assign duplicate_comment = false %}
+  {%- for comment in article.comments -%}
+    {%- if comment.id == new_comment_id -%}
+      {%- assign duplicate_comment = true %}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- if duplicate_comment -%}
+    {%- assign number_of_comments = article.comments_count -%}
+  {%- else -%}
+    {%- assign number_of_comments = article.comments_count | plus: 1 -%}
+  {%- endif -%}
+{%- else -%}
+  {%- assign number_of_comments = article.comments_count -%}
+{%- endif -%}
+<div class="container pt-4">
+  <article itemscope itemtype="http://schema.org/Article" class="row {% if section.settings.sidebar_position == 'left' %}flex-row-reverse{% endif %} {% unless section.settings.sidebar_enable %} justify-content-center{% endunless %}">
+    <div  class="{% if section.settings.sidebar_enable %}col-md-9 {% if section.settings.sidebar_position == 'left' %} pl-lg-5{% else %} pr-lg-5{% endif %} {% else %}col-md-8{% endif %}">
+      <div class="content-block mb-4">
+        <p class="blog__meta ">
+          {{ article.published_at | time_tag: format: 'month_day_year' }}
+        </p>
+        <h1 class="h3">{{ article.title }}</h1>
+      </div>
+      {%- if article.image -%}
+      <div class="content-block__full-image--large">
+        <noscript>
+          {{ article | img_url: '1024x1024' | img_tag: article.title | escape }}
+        </noscript>
+        <div class="article__photo-container mb-4">
+          <div class="article__photo-wrapper" style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;">
+            {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+            <img class="lazyload"
+                 src="{%- include 'srcBlank' -%}"
+                 data-src="{{ img_url }}"
+                 data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                 data-aspectratio="{{ article.image.aspect_ratio }}"
+                 data-sizes="auto"
+                 alt="{{ article.title | escape }}">
+          </div>
+        </div>
+      </div>
+      {%- endif -%}
+      <div class="content-block">
+        <div class="rte rte--indented-images mb-5" itemprop="articleBody">
+          {{ article.content }}
+        </div>
+        <div class="border-top py-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <ul class="list-unstyled list-blog-tags">
+            {% for tag in article.tags %}
+            <li class=" d-inline-block px-2 py-1 text-uppercase small mr-2 mb-lg-0 mb-2"><strong>{{ tag | link_to_tag: tag }}</strong></li>
+            {% endfor %}
+            </ul>
+            {%- if section.settings.social_sharing_blog -%}
+              {%- include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image -%}
+            {%- endif -%}
+          </div>
+        </div>
+        {%- if section.settings.blog_show_previous_and_next_buttons -%}
+        <div class=" py-4  bg-light">
+          <ul class="list-unstyled row">
+            <li class="col d-flex justify-content-end pr-2 pr-md-5 text-uppercase font-weight-bold">
+              <a class="d-flex align-items-center"  href="{{ blog.previous_article }}"> <i class="icon-arrow-left mr-2"></i>{{'blogs.article.pre_post' | t}} </a>
+            </li>
+            <li class="col d-flex pl-2 pl-md-5 border-left text-uppercase font-weight-bold">
+              <a class="d-flex align-items-center" href="{{ blog.next_article }}">{{'blogs.article.next_post' | t}} <i class="icon-arrow-right ml-2"></i></a>
+            </li>
+          </ul>
+        </div>
+        {%- endif -%}
+        <div class="row mt-5">
+          {%- if section.settings.same_blog != blank -%}
+          <div class="col-md-12">
+            <h3 class="mb-4">{{section.settings.same_blog}}</h3>
+            <ul class="list-unstyled row">
+              {%- for article_extra in blogs[blog.handle].articles limit:3 -%}
+              <li class=" col-12 col-md-4 col-lg-4">
+                <div class="same_blog mb-4 mb-sm-0">
+                  <a class="w-100" href="{{ article_extra.url }}">
+                    <img class="lazyload" data-src="{{ article_extra.image | img_url: '600x' }}" >
+                  </a>
+                  <p class="same_blog__publish  text-uppercase pt-3 mb-2 blog__meta">
+                    {{ article.published_at | time_tag: format: 'month_day_year' }}
+                  </p>
+                  <h4 class=""><a href="{{ article_extra.url }}">{{ article_extra.title }}</a></h4>
+                </div>
+              </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+          <div class="col-12 my-5"><hr/></div>
+          {%- endif -%}
+
+          {%- if section.settings.related_blog != blank -%}
+          <div class="col-md-12">
+            <h3 class="mb-4">{{section.settings.related_blog}}</h3>
+            <ul class="list-unstyled row">
+              {%- assign icount = 1 -%}
+              {%- for article_extra in blog.articles -%}
+              {%- assign article_with_tags = false -%}
+              {%- for tag_check in article_extra.tags -%}
+              {%- if article.tags contains tag_check -%}
+              {%- assign article_with_tags = true -%}
+              {%- endif -%}
+              {%- endfor -%}
+              {%- if article_with_tags and icount < 3 -%}
+              <li class="col-12 col-md-4 col-lg-4">
+                <div class="same_blog mb-4 mb-sm-0">
+                  <a class="w-100" href="{{ article_extra.url }}">
+                    <img class="lazyload" data-src="{{ article_extra.image | img_url: '600x' }}" >
+                  </a>
+                  <p class="same_blog__publish text-uppercase pt-3 mb-2 blog__meta">
+                    {{ article.published_at | time_tag: format: 'month_day_year' }}
+                  </p>
+                  <h4 class=""><a href="{{ article_extra.url }}">{{ article_extra.title }}</a></h4>
+                </div>
+              </li>
+              {%- assign icount = icount | plus: 1 -%}
+              {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          </div>
+          <div class="col-12 my-5"><hr/></div>
+          {%- endif -%}
+        </div>
+        
+      </div>
+      
+      
+
+      {%- if blog.comments_enabled? -%}
+      {%- if number_of_comments > 0 -%}
+      <div class="content-block">
+        {% unless section.settings.sidebar_enable %} <div class="d-flex justify-content-center"><div class="col-12"> {% endunless %}
+        <h2 class="h5">{{ 'blogs.comments.with_count' | t: count: number_of_comments }}</h2>
+
+        {%- paginate article.comments by 3 -%}
+
+        <div id="comments">
+          {%- if new_comment -%}
+          <p class="form-success">
+            {%- if blog.moderated? -%}
+            {{ 'blogs.comments.success_moderated' | t }}
+            {%- else -%}
+            {{ 'blogs.comments.success' | t }}
+            {%- endif -%}
+          </p>
+          {%- endif -%}
+
+          {%- if number_of_comments > 0 -%}
+          <ul class="comments list--no-bullets js-pagination-content">
+
+            {%- if new_comment -%}
+            {%- unless paginate.current_page > 1 -%}
+            <li id="{{ comment.id }}" class="comment py-4 mb-0">
+              {%- include 'comment' -%}
+            </li>
+            {%- endunless -%}
+            {%- endif -%}
+
+            {%- for comment in article.comments -%}
+            {%- unless comment.id == new_comment_id -%}
+            <li id="{{ comment.id }}" class="comment border-bottom py-4 mb-0">
+              {%- include 'comment' -%}
+            </li>
+            {%- endunless -%}
+            {%- endfor -%}
+          </ul>
+          
+          <div class="js-pagination">
+            {%- if paginate.next -%}
+            <a href="{{ paginate.next.url }}"></a>
+            {%- endif -%}
+          </div>
+          
+          {%- endif -%}
+        </div>
+        {%- endpaginate -%}
+        {% unless section.settings.sidebar_enable %}</div> </div> {% endunless %}
+      </div>
+      {%- endif -%}
+      <div class="content-block pt-5">
+        {% unless section.settings.sidebar_enable %} <div class="d-flex justify-content-center"><div class="col-12"> {% endunless %}
+        <div class="comment-form form-vertical">
+          {%- form 'new_comment', article -%}
+
+          <h3 class="h3 text-capitalize">{{ 'blogs.comments.title' | t }}</h3>
+          <p class="mb-4">{{ 'blogs.comments.description' | t }}</p>
+          {{ form.errors | default_errors }}
+
+          <div class="row">
+            <div class="col-md-6 pr-md-0 form-group">
+              <label for="CommentAuthor" class="label--hidden">{{ 'blogs.comments.name' | t }}</label>
+              <input type="text" name="comment[author]" id="CommentAuthor" class="form-control {% if form.errors contains 'author' %} input--error{% endif %}" placeholder="{{ 'blogs.comments.name' | t }}" value="{{ form.author }}">
+            </div>
+
+            <div class="col-md-6 form-group">
+              <label for="CommentEmail" class="label--hidden">{{ 'blogs.comments.email' | t }}</label>
+              <input type="email" name="comment[email]" id="CommentEmail" class="form-control {% if form.errors contains 'email' %} input--error{% endif %}" placeholder="{{ 'blogs.comments.email' | t }}" value="{{ form.email }}" autocorrect="off" autocapitalize="off">
+            </div>
+          </div>
+          <div class="form-group ">
+            <label for="CommentBody" class="label--hidden">{{ 'blogs.comments.message' | t }}</label>
+            <textarea name="comment[body]" id="CommentBody" class=" form-control-area {% if form.errors contains 'body' %} input--error{% endif %}" placeholder="{{ 'blogs.comments.message' | t }}" style="height:100px">{{ form.body }}</textarea>
+          </div>
+
+          <input type="submit" class="btn btn-theme d-inline-block w-auto mt-4" value="{{ 'blogs.comments.post' | t }}">
+
+          {%- if blog.moderated? -%}
+          <p class="text-center">{{ 'blogs.comments.moderated' | t }}</p>
+          {%- endif -%}
+          {%- endform -%}
+        </div>
+        {% unless section.settings.sidebar_enable %}</div> </div> {% endunless %}
+      </div>
+      
+      
+      {%- endif -%}
+      
+      
+
+      <div class="full-width full-width--return-link">
+        <a href="{{ blog.url }}" class="h1 return-link">
+          {%- include 'icon-arrow-thin-left' -%}
+          {{ 'blogs.article.back_to_blog' | t: title: blog.title }}
+        </a>
+      </div>
+    </div>
+    {%- if section.settings.sidebar_enable -%}
+    {%- include 'blogSidebar' -%}
+    {%- endif -%}
+  </article>
+</div>
+
+{% schema %}
+{
+  "name": "Article content",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "social_sharing_blog",
+      "label": "Enable blog post sharing",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "same_blog",
+      "label": "In same blog",
+      "default": "In same category"
+    },
+    {
+      "type": "text",
+      "id": "related_blog",
+      "label": "In same tag",
+      "default": "Related by tags"
+    },
+    {
+      "type": "header",
+      "content": "Sidebar"
+    },
+    {
+      "type": "checkbox",
+      "id": "sidebar_enable",
+      "label": "Enable",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "sidebar_position",
+      "label": "Position",
+      "default": "right",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_previous_and_next_buttons",
+      "label": "Show next/ previous buttons",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

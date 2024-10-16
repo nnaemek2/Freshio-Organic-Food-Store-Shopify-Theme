@@ -1,0 +1,33 @@
+{% capture title %}{% include 'shortcode-render' render:'title' %}{% endcapture %}
+{% capture columns_product %}{% include 'shortcode-render' render:'columns_product' %}{% endcapture %}
+{% capture row_product %}{% include 'shortcode-render' render:'row' %}{% endcapture %}
+{% capture product_in_list %}{% include 'shortcode-render' render:'product_in_list' %}{% endcapture %}
+{% capture handle %}{% include 'shortcode-render' render:'handle' %}{% endcapture %}
+{% capture interval %}{% include 'shortcode-render' render:'interval' %}{% endcapture %}
+{% capture id %}{% include 'shortcode-render' render:'id' %}{% endcapture %}
+{% if id == '' %}
+{% capture prolistID %}productlist-{{ 'now' | date: "%N" }}{% endcapture %}
+{% assign id = prolistID %}
+{% endif %}
+{% assign columns_product = columns_product | plus: 0 %}
+{% assign product_in_list = product_in_list | plus: 0 %}
+{% if interval == '' %}{% assign interval = 5000 %}{% endif %}
+
+{% for collection in collections %}
+{% if handle != ''%}
+{% if collection.handle ==  handle %}
+{% assign products = collection.products %}
+{% break%}
+{% endif%}
+{% endif%}
+{% endfor %}
+<div id="{{ id }}" class="js-slick-carousel">
+  <h4>{{ title }}</h4>
+  <div class="row slick_content" data-section-id=sc-productslick-{{id}} data-dots="true" data-slidestoscroll="{{columns_product}}" data-section-type="slickCarousels" data-slidesToShow="{{columns_product}}" data-rows="{{ row_product }}">
+    {% for product in products limit:product_in_list %}
+    <div class="col">
+      {% include 'product-card' %}
+    </div>
+    {% endfor %}
+  </div>
+</div>

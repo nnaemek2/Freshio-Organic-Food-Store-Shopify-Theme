@@ -1,0 +1,433 @@
+<!-- faq-section.liquid -->
+<style>
+   .customstyle{{ section.id }}{ 
+      position: relative;
+      z-index: {{section.settings.zindex}};
+      background-position:{{section.settings.e_pos}} !important;
+      background-repeat:{{ section.settings.e_repeat }} !important;
+      background-size:{{ section.settings.e_size }} !important;
+    }
+    .card-faqs{
+       
+        border-bottom: 1px solid #ebebeb;
+        padding:1.25em 0;
+    }
+    .card-faqs:first-child{
+        border-top:1px solid #ebebeb;
+    }
+    .card-faqs-heading{
+        cursor: pointer;
+    }
+    .faq-heading .faq-icon{
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        line-height: 32px;
+        font-size: 18px;
+        background: #fff;
+        border: 1px solid  var(--g-main);
+        text-align: center;
+        border-radius: 100%;
+        background-color: var(--g-main);
+        transform: rotate(-90deg);
+    }
+    .faq-heading.collapsed .faq-icon{
+        border: 1px solid #e3e3e3;
+        background-color: transparent;
+        transform: rotate(0deg);
+    }
+    .accordion-2 .card-faqs{
+      padding:1.25em;
+      margin-bottom:16px;
+      border-color: transparent;
+      background-color: white;
+      
+    }
+</style>
+  <div class="customstyle{{ section.id }} {% if section.settings.image_bg != blank %} lazyload {% endif %}" data-aos="{{section.settings.animation}}"  
+  style="{% if section.settings.image_bg != blank %}background-image:url({%- include 'srcBlank' -%}){% endif %}"
+  data-bg="{{ section.settings.image_bg | img_url:"1920x" }}"
+  >
+  {%- include 'style-section' -%}
+    <div class="{{ section.settings.setwidth }}">
+      <div class="section-block  section-inner">
+        {%- include 'section-heading' -%}
+        <div class="row {% if section.settings.e_reverse %} flex-row-reverse {% endif %}">
+            <div class="col-md-6 col-12" data-aos="{{section.settings.animation}}" data-aos-duration="500">
+                {%- if section.settings.left_html != blank -%}
+                    <div class="mb-5 {% if section.settings.e_reverse %} pl-lg-5 ml-lg-3 {% else %} pr-lg-5 mr-lg-3  {% endif %}">
+                        {{section.settings.left_html}}
+                    </div>
+                {%- endif -%}
+                {%- if section.blocks.size > 0 -%}
+                    <div id="accordion-faqs" class="{{section.settings.s_accordion}} {% if section.settings.e_reverse %} pl-lg-5 ml-lg-3 {% else %} pr-lg-5 mr-lg-3  {% endif %} mb-5 mb-lg-0">
+                    {%- for block in section.blocks -%}
+                        <div class="card-faqs">
+                            <div class="card-faqs-heading" >
+                                <h5 class="mb-0">
+                                    <span class="faq-heading d-flex align-items-center {% if forloop.first %}{% else %}collapsed{% endif %}" data-toggle="collapse" data-target="#faq-{{block.id}}" aria-expanded="{%- if forloop.first -%}true{%- else -%}false{%- endif -%}" aria-controls="faq-{{block.id}}">
+                                        <span class="faq-icon mr-3">
+                                        <i class="freshio-icon- freshio-icon-angle-down"></i>
+                                        </span>
+                                        {{block.settings.faq_title}}
+                                    </span>
+                                </h5>
+                            </div>
+                            <div id="faq-{{block.id}}" class="pl-2 collapse {% if forloop.first %}show{% endif %}" aria-labelledby="headingOne" data-parent="#accordion-faqs">
+                                <div class="card-body pl-5">
+                                    {{block.settings.faq_des}}
+                                </div>
+                            </div>
+                        </div>
+                    
+                    {%- endfor -%}
+                </div>
+                {%- endif -%}
+            </div>
+            <div class="col-12 col-md-6" data-aos="{{section.settings.animation}}" data-aos-duration="800">
+                {% if section.settings.e_right %}
+                {%- if section.settings.image_right == blank -%}
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- else -%}
+                <div class="position-relative">
+                    <div class="image-content__image-wrapper" style="padding-top:{{ 1 | divided_by: section.settings.image_right.aspect_ratio | times: 100}}%;">
+                    {% assign img_url = section.settings.image_right | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                    <img class="image-content__image lazyload"
+                        src="{{ section.settings.image_right | img_url: '800x' }}"
+                        data-src="{{ img_url }}"
+                        data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                        data-aspectratio="{{section.settings.image_right.aspect_ratio }}"
+                        data-sizes="auto"
+                        alt="{{ section.settings.image_right.title }}">
+                    </div>
+                </div>
+              {%- endif -%}
+              {%- endif -%}
+            </div>
+        </div>
+        {%- if section.blocks.size == 0 -%}
+        {%- include 'no-blocks' -%}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+  
+  {% schema %}
+  {
+    "name": "Faqs Creative",
+    "class": "index-section",
+    "settings": [
+    {
+      "type": "select",
+      "id": "animation",
+      "options": [
+        { "value": "", "label": "None"},
+        { "value": "fade", "label": "Fade"},
+        { "value": "fade-up", "label": "Fade Up"},
+        { "value": "fade-down", "label": "Fade Down"},
+        { "value": "fade-left", "label": "Fade Left"},
+        { "value": "fade-right", "label": "Fade Right"},
+        { "value": "fade-up-right", "label": "Fade Up Right"},
+        { "value": "fade-up-left", "label": "Fade Up Left"},
+        { "value": "fade-down-right", "label": "Fade Down Right"},
+        { "value": "fade-down-left", "label": "Fade Down Left"},
+        { "value": "flip-up", "label": "Flip Up"},
+        { "value": "flip-down", "label": "Flip Down"},
+        { "value": "flip-left", "label": "Flip Left"},
+        { "value": "flip-right", "label": "Flip Right"},
+        { "value": "slide-up", "label": "Slide Up"},
+        { "value": "slide-down", "label": "Slide Down"},
+        { "value": "slide-left", "label": "Slide Left"},
+        { "value": "slide-right", "label": "Slide Right"},
+        { "value": "zoom-in", "label": "Zoom In"},
+        { "value": "zoom-in-up", "label": "Zoom In Up"},
+        { "value": "zoom-in-down", "label": "Zoom In Down"},
+        { "value": "zoom-in-left", "label": "Zoom In Left"},
+        { "value": "zoom-in-right", "label": "Zoom In Right"},
+        { "value": "zoom-out", "label": "Zoom Out"},
+        { "value": "zoom-out-up", "label": "Zoom Out Up"},
+        { "value": "zoom-out-down", "label": "Zoom Out Down"},
+        { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+        { "value": "zoom-out-right", "label": "Zoom Out Right"}
+      ],
+      "label": "Select Animation"
+  },
+  {
+    "type": "text",
+    "id": "paddingsection",
+    "label": "Padding Section",
+    "default": "0px 0px 0px 0px",
+    "info": "Padding: Top Right Bottom Left"
+  },
+  {
+    "type": "text",
+    "id": "paddingmobile",
+    "label": "Padding Section Mobile",
+    "default": "60px 0px 60px 0px",
+    "info": "Padding: Top Right Bottom Left"
+  },
+  {
+    "type": "text",
+    "id": "marginsection",
+    "label": "Margin Section",
+    "default": "0px 0px 0px 0px",
+    "info": "Margin: Top Right Bottom Left"
+  },
+  {
+    "type": "text",
+    "id": "marginmobile",
+    "label": "Margin Mobile",
+    "default": "0px 0px 0px 0px",
+    "info": "Margin: Top Right Bottom Left"
+  },
+  {
+    "type": "color",
+    "id": "bgsection",
+      "label": "Background Section",
+      "default": "#fefefe"
+  },
+  {
+    "type": "image_picker",
+    "id": "image_bg",
+    "label": "Background image"
+  },
+  {
+    "type": "select",
+    "id": "e_size",
+    "label": "Background Size",
+    "default": "auto",
+    "options": [
+      {
+        "value": "auto",
+        "label": "Auto"
+      },
+      {
+        "value": "cover",
+        "label": "Cover"
+      },
+      {
+        "value": "contain",
+        "label": "Contain"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "id": "e_repeat",
+    "label": "Backgroudn Repeat",
+    "default": "no-repeat",
+    "options": [
+      {
+        "value": "no-repeat",
+        "label": "No-repeat"
+      },
+      {
+        "value": "repeat",
+        "label": "Repeat"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "id": "e_pos",
+    "label": "Backgroudn Position",
+    "default": "center center",
+    "options": [
+      {
+        "value": "center center",
+        "label": "Center"
+      },
+      {
+        "value": "top center",
+        "label": "Top Center"
+      },
+      {
+        "value": "bottom center",
+        "label": "Bottom Center"
+      }
+    ]
+  },
+  {
+    "type": "checkbox",
+    "id": "enable_inner",
+    "label": "Enable Padding Inner",
+    "default": true
+  },
+  {
+    "type": "text",
+    "id": "padding_inner",
+    "label": "Padding Inner ",
+    "default": "0px 0px 0px 0px",
+    "info": "Padding: Top Right Bottom Left"
+  },
+  {
+    "type": "text",
+    "id": "padding_inner_mobile",
+    "label": "Padding Inner Mobile",
+    "default": "0px 0px 0px 0px",
+    "info": "Padding: Top Right Bottom Left"
+  },
+  {
+    "type": "color",
+    "id": "bg_inner",
+      "label": "Background Inner",
+      "default": "#ffffff"
+  },
+  {
+    "type": "select",
+    "id": "setwidth",
+    "label": "Full Width",
+    "default": "container",
+    "options": [
+      {
+        "value": "container",
+        "label": "Box"
+      },
+      {
+        "value": "container-fluid",
+        "label": "Container Fluid"
+      },
+      {
+        "value": "full",
+        "label": "Full"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "id": "sectionheading",
+    "label": "Style Heading",
+    "default": "heading-0",
+    "options": [
+      {
+        "value": "heading-0",
+        "label": "Heading 0 Border"
+      },
+      {
+        "value": "heading-1",
+        "label": "Heading 1 Center"
+      },
+      {
+        "value": "heading-2",
+        "label": "Heading 2 No Border"
+      },
+      {
+        "value": "heading-3",
+        "label": "Heading 3 Center Border"
+      },
+      {
+        "value": "heading-4",
+        "label": "Hide Heading"
+      }
+    ]
+  }, 
+  {
+    "type": "color",
+    "id": "dot_heading0",
+    "label": "Color Dot Heading 0, Heading 2",
+    "default": "#bac34e"
+  },
+  {
+    "type": "text",
+    "id": "title_top",
+    "label": "Sub Title Top",
+    "default": "Sub Title Top"
+  },
+  {
+    "type": "text",
+    "id": "title",
+    "label": "Title",
+    "default": "Product tab"
+  },
+  {
+    "type": "textarea",
+    "id": "des",
+    "label": "HTML / Description"
+  },
+  {
+    "type": "checkbox",
+    "id": "e_reverse",
+    "label": "Enable Reverse Column",
+    "default": true
+  },
+  
+  {
+    "type": "header",
+    "content": "Block Left"
+  },
+  {
+    "type": "textarea",
+    "id": "left_html",
+    "label": "Block left HTML"
+  },
+  {
+    "type": "select",
+    "id": "s_accordion",
+    "label": "Style Accordion",
+    "default": "accordion-1",
+    "options": [
+      {
+        "value": "accordion-1",
+        "label": "Style 1"
+      },
+      {
+        "value": "accordion-2",
+        "label": "Style 2"
+      }
+    ]
+  }, 
+  {
+    "type": "header",
+    "content": "Block Right"
+  },
+  {
+    "type": "checkbox",
+    "id": "e_right",
+    "label": "Enable Image",
+    "default": true
+  },
+  {
+    "type": "image_picker",
+    "id": "image_right",
+    "label": "Right Image"
+  }
+    ],
+    "blocks": [
+      {
+        "type": "faq",
+        "name": "Faq",
+        "settings": [
+            {
+            "type": "textarea",
+            "id": "faq_title",
+            "label": "Faq Title",
+            "default": "Title"
+          },
+          {
+            "type": "textarea",
+            "id": "faq_des",
+            "label": "Faq Answer",
+            "default": "Answer Description"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Faqs Creative",
+        "blocks": [
+          {
+            "type": "faq"
+          },
+          {
+            "type": "faq"
+          },
+          {
+            "type": "faq"
+          }
+        ]
+      }
+    ]
+  }
+  {% endschema %}
+  

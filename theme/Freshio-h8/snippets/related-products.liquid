@@ -1,0 +1,30 @@
+
+{%- if collection == null or collection.handle == 'frontpage' or collection.handle == 'all' -%}
+{%- assign found_a_collection = false -%}
+{%- for c in product.collections -%}
+{%- if found_a_collection == false and c.handle != 'frontpage' and c.handle != 'all' and c.all_products_count > 1 -%}
+{%- assign found_a_collection = true -%}
+{%- assign collection = c -%}
+{%- endif -%}
+{%- endfor -%}
+{%- endif -%}
+{%- assign produccount = columns_product -%}
+{%- assign currentProduct = product -%}
+<div id="productrelated"  class="{{block.settings.setwidthcontent}}" >
+  {%- if block.settings.relate_products_title != blank -%}
+  <h4 class="mb-5 text-center h3" data-aos="fade-up"  data-aos-duration="500">{{ block.settings.relate_products_title }}</h4>
+  {%- endif -%}
+  <div class="js-slick-carousel" data-aos="fade-up" data-aos-duration="1000">
+    <div class="row slick_content" data-section-id="relate-{{section.id}}" data-section-type="slickCarousels" data-dots="{{block.settings.dots}}" data-rows="1" data-slidesToShow="{{block.settings.show}}" data-infinite="false" 
+    data-draggable="{{block.settings.draggable}}" data-arrows="{{block.settings.arrows}}">
+      {%- assign collection_produclists = collection.products -%}
+      {%- for product in collection_produclists limit: 6 -%}
+      {%- if product.handle != currentProduct.handle -%}
+      <div class="col">
+        {%- include 'product-card' -%}
+      </div>  
+      {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>

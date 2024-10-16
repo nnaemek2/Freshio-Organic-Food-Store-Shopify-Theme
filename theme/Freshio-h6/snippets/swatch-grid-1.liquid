@@ -1,0 +1,46 @@
+{%- if settings.e_swatch -%}
+<ul class="product-card__swatch list-unstyled {% if settings.swatch_color %} sw_color{% endif %}">
+  {%- assign counter = 0 -%}
+  {%- assign arrayVariants = '' -%}
+  {% for option in product.options %}
+  {% if option == "Color" or option == "Colour" %}
+  {% assign index = forloop.index0 %}
+  {% assign colorlist = '' %}
+  {% assign color = '' %}
+  
+  {%- for variant in product.variants -%}
+  {%- assign swatch_file_extension = 'png' -%}
+  {% capture color %}
+      {{ variant.options[index] }}
+    {% endcapture %}
+    {%- if counter < 4 -%}
+    {%- unless arrayVariants contains variant.image -%}
+    {%- assign arrayVariants = arrayVariants | append: variant.image -%}
+        {%- if variant.image != blank -%}
+          <li 
+          data-tooltip="true" 
+          data-tooltipalltimes="true" 
+          class="js-swatch-card-item" 
+          title="{{variant.title}}" 
+          data-url="{{variant.url | within: collection}}" 
+          data-id="{{variant.id}}" 
+          data-image="{{ variant.image | img_url: 'large' }}" 
+          data-price="{{variant.price}}">
+            {%- if settings.swatch_color -%}
+            <span style="background-color:{{ color | handle}};background-image: url({{ color | handle | append: '.' | append: swatch_file_extension | file_img_url: '50x' | prepend: 'https:' | split: '?' | first }})"></span>
+            {%- else -%}
+              <img data-sizes="auto" src="{%- include 'srcBlank' -%}" class="lazyload" data-src="{{variant.image | img_url: 'small'}}" alt="{{variant.image.alt}}" />
+            {%- endif -%}
+          </li>
+          {%- assign counter = counter | plus:1 -%}
+        {%- endif -%}
+    {%- endunless -%}
+    {%- else -%}
+  	  <li><a class="small" href="{{ product.url | within: collection }}" title="{{'products.product.view_more' | t}}">All ({{product.variants.size}})</a></li>
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {% endif %}
+{% endfor %}
+</ul>
+{%- endif -%}
